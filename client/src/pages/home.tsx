@@ -358,82 +358,92 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section - Matching fourth design */}
+      {/* Services Section - Exact replica of PDF design */}
       <section id="services" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
+          <div className="grid md:grid-cols-2 gap-20 items-start">
+            {/* Left side - Main image and small chair card */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="space-y-8"
             >
-              <img
-                src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                alt="Modern living room with round wooden coffee table"
-                className="w-full h-96 object-cover luxury-hover mb-8"
-              />
-
-              <div className="bg-white border border-gray-200 p-6">
+              {/* Main large image - round wooden coffee table with plants */}
+              <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
-                  alt="Modern upholstered chair"
-                  className="w-full h-32 object-cover mb-4"
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800"
+                  alt="Modern living room with round wooden coffee table, plants, and natural lighting"
+                  className="w-full h-[500px] object-cover"
                 />
-                <div className="text-center">
-                  <h4 className="font-playfair text-sm font-semibold mb-1">
+              </div>
+
+              {/* Small card with chair image - exactly as in PDF */}
+              <div className="bg-white border border-gray-300 p-4 w-48">
+                <div className="mb-3">
+                  <img
+                    src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
+                    alt="Modern upholstered chair with wooden frame"
+                    className="w-full h-24 object-cover"
+                  />
+                </div>
+                <div className="text-center border-t border-gray-200 pt-2">
+                  <h4 className="font-italiana text-sm font-bold mb-1 text-charcoal tracking-wide">
                     KJESS DESIGNS
                   </h4>
-                  <p className="text-xs text-charcoal/70">Interior Design Studio</p>
+                  <p className="text-xs text-charcoal/70 underline">Interior Design Studio</p>
                 </div>
               </div>
             </motion.div>
 
+            {/* Right side - Services list exactly as in PDF */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-italiana text-5xl md:text-7xl mb-8 text-charcoal leading-tight">
+              <h2 className="font-italiana text-6xl md:text-7xl mb-12 text-charcoal leading-tight tracking-wide">
                 OUR SERVICES
               </h2>
               
-              <div className="space-y-4 text-lg text-charcoal/80">
+              {/* Services list with exact text from PDF */}
+              <div className="space-y-6 text-base text-charcoal/90 leading-relaxed">
                 <div className="flex items-start">
-                  <span className="text-bronze mr-3">•</span>
+                  <span className="text-charcoal mr-3 text-lg">•</span>
                   <span>Interior design & space planning</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-bronze mr-3">•</span>
+                  <span className="text-charcoal mr-3 text-lg">•</span>
                   <span>3D visualization & material selection</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-bronze mr-3">•</span>
+                  <span className="text-charcoal mr-3 text-lg">•</span>
                   <span>Custom-made furniture (sofas, chairs, Outdoor Lounge, TV stands, Dinning tables, etc.)</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-bronze mr-3">•</span>
+                  <span className="text-charcoal mr-3 text-lg">•</span>
                   <span>Bespoke joinery (kitchens, closets, doors, wall & ceiling panels)</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-bronze mr-3">•</span>
+                  <span className="text-charcoal mr-3 text-lg">•</span>
                   <span>Curtain treatment & window dressing</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-bronze mr-3">•</span>
+                  <span className="text-charcoal mr-3 text-lg">•</span>
                   <span>Lighting selection & decorative lighting solutions</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-bronze mr-3">•</span>
+                  <span className="text-charcoal mr-3 text-lg">•</span>
                   <span>Turnkey interior fit-outs & project management</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-bronze mr-3">•</span>
+                  <span className="text-charcoal mr-3 text-lg">•</span>
                   <span>Metal-wood furniture integration</span>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-bronze mr-3">•</span>
+                  <span className="text-charcoal mr-3 text-lg">•</span>
                   <span>Styling & final interior accessorizing</span>
                 </div>
               </div>
