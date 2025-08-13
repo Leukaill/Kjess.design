@@ -1788,69 +1788,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Elegant Spacing Transition */}
-      <div className="h-24 bg-gradient-to-b from-warm-white/80 via-cream/40 to-cream relative">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        >
-          <div className="flex items-center space-x-4">
-            <div className="w-8 h-px bg-bronze/40"></div>
-            <div className="w-1 h-1 bg-bronze/60 rounded-full"></div>
-            <div className="w-16 h-px bg-bronze/30"></div>
-            <div className="w-1 h-1 bg-bronze/60 rounded-full"></div>
-            <div className="w-8 h-px bg-bronze/40"></div>
-          </div>
-        </motion.div>
-      </div>
 
-      {/* Beautiful Bed Ideas Section - Matching ninth design */}
-      <section className="py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-4"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=400"
-                alt="Modern upholstered bed with textured headboard"
-                className="w-full h-64 object-cover luxury-hover"
-              />
-              <div className="space-y-4">
-                <img
-                  src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
-                  alt="Contemporary bedroom with wooden features"
-                  className="w-full h-32 object-cover luxury-hover"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
-                  alt="Minimalist bedroom design with natural textures"
-                  className="w-full h-28 object-cover luxury-hover"
-                />
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="font-italiana text-5xl md:text-7xl mb-8 text-charcoal leading-tight">
-                BEAUTIFUL<br />
-                Bed IDEAS
-              </h2>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials Section - Most elegant section */}
       <section className="py-32 bg-charcoal relative overflow-hidden">
