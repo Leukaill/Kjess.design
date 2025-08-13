@@ -66,11 +66,11 @@ export default function Home() {
     { id: "contact", label: "Contact" },
   ];
 
-  // Auto-sliding hero images
+  // Auto-sliding hero images with infinite loop
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => 
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+        (prevIndex + 1) % heroImages.length
       );
     }, 4000); // Change image every 4 seconds
 
