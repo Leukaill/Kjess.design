@@ -195,35 +195,74 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Introduction Section - Matching second design */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+      {/* Introduction Section - Elegant and refined */}
+      <section className="py-32 bg-white relative">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid md:grid-cols-2 gap-20 items-center">
             <motion.div
-              style={{ y: fadeInY, opacity: fadeInOpacity }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
             >
-              <img
-                src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                alt="Contemporary living room with marble accent wall and modern furnishing"
-                className="w-full h-96 object-cover luxury-hover"
-              />
+              <div className="relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=90"
+                  alt="Contemporary living room with marble accent wall and modern furnishing"
+                  className="w-full h-[500px] object-cover transition-all duration-700 ease-out"
+                />
+                {/* Clean border frame */}
+                <div className="absolute inset-0 border border-charcoal/10"></div>
+              </div>
             </motion.div>
+            
             <motion.div
-              style={{ y: fadeInY, opacity: fadeInOpacity }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative"
             >
-              <h2 className="font-italiana text-5xl md:text-7xl mb-8 text-charcoal leading-tight">
+              {/* Decorative element */}
+              <div className="absolute -left-6 top-0 w-1 h-24 bg-bronze/30"></div>
+              
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="font-italiana text-6xl md:text-7xl mb-12 text-charcoal leading-[0.9] tracking-wide"
+              >
                 INTRODUCTION
-              </h2>
-              <p className="text-lg leading-relaxed text-charcoal/80 mb-6">
-                Kjess Designs is where creativity meets craftsmanship. We are a
-                Rwandan-based interior design and furniture company dedicated to
-                transforming spaces into timeless masterpieces.
-              </p>
-              <p className="text-lg leading-relaxed text-charcoal/80">
-                With a commitment to excellence, elegance, and innovation, we
-                bring your visions to life through thoughtful design and superior
-                Attention to Details.
-              </p>
+              </motion.h2>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                <p className="text-xl leading-relaxed text-charcoal/80 font-light">
+                  Kjess Designs is where creativity meets craftsmanship. We are a
+                  Rwandan-based interior design and furniture company dedicated to
+                  transforming spaces into timeless masterpieces.
+                </p>
+                
+                {/* Elegant separator */}
+                <div className="flex items-center my-8">
+                  <div className="w-12 h-px bg-bronze/50"></div>
+                  <div className="w-2 h-2 bg-bronze/30 rounded-full mx-4"></div>
+                  <div className="w-12 h-px bg-bronze/50"></div>
+                </div>
+                
+                <p className="text-xl leading-relaxed text-charcoal/80 font-light">
+                  With a commitment to excellence, elegance, and innovation, we
+                  bring your visions to life through thoughtful design and superior
+                  <span className="font-italiana italic text-bronze"> Attention to Details</span>.
+                </p>
+              </motion.div>
             </motion.div>
           </div>
         </div>
