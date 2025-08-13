@@ -121,50 +121,46 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-cream text-charcoal overflow-x-hidden">
       {/* Hero Section - Matching first design exactly */}
-      <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-cream">
-        <div className="max-w-7xl mx-auto px-6 py-32 w-full">
-          <div className="grid md:grid-cols-2 gap-0 items-center min-h-screen">
-            {/* Left side - Text content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col justify-center pr-12"
-            >
-              {/* Logo */}
-              <div className="w-16 h-16 bg-charcoal mb-12 flex items-center justify-center">
-                <span className="text-cream text-2xl font-italiana font-bold">K</span>
-              </div>
-              
-              <h1 className="font-italiana text-4xl md:text-6xl font-normal leading-tight text-charcoal mb-8">
-                KJESS DESIGNS.LTD
-              </h1>
-              
-              <p className="text-lg md:text-xl text-charcoal/80 mb-6 font-italiana italic">
-                Interior Design & Furnitures
-              </p>
-              
-              <p className="text-base text-charcoal/70 font-italiana">
-                Our Portfolio
-              </p>
-            </motion.div>
-            
-            {/* Right side - Image fills entire space */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              style={{ y: heroY }}
-              className="relative h-screen"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=1200"
-                alt="Modern interior with yellow chair, flowers and contemporary furniture"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
+      <section id="home" className="relative h-screen flex overflow-hidden">
+        {/* Left side - Text content with cream background */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-1/2 bg-cream flex flex-col justify-center px-16"
+        >
+          {/* Logo */}
+          <div className="w-16 h-16 bg-charcoal mb-12 flex items-center justify-center">
+            <span className="text-cream text-2xl font-italiana font-bold">K</span>
           </div>
-        </div>
+          
+          <h1 className="font-italiana text-4xl md:text-6xl font-normal leading-tight text-charcoal mb-8">
+            KJESS DESIGNS.LTD
+          </h1>
+          
+          <p className="text-lg md:text-xl text-charcoal/80 mb-6 font-italiana italic">
+            Interior Design & Furnitures
+          </p>
+          
+          <p className="text-base text-charcoal/70 font-italiana">
+            Our Portfolio
+          </p>
+        </motion.div>
+        
+        {/* Right side - Image fills entire right half */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          style={{ y: heroY }}
+          className="w-1/2 h-full"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=1200"
+            alt="Modern interior with yellow chair, flowers and contemporary furniture"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
       </section>
 
       {/* Introduction Section - Matching second design */}
