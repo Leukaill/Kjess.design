@@ -1602,44 +1602,127 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Vision Section - Matching eighth design */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <img
-              src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-              alt="Outdoor luxury seating by the ocean"
-              className="w-full h-64 object-cover luxury-hover"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-              alt="Elegant outdoor dining setup"
-              className="w-full h-64 object-cover luxury-hover"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-              alt="Sophisticated interior dining room"
-              className="w-full h-64 object-cover luxury-hover"
-            />
-          </div>
-          
+      {/* Vision Section - Compact & Aesthetic Design */}
+      <section className="py-16 bg-gradient-to-br from-cream/30 via-white to-warm-white/50 relative overflow-hidden">
+        {/* Elegant background elements */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-8 right-16 w-32 h-32 border border-bronze/20 rotate-45"></div>
+          <div className="absolute bottom-8 left-16 w-24 h-24 bg-gradient-to-br from-charcoal/5 to-transparent rounded-full"></div>
+          <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-bronze rounded-full opacity-60"></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-16 items-center"
+            className="grid md:grid-cols-2 gap-12 items-center"
           >
-            <h2 className="font-italiana text-5xl md:text-7xl text-charcoal leading-tight">
-              OUR VISION
-            </h2>
+            {/* Left: Compact Image Collage */}
+            <div className="relative">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-2 gap-3 h-64"
+              >
+                {/* Main focal image */}
+                <div className="relative overflow-hidden group col-span-2 h-32">
+                  <img
+                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300"
+                    alt="Luxury interior design vision"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-charcoal/20 via-transparent to-transparent"></div>
+                  
+                  {/* Floating accent */}
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs text-charcoal font-medium tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Excellence
+                  </div>
+                </div>
+                
+                {/* Two smaller accent images */}
+                <div className="relative overflow-hidden group h-28">
+                  <img
+                    src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
+                    alt="Design innovation"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-bronze/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <div className="relative overflow-hidden group h-28">
+                  <img
+                    src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
+                    alt="Interior craftsmanship"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              </motion.div>
+              
+              {/* Decorative frame element */}
+              <div className="absolute -bottom-2 -right-2 w-12 h-12 border-r-2 border-b-2 border-bronze/30"></div>
+            </div>
             
-            <p className="text-lg leading-relaxed text-charcoal/80">
-              To be Rwanda's leading interior design and bespoke furniture company,
-              recognized for transforming everyday spaces into extraordinary
-              experiences. We aim to set a benchmark in the industry through
-              innovation, design integrity, and client satisfaction.
-            </p>
+            {/* Right: Enhanced Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {/* Compact header with decorative element */}
+              <div className="relative">
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="w-12 h-px bg-bronze"></div>
+                  <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+                  <div className="text-bronze text-sm font-medium tracking-wider uppercase">Our Vision</div>
+                </div>
+                
+                <h2 className="font-italiana text-4xl md:text-5xl text-charcoal leading-tight mb-6">
+                  Transforming
+                  <span className="block text-bronze">Dreams into Reality</span>
+                </h2>
+              </div>
+              
+              {/* Enhanced description */}
+              <div className="space-y-4">
+                <p className="text-base leading-relaxed text-charcoal/80 font-light">
+                  To be Rwanda's leading interior design and bespoke furniture company, 
+                  recognized for transforming everyday spaces into extraordinary experiences.
+                </p>
+                
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-bronze/60 rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    Setting industry benchmarks through innovation, design integrity, and exceptional client satisfaction.
+                  </p>
+                </div>
+              </div>
+              
+              {/* Compact stats or highlight */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="flex items-center space-x-6 pt-4"
+              >
+                <div className="text-center">
+                  <div className="text-2xl font-italiana font-bold text-charcoal">Excellence</div>
+                  <div className="text-xs text-charcoal/60 uppercase tracking-wide">Driven</div>
+                </div>
+                <div className="w-px h-8 bg-bronze/30"></div>
+                <div className="text-center">
+                  <div className="text-2xl font-italiana font-bold text-charcoal">Innovation</div>
+                  <div className="text-xs text-charcoal/60 uppercase tracking-wide">Focused</div>
+                </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
