@@ -2148,6 +2148,42 @@ export default function Home() {
                   </div>
                 </div>
               </motion.div>
+
+              {/* Additional design showcase image */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="relative group"
+              >
+                <div className="absolute -inset-2 bg-gradient-to-br from-bronze/5 via-transparent to-charcoal/5 rotate-1 group-hover:rotate-2 transition-all duration-700 opacity-60"></div>
+                <div className="relative overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500"
+                    alt="Modern interior design workspace with elegant furniture"
+                    className="w-full h-64 object-cover transition-all duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent"></div>
+                  
+                  {/* Floating design element */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    viewport={{ once: true }}
+                    className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm p-3 border border-bronze/20 group-hover:shadow-lg transition-shadow duration-300"
+                  >
+                    <div className="text-center">
+                      <div className="w-6 h-px bg-bronze mx-auto mb-1"></div>
+                      <p className="text-xs text-charcoal font-medium tracking-wider uppercase">Our Workspace</p>
+                    </div>
+                  </motion.div>
+                </div>
+                
+                {/* Subtle corner accent */}
+                <div className="absolute -top-1 -right-1 w-8 h-8 border-r border-t border-bronze/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </motion.div>
             </motion.div>
             
             {/* Right side - Enhanced contact form */}
