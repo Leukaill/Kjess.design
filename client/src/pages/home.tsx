@@ -120,78 +120,195 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-cream text-charcoal overflow-x-hidden">
-      {/* Hero Section - Matching first design exactly */}
+      {/* Hero Section - Sophisticated and Immersive Design */}
       <section id="home" className="relative h-screen flex overflow-hidden">
-        {/* Left side - Text content with cream background */}
+        {/* Artistic Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Elegant geometric shapes */}
+          <div className="absolute top-20 left-20 w-96 h-96 border border-bronze/10 rotate-45 opacity-30 animate-pulse"></div>
+          <div className="absolute bottom-32 right-32 w-64 h-64 bg-gradient-to-br from-charcoal/5 to-transparent rounded-full blur-xl"></div>
+          <div className="absolute top-1/3 left-1/3 w-2 h-2 bg-bronze rounded-full opacity-60"></div>
+          <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-charcoal/40 rounded-full"></div>
+        </div>
+
+        {/* Left side - Enhanced Text content with sophisticated layout */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="w-1/2 bg-cream flex flex-col justify-center px-20 relative"
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="w-1/2 bg-gradient-to-br from-cream via-cream to-warm-white flex flex-col justify-center px-16 lg:px-24 relative"
         >
-          {/* Subtle decorative line */}
-          <div className="absolute left-0 top-1/2 w-1 h-32 bg-bronze/20 transform -translate-y-1/2"></div>
+          {/* Elegant side accent */}
+          <div className="absolute left-0 top-1/2 w-2 h-40 bg-gradient-to-b from-transparent via-bronze to-transparent transform -translate-y-1/2 opacity-60"></div>
           
-          {/* Logo */}
+          {/* Enhanced Logo with sophisticated styling */}
           <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-20 h-20 bg-charcoal mb-16 flex items-center justify-center shadow-lg luxury-hover"
+            initial={{ scale: 0.6, opacity: 0, rotate: -10 }}
+            animate={{ scale: 1, opacity: 1, rotate: 0 }}
+            transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 100 }}
+            className="relative mb-20 group"
           >
-            <span className="text-cream text-3xl font-italiana font-bold tracking-wider">K</span>
+            <div className="w-24 h-24 bg-gradient-to-br from-charcoal to-charcoal/90 flex items-center justify-center shadow-2xl relative overflow-hidden cursor-pointer transition-all duration-500 group-hover:shadow-3xl group-hover:-translate-y-2">
+              {/* Logo background pattern */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-bronze/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <span className="text-cream text-4xl font-italiana font-bold tracking-wider relative z-10 group-hover:scale-110 transition-transform duration-300">K</span>
+              
+              {/* Decorative corners */}
+              <div className="absolute top-1 right-1 w-3 h-3 border-r border-t border-bronze/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute bottom-1 left-1 w-3 h-3 border-l border-b border-bronze/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            
+            {/* Floating accent elements */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="absolute -top-2 -right-2 w-4 h-4 bg-bronze/20 rotate-45"
+            ></motion.div>
           </motion.div>
           
-          <motion.h1 
+          {/* Enhanced Main Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="mb-12 relative"
+          >
+            <h1 className="font-italiana text-6xl lg:text-8xl font-normal leading-[0.85] text-charcoal tracking-wide relative">
+              <span className="inline-block">KJESS</span>
+              <br />
+              <span className="inline-block relative">
+                DESIGNS
+                <motion.span 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 1.2 }}
+                  className="text-bronze inline-block ml-2"
+                >
+                  .
+                </motion.span>
+                <span className="text-charcoal/60 text-5xl lg:text-6xl font-light">LTD</span>
+              </span>
+            </h1>
+            
+            {/* Decorative line animation */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "80px" }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+              className="h-0.5 bg-gradient-to-r from-bronze to-bronze/40 mt-6"
+            ></motion.div>
+          </motion.div>
+          
+          {/* Enhanced Subtitle Section */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-italiana text-5xl md:text-7xl font-normal leading-[0.9] text-charcoal mb-10 tracking-wide"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mb-12 relative"
           >
-            KJESS DESIGNS<span className="text-bronze">.</span>LTD
-          </motion.h1>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-8"
-          >
-            <p className="text-xl md:text-2xl text-charcoal/80 mb-2 font-italiana italic tracking-wide">
-              Interior Design & Furnitures
+            <p className="text-2xl lg:text-3xl text-charcoal/85 mb-4 font-italiana italic tracking-wide leading-relaxed">
+              Interior Design & <span className="text-bronze font-medium">Luxury</span> Furniture
             </p>
-            <div className="w-16 h-px bg-bronze/40 mb-6"></div>
+            
+            {/* Enhanced decorative elements */}
+            <div className="flex items-center space-x-4 mb-8">
+              <div className="w-6 h-px bg-bronze"></div>
+              <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+              <div className="w-12 h-px bg-bronze/40"></div>
+            </div>
           </motion.div>
           
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+          {/* Call-to-Action Elements */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg text-charcoal/70 font-italiana font-light tracking-wider"
+            transition={{ duration: 0.8, delay: 1 }}
+            className="space-y-6"
           >
-            Our Portfolio
-          </motion.p>
+            <p className="text-lg text-charcoal/70 font-italiana font-light tracking-wider mb-6">
+              Discover Our <span className="font-medium text-charcoal">Premium Portfolio</span>
+            </p>
+            
+            {/* Interactive CTA Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm px-8 py-4 border border-bronze/30 hover:bg-bronze hover:text-white transition-all duration-300 cursor-pointer group"
+            >
+              <span className="text-charcoal group-hover:text-white font-italiana text-sm uppercase tracking-wider font-medium">
+                Explore Our Work
+              </span>
+              <motion.div
+                initial={{ x: 0 }}
+                whileHover={{ x: 5 }}
+                className="w-5 h-px bg-bronze group-hover:bg-white transition-colors duration-300"
+              ></motion.div>
+            </motion.div>
+
+            {/* Floating Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="flex items-center space-x-8 mt-8"
+            >
+              <div className="text-center">
+                <div className="text-2xl font-italiana font-bold text-charcoal">100+</div>
+                <div className="text-xs text-charcoal/60 uppercase tracking-wide">Projects</div>
+              </div>
+              <div className="w-px h-8 bg-bronze/30"></div>
+              <div className="text-center">
+                <div className="text-2xl font-italiana font-bold text-charcoal">5+</div>
+                <div className="text-xs text-charcoal/60 uppercase tracking-wide">Years</div>
+              </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
         
-        {/* Right side - Image fills entire right half */}
+        {/* Right side - Enhanced Image with sophisticated effects */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          initial={{ opacity: 0, x: 100, scale: 1.1 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.4 }}
           style={{ y: heroY }}
-          className="w-1/2 h-full relative overflow-hidden"
+          className="w-1/2 h-full relative overflow-hidden group"
         >
+          {/* Main Hero Image */}
           <img
-            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=1200&q=90"
-            alt="Modern interior with yellow chair, flowers and contemporary furniture"
-            className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=1400&q=95"
+            alt="Elegant modern interior featuring luxury furniture, artistic lighting, and sophisticated design elements"
+            className="w-full h-full object-cover transition-all duration-1000 ease-out group-hover:scale-110"
           />
           
-          {/* Subtle overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-l from-black/5 via-transparent to-transparent"></div>
+          {/* Sophisticated overlay system */}
+          <div className="absolute inset-0 bg-gradient-to-l from-charcoal/10 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/5 via-transparent to-transparent"></div>
           
-          {/* Decorative corner accent */}
-          <div className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-cream/30"></div>
+          {/* Floating design elements */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            className="absolute top-12 right-12 bg-white/90 backdrop-blur-sm p-4 shadow-xl border border-bronze/20"
+          >
+            <div className="text-center">
+              <div className="w-8 h-px bg-bronze mx-auto mb-2"></div>
+              <p className="text-xs text-charcoal font-medium tracking-wider uppercase">Award Winning</p>
+              <p className="text-xs text-charcoal/70">Design Studio</p>
+            </div>
+          </motion.div>
+
+          {/* Enhanced corner accents */}
+          <div className="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-cream/40 opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-cream/30 opacity-40 group-hover:opacity-80 transition-opacity duration-500"></div>
+          
+          {/* Artistic light rays effect */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-1000">
+            <div className="absolute top-1/4 left-1/4 w-px h-32 bg-gradient-to-b from-transparent via-bronze/40 to-transparent rotate-45"></div>
+            <div className="absolute bottom-1/3 right-1/3 w-px h-24 bg-gradient-to-b from-transparent via-bronze/30 to-transparent -rotate-45"></div>
+          </div>
         </motion.div>
       </section>
 
