@@ -80,18 +80,33 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
-  // Smart background detection and scroll logic
+  // Smart background detection and scroll logic with throttling
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY;
+          const viewportHeight = window.innerHeight;
+          const heroSectionHeight = viewportHeight; // Hero is full height
+          const documentHeight = document.documentElement.scrollHeight - viewportHeight;
+          const progress = documentHeight > 0 ? Math.min(Math.max(scrollPosition / documentHeight, 0), 1) : 0;
+          
+          setIsScrolled(scrollPosition > 50);
+          setScrollProgress(progress);
+          setShowBackToTop(scrollPosition > 300);
+          
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    const updateBackgroundAndSections = () => {
       const scrollPosition = window.scrollY;
       const viewportHeight = window.innerHeight;
-      const heroSectionHeight = viewportHeight; // Hero is full height
-      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = Math.min(scrollPosition / documentHeight, 1);
-      
-      setIsScrolled(scrollPosition > 50);
-      setScrollProgress(progress);
-      setShowBackToTop(scrollPosition > 300);
+      const heroSectionHeight = viewportHeight;
       
       // Smart background detection based on sections
       let backgroundIsDark = false;
@@ -100,7 +115,7 @@ export default function Home() {
       const currentSectionElement = document.getElementById(activeSection);
       
       if (scrollPosition < heroSectionHeight * 0.8) {
-        // In hero section - use light text on dark images, but user wants dark text
+        // In hero section - use dark text as requested
         backgroundIsDark = false;
       } else if (currentSectionElement) {
         // Check the computed background color of the current section
@@ -148,10 +163,16 @@ export default function Home() {
       setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call
+    // Combine both handlers with throttling
+    const combinedScrollHandler = () => {
+      handleScroll();
+      updateBackgroundAndSections();
+    };
+
+    window.addEventListener('scroll', combinedScrollHandler, { passive: true });
+    combinedScrollHandler(); // Initial call
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', combinedScrollHandler);
   }, []);
 
   // Smooth scroll to section
@@ -3332,9 +3353,9 @@ export default function Home() {
               stroke="url(#progressGradient)"
               strokeWidth="3"
               strokeLinecap="round"
-              strokeDasharray={`${2 * Math.PI * 28}`}
-              strokeDashoffset={`${2 * Math.PI * 28 * (1 - scrollProgress)}`}
-              className="transition-all duration-300 ease-out filter drop-shadow-lg"
+              strokeDasharray="175.93"
+              strokeDashoffset={175.93 * (1 - scrollProgress)}
+              className="transition-all duration-100 ease-out"
             />
             {/* Gradient definition */}
             <defs>
@@ -3357,15 +3378,12 @@ export default function Home() {
             }}
             data-testid="button-back-to-top"
           >
-            {/* Up arrow with sophisticated animation */}
-            <motion.svg
-              className="w-6 h-6"
+            {/* Up arrow */}
+            <svg
+              className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              initial={{ y: 0 }}
-              animate={{ y: [-2, 2, -2] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               <path 
                 strokeLinecap="round" 
@@ -3373,44 +3391,15 @@ export default function Home() {
                 strokeWidth={2.5} 
                 d="M5 10l7-7m0 0l7 7m-7-7v18" 
               />
-            </motion.svg>
+            </svg>
             
             {/* Ripple effect on hover */}
             <div className="absolute inset-0 rounded-full bg-white/5 scale-0 group-hover:scale-110 transition-transform duration-700 ease-out"></div>
           </motion.button>
           
-          {/* Floating decorative elements */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ 
-              opacity: showBackToTop ? [0, 1, 0] : 0,
-              scale: showBackToTop ? [0, 1.2, 0] : 0,
-              rotate: [0, 180, 360]
-            }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity, 
-              ease: "easeInOut",
-              delay: 0.5
-            }}
-            className="absolute -top-2 -right-2 w-3 h-3 bg-bronze/60 rounded-full"
-          ></motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ 
-              opacity: showBackToTop ? [0, 0.8, 0] : 0,
-              scale: showBackToTop ? [0, 1, 0] : 0,
-              rotate: [360, 180, 0]
-            }}
-            transition={{ 
-              duration: 2.5, 
-              repeat: Infinity, 
-              ease: "easeInOut",
-              delay: 1
-            }}
-            className="absolute -bottom-1 -left-1 w-2 h-2 bg-cream/60 rounded-full"
-          ></motion.div>
+          {/* Simplified decorative elements */}
+          <div className={`absolute -top-2 -right-2 w-3 h-3 bg-bronze/60 rounded-full transition-opacity duration-300 ${showBackToTop ? 'opacity-60' : 'opacity-0'}`}></div>
+          <div className={`absolute -bottom-1 -left-1 w-2 h-2 bg-cream/60 rounded-full transition-opacity duration-300 ${showBackToTop ? 'opacity-40' : 'opacity-0'}`}></div>
           
           {/* Tooltip */}
           <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
