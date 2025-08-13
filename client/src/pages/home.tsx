@@ -87,18 +87,35 @@ export default function Home() {
       
       setIsScrolled(scrollPosition > 50);
       
-      // Smart background detection
-      let backgroundIsDark = true;
+      // Smart background detection based on sections
+      let backgroundIsDark = false;
       
-      if (scrollPosition < heroSectionHeight * 0.7) {
-        // In hero section - over sliding images (dark background)
-        backgroundIsDark = true;
-      } else if (scrollPosition >= heroSectionHeight * 0.7 && scrollPosition < heroSectionHeight * 1.2) {
-        // Transitioning out of hero into light sections
+      // Check which section we're in and determine background color
+      const currentSectionElement = document.getElementById(activeSection);
+      
+      if (scrollPosition < heroSectionHeight * 0.8) {
+        // In hero section - use light text on dark images, but user wants dark text
         backgroundIsDark = false;
-      } else {
-        // In content sections - mostly light backgrounds
-        backgroundIsDark = false;
+      } else if (currentSectionElement) {
+        // Check the computed background color of the current section
+        const computedStyle = window.getComputedStyle(currentSectionElement);
+        const backgroundColor = computedStyle.backgroundColor;
+        
+        // Parse RGB values to determine if background is dark
+        const rgbMatch = backgroundColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+        if (rgbMatch) {
+          const [, r, g, b] = rgbMatch.map(Number);
+          const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+          backgroundIsDark = brightness < 128; // Dark if brightness is low
+        }
+        
+        // Special cases for known dark sections
+        if (activeSection === 'team' || 
+            currentSectionElement.classList.contains('bg-charcoal') ||
+            currentSectionElement.classList.contains('bg-gray-900') ||
+            currentSectionElement.classList.contains('bg-black')) {
+          backgroundIsDark = true;
+        }
       }
       
       setIsDarkBackground(backgroundIsDark);
@@ -275,7 +292,7 @@ export default function Home() {
                 }`} style={{
                   textShadow: isDarkBackground
                     ? '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.5)'
-                    : '0 1px 2px rgba(0,0,0,0.1)'
+                    : '0 1px 3px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.1)'
                 }}>
                   KJESS DESIGNS
                 </h1>
@@ -302,7 +319,7 @@ export default function Home() {
                   style={{
                     textShadow: isDarkBackground
                       ? '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.5)'
-                      : '0 1px 2px rgba(0,0,0,0.1)'
+                      : '0 1px 3px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.1)'
                   }}
                 >
                   {item.label}
@@ -335,7 +352,7 @@ export default function Home() {
               style={{
                 filter: isDarkBackground
                   ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))'
-                  : 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))'
+                  : 'drop-shadow(0 1px 3px rgba(255,255,255,0.8)) drop-shadow(0 1px 2px rgba(0,0,0,0.1))'
               }}
             >
               {isNavOpen ? <X size={24} /> : <Menu size={24} />}
