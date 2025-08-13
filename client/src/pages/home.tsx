@@ -120,52 +120,48 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-cream text-charcoal overflow-x-hidden">
-      {/* Hero Section - Matching first design */}
-      <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-        <motion.div
-          ref={heroRef}
-          style={{ y: heroY }}
-          className="absolute inset-0"
-        >
-          <div className="w-full h-full bg-cream"></div>
-        </motion.div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
-          <div className="grid md:grid-cols-2 gap-12 items-center min-h-screen">
+      {/* Hero Section - Matching first design exactly */}
+      <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-cream">
+        <div className="max-w-7xl mx-auto px-6 py-32 w-full">
+          <div className="grid md:grid-cols-2 gap-0 items-center min-h-screen">
+            {/* Left side - Text content */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="flex flex-col justify-center"
+              className="flex flex-col justify-center pr-12"
             >
               {/* Logo */}
-              <div className="w-20 h-20 bg-charcoal mb-8 flex items-center justify-center">
-                <span className="text-cream text-4xl font-italiana font-bold">K</span>
+              <div className="w-16 h-16 bg-charcoal mb-12 flex items-center justify-center">
+                <span className="text-cream text-2xl font-italiana font-bold">K</span>
               </div>
               
-              <h1 className="font-italiana text-5xl md:text-7xl font-normal leading-tight text-charcoal mb-6">
+              <h1 className="font-italiana text-4xl md:text-6xl font-normal leading-tight text-charcoal mb-8">
                 KJESS DESIGNS.LTD
               </h1>
               
-              <p className="text-xl md:text-2xl text-charcoal/80 mb-4 font-italiana">
+              <p className="text-lg md:text-xl text-charcoal/80 mb-6 font-italiana italic">
                 Interior Design & Furnitures
               </p>
               
-              <p className="text-lg text-charcoal/70 font-italiana">
+              <p className="text-base text-charcoal/70 font-italiana">
                 Our Portfolio
               </p>
             </motion.div>
             
+            {/* Right side - Image */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
+              style={{ y: heroY }}
+              className="relative"
             >
-              <div className="luxury-hover rounded-lg overflow-hidden">
+              <div className="relative h-[500px] w-full overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                  alt="Modern interior design with flowers and contemporary furniture"
-                  className="w-full h-96 object-cover"
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=700"
+                  alt="Modern interior with yellow chair, flowers and contemporary furniture"
+                  className="w-full h-full object-cover luxury-hover"
                 />
               </div>
             </motion.div>
