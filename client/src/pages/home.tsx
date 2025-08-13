@@ -188,7 +188,7 @@ export default function Home() {
                 >
                   .
                 </motion.span>
-                <span className="text-charcoal/60 text-5xl lg:text-6xl font-light">LTD</span>
+                
               </span>
             </h1>
             
