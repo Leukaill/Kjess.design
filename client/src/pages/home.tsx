@@ -1676,7 +1676,7 @@ export default function Home() {
               {
                 name: "Jessica Karumu",
                 role: "Founder & Creative Director",
-                image: "https://images.unsplash.com/photo-1494790108755-2616b612b739?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500",
+                image: "data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23f8f4f0'/%3E%3Ccircle cx='200' cy='150' r='60' fill='%23d4af37' stroke='%23333' stroke-width='3'/%3E%3Ccircle cx='185' cy='140' r='8' fill='%23333'/%3E%3Ccircle cx='215' cy='140' r='8' fill='%23333'/%3E%3Cpath d='M 185 165 Q 200 175 215 165' stroke='%23333' stroke-width='3' fill='none'/%3E%3Crect x='150' y='210' width='100' height='120' fill='%23d4af37' stroke='%23333' stroke-width='3'/%3E%3Ctext x='200' y='400' text-anchor='middle' font-family='serif' font-size='16' fill='%23333'%3EFounder%3C/text%3E%3Ctext x='200' y='420' text-anchor='middle' font-family='serif' font-size='14' fill='%23666'%3E%26 Creative Director%3C/text%3E%3C/svg%3E",
                 bio: "Leading visionary with over 5 years of experience in luxury interior design",
                 linkedin: "#",
                 instagram: "@kjess_designs_rw",
@@ -1685,7 +1685,7 @@ export default function Home() {
               {
                 name: "David Uwimana",
                 role: "Senior Interior Designer",
-                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500",
+                image: "data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23f8f4f0'/%3E%3Ccircle cx='200' cy='150' r='60' fill='%235c4033' stroke='%23333' stroke-width='3'/%3E%3Ccircle cx='185' cy='140' r='8' fill='%23333'/%3E%3Ccircle cx='215' cy='140' r='8' fill='%23333'/%3E%3Cpath d='M 185 165 Q 200 175 215 165' stroke='%23333' stroke-width='3' fill='none'/%3E%3Crect x='150' y='210' width='100' height='120' fill='%235c4033' stroke='%23333' stroke-width='3'/%3E%3Crect x='170' y='240' width='20' height='30' fill='%23333'/%3E%3Crect x='210' y='240' width='20' height='30' fill='%23333'/%3E%3Ctext x='200' y='400' text-anchor='middle' font-family='serif' font-size='16' fill='%23333'%3ESenior Designer%3C/text%3E%3C/svg%3E",
                 bio: "Specialist in modern and contemporary design with a passion for sustainable materials",
                 linkedin: "#",
                 instagram: "#",
@@ -1694,7 +1694,7 @@ export default function Home() {
               {
                 name: "Sarah Mukamana",
                 role: "Project Manager & Designer",
-                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500",
+                image: "data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23f8f4f0'/%3E%3Ccircle cx='200' cy='150' r='60' fill='%23cd5c5c' stroke='%23333' stroke-width='3'/%3E%3Ccircle cx='185' cy='140' r='8' fill='%23333'/%3E%3Ccircle cx='215' cy='140' r='8' fill='%23333'/%3E%3Cpath d='M 185 165 Q 200 175 215 165' stroke='%23333' stroke-width='3' fill='none'/%3E%3Crect x='150' y='210' width='100' height='120' fill='%23cd5c5c' stroke='%23333' stroke-width='3'/%3E%3Ccircle cx='180' cy='250' r='8' fill='%23333'/%3E%3Ccircle cx='220' cy='250' r='8' fill='%23333'/%3E%3Ctext x='200' y='400' text-anchor='middle' font-family='serif' font-size='16' fill='%23333'%3EProject Manager%3C/text%3E%3Ctext x='200' y='420' text-anchor='middle' font-family='serif' font-size='14' fill='%23666'%3E%26 Designer%3C/text%3E%3C/svg%3E",
                 bio: "Expert in project coordination and client relations with eye for detail",
                 linkedin: "#",
                 instagram: "#",
