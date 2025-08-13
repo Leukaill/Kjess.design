@@ -245,12 +245,18 @@ export default function Home() {
                   ? 'bg-charcoal shadow-lg' 
                   : 'bg-charcoal/90 shadow-xl'
               }`}>
-                <span className="text-cream text-xl font-italiana font-bold">K</span>
+                <span className="text-cream text-xl font-italiana font-bold drop-shadow-lg">K</span>
               </div>
               <div className="hidden md:block">
-                <h1 className={`font-italiana text-xl tracking-wide transition-colors duration-300 ${
-                  isScrolled ? 'text-charcoal' : 'text-charcoal'
-                }`}>
+                <h1 className={`font-italiana text-xl tracking-wide transition-all duration-300 ${
+                  isScrolled 
+                    ? 'text-charcoal drop-shadow-sm' 
+                    : 'text-charcoal drop-shadow-md'
+                }`} style={{
+                  textShadow: isScrolled 
+                    ? '0 1px 2px rgba(0,0,0,0.1)' 
+                    : '0 2px 4px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.2)'
+                }}>
                   KJESS DESIGNS
                 </h1>
               </div>
@@ -273,12 +279,20 @@ export default function Home() {
                         ? 'text-charcoal/80 hover:text-bronze' 
                         : 'text-charcoal/90 hover:text-bronze'
                   }`}
+                  style={{
+                    textShadow: isScrolled 
+                      ? '0 1px 2px rgba(0,0,0,0.1)' 
+                      : '0 2px 4px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.2)',
+                    filter: isScrolled 
+                      ? 'none' 
+                      : 'drop-shadow(0 1px 2px rgba(255,255,255,0.1))'
+                  }}
                 >
                   {item.label}
                   
                   {/* Active indicator */}
                   <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze shadow-sm"
                     initial={false}
                     animate={{
                       scaleX: activeSection === item.id ? 1 : 0,
@@ -288,7 +302,7 @@ export default function Home() {
                   />
                   
                   {/* Hover effect */}
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left shadow-sm" />
                 </motion.button>
               ))}
             </div>
@@ -298,9 +312,14 @@ export default function Home() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsNavOpen(!isNavOpen)}
-              className={`lg:hidden p-2 transition-colors duration-300 ${
+              className={`lg:hidden p-2 transition-all duration-300 ${
                 isScrolled ? 'text-charcoal' : 'text-charcoal'
               }`}
+              style={{
+                filter: isScrolled 
+                  ? 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))' 
+                  : 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 1px 2px rgba(255,255,255,0.2))'
+              }}
             >
               {isNavOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>
@@ -336,6 +355,10 @@ export default function Home() {
                       ? 'text-bronze border-bronze bg-bronze/5'
                       : 'text-charcoal/80 border-transparent hover:text-bronze hover:border-bronze/30 hover:bg-bronze/5'
                   }`}
+                  style={{
+                    textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                    filter: 'drop-shadow(0 1px 1px rgba(255,255,255,0.1))'
+                  }}
                 >
                   {item.label}
                 </motion.button>
