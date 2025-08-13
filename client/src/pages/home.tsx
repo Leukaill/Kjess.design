@@ -1790,55 +1790,168 @@ export default function Home() {
 
 
 
-      {/* Testimonials Section - Most elegant section */}
+      {/* Testimonials Section - Sophisticated & Elegant Design */}
       <section className="py-32 bg-charcoal relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-charcoal to-bronze/20"></div>
+        {/* Enhanced background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90"></div>
+          <div className="absolute top-20 right-20 w-80 h-80 border border-bronze/15 rotate-45 opacity-40"></div>
+          <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-bronze/10 to-transparent rounded-full blur-2xl"></div>
+          <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-bronze/60 rounded-full opacity-70"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-cream/40 rounded-full"></div>
+          
+          {/* Elegant floating geometric patterns */}
+          <motion.div
+            initial={{ opacity: 0, rotate: 0 }}
+            whileInView={{ opacity: 0.2, rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute top-16 left-1/2 w-32 h-px bg-gradient-to-r from-transparent via-bronze/30 to-transparent"
+          ></motion.div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Enhanced header with sophisticated styling */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="font-italiana text-5xl md:text-7xl mb-6 text-cream leading-tight">
-              CLIENT TESTIMONIALS
-            </h2>
-            <p className="text-xl text-cream/80">What our valued clients say about us</p>
+            {/* Decorative accent line */}
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "120px" }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
+            ></motion.div>
+            
+            <div className="relative">
+              <h2 className="font-italiana text-5xl md:text-7xl mb-6 text-cream leading-tight tracking-wide">
+                CLIENT
+                <span className="block text-bronze">TESTIMONIALS</span>
+              </h2>
+              
+              {/* Floating accent elements */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="absolute -top-4 -right-4 w-6 h-6 border border-bronze/40 rotate-45"
+              ></motion.div>
+            </div>
+            
+            <div className="flex items-center justify-center space-x-4 mb-6">
+              <div className="w-12 h-px bg-bronze/60"></div>
+              <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+              <div className="w-16 h-px bg-bronze/40"></div>
+              <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+              <div className="w-12 h-px bg-bronze/60"></div>
+            </div>
+            
+            <p className="text-lg text-cream/80 font-light tracking-wide">What our valued clients say about us</p>
           </motion.div>
 
+          {/* Enhanced testimonials grid */}
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                className="bg-cream/5 backdrop-blur-sm p-8 rounded-lg border border-cream/10 luxury-hover"
+                className="group relative"
               >
-                <div className="mb-6">
-                  <Quote className="text-bronze mb-4" size={32} />
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="text-bronze fill-bronze" size={16} />
-                    ))}
+                {/* Decorative frame */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-bronze/20 via-transparent to-bronze/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative bg-cream/8 backdrop-blur-sm p-8 border border-cream/15 hover:border-bronze/30 transition-all duration-500 group-hover:bg-cream/12 group-hover:shadow-2xl">
+                  {/* Quote section with enhanced styling */}
+                  <div className="mb-8 relative">
+                    {/* Artistic quote mark */}
+                    <div className="relative mb-6">
+                      <Quote className="text-bronze mb-4 opacity-80 group-hover:opacity-100 transition-opacity duration-300" size={36} />
+                      <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-bronze/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    
+                    {/* Enhanced star rating */}
+                    <div className="flex items-center space-x-1 mb-6">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, scale: 0 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: index * 0.2 + i * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <Star className="text-bronze fill-bronze group-hover:scale-110 transition-transform duration-300" size={18} />
+                        </motion.div>
+                      ))}
+                      <div className="ml-4 w-8 h-px bg-bronze/40 group-hover:bg-bronze/60 transition-colors duration-300"></div>
+                    </div>
                   </div>
-                </div>
-                
-                <p className="text-cream/90 mb-6 leading-relaxed italic">
-                  "{testimonial.content}"
-                </p>
-                
-                <div className="border-t border-cream/20 pt-4">
-                  <h4 className="font-playfair text-lg font-semibold text-cream mb-1">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-cream/70 text-sm">{testimonial.role}</p>
+                  
+                  {/* Enhanced testimonial content */}
+                  <div className="relative mb-8">
+                    <p className="text-cream/90 leading-relaxed font-light text-base italic group-hover:text-cream transition-colors duration-300">
+                      "{testimonial.content}"
+                    </p>
+                    
+                    {/* Decorative accent */}
+                    <div className="absolute -right-4 top-4 w-1 h-12 bg-gradient-to-b from-bronze/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                  
+                  {/* Enhanced client info */}
+                  <div className="relative">
+                    <div className="h-px bg-gradient-to-r from-bronze/40 via-cream/20 to-transparent mb-6 group-hover:from-bronze/60 transition-colors duration-300"></div>
+                    
+                    <div className="flex items-center space-x-4">
+                      {/* Client avatar placeholder */}
+                      <div className="w-12 h-12 bg-gradient-to-br from-bronze/20 to-bronze/10 rounded-full flex items-center justify-center border border-bronze/30 group-hover:border-bronze/50 transition-colors duration-300">
+                        <div className="w-8 h-8 bg-gradient-to-br from-cream/20 to-cream/10 rounded-full flex items-center justify-center">
+                          <div className="w-4 h-4 bg-bronze/40 rounded-full"></div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex-1">
+                        <h4 className="font-italiana text-lg font-medium text-cream mb-1 group-hover:text-bronze/90 transition-colors duration-300">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-cream/70 text-sm font-light tracking-wide group-hover:text-cream/80 transition-colors duration-300">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Bottom right decorative accent */}
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-bronze/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </motion.div>
             ))}
           </div>
+          
+          {/* Bottom decorative element */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mt-20"
+          >
+            <div className="inline-flex items-center space-x-6">
+              <div className="w-24 h-px bg-gradient-to-r from-transparent to-bronze/50"></div>
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-bronze/60 rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-bronze/40 rounded-full"></div>
+                <div className="w-2 h-2 bg-bronze/60 rounded-full animate-pulse"></div>
+              </div>
+              <div className="w-24 h-px bg-gradient-to-l from-transparent to-bronze/50"></div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
