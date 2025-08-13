@@ -685,59 +685,212 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission Section - Matching sixth design */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+      {/* Mission Section - Sophisticated and Inspiring Design */}
+      <section className="py-32 bg-gradient-to-b from-white via-cream/20 to-white relative overflow-hidden">
+        {/* Artistic background elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-br from-bronze/20 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-64 h-64 bg-gradient-to-tl from-charcoal/10 to-transparent rounded-full blur-2xl"></div>
+        </div>
+        
+        {/* Decorative geometric shapes */}
+        <div className="absolute top-16 right-16 w-24 h-24 border border-bronze/15 rotate-45 opacity-40"></div>
+        <div className="absolute bottom-24 left-24 w-32 h-32 border-2 border-charcoal/10 rotate-12 opacity-30"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Section header with enhanced typography */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <div className="relative inline-block">
+              <h2 className="font-italiana text-7xl md:text-8xl text-charcoal leading-tight tracking-wide relative">
+                OUR <span className="text-bronze">MISSION</span>
+              </h2>
+              {/* Elegant underline */}
+              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-40 h-1 bg-gradient-to-r from-transparent via-bronze to-transparent"></div>
+            </div>
+            <p className="text-xl text-charcoal/60 mt-8 font-light italic tracking-wide">
+              Transforming spaces, enriching lives
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* Left Column - Enhanced Image Gallery */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: -60, scale: 0.95 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
               viewport={{ once: true }}
               className="relative"
             >
-              <img
-                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                alt="Workshop with furniture materials and tools"
-                className="w-full h-96 object-cover luxury-hover"
-              />
-              
-              {/* Polaroid-style overlays */}
-              <div className="absolute -top-4 -left-4 bg-white p-2 shadow-lg rotate-6 luxury-hover">
-                <img
-                  src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=150"
-                  alt="Detailed craftsmanship"
-                  className="w-24 h-20 object-cover"
-                />
+              {/* Main showcase image with sophisticated framing */}
+              <div className="relative group">
+                {/* Artistic backdrop */}
+                <div className="absolute -inset-8 bg-gradient-to-br from-bronze/10 via-transparent to-charcoal/5 rotate-1 group-hover:rotate-2 transition-transform duration-700 opacity-60"></div>
+                
+                {/* Primary image container */}
+                <div className="relative bg-white p-6 shadow-2xl group-hover:shadow-3xl transition-all duration-500">
+                  <img
+                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&h=500"
+                    alt="Elegant modern workspace with custom furniture and artistic lighting"
+                    className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-105"
+                  />
+                  
+                  {/* Sophisticated overlay */}
+                  <div className="absolute inset-6 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Corner accent */}
+                  <div className="absolute bottom-6 right-6 w-8 h-8 border-r-2 border-b-2 border-bronze/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
               </div>
-              
-              <div className="absolute -bottom-6 -right-4 bg-white p-2 shadow-lg -rotate-6 luxury-hover">
+
+              {/* Floating showcase cards */}
+              <motion.div
+                initial={{ opacity: 0, y: 60, rotate: -5 }}
+                whileInView={{ opacity: 1, y: 0, rotate: -8 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="absolute -top-8 -right-12 bg-white p-4 shadow-xl hover:shadow-2xl transition-all duration-500 group cursor-pointer"
+              >
                 <img
-                  src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=150"
-                  alt="Interior detail"
-                  className="w-24 h-20 object-cover"
+                  src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
+                  alt="Luxury furniture craftsmanship detail"
+                  className="w-32 h-24 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-              </div>
+                <div className="mt-2 text-center">
+                  <p className="text-xs text-charcoal/70 font-medium tracking-wide">CRAFTSMANSHIP</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 60, rotate: 3 }}
+                whileInView={{ opacity: 1, y: 0, rotate: 6 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-12 -left-8 bg-white p-4 shadow-xl hover:shadow-2xl transition-all duration-500 group cursor-pointer"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
+                  alt="Modern interior design excellence"
+                  className="w-32 h-24 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="mt-2 text-center">
+                  <p className="text-xs text-charcoal/70 font-medium tracking-wide">INNOVATION</p>
+                </div>
+              </motion.div>
             </motion.div>
-            
+
+            {/* Right Column - Enhanced Mission Content */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
+              className="space-y-12"
             >
-              <h2 className="font-italiana text-5xl md:text-7xl mb-8 text-charcoal leading-tight">
-                OUR Mission
-              </h2>
-              
-              <p className="text-lg leading-relaxed text-charcoal/80">
-                To create beautiful, functional, and inspiring interior spaces by
-                combining design expertise with premium craftsmanship. We strive to
-                exceed our clients' expectations through professionalism, creativity,
-                and a deep commitment to quality.
-              </p>
+              {/* Mission statement with enhanced typography */}
+              <div className="relative">
+                {/* Decorative quote */}
+                <div className="absolute -top-8 -left-6 text-8xl text-bronze/20 font-serif leading-none">"</div>
+                
+                <div className="space-y-6 pl-8">
+                  <p className="text-xl leading-relaxed text-charcoal/85 font-light">
+                    To create <span className="font-medium text-charcoal">beautiful, functional, and inspiring</span> interior spaces by
+                    combining design expertise with premium craftsmanship.
+                  </p>
+                  
+                  <p className="text-xl leading-relaxed text-charcoal/85 font-light">
+                    We strive to exceed our clients' expectations through 
+                    <span className="italic text-bronze"> professionalism, creativity</span>, and a deep commitment to quality.
+                  </p>
+                </div>
+              </div>
+
+              {/* Mission pillars */}
+              <div className="space-y-6">
+                <h3 className="font-italiana text-2xl font-bold text-charcoal mb-6 tracking-wide">
+                  Our Foundation
+                </h3>
+                
+                <div className="space-y-4">
+                  {[
+                    { icon: "✦", title: "Excellence", desc: "Uncompromising quality in every detail" },
+                    { icon: "◆", title: "Innovation", desc: "Cutting-edge design solutions" },
+                    { icon: "★", title: "Dedication", desc: "Committed to client satisfaction" }
+                  ].map((pillar, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-start space-x-4 group hover:translate-x-2 transition-transform duration-300"
+                    >
+                      <div className="text-bronze text-xl mt-1 group-hover:scale-125 transition-transform duration-300">
+                        {pillar.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-italiana text-lg font-semibold text-charcoal mb-1">
+                          {pillar.title}
+                        </h4>
+                        <p className="text-charcoal/70 text-sm leading-relaxed">
+                          {pillar.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Call to action element */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                viewport={{ once: true }}
+                className="pt-8"
+              >
+                <div className="bg-gradient-to-r from-cream to-white p-6 border-l-4 border-bronze relative overflow-hidden">
+                  {/* Decorative corner */}
+                  <div className="absolute top-0 right-0 w-12 h-12 border-r-2 border-t-2 border-bronze/20"></div>
+                  
+                  <div className="relative">
+                    <h4 className="font-italiana text-xl font-bold text-charcoal mb-2 tracking-wide">
+                      Ready to Transform Your Space?
+                    </h4>
+                    <p className="text-charcoal/70 text-sm mb-4">
+                      Let's bring your vision to life with our expertise and craftsmanship.
+                    </p>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-px bg-bronze"></div>
+                      <span className="text-bronze text-sm font-medium tracking-wider uppercase">
+                        Start Your Journey
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
+
+          {/* Bottom decorative element */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-24"
+          >
+            <div className="inline-flex items-center space-x-4">
+              <div className="w-16 h-px bg-gradient-to-r from-transparent to-bronze/40"></div>
+              <div className="w-3 h-3 bg-bronze rounded-full opacity-60"></div>
+              <div className="w-16 h-px bg-gradient-to-l from-transparent to-bronze/40"></div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
