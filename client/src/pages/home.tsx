@@ -640,7 +640,7 @@ export default function Home() {
                     className="bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-bronze/30 hover:border-bronze group"
                   >
                     <div className="flex items-center space-x-4">
-                      <div className={`w-2 h-2 bg-${stat.accent} rounded-full group-hover:scale-150 transition-transform duration-300`}></div>
+                      <div className={`w-2 h-2 ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'} rounded-full group-hover:scale-150 transition-transform duration-300`}></div>
                       <div>
                         <h3 className="text-3xl font-italiana font-bold text-charcoal mb-1">
                           {stat.number}

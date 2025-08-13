@@ -121,6 +121,15 @@
 }
 
 @layer utilities {
+  /* Custom color utilities */
+  .bg-cream { background-color: var(--cream); }
+  .bg-charcoal { background-color: var(--charcoal); }
+  .bg-bronze { background-color: var(--bronze); }
+  .text-cream { color: var(--cream); }
+  .text-charcoal { color: var(--charcoal); }
+  .text-bronze { color: var(--bronze); }
+  .border-bronze { border-color: var(--bronze); }
+  
   .luxury-hover {
     @apply transition-all duration-500 ease-out;
   }
