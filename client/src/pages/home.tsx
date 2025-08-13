@@ -1955,197 +1955,330 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section - Matching tenth design */}
-      <section id="contact" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
+      {/* Contact Section - Sophisticated & Elegant Design */}
+      <section id="contact" className="py-32 bg-gradient-to-br from-white via-cream/10 to-warm-white/30 relative overflow-hidden">
+        {/* Enhanced background elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-16 right-16 w-96 h-96 border border-bronze/15 rotate-45"></div>
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-charcoal/5 to-transparent rounded-full blur-2xl"></div>
+          <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-bronze/60 rounded-full opacity-70"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-charcoal/40 rounded-full"></div>
+          
+          {/* Floating geometric patterns */}
+          <motion.div
+            initial={{ opacity: 0, rotate: 0 }}
+            whileInView={{ opacity: 0.2, rotate: 180 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute top-1/4 left-1/2 w-64 h-px bg-gradient-to-r from-transparent via-bronze/20 to-transparent"
+          ></motion.div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Enhanced header section */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            {/* Decorative top line */}
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "120px" }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
+            ></motion.div>
+            
+            <h2 className="font-italiana text-5xl md:text-7xl mb-6 text-charcoal leading-tight tracking-wide">
+              LET'S CREATE
+              <span className="block text-bronze">TOGETHER</span>
+            </h2>
+            
+            <div className="flex items-center justify-center space-x-4 mb-6">
+              <div className="w-12 h-px bg-bronze/60"></div>
+              <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+              <div className="w-16 h-px bg-bronze/40"></div>
+              <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+              <div className="w-12 h-px bg-bronze/60"></div>
+            </div>
+            
+            <p className="text-lg text-charcoal/80 font-light tracking-wide max-w-2xl mx-auto">
+              Let's bring your vision to life with our expertise and craftsmanship.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            {/* Left side - Enhanced image and contact info */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="space-y-8"
             >
-              <img
-                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                alt="Luxury interior with elegant lighting and comfortable seating"
-                className="w-full h-96 object-cover luxury-hover"
-              />
+              {/* Enhanced main image */}
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-br from-bronze/10 via-transparent to-charcoal/5 rotate-1 group-hover:rotate-2 transition-all duration-700 opacity-60"></div>
+                <div className="relative overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                    alt="Luxury interior design consultation space"
+                    className="w-full h-96 object-cover transition-all duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent"></div>
+                  
+                  {/* Floating contact badge */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    viewport={{ once: true }}
+                    className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm p-4 border border-bronze/20 group-hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="text-center">
+                      <div className="w-8 h-px bg-bronze mx-auto mb-2"></div>
+                      <p className="text-xs text-charcoal font-medium tracking-wider uppercase mb-1">Ready to Start?</p>
+                      <p className="text-xs text-charcoal/70">Contact Us Today</p>
+                    </div>
+                  </motion.div>
+                </div>
+                
+                {/* Decorative corner accents */}
+                <div className="absolute -top-2 -right-2 w-12 h-12 border-r-2 border-t-2 border-bronze/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -bottom-2 -left-2 w-12 h-12 border-l-2 border-b-2 border-bronze/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+
+              {/* Enhanced contact info cards */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="grid grid-cols-3 gap-4"
+              >
+                <div className="group text-center p-6 bg-gradient-to-br from-cream/60 to-cream/40 hover:from-cream to-cream/60 transition-all duration-300 border border-bronze/10 hover:border-bronze/20">
+                  <div className="mb-4">
+                    <Phone className="mx-auto text-bronze group-hover:scale-110 transition-transform duration-300" size={28} />
+                  </div>
+                  <div className="w-14 h-14 bg-white/80 mx-auto mb-3 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                    <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center">
+                      <div className="w-6 h-6 bg-bronze/40 rounded-full"></div>
+                    </div>
+                  </div>
+                  <p className="text-xs font-semibold text-charcoal tracking-wider uppercase">Call Us</p>
+                </div>
+                
+                <div className="group text-center p-6 bg-gradient-to-br from-cream/60 to-cream/40 hover:from-cream to-cream/60 transition-all duration-300 border border-bronze/10 hover:border-bronze/20">
+                  <div className="mb-4">
+                    <Instagram className="mx-auto text-bronze group-hover:scale-110 transition-transform duration-300" size={28} />
+                  </div>
+                  <div className="w-14 h-14 bg-white/80 mx-auto mb-3 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                    <div className="w-10 h-10 bg-charcoal flex items-center justify-center">
+                      <div className="grid grid-cols-3 gap-px">
+                        {[...Array(9)].map((_, i) => (
+                          <div key={i} className={`w-1 h-1 ${i % 2 === 0 ? 'bg-white' : 'bg-charcoal'}`}></div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-xs font-semibold text-charcoal tracking-wider uppercase">Follow Us</p>
+                </div>
+                
+                <div className="group text-center p-6 bg-gradient-to-br from-cream/60 to-cream/40 hover:from-cream to-cream/60 transition-all duration-300 border border-bronze/10 hover:border-bronze/20">
+                  <div className="mb-4">
+                    <MapPin className="mx-auto text-bronze group-hover:scale-110 transition-transform duration-300" size={28} />
+                  </div>
+                  <div className="w-14 h-14 bg-white/80 mx-auto mb-3 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                    <div className="w-10 h-10 bg-charcoal flex items-center justify-center">
+                      <div className="grid grid-cols-3 gap-px">
+                        {[...Array(9)].map((_, i) => (
+                          <div key={i} className={`w-1 h-1 ${i % 3 === 0 ? 'bg-white' : 'bg-charcoal'}`}></div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-xs font-semibold text-charcoal tracking-wider uppercase">Visit Us</p>
+                </div>
+              </motion.div>
+
+              {/* Enhanced contact details */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="bg-white/60 backdrop-blur-sm p-8 border border-bronze/15 space-y-6"
+              >
+                <div className="flex items-center space-x-4 group hover:bg-cream/30 p-3 -m-3 transition-colors duration-300">
+                  <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                    <MapPin className="text-bronze" size={18} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-charcoal">Location</p>
+                    <p className="text-sm text-charcoal/70">Kigali, Rwanda/Gisozi</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4 group hover:bg-cream/30 p-3 -m-3 transition-colors duration-300">
+                  <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                    <Phone className="text-bronze" size={18} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-charcoal">Phone</p>
+                    <p className="text-sm text-charcoal/70">+250 784024818 / +250 786515555</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4 group hover:bg-cream/30 p-3 -m-3 transition-colors duration-300">
+                  <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                    <Mail className="text-bronze" size={18} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-charcoal">Email</p>
+                    <p className="text-sm text-charcoal/70">karumujess@gmail.com</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4 group hover:bg-cream/30 p-3 -m-3 transition-colors duration-300">
+                  <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                    <Instagram className="text-bronze" size={18} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-charcoal">Instagram</p>
+                    <p className="text-sm text-charcoal/70">@kjess_designs_rw</p>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
             
+            {/* Right side - Enhanced contact form */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
+              className="relative"
             >
-              <h2 className="font-italiana text-5xl md:text-7xl mb-8 text-charcoal leading-tight">
-                LET'S Contact
-              </h2>
-              
-              {/* Contact Info Cards */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="text-center p-4 bg-cream rounded-lg">
-                  <Phone className="mx-auto mb-2 text-bronze" size={24} />
-                  <div className="w-12 h-12 bg-white mx-auto mb-2 flex items-center justify-center rounded">
-                    <img
-                      src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50"
-                      alt="Creative Director"
-                      className="w-8 h-8 object-cover rounded"
-                    />
+              {/* Form container with sophisticated styling */}
+              <div className="relative bg-white/80 backdrop-blur-sm p-10 border border-bronze/15 shadow-xl">
+                {/* Decorative header */}
+                <div className="text-center mb-8">
+                  <div className="flex items-center justify-center space-x-4 mb-4">
+                    <div className="w-8 h-px bg-bronze/60"></div>
+                    <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+                    <div className="text-bronze text-sm font-medium tracking-wider uppercase">Get In Touch</div>
+                    <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+                    <div className="w-8 h-px bg-bronze/60"></div>
                   </div>
-                  <p className="text-xs font-semibold">CREATIVE DIRECTOR</p>
+                  <h3 className="font-italiana text-3xl text-charcoal mb-2">Share Your Vision</h3>
+                  <p className="text-sm text-charcoal/70">We'd love to hear about your project</p>
                 </div>
-                
-                <div className="text-center p-4 bg-cream rounded-lg">
-                  <Instagram className="mx-auto mb-2 text-bronze" size={24} />
-                  <div className="w-12 h-12 bg-white mx-auto mb-2 flex items-center justify-center rounded">
-                    <div className="w-8 h-8 bg-black flex items-center justify-center">
-                      {/* QR Code placeholder */}
-                      <div className="grid grid-cols-3 gap-px">
-                        {[...Array(9)].map((_, i) => (
-                          <div key={i} className={`w-1 h-1 ${i % 2 === 0 ? 'bg-white' : 'bg-black'}`}></div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-xs font-semibold">INSTAGRAM</p>
-                </div>
-                
-                <div className="text-center p-4 bg-cream rounded-lg">
-                  <MapPin className="mx-auto mb-2 text-bronze" size={24} />
-                  <div className="w-12 h-12 bg-black mx-auto mb-2 flex items-center justify-center rounded">
-                    {/* QR Code placeholder */}
-                    <div className="grid grid-cols-3 gap-px">
-                      {[...Array(9)].map((_, i) => (
-                        <div key={i} className={`w-1 h-1 ${i % 3 === 0 ? 'bg-white' : 'bg-black'}`}></div>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-xs font-semibold">LOCATION</p>
-                </div>
-              </div>
-              
-              {/* Contact Details */}
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center">
-                  <MapPin className="text-bronze mr-3" size={16} />
-                  <span className="text-sm">
-                    <strong>Location:</strong> Kigali, Rwanda/Gisozi
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="text-bronze mr-3" size={16} />
-                  <span className="text-sm">
-                    <strong>Phone:</strong> +250 784024818 / +250 786515555
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <Mail className="text-bronze mr-3" size={16} />
-                  <span className="text-sm">
-                    <strong>Email:</strong> karumujess@gmail.com
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <Instagram className="text-bronze mr-3" size={16} />
-                  <span className="text-sm">
-                    <strong>Instagram:</strong> @kjess_designs_rw
-                  </span>
-                </div>
-              </div>
 
-              {/* Contact Form */}
-              <Form {...contactForm}>
-                <form onSubmit={contactForm.handleSubmit(onContactSubmit)} className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
+                {/* Enhanced contact form */}
+                <Form {...contactForm}>
+                  <form onSubmit={contactForm.handleSubmit(onContactSubmit)} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <FormField
+                        control={contactForm.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-charcoal font-medium">Name</FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="Your name" 
+                                {...field} 
+                                className="luxury-input bg-white/50 border-bronze/20 focus:border-bronze/40 focus:bg-white transition-all duration-300"
+                                data-testid="input-name"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={contactForm.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-charcoal font-medium">Email</FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="your.email@example.com" 
+                                type="email"
+                                {...field} 
+                                className="luxury-input bg-white/50 border-bronze/20 focus:border-bronze/40 focus:bg-white transition-all duration-300"
+                                data-testid="input-email"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
                     <FormField
                       control={contactForm.control}
-                      name="name"
+                      name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Name</FormLabel>
+                          <FormLabel className="text-charcoal font-medium">Phone (Optional)</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="Your name" 
-                              {...field} 
-                              className="luxury-input"
-                              data-testid="input-name"
+                              placeholder="+250 123 456 789" 
+                              {...field}
+                              value={field.value || ""}
+                              className="luxury-input bg-white/50 border-bronze/20 focus:border-bronze/40 focus:bg-white transition-all duration-300"
+                              data-testid="input-phone"
                             />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
+                    
                     <FormField
                       control={contactForm.control}
-                      name="email"
+                      name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email</FormLabel>
+                          <FormLabel className="text-charcoal font-medium">Message</FormLabel>
                           <FormControl>
-                            <Input 
-                              placeholder="your.email@example.com" 
-                              type="email"
+                            <Textarea 
+                              placeholder="Tell us about your project..."
+                              rows={5}
                               {...field} 
-                              className="luxury-input"
-                              data-testid="input-email"
+                              className="luxury-input bg-white/50 border-bronze/20 focus:border-bronze/40 focus:bg-white transition-all duration-300 resize-none"
+                              data-testid="textarea-message"
                             />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                  </div>
-                  
-                  <FormField
-                    control={contactForm.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Phone (Optional)</FormLabel>
-                        <FormControl>
-                          <Input 
-                            placeholder="+250 123 456 789" 
-                            {...field}
-                            value={field.value || ""}
-                            className="luxury-input"
-                            data-testid="input-phone"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={contactForm.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Tell us about your project..."
-                            rows={5}
-                            {...field} 
-                            className="luxury-input"
-                            data-testid="textarea-message"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <Button 
-                    type="submit" 
-                    className="luxury-button w-full text-white py-3"
-                    disabled={contactMutation.isPending}
-                    data-testid="button-send-message"
-                  >
-                    {contactMutation.isPending ? "Sending..." : "Send Message"}
-                  </Button>
-                </form>
-              </Form>
+                    
+                    <div className="pt-4">
+                      <Button 
+                        type="submit" 
+                        className="luxury-button w-full bg-charcoal hover:bg-bronze text-white py-4 font-medium tracking-wide uppercase transition-all duration-300 hover:shadow-lg"
+                        disabled={contactMutation.isPending}
+                        data-testid="button-send-message"
+                      >
+                        {contactMutation.isPending ? "Sending..." : "Send Message"}
+                      </Button>
+                    </div>
+                  </form>
+                </Form>
+                
+                {/* Bottom decorative element */}
+                <div className="absolute bottom-4 right-4 w-12 h-12 border-r border-b border-bronze/20 opacity-60"></div>
+              </div>
+              
+              {/* Floating decorative accents */}
+              <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-bronze/30"></div>
+              <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-bronze/30"></div>
             </motion.div>
           </div>
         </div>
