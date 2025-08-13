@@ -358,94 +358,130 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section - Exact replica of PDF design */}
-      <section id="services" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Services Section - Enhanced elegant design */}
+      <section id="services" className="py-24 bg-white relative overflow-hidden">
+        {/* Subtle background decorative elements */}
+        <div className="absolute top-10 right-10 w-96 h-96 border border-bronze/5 rotate-12 opacity-30"></div>
+        <div className="absolute bottom-10 left-10 w-64 h-64 border border-charcoal/5 rotate-45 opacity-20"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-20 items-start">
-            {/* Left side - Main image and small chair card */}
+            {/* Left side - Enhanced image layout with integrated branding */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="relative"
             >
-              {/* Main large image - round wooden coffee table with plants */}
-              <div className="relative">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=800"
-                  alt="Modern living room with round wooden coffee table, plants, and natural lighting"
-                  className="w-full h-[500px] object-cover"
-                />
+              {/* Main image with sophisticated framing */}
+              <div className="relative group mb-8">
+                {/* Decorative shadow frame */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-bronze/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Main image container */}
+                <div className="relative bg-white p-2 shadow-xl">
+                  <img
+                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                    alt="Modern living room with round wooden coffee table, plants, and natural lighting"
+                    className="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                  
+                  {/* Elegant overlay gradient */}
+                  <div className="absolute inset-2 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
               </div>
 
-              {/* Small card with chair image - exactly as in PDF */}
-              <div className="bg-white border border-gray-300 p-4 w-48">
-                <div className="mb-3">
-                  <img
-                    src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
-                    alt="Modern upholstered chair with wooden frame"
-                    className="w-full h-24 object-cover"
-                  />
+              {/* Redesigned branding card - positioned as floating element */}
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-8 -right-8 bg-white shadow-2xl border border-bronze/20 overflow-hidden group/card hover:shadow-3xl transition-all duration-500"
+              >
+                {/* Card content with better proportions */}
+                <div className="w-64 p-6">
+                  {/* Image section */}
+                  <div className="mb-4 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250"
+                      alt="Elegant modern furniture showcase"
+                      className="w-full h-32 object-cover transition-transform duration-500 group-hover/card:scale-110"
+                    />
+                  </div>
+                  
+                  {/* Branding section with enhanced typography */}
+                  <div className="text-center relative">
+                    {/* Decorative line above */}
+                    <div className="w-16 h-px bg-bronze mx-auto mb-3"></div>
+                    
+                    <h4 className="font-italiana text-lg font-bold mb-2 text-charcoal tracking-wider">
+                      KJESS DESIGNS
+                    </h4>
+                    <p className="text-sm text-charcoal/80 font-light tracking-wide mb-3">
+                      Interior Design Studio
+                    </p>
+                    
+                    {/* Decorative line below */}
+                    <div className="w-8 h-px bg-bronze/40 mx-auto"></div>
+                  </div>
                 </div>
-                <div className="text-center border-t border-gray-200 pt-2">
-                  <h4 className="font-italiana text-sm font-bold mb-1 text-charcoal tracking-wide">
-                    KJESS DESIGNS
-                  </h4>
-                  <p className="text-xs text-charcoal/70 underline">Interior Design Studio</p>
-                </div>
-              </div>
+                
+                {/* Subtle accent corner */}
+                <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-bronze/30"></div>
+              </motion.div>
             </motion.div>
 
-            {/* Right side - Services list exactly as in PDF */}
+            {/* Right side - Enhanced services list */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
+              className="relative"
             >
-              <h2 className="font-italiana text-6xl md:text-7xl mb-12 text-charcoal leading-tight tracking-wide">
-                OUR SERVICES
-              </h2>
+              {/* Enhanced title with decorative elements */}
+              <div className="mb-16">
+                <div className="relative">
+                  <h2 className="font-italiana text-6xl md:text-7xl mb-4 text-charcoal leading-tight tracking-wide">
+                    OUR SERVICES
+                  </h2>
+                  {/* Decorative accent */}
+                  <div className="w-24 h-1 bg-gradient-to-r from-bronze to-bronze/40 mb-8"></div>
+                </div>
+              </div>
               
-              {/* Services list with exact text from PDF */}
-              <div className="space-y-6 text-base text-charcoal/90 leading-relaxed">
-                <div className="flex items-start">
-                  <span className="text-charcoal mr-3 text-lg">•</span>
-                  <span>Interior design & space planning</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-charcoal mr-3 text-lg">•</span>
-                  <span>3D visualization & material selection</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-charcoal mr-3 text-lg">•</span>
-                  <span>Custom-made furniture (sofas, chairs, Outdoor Lounge, TV stands, Dinning tables, etc.)</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-charcoal mr-3 text-lg">•</span>
-                  <span>Bespoke joinery (kitchens, closets, doors, wall & ceiling panels)</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-charcoal mr-3 text-lg">•</span>
-                  <span>Curtain treatment & window dressing</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-charcoal mr-3 text-lg">•</span>
-                  <span>Lighting selection & decorative lighting solutions</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-charcoal mr-3 text-lg">•</span>
-                  <span>Turnkey interior fit-outs & project management</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-charcoal mr-3 text-lg">•</span>
-                  <span>Metal-wood furniture integration</span>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-charcoal mr-3 text-lg">•</span>
-                  <span>Styling & final interior accessorizing</span>
-                </div>
+              {/* Enhanced services list with better spacing and hover effects */}
+              <div className="space-y-8 text-base text-charcoal/90 leading-relaxed">
+                {[
+                  "Interior design & space planning",
+                  "3D visualization & material selection", 
+                  "Custom-made furniture (sofas, chairs, Outdoor Lounge, TV stands, Dinning tables, etc.)",
+                  "Bespoke joinery (kitchens, closets, doors, wall & ceiling panels)",
+                  "Curtain treatment & window dressing",
+                  "Lighting selection & decorative lighting solutions",
+                  "Turnkey interior fit-outs & project management",
+                  "Metal-wood furniture integration",
+                  "Styling & final interior accessorizing"
+                ].map((service, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start group/item hover:translate-x-2 transition-transform duration-300"
+                  >
+                    <span className="text-bronze mr-4 text-lg font-bold mt-1 group-hover/item:scale-125 transition-transform duration-300">•</span>
+                    <span className="group-hover/item:text-charcoal transition-colors duration-300">{service}</span>
+                  </motion.div>
+                ))}
+              </div>
+              
+              {/* Subtle decorative element at bottom */}
+              <div className="mt-16 flex justify-end">
+                <div className="w-32 h-px bg-gradient-to-r from-transparent to-bronze/30"></div>
               </div>
             </motion.div>
           </div>
