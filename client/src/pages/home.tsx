@@ -196,13 +196,13 @@ export default function Home() {
       </section>
 
       {/* Introduction Section - Ultra elegant and aesthetic */}
-      <section className="py-40 bg-gradient-to-b from-white to-cream/20 relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-b from-white to-cream/20 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute top-20 right-20 w-64 h-64 border border-bronze/10 rotate-45 opacity-30"></div>
         <div className="absolute bottom-20 left-20 w-32 h-32 border border-charcoal/5 rotate-12"></div>
         
         <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <div className="grid md:grid-cols-2 gap-24 items-center">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50, y: 30 }}
               whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -254,7 +254,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.5 }}
                 viewport={{ once: true }}
               >
-                <h2 className="font-italiana text-7xl md:text-8xl mb-16 text-charcoal leading-[0.85] tracking-wider relative">
+                <h2 className="font-italiana text-6xl md:text-7xl mb-10 text-charcoal leading-[0.85] tracking-wider relative">
                   INTRODUCTION
                   <div className="absolute -bottom-4 left-0 w-24 h-px bg-bronze/50"></div>
                 </h2>
@@ -265,9 +265,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
                 viewport={{ once: true }}
-                className="space-y-8"
+                className="space-y-6"
               >
-                <p className="text-2xl leading-relaxed text-charcoal/85 font-light tracking-wide">
+                <p className="text-xl leading-relaxed text-charcoal/85 font-light tracking-wide">
                   Kjess Designs is where <span className="font-italiana italic text-bronze">creativity meets craftsmanship</span>. 
                   We are a Rwandan-based interior design and furniture company dedicated to
                   transforming spaces into timeless masterpieces.
@@ -279,7 +279,7 @@ export default function Home() {
                   whileInView={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 0.9 }}
                   viewport={{ once: true }}
-                  className="flex items-center justify-center py-8"
+                  className="flex items-center justify-center py-6"
                 >
                   <div className="flex items-center space-x-6">
                     <div className="w-16 h-px bg-gradient-to-r from-transparent via-bronze/60 to-bronze/60"></div>
@@ -291,7 +291,7 @@ export default function Home() {
                   </div>
                 </motion.div>
                 
-                <p className="text-2xl leading-relaxed text-charcoal/85 font-light tracking-wide">
+                <p className="text-xl leading-relaxed text-charcoal/85 font-light tracking-wide">
                   With a commitment to <span className="font-italiana italic text-bronze">excellence, elegance, and innovation</span>, we
                   bring your visions to life through thoughtful design and superior
                   <span className="font-italiana text-bronze font-medium"> Attention to Details</span>.
