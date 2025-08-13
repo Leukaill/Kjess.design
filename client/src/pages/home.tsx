@@ -2050,104 +2050,101 @@ export default function Home() {
                 <div className="absolute -bottom-2 -left-2 w-12 h-12 border-l-2 border-b-2 border-bronze/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
-              {/* Enhanced contact info cards */}
+              {/* Integrated contact information */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-3 gap-4"
+                className="bg-white/70 backdrop-blur-sm border border-bronze/15 overflow-hidden"
               >
-                <div className="group text-center p-6 bg-gradient-to-br from-cream/60 to-cream/40 hover:from-cream to-cream/60 transition-all duration-300 border border-bronze/10 hover:border-bronze/20">
-                  <div className="mb-4">
-                    <Phone className="mx-auto text-bronze group-hover:scale-110 transition-transform duration-300" size={28} />
+                {/* Header with decorative element */}
+                <div className="bg-gradient-to-r from-cream/60 to-cream/40 p-6 border-b border-bronze/10">
+                  <div className="flex items-center justify-center space-x-4">
+                    <div className="w-8 h-px bg-bronze/60"></div>
+                    <h3 className="font-italiana text-xl text-charcoal tracking-wide">Get in Touch</h3>
+                    <div className="w-8 h-px bg-bronze/60"></div>
                   </div>
-                  <div className="w-14 h-14 bg-white/80 mx-auto mb-3 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
-                    <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center">
-                      <div className="w-6 h-6 bg-bronze/40 rounded-full"></div>
-                    </div>
-                  </div>
-                  <p className="text-xs font-semibold text-charcoal tracking-wider uppercase">Call Us</p>
                 </div>
                 
-                <div className="group text-center p-6 bg-gradient-to-br from-cream/60 to-cream/40 hover:from-cream to-cream/60 transition-all duration-300 border border-bronze/10 hover:border-bronze/20">
-                  <div className="mb-4">
-                    <Instagram className="mx-auto text-bronze group-hover:scale-110 transition-transform duration-300" size={28} />
-                  </div>
-                  <div className="w-14 h-14 bg-white/80 mx-auto mb-3 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
-                    <div className="w-10 h-10 bg-charcoal flex items-center justify-center">
-                      <div className="grid grid-cols-3 gap-px">
-                        {[...Array(9)].map((_, i) => (
-                          <div key={i} className={`w-1 h-1 ${i % 2 === 0 ? 'bg-white' : 'bg-charcoal'}`}></div>
-                        ))}
+                {/* Contact methods grid */}
+                <div className="p-6 space-y-6">
+                  {/* Phone */}
+                  <div className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                      <Phone className="text-bronze" size={20} />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-charcoal mb-1">Phone</p>
+                      <p className="text-sm text-charcoal/70">+250 784024818</p>
+                      <p className="text-sm text-charcoal/70">+250 786515555</p>
+                    </div>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-8 h-8 border border-bronze/30 flex items-center justify-center">
+                        <div className="w-4 h-4 bg-bronze/40"></div>
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs font-semibold text-charcoal tracking-wider uppercase">Follow Us</p>
-                </div>
-                
-                <div className="group text-center p-6 bg-gradient-to-br from-cream/60 to-cream/40 hover:from-cream to-cream/60 transition-all duration-300 border border-bronze/10 hover:border-bronze/20">
-                  <div className="mb-4">
-                    <MapPin className="mx-auto text-bronze group-hover:scale-110 transition-transform duration-300" size={28} />
-                  </div>
-                  <div className="w-14 h-14 bg-white/80 mx-auto mb-3 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
-                    <div className="w-10 h-10 bg-charcoal flex items-center justify-center">
-                      <div className="grid grid-cols-3 gap-px">
-                        {[...Array(9)].map((_, i) => (
-                          <div key={i} className={`w-1 h-1 ${i % 3 === 0 ? 'bg-white' : 'bg-charcoal'}`}></div>
-                        ))}
+                  
+                  {/* Email */}
+                  <div className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                      <Mail className="text-bronze" size={20} />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-charcoal mb-1">Email</p>
+                      <p className="text-sm text-charcoal/70">karumujess@gmail.com</p>
+                    </div>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-8 h-8 border border-bronze/30 flex items-center justify-center">
+                        <div className="w-4 h-4 bg-bronze/40"></div>
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs font-semibold text-charcoal tracking-wider uppercase">Visit Us</p>
-                </div>
-              </motion.div>
-
-              {/* Enhanced contact details */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="bg-white/60 backdrop-blur-sm p-8 border border-bronze/15 space-y-6"
-              >
-                <div className="flex items-center space-x-4 group hover:bg-cream/30 p-3 -m-3 transition-colors duration-300">
-                  <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
-                    <MapPin className="text-bronze" size={18} />
+                  
+                  {/* Location */}
+                  <div className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                      <MapPin className="text-bronze" size={20} />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-charcoal mb-1">Location</p>
+                      <p className="text-sm text-charcoal/70">Kigali, Rwanda/Gisozi</p>
+                    </div>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-8 h-8 border border-bronze/30 flex items-center justify-center">
+                        <div className="w-4 h-4 bg-bronze/40"></div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-charcoal">Location</p>
-                    <p className="text-sm text-charcoal/70">Kigali, Rwanda/Gisozi</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4 group hover:bg-cream/30 p-3 -m-3 transition-colors duration-300">
-                  <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
-                    <Phone className="text-bronze" size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-charcoal">Phone</p>
-                    <p className="text-sm text-charcoal/70">+250 784024818 / +250 786515555</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4 group hover:bg-cream/30 p-3 -m-3 transition-colors duration-300">
-                  <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
-                    <Mail className="text-bronze" size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-charcoal">Email</p>
-                    <p className="text-sm text-charcoal/70">karumujess@gmail.com</p>
+                  
+                  {/* Instagram */}
+                  <div className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                      <Instagram className="text-bronze" size={20} />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-charcoal mb-1">Instagram</p>
+                      <p className="text-sm text-charcoal/70">@kjess_designs_rw</p>
+                    </div>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-8 h-8 border border-bronze/30 flex items-center justify-center">
+                        <div className="w-4 h-4 bg-bronze/40"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-4 group hover:bg-cream/30 p-3 -m-3 transition-colors duration-300">
-                  <div className="w-10 h-10 bg-gradient-to-br from-bronze/20 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
-                    <Instagram className="text-bronze" size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-charcoal">Instagram</p>
-                    <p className="text-sm text-charcoal/70">@kjess_designs_rw</p>
+                {/* Bottom decorative element */}
+                <div className="bg-gradient-to-r from-cream/40 to-cream/60 p-4 border-t border-bronze/10">
+                  <div className="text-center">
+                    <div className="flex items-center justify-center space-x-3">
+                      <div className="w-6 h-px bg-bronze/40"></div>
+                      <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+                      <div className="text-xs text-charcoal/70 font-medium tracking-wider uppercase">Available 24/7</div>
+                      <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+                      <div className="w-6 h-px bg-bronze/40"></div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
