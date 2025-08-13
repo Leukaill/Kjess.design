@@ -22,6 +22,33 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  // Hero carousel states
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Hero images array
+  const heroImages = [
+    {
+      url: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=1400&q=95",
+      alt: "Elegant modern interior featuring luxury furniture, artistic lighting, and sophisticated design elements"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=1400&q=95",
+      alt: "Luxurious living room with premium furniture and elegant decor"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=1400&q=95",
+      alt: "Modern kitchen design with sophisticated finishes and luxury appliances"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=1400&q=95",
+      alt: "Contemporary bedroom with elegant furniture and beautiful lighting"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1571508601891-ca5e7a713859?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=1400&q=95",
+      alt: "Sophisticated dining room with luxury table setting and artistic elements"
+    }
+  ];
 
   // Parallax transforms
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, -200]);
@@ -38,6 +65,17 @@ export default function Home() {
     { id: "gallery", label: "Gallery" },
     { id: "contact", label: "Contact" },
   ];
+
+  // Auto-sliding hero images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   // Scroll detection and active section logic
   useEffect(() => {
@@ -454,7 +492,7 @@ export default function Home() {
           </motion.div>
         </motion.div>
         
-        {/* Right side - Enhanced Image with sophisticated effects */}
+        {/* Right side - Enhanced Sliding Image Gallery */}
         <motion.div
           initial={{ opacity: 0, x: 100, scale: 1.1 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -462,23 +500,76 @@ export default function Home() {
           style={{ y: heroY }}
           className="w-1/2 h-full relative overflow-hidden group"
         >
-          {/* Main Hero Image */}
-          <img
-            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&h=1400&q=95"
-            alt="Elegant modern interior featuring luxury furniture, artistic lighting, and sophisticated design elements"
-            className="w-full h-full object-cover transition-all duration-1000 ease-out group-hover:scale-110"
-          />
-          
-          {/* Sophisticated overlay system */}
-          <div className="absolute inset-0 bg-gradient-to-l from-charcoal/10 via-transparent to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/5 via-transparent to-transparent"></div>
+          {/* Sliding Image Container */}
+          <div className="relative w-full h-full overflow-hidden">
+            {/* Main sliding track */}
+            <motion.div
+              className="flex w-full h-full"
+              animate={{
+                x: `-${currentImageIndex * 100}%`
+              }}
+              transition={{
+                duration: 1.5,
+                ease: [0.25, 0.1, 0.25, 1.0] // Custom easing for elegant movement
+              }}
+            >
+              {heroImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="relative w-full h-full flex-shrink-0"
+                >
+                  <img
+                    src={image.url}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-all duration-1000 ease-out group-hover:scale-110"
+                  />
+                  
+                  {/* Individual image overlay for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-l from-charcoal/5 via-transparent to-transparent"></div>
+                </div>
+              ))}
+            </motion.div>
+            
+            {/* Sophisticated overlay system */}
+            <div className="absolute inset-0 bg-gradient-to-l from-charcoal/10 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/5 via-transparent to-transparent"></div>
+            
+            {/* Elegant slide indicators */}
+            <div className="absolute bottom-8 left-8 flex space-x-2">
+              {heroImages.map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className="group relative"
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <div className={`w-8 h-0.5 transition-all duration-500 ${
+                    index === currentImageIndex 
+                      ? 'bg-bronze shadow-lg' 
+                      : 'bg-cream/40 hover:bg-cream/70'
+                  }`} />
+                  
+                  {/* Active indicator animation */}
+                  {index === currentImageIndex && (
+                    <motion.div
+                      layoutId="activeIndicator"
+                      className="absolute top-0 left-0 w-full h-full bg-bronze"
+                      initial={false}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                    />
+                  )}
+                </motion.button>
+              ))}
+            </div>
+          </div>
           
           {/* Floating design elements */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
-            className="absolute top-12 right-12 bg-white/90 backdrop-blur-sm p-4 shadow-xl border border-bronze/20"
+            className="absolute top-12 right-12 bg-white/90 backdrop-blur-sm p-4 shadow-xl border border-bronze/20 z-10"
           >
             <div className="text-center">
               <div className="w-8 h-px bg-bronze mx-auto mb-2"></div>
@@ -488,14 +579,29 @@ export default function Home() {
           </motion.div>
 
           {/* Enhanced corner accents */}
-          <div className="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-cream/40 opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-cream/30 opacity-40 group-hover:opacity-80 transition-opacity duration-500"></div>
+          <div className="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-cream/40 opacity-60 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+          <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-cream/30 opacity-40 group-hover:opacity-80 transition-opacity duration-500 z-10"></div>
           
           {/* Artistic light rays effect */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-1000">
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-1000 z-10 pointer-events-none">
             <div className="absolute top-1/4 left-1/4 w-px h-32 bg-gradient-to-b from-transparent via-bronze/40 to-transparent rotate-45"></div>
             <div className="absolute bottom-1/3 right-1/3 w-px h-24 bg-gradient-to-b from-transparent via-bronze/30 to-transparent -rotate-45"></div>
           </div>
+
+          {/* Slide transition overlay for smooth effect */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/10 to-transparent opacity-0 pointer-events-none"
+            animate={{
+              opacity: [0, 0.3, 0],
+              x: ['-100%', '0%', '100%']
+            }}
+            transition={{
+              duration: 1.5,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatDelay: 2.5
+            }}
+          />
         </motion.div>
       </section>
 
