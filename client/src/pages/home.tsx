@@ -248,14 +248,14 @@ export default function Home() {
                 <span className="text-cream text-xl font-italiana font-bold drop-shadow-lg">K</span>
               </div>
               <div className="hidden md:block">
-                <h1 className={`font-italiana text-xl tracking-wide transition-all duration-300 ${
+                <h1 className={`font-italiana text-xl tracking-wide transition-all duration-500 ${
                   isScrolled 
-                    ? 'text-charcoal drop-shadow-sm' 
-                    : 'text-charcoal drop-shadow-md'
+                    ? 'text-charcoal' 
+                    : 'text-white'
                 }`} style={{
                   textShadow: isScrolled 
                     ? '0 1px 2px rgba(0,0,0,0.1)' 
-                    : '0 2px 4px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.2)'
+                    : '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.5)'
                 }}>
                   KJESS DESIGNS
                 </h1>
@@ -272,20 +272,20 @@ export default function Home() {
                   transition={{ duration: 0.5, delay: 0.1 * index }}
                   whileHover={{ y: -2 }}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative px-4 py-2 font-medium text-sm uppercase tracking-wider transition-all duration-300 group ${
+                  className={`relative px-4 py-2 font-medium text-sm uppercase tracking-wider transition-all duration-500 group ${
                     activeSection === item.id
                       ? 'text-bronze'
                       : isScrolled 
                         ? 'text-charcoal/80 hover:text-bronze' 
-                        : 'text-charcoal/90 hover:text-bronze'
+                        : 'text-white hover:text-bronze'
                   }`}
                   style={{
                     textShadow: isScrolled 
                       ? '0 1px 2px rgba(0,0,0,0.1)' 
-                      : '0 2px 4px rgba(0,0,0,0.3), 0 1px 2px rgba(255,255,255,0.2)',
+                      : '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.5)',
                     filter: isScrolled 
                       ? 'none' 
-                      : 'drop-shadow(0 1px 2px rgba(255,255,255,0.1))'
+                      : 'none'
                   }}
                 >
                   {item.label}
@@ -312,13 +312,13 @@ export default function Home() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsNavOpen(!isNavOpen)}
-              className={`lg:hidden p-2 transition-all duration-300 ${
-                isScrolled ? 'text-charcoal' : 'text-charcoal'
+              className={`lg:hidden p-2 transition-all duration-500 ${
+                isScrolled ? 'text-charcoal' : 'text-white'
               }`}
               style={{
                 filter: isScrolled 
                   ? 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))' 
-                  : 'drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 1px 2px rgba(255,255,255,0.2))'
+                  : 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))'
               }}
             >
               {isNavOpen ? <X size={24} /> : <Menu size={24} />}
