@@ -1266,61 +1266,339 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Section - Matching seventh design */}
-      <section id="gallery" className="py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="font-italiana text-5xl md:text-7xl mb-4 text-charcoal leading-tight">
+      {/* Gallery Section - Sophisticated Portfolio Showcase */}
+      <section id="gallery" className="py-32 bg-gradient-to-b from-cream via-warm-white to-cream relative overflow-hidden">
+        {/* Artistic background elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-16 left-16 w-80 h-80 border border-bronze/15 rotate-45 opacity-50"></div>
+          <div className="absolute bottom-20 right-20 w-64 h-64 border border-charcoal/10 -rotate-12 opacity-40"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-bronze/8 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-1/4 right-1/4 w-3 h-3 bg-bronze/40 rounded-full"></div>
+          <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-charcoal/30 rounded-full"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Enhanced Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="text-center mb-24"
+          >
+            <div className="relative inline-block">
+              {/* Decorative elements around title */}
+              <div className="absolute -top-8 -left-8 w-20 h-20 border border-bronze/25 rotate-45 opacity-60"></div>
+              <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-bronze/15 rotate-12"></div>
+              
+              <h2 className="font-italiana text-7xl md:text-9xl mb-8 text-charcoal leading-[0.8] tracking-wider relative">
                 GALLERY
               </h2>
-              <p className="font-italiana text-xl mb-8 text-charcoal">
-                PROJECT HIGHLIGHTS
-              </p>
               
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-                  alt="Modern dining room with pendant lights"
-                  className="w-full h-48 object-cover luxury-hover"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-                  alt="Contemporary lighting fixtures"
-                  className="w-full h-48 object-cover luxury-hover"
-                />
-              </div>
-            </motion.div>
+              {/* Enhanced decorative underline */}
+              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-bronze to-transparent"></div>
+            </div>
             
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-              className="space-y-4"
+              className="mt-8"
             >
-              <div className="bg-white p-4">
-                <img
-                  src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250"
-                  alt="Luxury leather armchair"
-                  className="w-full h-40 object-cover luxury-hover"
-                />
-              </div>
+              <p className="font-italiana text-2xl text-charcoal/70 font-light italic tracking-wide mb-4">
+                PROJECT HIGHLIGHTS & PORTFOLIO SHOWCASE
+              </p>
               
-              <div className="bg-white p-4">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200"
-                  alt="Wooden furniture detail"
-                  className="w-full h-32 object-cover luxury-hover"
-                />
+              {/* Elegant separator */}
+              <div className="flex items-center justify-center space-x-4">
+                <div className="w-16 h-px bg-gradient-to-r from-transparent to-bronze/60"></div>
+                <div className="w-3 h-3 bg-bronze/40 rounded-full"></div>
+                <div className="w-16 h-px bg-gradient-to-l from-transparent to-bronze/60"></div>
               </div>
             </motion.div>
+          </motion.div>
+
+          {/* Enhanced Gallery Grid */}
+          <div className="grid lg:grid-cols-3 gap-12 items-start">
+            {/* Left Column - Featured Projects */}
+            <motion.div
+              initial={{ opacity: 0, x: -80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div className="relative">
+                <h3 className="font-italiana text-2xl font-bold text-charcoal mb-6 tracking-wide">
+                  Featured Projects
+                </h3>
+                <div className="w-20 h-px bg-bronze/60 mb-8"></div>
+              </div>
+              
+              {/* Sophisticated image grid */}
+              <div className="space-y-8">
+                {/* Primary showcase image */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="relative group"
+                >
+                  {/* Artistic backdrop */}
+                  <div className="absolute -inset-6 bg-gradient-to-br from-bronze/12 via-transparent to-charcoal/8 rotate-1 group-hover:rotate-2 transition-all duration-700 opacity-60"></div>
+                  
+                  <div className="relative bg-white p-4 shadow-2xl group-hover:shadow-3xl transition-all duration-700">
+                    <img
+                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400"
+                      alt="Modern dining room featuring elegant pendant lighting and sophisticated furniture arrangement"
+                      className="w-full h-64 object-cover transition-all duration-1000 group-hover:scale-110"
+                    />
+                    
+                    {/* Image overlay */}
+                    <div className="absolute inset-4 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    {/* Corner accent */}
+                    <div className="absolute bottom-4 right-4 w-6 h-6 border-r border-b border-bronze/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                  
+                  {/* Project label */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    viewport={{ once: true }}
+                    className="absolute -bottom-4 -right-4 bg-bronze text-white px-4 py-2 shadow-xl"
+                  >
+                    <span className="text-xs font-medium tracking-wider uppercase">Dining Excellence</span>
+                  </motion.div>
+                </motion.div>
+
+                {/* Secondary images grid */}
+                <div className="grid grid-cols-2 gap-6">
+                  <motion.div
+                    initial={{ opacity: 0, y: 40, rotate: -2 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    viewport={{ once: true }}
+                    className="relative group"
+                  >
+                    <div className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                      <img
+                        src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=250"
+                        alt="Contemporary lighting fixtures with artistic design elements"
+                        className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    
+                    {/* Floating category badge */}
+                    <div className="absolute -top-2 -left-2 bg-white shadow-lg px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-xs text-charcoal font-medium tracking-wide">LIGHTING</span>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 40, rotate: 2 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    viewport={{ once: true }}
+                    className="relative group mt-4"
+                  >
+                    <div className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                      <img
+                        src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=250"
+                        alt="Luxury leather furniture showcasing premium craftsmanship"
+                        className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    
+                    {/* Floating category badge */}
+                    <div className="absolute -top-2 -right-2 bg-charcoal text-white shadow-lg px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-xs font-medium tracking-wide">FURNITURE</span>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Center Column - Signature Showcase */}
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              {/* Signature project showcase */}
+              <div className="relative group">
+                {/* Artistic multi-layer backdrop */}
+                <div className="absolute -inset-8 bg-gradient-to-br from-bronze/15 via-transparent to-charcoal/10 rotate-2 group-hover:rotate-3 transition-all duration-1000 opacity-50"></div>
+                <div className="absolute -inset-6 bg-gradient-to-tl from-charcoal/8 via-transparent to-bronze/12 -rotate-1 group-hover:-rotate-2 transition-all duration-1200 opacity-40"></div>
+                
+                <div className="relative bg-white p-6 shadow-3xl group-hover:shadow-4xl transition-all duration-700">
+                  <img
+                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
+                    alt="Signature interior design project featuring modern elegance and sophisticated spatial arrangement"
+                    className="w-full h-96 object-cover transition-all duration-1000 group-hover:scale-105"
+                  />
+                  
+                  {/* Multi-layer overlays */}
+                  <div className="absolute inset-6 bg-gradient-to-t from-charcoal/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                  <div className="absolute inset-6 bg-gradient-to-br from-transparent via-transparent to-bronze/15 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                  
+                  {/* Interior frame */}
+                  <div className="absolute inset-6 border border-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                
+                {/* Enhanced corner accents */}
+                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-bronze/60 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-bronze/60 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+              </div>
+
+              {/* Signature project info card */}
+              <motion.div
+                initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-8 -left-8 bg-white shadow-2xl p-6 border border-bronze/30 hover:shadow-3xl transition-all duration-500"
+              >
+                <div className="text-center">
+                  <div className="w-16 h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-3"></div>
+                  <h4 className="font-italiana text-xl font-bold text-charcoal tracking-wider mb-2">
+                    SIGNATURE PROJECT
+                  </h4>
+                  <p className="text-sm text-charcoal/70 font-light mb-3">
+                    Award-winning interior excellence
+                  </p>
+                  <div className="w-8 h-px bg-bronze/40 mx-auto"></div>
+                </div>
+                
+                {/* Decorative corner */}
+                <div className="absolute top-1 right-1 w-4 h-4 border-r border-t border-bronze/40"></div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Column - Portfolio Details & Categories */}
+            <motion.div
+              initial={{ opacity: 0, x: 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div className="relative">
+                <h3 className="font-italiana text-2xl font-bold text-charcoal mb-6 tracking-wide">
+                  Our Expertise
+                </h3>
+                <div className="w-20 h-px bg-bronze/60 mb-8"></div>
+              </div>
+
+              {/* Portfolio categories */}
+              <div className="space-y-6">
+                {[
+                  { 
+                    title: "Residential Interiors", 
+                    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+                    alt: "Elegant residential interior with modern furniture and sophisticated design",
+                    projects: "45+ Projects" 
+                  },
+                  { 
+                    title: "Commercial Spaces", 
+                    image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+                    alt: "Professional commercial interior with contemporary lighting and furniture",
+                    projects: "30+ Projects" 
+                  },
+                  { 
+                    title: "Custom Furniture", 
+                    image: "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+                    alt: "Luxury custom furniture pieces showcasing exceptional craftsmanship",
+                    projects: "100+ Pieces" 
+                  }
+                ].map((category, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30, x: 20 }}
+                    whileInView={{ opacity: 1, y: 0, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
+                  >
+                    <div className="flex items-center">
+                      <div className="w-24 h-20 overflow-hidden">
+                        <img
+                          src={category.image}
+                          alt={category.alt}
+                          className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      
+                      <div className="flex-1 p-4">
+                        <h4 className="font-italiana text-lg font-semibold text-charcoal mb-1 tracking-wide">
+                          {category.title}
+                        </h4>
+                        <p className="text-sm text-charcoal/70 font-medium tracking-wider">
+                          {category.projects}
+                        </p>
+                      </div>
+                      
+                      <div className="pr-4">
+                        <div className="w-6 h-px bg-bronze opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Hover accent */}
+                    <div className="absolute left-0 top-0 w-1 h-full bg-bronze transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Enhanced call-to-action */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                viewport={{ once: true }}
+                className="pt-8"
+              >
+                <div className="bg-gradient-to-r from-cream to-white p-6 border-l-4 border-bronze shadow-lg relative">
+                  <div className="absolute top-0 right-0 w-10 h-10 border-r border-t border-bronze/25"></div>
+                  <h4 className="font-italiana text-xl font-bold text-charcoal mb-2 tracking-wide">
+                    View Complete Portfolio
+                  </h4>
+                  <p className="text-charcoal/70 leading-relaxed mb-4">
+                    Explore our extensive collection of transformative interior design projects.
+                  </p>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-px bg-bronze"></div>
+                    <span className="text-bronze text-sm font-medium tracking-wider uppercase">
+                      Discover More
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
+
+          {/* Bottom decorative element */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            viewport={{ once: true }}
+            className="text-center mt-24"
+          >
+            <div className="inline-flex items-center space-x-6">
+              <div className="w-20 h-px bg-gradient-to-r from-transparent to-bronze/50"></div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+                <div className="w-3 h-3 bg-bronze/40 rounded-full"></div>
+                <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+              </div>
+              <div className="w-20 h-px bg-gradient-to-l from-transparent to-bronze/50"></div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
