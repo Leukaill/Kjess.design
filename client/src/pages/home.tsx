@@ -149,21 +149,19 @@ export default function Home() {
               </p>
             </motion.div>
             
-            {/* Right side - Image */}
+            {/* Right side - Image fills entire space */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               style={{ y: heroY }}
-              className="relative"
+              className="relative h-screen"
             >
-              <div className="relative h-[500px] w-full overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=700"
-                  alt="Modern interior with yellow chair, flowers and contemporary furniture"
-                  className="w-full h-full object-cover luxury-hover"
-                />
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=1200"
+                alt="Modern interior with yellow chair, flowers and contemporary furniture"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
           </div>
         </div>
