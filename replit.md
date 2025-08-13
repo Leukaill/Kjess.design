@@ -1,6 +1,6 @@
 # Overview
 
-This is a full-stack web application built with React and Express.js, featuring a modern design system using shadcn/ui components. The application includes contact form functionality and newsletter subscription capabilities, with a PostgreSQL database backend managed through Drizzle ORM. The project uses TypeScript throughout and implements a monorepo structure with shared schemas and types.
+This is a sophisticated interior design company website for KJESS Designs built with React and Express.js, featuring an elegant design system using shadcn/ui components. The application includes contact form functionality, newsletter subscription capabilities, a dynamic navigation bar with scroll-based section detection, team showcase, testimonials, and gallery sections. The backend uses PostgreSQL with Drizzle ORM for data persistence. The project implements TypeScript throughout with a monorepo structure and shared schemas.
 
 # User Preferences
 
@@ -10,11 +10,12 @@ Preferred communication style: Simple, everyday language.
 
 ## Frontend Architecture
 - **Framework**: React 18 with TypeScript and Vite for build tooling
-- **Routing**: Wouter for lightweight client-side routing
+- **Routing**: Wouter for lightweight client-side routing with smooth scroll navigation
 - **State Management**: TanStack React Query for server state management
 - **UI Framework**: shadcn/ui components built on Radix UI primitives with Tailwind CSS for styling
 - **Form Handling**: React Hook Form with Zod validation for type-safe form management
-- **Animations**: Framer Motion for smooth animations and transitions
+- **Animations**: Framer Motion for smooth animations, transitions, and sophisticated interactions
+- **Navigation**: Fixed navigation bar with scroll-based active section detection and smooth scrolling
 
 ## Backend Architecture
 - **Runtime**: Node.js with Express.js framework

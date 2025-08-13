@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -10,18 +10,81 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Phone, Mail, MapPin, Instagram, Star, Quote } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X } from "lucide-react";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const heroRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  
+  // Navigation states
+  const [activeSection, setActiveSection] = useState("home");
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Parallax transforms
   const heroY = useTransform(scrollYProgress, [0, 0.5], [0, -200]);
   const fadeInY = useTransform(scrollYProgress, [0, 0.3], [50, 0]);
   const fadeInOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+
+  // Navigation items
+  const navigationItems = [
+    { id: "home", label: "Home" },
+    { id: "vision", label: "Vision" },
+    { id: "about", label: "About" },
+    { id: "testimonials", label: "Testimonials" },
+    { id: "team", label: "Team" },
+    { id: "gallery", label: "Gallery" },
+    { id: "contact", label: "Contact" },
+  ];
+
+  // Scroll detection and active section logic
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
+      
+      // Get all sections
+      const sections = navigationItems.map(item => document.getElementById(item.id));
+      
+      // Find which section is currently in view
+      let currentSection = "home";
+      
+      sections.forEach((section, index) => {
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const sectionTop = rect.top + window.scrollY;
+          const sectionHeight = rect.height;
+          
+          // Consider a section active if it's within the viewport
+          if (scrollPosition >= sectionTop - 100 && scrollPosition < sectionTop + sectionHeight - 100) {
+            currentSection = navigationItems[index].id;
+          }
+        }
+      });
+      
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Smooth scroll to section
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offsetTop = element.offsetTop - 80; // Account for navbar height
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+    setIsNavOpen(false);
+  };
 
   // Contact form
   const contactForm = useForm<InsertContact>({
@@ -120,6 +183,130 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-cream text-charcoal overflow-x-hidden">
+      {/* Sophisticated Navigation Bar */}
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled 
+            ? 'bg-cream/95 backdrop-blur-lg shadow-lg border-b border-bronze/10' 
+            : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between h-20">
+            {/* Enhanced Logo */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center space-x-3 cursor-pointer"
+              onClick={() => scrollToSection('home')}
+            >
+              <div className={`w-12 h-12 flex items-center justify-center transition-all duration-300 ${
+                isScrolled 
+                  ? 'bg-charcoal shadow-lg' 
+                  : 'bg-charcoal/90 shadow-xl'
+              }`}>
+                <span className="text-cream text-xl font-italiana font-bold">K</span>
+              </div>
+              <div className="hidden md:block">
+                <h1 className={`font-italiana text-xl tracking-wide transition-colors duration-300 ${
+                  isScrolled ? 'text-charcoal' : 'text-charcoal'
+                }`}>
+                  KJESS DESIGNS
+                </h1>
+              </div>
+            </motion.div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-1">
+              {navigationItems.map((item, index) => (
+                <motion.button
+                  key={item.id}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                  whileHover={{ y: -2 }}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`relative px-4 py-2 font-medium text-sm uppercase tracking-wider transition-all duration-300 group ${
+                    activeSection === item.id
+                      ? 'text-bronze'
+                      : isScrolled 
+                        ? 'text-charcoal/80 hover:text-bronze' 
+                        : 'text-charcoal/90 hover:text-bronze'
+                  }`}
+                >
+                  {item.label}
+                  
+                  {/* Active indicator */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze"
+                    initial={false}
+                    animate={{
+                      scaleX: activeSection === item.id ? 1 : 0,
+                      opacity: activeSection === item.id ? 1 : 0
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  {/* Hover effect */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsNavOpen(!isNavOpen)}
+              className={`lg:hidden p-2 transition-colors duration-300 ${
+                isScrolled ? 'text-charcoal' : 'text-charcoal'
+              }`}
+            >
+              {isNavOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Overlay */}
+        <motion.div
+          initial={false}
+          animate={{
+            opacity: isNavOpen ? 1 : 0,
+            y: isNavOpen ? 0 : -20
+          }}
+          transition={{ duration: 0.3 }}
+          className={`lg:hidden absolute top-full left-0 right-0 bg-cream/98 backdrop-blur-lg border-b border-bronze/10 shadow-xl ${
+            isNavOpen ? 'pointer-events-auto' : 'pointer-events-none'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-6 py-6">
+            <div className="space-y-4">
+              {navigationItems.map((item, index) => (
+                <motion.button
+                  key={item.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ 
+                    opacity: isNavOpen ? 1 : 0, 
+                    x: isNavOpen ? 0 : -20 
+                  }}
+                  transition={{ duration: 0.3, delay: isNavOpen ? 0.1 * index : 0 }}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`block w-full text-left px-4 py-3 font-medium text-sm uppercase tracking-wider transition-all duration-300 border-l-2 ${
+                    activeSection === item.id
+                      ? 'text-bronze border-bronze bg-bronze/5'
+                      : 'text-charcoal/80 border-transparent hover:text-bronze hover:border-bronze/30 hover:bg-bronze/5'
+                  }`}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </motion.nav>
+
       {/* Hero Section - Sophisticated and Immersive Design */}
       <section id="home" className="relative h-screen flex overflow-hidden">
         {/* Artistic Background Elements */}
@@ -861,7 +1048,7 @@ export default function Home() {
       </section>
 
       {/* About Us Section - Sophisticated and Aesthetic Design */}
-      <section className="py-32 bg-gradient-to-br from-cream via-white to-cream/50 relative overflow-hidden">
+      <section id="about" className="py-32 bg-gradient-to-br from-cream via-white to-cream/50 relative overflow-hidden">
         {/* Elegant background decorative elements */}
         <div className="absolute top-20 left-10 w-72 h-72 border border-bronze/8 rotate-45 opacity-40"></div>
         <div className="absolute bottom-20 right-20 w-96 h-96 border border-charcoal/5 rotate-12 opacity-30"></div>
@@ -1267,7 +1454,7 @@ export default function Home() {
       </section>
 
       {/* Team Section - Sophisticated & Elegant Design */}
-      <section className="py-32 bg-gradient-to-br from-charcoal via-charcoal/98 to-charcoal relative overflow-hidden">
+      <section id="team" className="py-32 bg-gradient-to-br from-charcoal via-charcoal/98 to-charcoal relative overflow-hidden">
         {/* Enhanced background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-96 h-96 border border-bronze/10 rotate-45 opacity-30"></div>
@@ -1837,7 +2024,7 @@ export default function Home() {
       </div>
 
       {/* Vision Section - Compact & Aesthetic Design */}
-      <section className="py-20 bg-gradient-to-br from-cream/60 via-white to-warm-white/80 relative overflow-hidden">
+      <section id="vision" className="py-20 bg-gradient-to-br from-cream/60 via-white to-warm-white/80 relative overflow-hidden">
         {/* Elegant background elements */}
         <div className="absolute inset-0 opacity-40">
           <div className="absolute top-8 right-16 w-32 h-32 border border-bronze/20 rotate-45"></div>
@@ -1964,7 +2151,7 @@ export default function Home() {
 
 
       {/* Testimonials Section - Sophisticated & Elegant Design */}
-      <section className="py-32 bg-charcoal relative overflow-hidden">
+      <section id="testimonials" className="py-32 bg-charcoal relative overflow-hidden">
         {/* Enhanced background elements */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90"></div>
