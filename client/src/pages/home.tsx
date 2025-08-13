@@ -1602,8 +1602,69 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Visionary Transition Divider */}
+      <div className="h-32 bg-gradient-to-b from-white via-cream/20 to-cream/60 relative overflow-hidden">
+        {/* Floating particles animation */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          viewport={{ once: true }}
+          className="absolute inset-0"
+        >
+          {/* Animated light rays */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotateZ: 0 }}
+            whileInView={{ opacity: 0.3, scale: 1.2, rotateZ: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute top-1/2 left-1/2 w-96 h-px bg-gradient-to-r from-transparent via-bronze/30 to-transparent transform -translate-x-1/2 -translate-y-1/2"
+          ></motion.div>
+          
+          {/* Floating geometric elements */}
+          <motion.div
+            initial={{ opacity: 0, y: 20, x: -100 }}
+            whileInView={{ opacity: 0.6, y: -20, x: 100 }}
+            transition={{ duration: 8, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+            className="absolute top-8 left-1/4 w-2 h-2 bg-bronze/40 rounded-full"
+          ></motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: -20, x: 100 }}
+            whileInView={{ opacity: 0.4, y: 20, x: -100 }}
+            transition={{ duration: 12, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-8 right-1/4 w-3 h-3 border border-charcoal/20 rotate-45"
+          ></motion.div>
+          
+          {/* Central vision symbol */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, delay: 0.5, type: "spring", stiffness: 100 }}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          >
+            <div className="relative">
+              <div className="w-12 h-12 border-2 border-bronze/30 rounded-full flex items-center justify-center bg-white/50 backdrop-blur-sm">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1 }}
+                  className="w-4 h-4 bg-bronze/60 rounded-full"
+                ></motion.div>
+              </div>
+              {/* Pulsing ring */}
+              <motion.div
+                initial={{ opacity: 0, scale: 1 }}
+                whileInView={{ opacity: [0, 0.5, 0], scale: [1, 1.8, 2.2] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeOut", delay: 1.5 }}
+                className="absolute inset-0 border border-bronze/20 rounded-full"
+              ></motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+
       {/* Vision Section - Compact & Aesthetic Design */}
-      <section className="py-16 bg-gradient-to-br from-cream/30 via-white to-warm-white/50 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-cream/60 via-white to-warm-white/80 relative overflow-hidden">
         {/* Elegant background elements */}
         <div className="absolute inset-0 opacity-40">
           <div className="absolute top-8 right-16 w-32 h-32 border border-bronze/20 rotate-45"></div>
@@ -1726,6 +1787,25 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Elegant Spacing Transition */}
+      <div className="h-24 bg-gradient-to-b from-warm-white/80 via-cream/40 to-cream relative">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        >
+          <div className="flex items-center space-x-4">
+            <div className="w-8 h-px bg-bronze/40"></div>
+            <div className="w-1 h-1 bg-bronze/60 rounded-full"></div>
+            <div className="w-16 h-px bg-bronze/30"></div>
+            <div className="w-1 h-1 bg-bronze/60 rounded-full"></div>
+            <div className="w-8 h-px bg-bronze/40"></div>
+          </div>
+        </motion.div>
+      </div>
 
       {/* Beautiful Bed Ideas Section - Matching ninth design */}
       <section className="py-24 bg-cream">
