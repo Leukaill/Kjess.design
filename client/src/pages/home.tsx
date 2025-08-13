@@ -127,39 +127,71 @@ export default function Home() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="w-1/2 bg-cream flex flex-col justify-center px-16"
+          className="w-1/2 bg-cream flex flex-col justify-center px-20 relative"
         >
+          {/* Subtle decorative line */}
+          <div className="absolute left-0 top-1/2 w-1 h-32 bg-bronze/20 transform -translate-y-1/2"></div>
+          
           {/* Logo */}
-          <div className="w-16 h-16 bg-charcoal mb-12 flex items-center justify-center">
-            <span className="text-cream text-2xl font-italiana font-bold">K</span>
-          </div>
+          <motion.div 
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-20 h-20 bg-charcoal mb-16 flex items-center justify-center shadow-lg luxury-hover"
+          >
+            <span className="text-cream text-3xl font-italiana font-bold tracking-wider">K</span>
+          </motion.div>
           
-          <h1 className="font-italiana text-4xl md:text-6xl font-normal leading-tight text-charcoal mb-8">
-            KJESS DESIGNS.LTD
-          </h1>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="font-italiana text-5xl md:text-7xl font-normal leading-[0.9] text-charcoal mb-10 tracking-wide"
+          >
+            KJESS DESIGNS<span className="text-bronze">.</span>LTD
+          </motion.h1>
           
-          <p className="text-lg md:text-xl text-charcoal/80 mb-6 font-italiana italic">
-            Interior Design & Furnitures
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mb-8"
+          >
+            <p className="text-xl md:text-2xl text-charcoal/80 mb-2 font-italiana italic tracking-wide">
+              Interior Design & Furnitures
+            </p>
+            <div className="w-16 h-px bg-bronze/40 mb-6"></div>
+          </motion.div>
           
-          <p className="text-base text-charcoal/70 font-italiana">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-lg text-charcoal/70 font-italiana font-light tracking-wider"
+          >
             Our Portfolio
-          </p>
+          </motion.p>
         </motion.div>
         
         {/* Right side - Image fills entire right half */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 1, delay: 0.3 }}
           style={{ y: heroY }}
-          className="w-1/2 h-full"
+          className="w-1/2 h-full relative overflow-hidden"
         >
           <img
-            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=1200"
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=1200&q=90"
             alt="Modern interior with yellow chair, flowers and contemporary furniture"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
           />
+          
+          {/* Subtle overlay for depth */}
+          <div className="absolute inset-0 bg-gradient-to-l from-black/5 via-transparent to-transparent"></div>
+          
+          {/* Decorative corner accent */}
+          <div className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-cream/30"></div>
         </motion.div>
       </section>
 
