@@ -3340,7 +3340,7 @@ export default function Home() {
               cy="32"
               r="28"
               fill="none"
-              stroke="rgba(255, 255, 255, 0.1)"
+              stroke="rgba(255, 255, 255, 0.2)"
               strokeWidth="3"
               className="transition-all duration-700"
             />
@@ -3350,12 +3350,13 @@ export default function Home() {
               cy="32"
               r="28"
               fill="none"
-              stroke="url(#progressGradient)"
-              strokeWidth="3"
+              stroke="#d4af37"
+              strokeWidth="4"
               strokeLinecap="round"
               strokeDasharray="175.93"
               strokeDashoffset={175.93 * (1 - scrollProgress)}
-              className="transition-all duration-100 ease-out"
+              className="transition-all duration-100 ease-out opacity-90"
+              style={{ filter: 'drop-shadow(0 0 4px rgba(212, 175, 55, 0.5))' }}
             />
             {/* Gradient definition */}
             <defs>
@@ -3396,6 +3397,11 @@ export default function Home() {
             {/* Ripple effect on hover */}
             <div className="absolute inset-0 rounded-full bg-white/5 scale-0 group-hover:scale-110 transition-transform duration-700 ease-out"></div>
           </motion.button>
+          
+          {/* Debug progress display */}
+          <div className={`absolute -top-8 left-1/2 transform -translate-x-1/2 bg-charcoal text-white text-xs px-2 py-1 rounded transition-opacity duration-300 ${showBackToTop ? 'opacity-100' : 'opacity-0'}`}>
+            {Math.round(scrollProgress * 100)}%
+          </div>
           
           {/* Simplified decorative elements */}
           <div className={`absolute -top-2 -right-2 w-3 h-3 bg-bronze/60 rounded-full transition-opacity duration-300 ${showBackToTop ? 'opacity-60' : 'opacity-0'}`}></div>
