@@ -482,7 +482,7 @@ export default function Home() {
           >
             <div className="text-center">
               <div className="w-8 h-px bg-bronze mx-auto mb-2"></div>
-              <p className="text-xs text-charcoal font-medium tracking-wider uppercase">Award Winning</p>
+              <p className="text-xs text-charcoal font-medium tracking-wider uppercase">Premium</p>
               <p className="text-xs text-charcoal/70">Design Studio</p>
             </div>
           </motion.div>
