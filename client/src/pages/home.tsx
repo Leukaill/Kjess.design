@@ -23,6 +23,8 @@ export default function Home() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkBackground, setIsDarkBackground] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   
   // Hero carousel states
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -84,8 +86,12 @@ export default function Home() {
       const scrollPosition = window.scrollY;
       const viewportHeight = window.innerHeight;
       const heroSectionHeight = viewportHeight; // Hero is full height
+      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.min(scrollPosition / documentHeight, 1);
       
       setIsScrolled(scrollPosition > 50);
+      setScrollProgress(progress);
+      setShowBackToTop(scrollPosition > 300);
       
       // Smart background detection based on sections
       let backgroundIsDark = false;
@@ -159,6 +165,14 @@ export default function Home() {
       });
     }
     setIsNavOpen(false);
+  };
+
+  // Smooth scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   // Contact form
@@ -3285,6 +3299,128 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Beautiful Back to Top Button with Scroll Progress */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ 
+          opacity: showBackToTop ? 1 : 0,
+          scale: showBackToTop ? 1 : 0.8,
+          y: showBackToTop ? 0 : 20
+        }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className={`fixed bottom-8 right-8 z-50 ${!showBackToTop ? 'pointer-events-none' : ''}`}
+      >
+        <div className="relative group">
+          {/* Progress ring background */}
+          <svg className="w-16 h-16 transform -rotate-90 absolute inset-0" viewBox="0 0 64 64">
+            <circle
+              cx="32"
+              cy="32"
+              r="28"
+              fill="none"
+              stroke="rgba(255, 255, 255, 0.1)"
+              strokeWidth="3"
+              className="transition-all duration-700"
+            />
+            {/* Progress ring */}
+            <circle
+              cx="32"
+              cy="32"
+              r="28"
+              fill="none"
+              stroke="url(#progressGradient)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeDasharray={`${2 * Math.PI * 28}`}
+              strokeDashoffset={`${2 * Math.PI * 28 * (1 - scrollProgress)}`}
+              className="transition-all duration-300 ease-out filter drop-shadow-lg"
+            />
+            {/* Gradient definition */}
+            <defs>
+              <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#d4af37" stopOpacity="1" />
+                <stop offset="50%" stopColor="#ffd700" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#d4af37" stopOpacity="1" />
+              </linearGradient>
+            </defs>
+          </svg>
+          
+          {/* Button */}
+          <motion.button
+            onClick={scrollToTop}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="relative w-16 h-16 bg-gradient-to-br from-charcoal via-charcoal/90 to-charcoal/80 hover:from-bronze hover:via-bronze/90 hover:to-bronze/80 text-white rounded-full shadow-2xl transition-all duration-700 ease-out flex items-center justify-center backdrop-blur-sm border border-white/10 hover:border-white/20 group-hover:shadow-bronze/20"
+            style={{
+              boxShadow: '0 8px 32px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)'
+            }}
+            data-testid="button-back-to-top"
+          >
+            {/* Up arrow with sophisticated animation */}
+            <motion.svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              initial={{ y: 0 }}
+              animate={{ y: [-2, 2, -2] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2.5} 
+                d="M5 10l7-7m0 0l7 7m-7-7v18" 
+              />
+            </motion.svg>
+            
+            {/* Ripple effect on hover */}
+            <div className="absolute inset-0 rounded-full bg-white/5 scale-0 group-hover:scale-110 transition-transform duration-700 ease-out"></div>
+          </motion.button>
+          
+          {/* Floating decorative elements */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ 
+              opacity: showBackToTop ? [0, 1, 0] : 0,
+              scale: showBackToTop ? [0, 1.2, 0] : 0,
+              rotate: [0, 180, 360]
+            }}
+            transition={{ 
+              duration: 3, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: 0.5
+            }}
+            className="absolute -top-2 -right-2 w-3 h-3 bg-bronze/60 rounded-full"
+          ></motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ 
+              opacity: showBackToTop ? [0, 0.8, 0] : 0,
+              scale: showBackToTop ? [0, 1, 0] : 0,
+              rotate: [360, 180, 0]
+            }}
+            transition={{ 
+              duration: 2.5, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: 1
+            }}
+            className="absolute -bottom-1 -left-1 w-2 h-2 bg-cream/60 rounded-full"
+          ></motion.div>
+          
+          {/* Tooltip */}
+          <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="bg-charcoal/90 backdrop-blur-sm text-cream text-xs px-3 py-2 rounded-lg whitespace-nowrap border border-white/10 shadow-xl">
+              Back to top
+              <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-charcoal/90"></div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
