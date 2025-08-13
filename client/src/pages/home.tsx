@@ -312,165 +312,420 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Introduction Section - Ultra elegant and aesthetic */}
-      <section className="py-24 bg-gradient-to-b from-white to-cream/20 relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute top-20 right-20 w-64 h-64 border border-bronze/10 rotate-45 opacity-30"></div>
-        <div className="absolute bottom-20 left-20 w-32 h-32 border border-charcoal/5 rotate-12"></div>
+      {/* Introduction Section - Sophisticated and Luxurious Design */}
+      <section className="py-32 bg-gradient-to-br from-white via-cream/10 to-white relative overflow-hidden">
+        {/* Artistic background elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-16 right-16 w-80 h-80 border border-bronze/15 rotate-45 opacity-60"></div>
+          <div className="absolute bottom-20 left-20 w-64 h-64 border border-charcoal/8 rotate-12"></div>
+          <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-gradient-to-r from-bronze/5 to-transparent rounded-full blur-2xl"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-bronze rounded-full opacity-40"></div>
+          <div className="absolute top-1/4 left-1/5 w-1 h-1 bg-charcoal/30 rounded-full"></div>
+        </div>
         
         <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            {/* Left Column - Enhanced Artistic Image Layout */}
             <motion.div
-              initial={{ opacity: 0, x: -50, y: 30 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              initial={{ opacity: 0, x: -80, scale: 0.9 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="relative group"
+              className="relative"
             >
-              {/* Image container with sophisticated framing */}
-              <div className="relative">
-                {/* Outer decorative frame */}
-                <div className="absolute -inset-4 border border-bronze/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              {/* Main showcase image with sophisticated multi-layer framing */}
+              <div className="relative group">
+                {/* Artistic backdrop layers */}
+                <div className="absolute -inset-8 bg-gradient-to-br from-bronze/12 via-transparent to-charcoal/8 rotate-1 group-hover:rotate-2 transition-all duration-700 opacity-70"></div>
+                <div className="absolute -inset-6 bg-gradient-to-tl from-charcoal/5 via-transparent to-bronze/8 -rotate-1 group-hover:-rotate-2 transition-all duration-1000 opacity-50"></div>
                 
-                {/* Main image container */}
-                <div className="relative overflow-hidden bg-white p-2 shadow-2xl">
+                {/* Enhanced main image container */}
+                <div className="relative bg-white p-6 shadow-2xl group-hover:shadow-3xl transition-all duration-700 overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=700&q=95"
-                    alt="Contemporary living room with marble accent wall and modern furnishing"
-                    className="w-full h-[550px] object-cover transition-all duration-1000 ease-out group-hover:scale-[1.02]"
+                    alt="Contemporary living room featuring marble accent wall, modern furnishing, and sophisticated design elements"
+                    className="w-full h-[520px] object-cover transition-all duration-1000 ease-out group-hover:scale-110"
                   />
                   
-                  {/* Sophisticated overlay */}
-                  <div className="absolute inset-2 border border-white/30 pointer-events-none"></div>
+                  {/* Sophisticated multi-layer overlays */}
+                  <div className="absolute inset-6 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                  <div className="absolute inset-6 bg-gradient-to-br from-transparent via-transparent to-bronze/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                  
+                  {/* Interior frame details */}
+                  <div className="absolute inset-6 border border-white/40 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
                 
-                {/* Corner accent elements */}
-                <div className="absolute -top-3 -left-3 w-6 h-6 border-l-2 border-t-2 border-bronze/40"></div>
-                <div className="absolute -bottom-3 -right-3 w-6 h-6 border-r-2 border-b-2 border-bronze/40"></div>
+                {/* Enhanced corner accent elements */}
+                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-bronze/50 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-bronze/50 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                
+                {/* Floating decorative elements */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20, rotate: -10 }}
+                  whileInView={{ opacity: 1, y: 0, rotate: -15 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  viewport={{ once: true }}
+                  className="absolute -top-6 -right-8 w-16 h-16 bg-bronze/20 rotate-45 opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                ></motion.div>
               </div>
+
+              {/* Floating information card */}
+              <motion.div
+                initial={{ opacity: 0, y: 60, x: -40 }}
+                whileInView={{ opacity: 1, y: 0, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-12 -left-12 bg-white shadow-2xl p-6 border border-bronze/30 hover:shadow-3xl transition-all duration-500 group cursor-pointer"
+              >
+                <div className="text-center">
+                  <div className="w-16 h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-3"></div>
+                  <h4 className="font-italiana text-lg font-bold text-charcoal tracking-wider mb-1">
+                    CREATIVE VISION
+                  </h4>
+                  <p className="text-sm text-charcoal/70 font-light">
+                    Where artistry meets functionality
+                  </p>
+                  <div className="w-8 h-px bg-bronze/40 mx-auto mt-3"></div>
+                </div>
+                
+                {/* Decorative corner */}
+                <div className="absolute top-1 right-1 w-4 h-4 border-r border-t border-bronze/30"></div>
+              </motion.div>
             </motion.div>
             
+            {/* Right Column - Enhanced Content Section */}
             <motion.div
-              initial={{ opacity: 0, x: 50, y: 30 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              initial={{ opacity: 0, x: 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Elegant side decoration */}
-              <div className="absolute -left-8 top-0 flex flex-col items-center">
-                <div className="w-px h-16 bg-gradient-to-b from-bronze/60 to-transparent"></div>
-                <div className="w-2 h-2 bg-bronze/50 rounded-full my-2"></div>
-                <div className="w-px h-16 bg-gradient-to-t from-bronze/60 to-transparent"></div>
+              {/* Enhanced side decoration */}
+              <div className="absolute -left-12 top-0 flex flex-col items-center opacity-60">
+                <div className="w-px h-20 bg-gradient-to-b from-bronze/80 to-transparent"></div>
+                <div className="w-3 h-3 bg-bronze/60 rounded-full my-3"></div>
+                <div className="w-px h-20 bg-gradient-to-t from-bronze/80 to-transparent"></div>
+                <div className="w-2 h-2 bg-bronze/40 rounded-full mt-6"></div>
               </div>
               
-              {/* Typography section */}
+              {/* Enhanced Typography section */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
                 viewport={{ once: true }}
+                className="mb-16"
               >
-                <h2 className="font-italiana text-6xl md:text-7xl mb-10 text-charcoal leading-[0.85] tracking-wider relative">
-                  INTRODUCTION
-                  <div className="absolute -bottom-4 left-0 w-24 h-px bg-bronze/50"></div>
-                </h2>
+                <div className="relative">
+                  <h2 className="font-italiana text-7xl md:text-8xl mb-8 text-charcoal leading-[0.8] tracking-wider relative">
+                    INTRO<span className="text-bronze">DUCTION</span>
+                  </h2>
+                  {/* Enhanced decorative underline */}
+                  <div className="absolute -bottom-2 left-0 w-32 h-1 bg-gradient-to-r from-bronze via-bronze/60 to-transparent"></div>
+                </div>
+                
+                <p className="text-xl text-charcoal/70 font-light italic tracking-wide mt-6">
+                  Where creativity meets exceptional craftsmanship
+                </p>
               </motion.div>
               
+              {/* Enhanced content with better typography hierarchy */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7 }}
                 viewport={{ once: true }}
-                className="space-y-6"
+                className="space-y-8"
               >
-                <p className="text-xl leading-relaxed text-charcoal/85 font-light tracking-wide">
-                  Kjess Designs is where <span className="font-italiana italic text-bronze">creativity meets craftsmanship</span>. 
-                  We are a Rwandan-based interior design and furniture company dedicated to
-                  transforming spaces into timeless masterpieces.
-                </p>
-                
-                {/* Ultra elegant separator */}
+                <div className="relative">
+                  {/* Decorative quote mark */}
+                  <div className="absolute -top-4 -left-8 text-6xl text-bronze/20 font-serif leading-none">"</div>
+                  
+                  <div className="pl-6 space-y-6">
+                    <p className="text-xl leading-relaxed text-charcoal/85 font-light tracking-wide">
+                      Kjess Designs is where <span className="font-italiana italic text-bronze font-medium">creativity meets craftsmanship</span>. 
+                      We are a Rwandan-based interior design and furniture company dedicated to
+                      transforming spaces into <span className="font-medium text-charcoal">timeless masterpieces</span>.
+                    </p>
+                    
+                    <p className="text-xl leading-relaxed text-charcoal/85 font-light tracking-wide">
+                      With unwavering commitment to <span className="font-italiana italic text-bronze">excellence, elegance, and innovation</span>, we
+                      bring your visions to life through thoughtful design and superior
+                      <span className="font-italiana text-bronze font-medium"> attention to detail</span>.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Enhanced elegant separator with animation */}
                 <motion.div 
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 1, delay: 0.9 }}
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  whileInView={{ scaleX: 1, opacity: 1 }}
+                  transition={{ duration: 1.2, delay: 0.9 }}
                   viewport={{ once: true }}
-                  className="flex items-center justify-center py-6"
+                  className="flex items-center justify-center py-8"
                 >
                   <div className="flex items-center space-x-6">
-                    <div className="w-16 h-px bg-gradient-to-r from-transparent via-bronze/60 to-bronze/60"></div>
+                    <div className="w-20 h-px bg-gradient-to-r from-transparent via-bronze/70 to-bronze/70"></div>
                     <div className="relative">
-                      <div className="w-3 h-3 bg-bronze/40 rounded-full"></div>
-                      <div className="absolute inset-0 w-3 h-3 bg-bronze/20 rounded-full animate-ping"></div>
+                      <div className="w-4 h-4 bg-bronze/50 rounded-full"></div>
+                      <div className="absolute inset-0 w-4 h-4 bg-bronze/30 rounded-full animate-ping"></div>
                     </div>
-                    <div className="w-16 h-px bg-gradient-to-l from-transparent via-bronze/60 to-bronze/60"></div>
+                    <div className="w-20 h-px bg-gradient-to-l from-transparent via-bronze/70 to-bronze/70"></div>
                   </div>
                 </motion.div>
-                
-                <p className="text-xl leading-relaxed text-charcoal/85 font-light tracking-wide">
-                  With a commitment to <span className="font-italiana italic text-bronze">excellence, elegance, and innovation</span>, we
-                  bring your visions to life through thoughtful design and superior
-                  <span className="font-italiana text-bronze font-medium"> Attention to Details</span>.
-                </p>
+
+                {/* Call to action section */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.1 }}
+                  viewport={{ once: true }}
+                  className="bg-gradient-to-r from-cream/50 to-white p-6 border-l-4 border-bronze relative"
+                >
+                  <div className="absolute top-0 right-0 w-12 h-12 border-r border-t border-bronze/20"></div>
+                  <h4 className="font-italiana text-2xl font-bold text-charcoal mb-3 tracking-wide">
+                    Our Promise
+                  </h4>
+                  <p className="text-charcoal/70 leading-relaxed">
+                    Every project we undertake is a testament to our dedication to creating spaces that not only inspire but also reflect the unique personality and lifestyle of our clients.
+                  </p>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* History Section - Matching third design */}
-      <section className="py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="font-italiana text-5xl md:text-7xl mb-8 text-charcoal leading-tight">
-                  OUR History
-                </h2>
-                <p className="text-lg leading-relaxed text-charcoal/80 mb-6">
-                  Founded over a decade ago, Kjess Designs began as a small design
-                  studio with a passion for refined interiors and handcrafted
-                  furniture. Through years of dedication, we have grown into a
-                  trusted name in Rwanda's design industry, collaborating with
-                  individuals, luxury residences, and institutions to deliver
-                  exceptional spaces.
-                </p>
-                <p className="text-lg leading-relaxed text-charcoal/80">
-                  Our journey has been shaped by a relentless pursuit of quality
-                  and a deep understanding of design aesthetics.
-                </p>
-              </motion.div>
-            </div>
-            <div className="order-1 md:order-2">
+      {/* History Section - Sophisticated Journey & Heritage Design */}
+      <section className="py-32 bg-gradient-to-b from-cream via-warm-white to-cream relative overflow-hidden">
+        {/* Artistic background elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 right-10 w-96 h-96 border border-bronze/12 rotate-12 opacity-50"></div>
+          <div className="absolute bottom-16 left-16 w-80 h-80 border border-charcoal/8 -rotate-12 opacity-40"></div>
+          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-gradient-to-br from-bronze/8 to-transparent rounded-full blur-2xl"></div>
+          <div className="absolute bottom-1/4 left-1/5 w-3 h-3 bg-bronze/30 rounded-full"></div>
+          <div className="absolute top-3/4 right-1/5 w-2 h-2 bg-charcoal/25 rounded-full"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            {/* Left Column - Enhanced Content Section */}
+            <motion.div
+              initial={{ opacity: 0, x: -80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1 relative"
+            >
+              {/* Decorative side element */}
+              <div className="absolute -left-8 top-0 flex flex-col items-center opacity-50">
+                <div className="w-px h-24 bg-gradient-to-b from-bronze/60 to-transparent"></div>
+                <div className="w-4 h-4 bg-bronze/40 rounded-full my-4"></div>
+                <div className="w-px h-24 bg-gradient-to-t from-bronze/60 to-transparent"></div>
+              </div>
+
+              {/* Enhanced title section */}
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="grid grid-cols-2 gap-4"
+                className="mb-16"
               >
-                <div className="bg-white p-4 rounded-lg shadow-lg">
-                  <img
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-                    alt="Modern living room with green accent wall"
-                    className="w-full h-48 object-cover rounded-lg luxury-hover"
-                  />
+                <div className="relative">
+                  <h2 className="font-italiana text-7xl md:text-8xl mb-8 text-charcoal leading-[0.8] tracking-wider">
+                    OUR <span className="text-bronze">HERITAGE</span>
+                  </h2>
+                  {/* Enhanced decorative underline */}
+                  <div className="absolute -bottom-2 left-0 w-40 h-1 bg-gradient-to-r from-bronze via-bronze/60 to-bronze/20"></div>
                 </div>
-                <div className="bg-white p-4 rounded-lg shadow-lg mt-8">
-                  <img
-                    src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
-                    alt="Elegant living space with contemporary artwork"
-                    className="w-full h-48 object-cover rounded-lg luxury-hover"
-                  />
+                
+                <p className="text-xl text-charcoal/70 font-light italic tracking-wide mt-8">
+                  A decade of design excellence and innovation
+                </p>
+              </motion.div>
+              
+              {/* Enhanced content sections */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="space-y-8"
+              >
+                {/* Timeline-style content blocks */}
+                <div className="relative">
+                  <div className="absolute -left-4 top-2 w-2 h-2 bg-bronze/60 rounded-full"></div>
+                  <div className="pl-8">
+                    <h4 className="font-italiana text-xl font-semibold text-charcoal mb-3 tracking-wide">
+                      The Beginning
+                    </h4>
+                    <p className="text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
+                      Founded over a decade ago, Kjess Designs began as a 
+                      <span className="font-italiana italic text-bronze font-medium"> small design studio</span> with a passion for refined interiors and handcrafted furniture.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-4 top-2 w-2 h-2 bg-bronze/60 rounded-full"></div>
+                  <div className="pl-8">
+                    <h4 className="font-italiana text-xl font-semibold text-charcoal mb-3 tracking-wide">
+                      Growth & Recognition
+                    </h4>
+                    <p className="text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
+                      Through years of dedication, we have grown into a 
+                      <span className="font-medium text-charcoal">trusted name in Rwanda's design industry</span>, collaborating with
+                      individuals, luxury residences, and institutions to deliver exceptional spaces.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <div className="absolute -left-4 top-2 w-2 h-2 bg-bronze/60 rounded-full"></div>
+                  <div className="pl-8">
+                    <h4 className="font-italiana text-xl font-semibold text-charcoal mb-3 tracking-wide">
+                      Our Philosophy
+                    </h4>
+                    <p className="text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
+                      Our journey has been shaped by a 
+                      <span className="font-italiana italic text-bronze">relentless pursuit of quality</span> and a deep understanding of 
+                      <span className="font-medium text-charcoal">design aesthetics</span>.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
-            </div>
+
+              {/* Enhanced call-to-action */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="mt-12 bg-white p-6 border-l-4 border-bronze shadow-lg relative"
+              >
+                <div className="absolute top-0 right-0 w-10 h-10 border-r border-t border-bronze/25"></div>
+                <h4 className="font-italiana text-xl font-bold text-charcoal mb-2 tracking-wide">
+                  Legacy of Excellence
+                </h4>
+                <p className="text-charcoal/70 leading-relaxed">
+                  Every project we complete adds to our rich heritage of transforming ordinary spaces into extraordinary experiences.
+                </p>
+              </motion.div>
+            </motion.div>
+            
+            {/* Right Column - Enhanced Image Gallery */}
+            <motion.div
+              initial={{ opacity: 0, x: 80, scale: 0.95 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2 relative"
+            >
+              {/* Sophisticated gallery layout with overlapping elements */}
+              <div className="relative">
+                {/* Background artistic elements */}
+                <div className="absolute -inset-12 bg-gradient-to-br from-bronze/8 via-transparent to-charcoal/5 rotate-3 opacity-40"></div>
+                
+                {/* Main gallery grid */}
+                <div className="relative grid grid-cols-2 gap-6">
+                  {/* Primary showcase image */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40, rotate: -2 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    viewport={{ once: true }}
+                    className="col-span-2 bg-white p-4 shadow-2xl hover:shadow-3xl transition-all duration-500 group relative"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&h=500"
+                      alt="Modern living room with sophisticated design elements and natural lighting"
+                      className="w-full h-64 object-cover transition-all duration-700 group-hover:scale-105"
+                    />
+                    
+                    {/* Image overlay */}
+                    <div className="absolute inset-4 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    {/* Corner accents */}
+                    <div className="absolute bottom-4 right-4 w-6 h-6 border-r border-b border-bronze/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </motion.div>
+                  
+                  {/* Secondary images with staggered animation */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 60, rotate: 2 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    viewport={{ once: true }}
+                    className="bg-white p-3 shadow-xl hover:shadow-2xl transition-all duration-500 group relative"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=350"
+                      alt="Elegant contemporary furniture and design details"
+                      className="w-full h-40 object-cover transition-all duration-500 group-hover:scale-110"
+                    />
+                    
+                    {/* Floating label */}
+                    <div className="absolute -bottom-2 -left-2 bg-bronze/90 text-white px-3 py-1 text-xs font-medium tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      THEN
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, y: 60, rotate: -2 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    viewport={{ once: true }}
+                    className="bg-white p-3 shadow-xl hover:shadow-2xl transition-all duration-500 group relative mt-8"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=350"
+                      alt="Modern luxury interior with sophisticated artistic elements"
+                      className="w-full h-40 object-cover transition-all duration-500 group-hover:scale-110"
+                    />
+                    
+                    {/* Floating label */}
+                    <div className="absolute -bottom-2 -right-2 bg-charcoal text-white px-3 py-1 text-xs font-medium tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      NOW
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Floating milestone badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: -8 }}
+                  transition={{ duration: 0.8, delay: 1 }}
+                  viewport={{ once: true }}
+                  className="absolute -top-8 -left-8 bg-white shadow-2xl p-6 border border-bronze/30 hover:shadow-3xl transition-all duration-500 group cursor-pointer"
+                >
+                  <div className="text-center">
+                    <div className="w-12 h-px bg-bronze mx-auto mb-3"></div>
+                    <div className="text-3xl font-italiana font-bold text-charcoal mb-1">10+</div>
+                    <p className="text-xs text-charcoal/70 font-medium tracking-wider uppercase">Years</p>
+                    <p className="text-xs text-charcoal/60 mt-1">Of Excellence</p>
+                    <div className="w-6 h-px bg-bronze/40 mx-auto mt-2"></div>
+                  </div>
+                  
+                  {/* Decorative corner */}
+                  <div className="absolute top-1 right-1 w-3 h-3 border-r border-t border-bronze/40"></div>
+                </motion.div>
+
+                {/* Floating achievement badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8, rotate: 8 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 6 }}
+                  transition={{ duration: 0.8, delay: 1.2 }}
+                  viewport={{ once: true }}
+                  className="absolute -bottom-6 -right-6 bg-bronze text-white p-4 shadow-2xl hover:shadow-3xl transition-all duration-500"
+                >
+                  <div className="text-center">
+                    <div className="text-2xl font-italiana font-bold mb-1">100+</div>
+                    <p className="text-xs font-medium tracking-wide uppercase">Projects</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
