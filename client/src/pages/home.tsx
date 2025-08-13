@@ -3333,41 +3333,6 @@ export default function Home() {
         className={`fixed bottom-8 right-8 z-50 ${!showBackToTop ? 'pointer-events-none' : ''}`}
       >
         <div className="relative group">
-          {/* Progress ring background */}
-          <svg className="w-16 h-16 transform -rotate-90 absolute inset-0" viewBox="0 0 64 64">
-            <circle
-              cx="32"
-              cy="32"
-              r="28"
-              fill="none"
-              stroke="rgba(255, 255, 255, 0.2)"
-              strokeWidth="3"
-              className="transition-all duration-700"
-            />
-            {/* Progress ring */}
-            <circle
-              cx="32"
-              cy="32"
-              r="28"
-              fill="none"
-              stroke="#d4af37"
-              strokeWidth="4"
-              strokeLinecap="round"
-              strokeDasharray="175.93"
-              strokeDashoffset={175.93 * (1 - scrollProgress)}
-              className="transition-all duration-100 ease-out opacity-90"
-              style={{ filter: 'drop-shadow(0 0 4px rgba(212, 175, 55, 0.5))' }}
-            />
-            {/* Gradient definition */}
-            <defs>
-              <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#d4af37" stopOpacity="1" />
-                <stop offset="50%" stopColor="#ffd700" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#d4af37" stopOpacity="1" />
-              </linearGradient>
-            </defs>
-          </svg>
-          
           {/* Button */}
           <motion.button
             onClick={scrollToTop}
@@ -3379,9 +3344,42 @@ export default function Home() {
             }}
             data-testid="button-back-to-top"
           >
+            {/* Progress ring inside button */}
+            <svg 
+              className="absolute inset-1 w-14 h-14 transform -rotate-90" 
+              viewBox="0 0 56 56"
+            >
+              {/* Background ring */}
+              <circle
+                cx="28"
+                cy="28"
+                r="25"
+                fill="none"
+                stroke="rgba(255, 255, 255, 0.1)"
+                strokeWidth="2"
+              />
+              {/* Progress ring */}
+              <circle
+                cx="28"
+                cy="28"
+                r="25"
+                fill="none"
+                stroke="#d4af37"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeDasharray="157.08"
+                strokeDashoffset={157.08 * (1 - scrollProgress)}
+                className="transition-all duration-100 ease-out"
+                style={{ 
+                  filter: 'drop-shadow(0 0 3px rgba(212, 175, 55, 0.8))',
+                  opacity: scrollProgress > 0 ? 1 : 0
+                }}
+              />
+            </svg>
+            
             {/* Up arrow */}
             <svg
-              className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1"
+              className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1 z-10 relative"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -3398,10 +3396,7 @@ export default function Home() {
             <div className="absolute inset-0 rounded-full bg-white/5 scale-0 group-hover:scale-110 transition-transform duration-700 ease-out"></div>
           </motion.button>
           
-          {/* Debug progress display */}
-          <div className={`absolute -top-8 left-1/2 transform -translate-x-1/2 bg-charcoal text-white text-xs px-2 py-1 rounded transition-opacity duration-300 ${showBackToTop ? 'opacity-100' : 'opacity-0'}`}>
-            {Math.round(scrollProgress * 100)}%
-          </div>
+
           
           {/* Simplified decorative elements */}
           <div className={`absolute -top-2 -right-2 w-3 h-3 bg-bronze/60 rounded-full transition-opacity duration-300 ${showBackToTop ? 'opacity-60' : 'opacity-0'}`}></div>
