@@ -328,15 +328,15 @@ export default function Home() {
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Enhanced Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-3 cursor-pointer"
               onClick={() => scrollToSection('home')}
             >
-              <div className={`w-12 h-12 flex items-center justify-center transition-all duration-300 ${
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-300 ${
                 isScrolled 
                   ? 'bg-transparent shadow-lg' 
                   : 'bg-transparent shadow-xl'
@@ -344,13 +344,13 @@ export default function Home() {
                 <img 
                   src={logoUrl} 
                   alt="KJ Design Logo"
-                  className={`w-8 h-8 object-contain transition-all duration-300 ${
+                  className={`w-6 h-6 sm:w-8 sm:h-8 object-contain transition-all duration-300 ${
                     isDarkBackground ? 'filter brightness-0 invert' : ''
                   }`}
                 />
               </div>
               <div className="hidden md:block">
-                <h1 className={`font-italiana text-xl tracking-wide transition-all duration-700 ease-out ${
+                <h1 className={`font-italiana text-lg sm:text-xl tracking-wide transition-all duration-700 ease-out ${
                   isDarkBackground
                     ? 'text-white' 
                     : 'text-charcoal'
@@ -374,7 +374,7 @@ export default function Home() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.1 * index }}
                       whileHover={{ y: -2 }}
-                      className={`relative px-4 py-2 font-medium text-sm uppercase tracking-wider transition-all duration-700 ease-out group ${
+                      className={`relative px-3 py-2 font-medium text-xs sm:text-sm uppercase tracking-wider transition-all duration-700 ease-out group mobile-touch-target ${
                         isDarkBackground
                           ? 'text-white hover:text-bronze' 
                           : 'text-charcoal/80 hover:text-bronze'
@@ -397,7 +397,7 @@ export default function Home() {
                     transition={{ duration: 0.5, delay: 0.1 * index }}
                     whileHover={{ y: -2 }}
                     onClick={() => scrollToSection(item.id)}
-                    className={`relative px-4 py-2 font-medium text-sm uppercase tracking-wider transition-all duration-700 ease-out group ${
+                    className={`relative px-3 py-2 font-medium text-xs sm:text-sm uppercase tracking-wider transition-all duration-700 ease-out group mobile-touch-target ${
                       activeSection === item.id
                         ? 'text-bronze'
                         : isDarkBackground
@@ -462,8 +462,8 @@ export default function Home() {
             isNavOpen ? 'pointer-events-auto' : 'pointer-events-none'
           }`}
         >
-          <div className="max-w-7xl mx-auto px-6 py-6">
-            <div className="space-y-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+            <div className="space-y-3 sm:space-y-4">
               {navigationItems.map((item, index) => (
                 <motion.button
                   key={item.id}
@@ -474,7 +474,7 @@ export default function Home() {
                   }}
                   transition={{ duration: 0.3, delay: isNavOpen ? 0.1 * index : 0 }}
                   onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-4 py-3 font-medium text-sm uppercase tracking-wider transition-all duration-300 border-l-2 ${
+                  className={`block w-full text-left px-4 py-3 font-medium text-sm uppercase tracking-wider transition-all duration-300 border-l-2 mobile-touch-target ${
                     activeSection === item.id
                       ? 'text-bronze border-bronze bg-bronze/5'
                       : 'text-charcoal/80 border-transparent hover:text-bronze hover:border-bronze/30 hover:bg-bronze/5'
@@ -493,7 +493,7 @@ export default function Home() {
       </motion.nav>
 
       {/* Hero Section - Sophisticated and Immersive Design */}
-      <section id="home" className="relative h-screen flex overflow-hidden">
+      <section id="home" className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden">
         {/* Artistic Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Elegant geometric shapes */}
@@ -508,23 +508,23 @@ export default function Home() {
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="w-1/2 bg-gradient-to-br from-cream via-cream to-warm-white flex flex-col justify-center px-16 lg:px-24 relative"
+          className="w-full lg:w-1/2 bg-gradient-to-br from-cream via-cream to-warm-white flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 relative min-h-screen lg:min-h-0"
         >
           {/* Elegant side accent */}
-          <div className="absolute left-0 top-1/2 w-2 h-40 bg-gradient-to-b from-transparent via-bronze to-transparent transform -translate-y-1/2 opacity-60"></div>
+          <div className="absolute left-0 top-1/2 w-1 sm:w-2 h-20 sm:h-40 bg-gradient-to-b from-transparent via-bronze to-transparent transform -translate-y-1/2 opacity-60"></div>
           
           {/* Enhanced Logo with sophisticated styling */}
           <motion.div 
             initial={{ scale: 0.6, opacity: 0, rotate: -10 }}
             animate={{ scale: 1, opacity: 1, rotate: 0 }}
             transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 100 }}
-            className="relative mb-20 group"
+            className="relative mb-8 sm:mb-12 lg:mb-20 group"
           >
-            <div className="w-24 h-24 bg-gradient-to-br from-charcoal to-charcoal/90 flex items-center justify-center shadow-2xl relative overflow-hidden cursor-pointer transition-all duration-500 group-hover:shadow-3xl group-hover:-translate-y-2">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-charcoal to-charcoal/90 flex items-center justify-center shadow-2xl relative overflow-hidden cursor-pointer transition-all duration-500 group-hover:shadow-3xl group-hover:-translate-y-2">
               {/* Logo background pattern */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-bronze/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              <span className="text-cream text-4xl font-italiana font-bold tracking-wider relative z-10 group-hover:scale-110 transition-transform duration-300">K</span>
+              <span className="text-cream text-2xl sm:text-3xl lg:text-4xl font-italiana font-bold tracking-wider relative z-10 group-hover:scale-110 transition-transform duration-300">K</span>
               
               {/* Decorative corners */}
               <div className="absolute top-1 right-1 w-3 h-3 border-r border-t border-bronze/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -545,9 +545,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="mb-12 relative"
+            className="mb-6 sm:mb-8 lg:mb-12 relative"
           >
-            <h1 className="font-italiana text-6xl lg:text-8xl font-normal leading-[0.85] text-charcoal tracking-wide relative">
+            <h1 className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-normal leading-[0.85] text-charcoal tracking-wide relative">
               <span className="inline-block">KJESS</span>
               <br />
               <span className="inline-block relative">
@@ -578,9 +578,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mb-12 relative"
+            className="mb-6 sm:mb-8 lg:mb-12 relative"
           >
-            <p className="text-2xl lg:text-3xl text-charcoal/85 mb-4 font-italiana italic tracking-wide leading-relaxed">
+            <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-charcoal/85 mb-4 font-italiana italic tracking-wide leading-relaxed">
               Interior Design & <span className="text-bronze font-medium">Luxury</span> Furniture
             </p>
             
@@ -599,7 +599,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 1 }}
             className="space-y-6"
           >
-            <p className="text-lg text-charcoal/70 font-italiana font-light tracking-wider mb-6">
+            <p className="text-base sm:text-lg text-charcoal/70 font-italiana font-light tracking-wider mb-4 sm:mb-6">
               Discover Our <span className="font-medium text-charcoal">Premium Portfolio</span>
             </p>
             
@@ -608,7 +608,7 @@ export default function Home() {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm px-8 py-4 border border-bronze/30 hover:bg-bronze hover:text-white transition-all duration-300 cursor-pointer group"
+                className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm px-4 sm:px-6 lg:px-8 py-3 sm:py-4 border border-bronze/30 hover:bg-bronze hover:text-white transition-all duration-300 cursor-pointer group"
               >
                 <span className="text-charcoal group-hover:text-white font-italiana text-sm uppercase tracking-wider font-medium">
                   Explore Our Work
@@ -626,15 +626,15 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
-              className="flex items-center space-x-8 mt-8"
+              className="flex items-center space-x-4 sm:space-x-6 lg:space-x-8 mt-6 sm:mt-8"
             >
               <div className="text-center">
-                <div className="text-2xl font-italiana font-bold text-charcoal">100+</div>
+                <div className="text-xl sm:text-2xl font-italiana font-bold text-charcoal">100+</div>
                 <div className="text-xs text-charcoal/60 uppercase tracking-wide">Projects</div>
               </div>
-              <div className="w-px h-8 bg-bronze/30"></div>
+              <div className="w-px h-6 sm:h-8 bg-bronze/30"></div>
               <div className="text-center">
-                <div className="text-2xl font-italiana font-bold text-charcoal">5+</div>
+                <div className="text-xl sm:text-2xl font-italiana font-bold text-charcoal">5+</div>
                 <div className="text-xs text-charcoal/60 uppercase tracking-wide">Years</div>
               </div>
             </motion.div>
@@ -647,7 +647,7 @@ export default function Home() {
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.4 }}
           style={{ y: heroY }}
-          className="w-1/2 h-full relative overflow-hidden group"
+          className="w-full lg:w-1/2 h-64 sm:h-80 md:h-96 lg:h-full relative overflow-hidden group order-1 lg:order-2"
         >
           {/* Sliding Image Container */}
           <div className="relative w-full h-full overflow-hidden">
@@ -684,7 +684,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/5 via-transparent to-transparent"></div>
             
             {/* Elegant slide indicators */}
-            <div className="absolute bottom-8 left-8 flex space-x-2">
+            <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-4 sm:left-6 lg:left-8 flex space-x-2">
               {heroImages.map((_, index) => (
                 <motion.button
                   key={index}
@@ -693,7 +693,7 @@ export default function Home() {
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <div className={`w-8 h-0.5 transition-all duration-500 ${
+                  <div className={`w-6 sm:w-8 h-0.5 transition-all duration-500 ${
                     index === currentImageIndex 
                       ? 'bg-bronze shadow-lg' 
                       : 'bg-cream/40 hover:bg-cream/70'
@@ -718,10 +718,10 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
-            className="absolute top-12 right-12 bg-white/90 backdrop-blur-sm p-4 shadow-xl border border-bronze/20 z-10"
+            className="absolute top-4 sm:top-8 lg:top-12 right-4 sm:right-8 lg:right-12 bg-white/90 backdrop-blur-sm p-2 sm:p-3 lg:p-4 shadow-xl border border-bronze/20 z-10"
           >
             <div className="text-center">
-              <div className="w-8 h-px bg-bronze mx-auto mb-2"></div>
+              <div className="w-6 sm:w-8 h-px bg-bronze mx-auto mb-1 sm:mb-2"></div>
               <p className="text-xs text-charcoal font-medium tracking-wider uppercase">Premium</p>
               <p className="text-xs text-charcoal/70">Design Studio</p>
             </div>
@@ -755,7 +755,7 @@ export default function Home() {
       </section>
 
       {/* Introduction Section - Sophisticated and Luxurious Design */}
-      <section className="py-32 bg-gradient-to-br from-white via-cream/10 to-white relative overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-white via-cream/10 to-white relative overflow-hidden">
         {/* Artistic background elements */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-16 right-16 w-80 h-80 border border-bronze/15 rotate-45 opacity-60"></div>
@@ -857,17 +857,17 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="mb-16"
+                className="mb-8 sm:mb-12 lg:mb-16"
               >
                 <div className="relative">
-                  <h2 className="font-italiana text-7xl md:text-8xl mb-8 text-charcoal leading-[0.8] tracking-wider relative">
+                  <h2 className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 sm:mb-6 lg:mb-8 text-charcoal leading-[0.8] tracking-wider relative">
                     INTRO<span className="text-bronze">DUCTION</span>
                   </h2>
                   {/* Enhanced decorative underline */}
                   <div className="absolute -bottom-2 left-0 w-32 h-1 bg-gradient-to-r from-bronze via-bronze/60 to-transparent"></div>
                 </div>
                 
-                <p className="text-xl text-charcoal/70 font-light italic tracking-wide mt-6">
+                <p className="text-base sm:text-lg lg:text-xl text-charcoal/70 font-light italic tracking-wide mt-4 sm:mt-6">
                   Where creativity meets exceptional craftsmanship
                 </p>
               </motion.div>
@@ -950,8 +950,8 @@ export default function Home() {
           <div className="absolute top-3/4 right-1/5 w-2 h-2 bg-charcoal/25 rounded-full"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-24 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-24 items-center">
             {/* Left Column - Enhanced Content Section */}
             <motion.div
               initial={{ opacity: 0, x: -80 }}
