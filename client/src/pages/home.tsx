@@ -16,7 +16,7 @@ import { Link } from "wouter";
 import { CollaborationPopup, useCollaborationPopup } from "@/components/collaboration-popup";
 import { AnimatePresence } from "framer-motion";
 import { useActivityTracking } from "@/lib/cookies";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
@@ -2282,8 +2282,8 @@ export default function Home() {
 
 
 
-      {/* Testimonials Section - Interactive & Compact Design */}
-      <section id="testimonials" className="py-20 bg-charcoal relative overflow-hidden">
+      {/* Testimonials Section - Mobile App Style */}
+      <section id="testimonials" className="mobile-app-section bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
         {/* Enhanced background elements */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90"></div>
@@ -2301,169 +2301,92 @@ export default function Home() {
           ></motion.div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Enhanced header with sophisticated styling */}
+        <div className="mobile-app-container relative z-10">
+          {/* Mobile App Header */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12"
           >
-            {/* Decorative accent line */}
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "120px" }}
-              transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
-            ></motion.div>
-            
-            <div className="relative">
-              <h2 className="font-italiana text-5xl md:text-7xl mb-6 text-cream leading-tight tracking-wide">
-                CLIENT
-                <span className="block text-bronze">TESTIMONIALS</span>
-              </h2>
-              
-              {/* Floating accent elements */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                viewport={{ once: true }}
-                className="absolute -top-4 -right-4 w-6 h-6 border border-bronze/40 rotate-45"
-              ></motion.div>
-            </div>
-            
-            <div className="flex items-center justify-center space-x-4 mb-6">
-              <div className="w-12 h-px bg-bronze/60"></div>
-              <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
-              <div className="w-16 h-px bg-bronze/40"></div>
-              <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
-              <div className="w-12 h-px bg-bronze/60"></div>
-            </div>
-            
-            <p className="text-lg text-cream/80 font-light tracking-wide">What our valued clients say about us</p>
+            <h2 className="mobile-app-hero-text text-white mb-4">
+              CLIENT <span className="text-bronze">STORIES</span>
+            </h2>
+            <div className="w-16 h-1 bg-bronze rounded-full mx-auto mb-4"></div>
+            <p className="mobile-app-subtitle text-gray-300">What our clients say about us</p>
           </motion.div>
 
-          {/* Interactive testimonials with tabs */}
-          <Tabs defaultValue="client1" className="w-full" onValueChange={(value) => setActiveTab(value)}>
-            <div className="flex flex-col lg:flex-row gap-12">
-              {/* Tab navigation */}
-              <TabsList className="lg:flex-col lg:h-auto bg-cream/5 border border-cream/10 p-2 space-y-2 lg:min-w-[200px]">
-                <TabsTrigger 
-                  value="client1" 
-                  className="w-full justify-start p-4 data-[state=active]:bg-bronze data-[state=active]:text-white text-cream/70 hover:text-cream transition-colors"
-                  data-testid="tab-client1"
-                >
-                  <div className="text-left">
-                    <div className="font-medium">Sarah M.</div>
-                    <div className="text-xs opacity-75">Residential Client</div>
+          {/* Mobile App-Style Testimonial Cards */}
+          <div className="mobile-app-grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="mobile-app-card group hover:shadow-2xl transition-all duration-300 relative"
+              >
+                <div className="p-6">
+                  {/* Rating Stars */}
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-bronze mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
                   </div>
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="client2" 
-                  className="w-full justify-start p-4 data-[state=active]:bg-bronze data-[state=active]:text-white text-cream/70 hover:text-cream transition-colors"
-                  data-testid="tab-client2"
-                >
-                  <div className="text-left">
-                    <div className="font-medium">James K.</div>
-                    <div className="text-xs opacity-75">Commercial Project</div>
-                  </div>
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="client3" 
-                  className="w-full justify-start p-4 data-[state=active]:bg-bronze data-[state=active]:text-white text-cream/70 hover:text-cream transition-colors"
-                  data-testid="tab-client3"
-                >
-                  <div className="text-left">
-                    <div className="font-medium">Maria L.</div>
-                    <div className="text-xs opacity-75">Custom Furniture</div>
-                  </div>
-                </TabsTrigger>
-              </TabsList>
-              
-              {/* Tab content */}
-              <div className="flex-1">
-                <TabsContent value="client1" className="space-y-0">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-cream/5 backdrop-blur-sm border border-cream/10 p-8 relative group"
-                  >
-                    <div className="absolute top-6 left-6 text-6xl text-bronze/30 font-serif leading-none">"</div>
-                    <div className="pt-8">
-                      <p className="text-cream/90 text-lg leading-relaxed mb-6">
-                        KJESS Designs transformed our living space into something truly extraordinary. Their attention to detail and understanding of our lifestyle created a home that feels both luxurious and comfortable.
-                      </p>
-                      <div className="flex items-center space-x-1 mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-bronze text-bronze" />
-                        ))}
-                      </div>
-                      <div>
-                        <p className="text-bronze font-medium">Sarah Mitchell</p>
-                        <p className="text-cream/60 text-sm">Residential Client - Kigali Heights</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </TabsContent>
-                
-                <TabsContent value="client2" className="space-y-0">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-cream/5 backdrop-blur-sm border border-cream/10 p-8 relative group"
-                  >
-                    <div className="absolute top-6 left-6 text-6xl text-bronze/30 font-serif leading-none">"</div>
-                    <div className="pt-8">
-                      <p className="text-cream/90 text-lg leading-relaxed mb-6">
-                        Professional, creative, and exceptionally skilled. KJESS Designs delivered our office renovation on time and exceeded all expectations. The space now reflects our brand perfectly.
-                      </p>
-                      <div className="flex items-center space-x-1 mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-bronze text-bronze" />
-                        ))}
-                      </div>
-                      <div>
-                        <p className="text-bronze font-medium">James Kirabo</p>
-                        <p className="text-cream/60 text-sm">Commercial Project - Tech Hub Kigali</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </TabsContent>
-                
-                <TabsContent value="client3" className="space-y-0">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-cream/5 backdrop-blur-sm border border-cream/10 p-8 relative group"
-                  >
-                    <div className="absolute top-6 left-6 text-6xl text-bronze/30 font-serif leading-none">"</div>
-                    <div className="pt-8">
-                      <p className="text-cream/90 text-lg leading-relaxed mb-6">
-                        The custom furniture pieces they created for our home are absolutely stunning. Each piece is a work of art that perfectly fits our space and style. Truly exceptional craftsmanship.
-                      </p>
-                      <div className="flex items-center space-x-1 mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-bronze text-bronze" />
-                        ))}
-                      </div>
-                      <div>
-                        <p className="text-bronze font-medium">Maria Lopez</p>
-                        <p className="text-cream/60 text-sm">Custom Furniture - Villa Project</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </TabsContent>
-              </div>
-            </div>
-          </Tabs>
 
-          {/* Team showcase section moved to separate page */}
+                  {/* Testimonial Content */}
+                  <blockquote className="mobile-app-body text-gray-600 mb-6 italic">
+                    "{testimonial.content}"
+                  </blockquote>
+
+                  {/* Client Info */}
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-bronze/20 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-bronze font-bold text-lg">
+                        {testimonial.name.charAt(0)}
+                      </span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-500">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hover Effect Accent */}
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-bronze to-orange-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile App-Style Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16"
+          >
+            {[
+              { number: "100+", label: "Projects" },
+              { number: "95%", label: "Satisfaction" },
+              { number: "5+", label: "Years" },
+              { number: "24/7", label: "Support" }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/20"
+              >
+                <div className="text-2xl font-bold text-bronze mb-1">{stat.number}</div>
+                <div className="text-xs text-gray-300 uppercase tracking-wider">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
