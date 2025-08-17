@@ -316,20 +316,20 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-cream text-charcoal overflow-x-hidden">
+    <div className="min-h-screen bg-gray-50 text-gray-900 overflow-x-hidden">
       {/* Sophisticated Navigation Bar */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 mobile-safe-top ${
           isScrolled 
-            ? 'bg-cream/95 backdrop-blur-lg shadow-lg border-b border-bronze/10' 
-            : 'bg-transparent'
+            ? 'bg-white/95 backdrop-blur-xl shadow-xl border-b border-gray-200' 
+            : 'bg-black/20 backdrop-blur-sm'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="mx-4 sm:mx-6">
+          <div className="flex items-center justify-between h-16">
             {/* Enhanced Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -519,91 +519,91 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
         </div>
 
-        {/* Main Content Container - Mobile First Design */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          {/* Logo Section - Mobile Optimized */}
+        {/* Mobile App-Style Content Container */}
+        <div className="relative z-10 mobile-app-container text-center min-h-screen flex flex-col justify-center mobile-safe-top mobile-safe-bottom">
+          {/* App-Style Logo Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-8 sm:mb-12"
+            initial={{ opacity: 0, scale: 0.8, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mb-8"
           >
-            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-6 sm:mb-8 bg-white/15 backdrop-blur-sm rounded-lg flex items-center justify-center shadow-2xl border border-white/20">
-              <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-italiana">K</span>
+            <div className="w-20 h-20 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-xl border border-white/30">
+              <span className="text-3xl font-bold text-white font-italiana">K</span>
             </div>
           </motion.div>
 
-          {/* Brand Name - Mobile Responsive Typography */}
-          <motion.h1
+          {/* Mobile-First Brand Typography */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-            className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 sm:mb-6 text-white leading-[0.85] tracking-wider"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="mb-8"
           >
-            KJESS
-            <br />
-            <span className="text-bronze">DESIGNS</span>
-          </motion.h1>
+            <h1 className="mobile-app-hero-text text-white mb-2">
+              KJESS
+            </h1>
+            <h1 className="mobile-app-hero-text text-bronze">
+              DESIGNS
+            </h1>
+          </motion.div>
 
-          {/* Elegant Divider - Mobile Responsive */}
+          {/* Mobile App Divider */}
           <motion.div
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: "6rem", opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-6 sm:mb-8"
+            animate={{ width: "4rem", opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="h-1 bg-bronze rounded-full mx-auto mb-6"
           />
 
-          {/* Tagline - Mobile Optimized */}
+          {/* App-Style Tagline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-cream font-light italic tracking-wide mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mobile-app-subtitle text-cream/90 mb-4"
           >
             Interior Design & Luxury Furniture
           </motion.p>
 
-          {/* Portfolio Introduction - Mobile Friendly */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.9 }}
-            className="text-sm sm:text-base md:text-lg text-cream/90 font-light mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mobile-app-body text-cream/80 mb-8 px-4"
           >
             Discover Our Premium Portfolio
           </motion.p>
 
-          {/* Call to Action Button - Mobile Touch Friendly */}
+          {/* Mobile App-Style CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.2 }}
-            className="mb-12 sm:mb-16"
+            transition={{ duration: 0.8, delay: 1 }}
+            className="mb-12 px-8"
           >
             <button
               onClick={() => scrollToSection('portfolio')}
-              className="group relative px-8 sm:px-12 py-3 sm:py-4 bg-transparent border-2 border-bronze text-bronze font-medium uppercase tracking-widest transition-all duration-500 hover:bg-bronze hover:text-white overflow-hidden mobile-touch-target text-sm sm:text-base"
+              className="mobile-app-button bg-bronze text-white hover:bg-bronze/90"
             >
-              <span className="relative z-10">Explore Our Work</span>
-              <div className="absolute inset-0 bg-bronze transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              Explore Our Work
             </button>
           </motion.div>
 
-          {/* Statistics - Mobile Responsive Layout */}
+          {/* Mobile App Stats Cards */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex items-center justify-center space-x-4 sm:space-x-6 lg:space-x-8"
+            className="grid grid-cols-2 gap-4 px-8"
           >
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-italiana font-bold text-cream mb-1 sm:mb-2">100+</div>
-              <div className="text-xs sm:text-sm text-cream/70 uppercase tracking-wider">Projects</div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <div className="text-2xl font-bold text-cream mb-1">100+</div>
+              <div className="text-xs text-cream/70 uppercase tracking-wider">Projects</div>
             </div>
-            <div className="w-px h-12 sm:h-16 bg-bronze/30"></div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-italiana font-bold text-cream mb-1 sm:mb-2">5+</div>
-              <div className="text-xs sm:text-sm text-cream/70 uppercase tracking-wider">Years</div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+              <div className="text-2xl font-bold text-cream mb-1">5+</div>
+              <div className="text-xs text-cream/70 uppercase tracking-wider">Years</div>
             </div>
           </motion.div>
         </div>
@@ -629,8 +629,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Introduction Section - Sophisticated and Luxurious Design */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-white via-cream/10 to-white relative overflow-hidden">
+      {/* Introduction Section - Mobile App Style */}
+      <section className="mobile-app-section bg-white relative overflow-hidden">
         {/* Artistic background elements */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-16 right-16 w-80 h-80 border border-bronze/15 rotate-45 opacity-60"></div>

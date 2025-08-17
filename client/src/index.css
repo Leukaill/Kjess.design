@@ -137,42 +137,81 @@
 }
 
 @layer utilities {
-  /* Mobile responsiveness utilities */
-  .mobile-optimized {
-    @apply text-sm sm:text-base lg:text-lg;
+  /* Mobile app-like utilities */
+  .mobile-app-container {
+    @apply px-6 py-8 sm:px-8 sm:py-12 max-w-lg mx-auto sm:max-w-none;
   }
   
-  .mobile-padding {
-    @apply px-4 sm:px-6 lg:px-8;
+  .mobile-app-spacing {
+    @apply space-y-6 sm:space-y-8;
   }
   
-  .mobile-margin {
-    @apply mx-4 sm:mx-6 lg:mx-8;
+  .mobile-app-card {
+    @apply bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden;
   }
   
-  .mobile-section-padding {
-    @apply py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24;
+  .mobile-app-hero-text {
+    @apply text-4xl sm:text-5xl font-bold leading-tight tracking-wider;
   }
   
-  .mobile-grid {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8;
+  .mobile-app-subtitle {
+    @apply text-lg sm:text-xl font-medium;
   }
   
-  .mobile-hero-text {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+  .mobile-app-body {
+    @apply text-base leading-relaxed;
   }
   
-  .mobile-title {
-    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
-  }
-  
-  .mobile-subtitle {
-    @apply text-base sm:text-lg md:text-xl;
-  }
-  
-  .mobile-touch-target {
-    @apply min-h-[44px] min-w-[44px];
+  .mobile-app-button {
+    @apply w-full py-4 px-6 rounded-xl font-semibold text-center transition-all duration-300 active:scale-95;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .mobile-app-section {
+    @apply py-16 sm:py-20;
+  }
+  
+  .mobile-app-grid {
+    @apply grid grid-cols-1 gap-6 sm:gap-8;
+  }
+  
+  /* Mobile-first navigation */
+  .mobile-nav-item {
+    @apply py-4 px-6 text-lg font-medium transition-all duration-300 active:bg-gray-100 rounded-lg;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Touch-friendly interactions */
+  .touch-friendly {
+    @apply min-h-[48px] min-w-[48px];
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Mobile app animations */
+  .mobile-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Mobile app status bar safe area */
+  .mobile-safe-top {
+    padding-top: max(env(safe-area-inset-top), 1rem);
+  }
+  
+  .mobile-safe-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 1rem);
   }
   
   /* Touch-friendly interactions */
