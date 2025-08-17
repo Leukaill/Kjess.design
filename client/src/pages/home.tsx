@@ -11,6 +11,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X } from "lucide-react";
+import logoUrl from "@assets/image_1755432338671.png";
+import { Link } from "wouter";
+import { CollaborationPopup, useCollaborationPopup } from "@/components/collaboration-popup";
+import { AnimatePresence } from "framer-motion";
+import { useActivityTracking } from "@/lib/cookies";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -28,6 +33,12 @@ export default function Home() {
   
   // Hero carousel states
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Collaboration popup
+  const { showPopup, closePopup } = useCollaborationPopup();
+  
+  // Activity tracking
+  const { trackPageView, trackInteraction } = useActivityTracking();
   
   // Hero images array
   const heroImages = [
@@ -60,13 +71,13 @@ export default function Home() {
 
   // Navigation items
   const navigationItems = [
-    { id: "home", label: "Home" },
-    { id: "vision", label: "Vision" },
-    { id: "about", label: "About" },
-    { id: "testimonials", label: "Testimonials" },
-    { id: "team", label: "Team" },
-    { id: "gallery", label: "Gallery" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: "Home", type: "scroll" },
+    { id: "vision", label: "Vision", type: "scroll" },
+    { id: "about", label: "About", type: "page", href: "/about" },
+    { id: "testimonials", label: "Testimonials", type: "scroll" },
+    { id: "team", label: "Team", type: "scroll" },
+    { id: "gallery", label: "Gallery", type: "page", href: "/gallery" },
+    { id: "contact", label: "Contact", type: "scroll" },
   ];
 
   // Auto-sliding hero images with infinite loop
@@ -79,6 +90,11 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
+
+  // Track page view on mount
+  useEffect(() => {
+    trackPageView('/');
+  }, [trackPageView]);
 
   // Smart background detection and scroll logic with throttling
   useEffect(() => {
@@ -184,6 +200,7 @@ export default function Home() {
         top: offsetTop,
         behavior: 'smooth'
       });
+      trackInteraction(`scroll_to_${sectionId}`);
     }
     setIsNavOpen(false);
   };
@@ -314,10 +331,16 @@ export default function Home() {
             >
               <div className={`w-12 h-12 flex items-center justify-center transition-all duration-300 ${
                 isScrolled 
-                  ? 'bg-charcoal shadow-lg' 
-                  : 'bg-charcoal/90 shadow-xl'
+                  ? 'bg-transparent shadow-lg' 
+                  : 'bg-transparent shadow-xl'
               }`}>
-                <span className="text-cream text-xl font-italiana font-bold drop-shadow-lg">K</span>
+                <img 
+                  src={logoUrl} 
+                  alt="KJ Design Logo"
+                  className={`w-8 h-8 object-contain transition-all duration-300 ${
+                    isDarkBackground ? 'filter brightness-0 invert' : ''
+                  }`}
+                />
               </div>
               <div className="hidden md:block">
                 <h1 className={`font-italiana text-xl tracking-wide transition-all duration-700 ease-out ${
@@ -337,42 +360,67 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
               {navigationItems.map((item, index) => (
-                <motion.button
-                  key={item.id}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
-                  whileHover={{ y: -2 }}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`relative px-4 py-2 font-medium text-sm uppercase tracking-wider transition-all duration-700 ease-out group ${
-                    activeSection === item.id
-                      ? 'text-bronze'
-                      : isDarkBackground
-                        ? 'text-white hover:text-bronze' 
-                        : 'text-charcoal/80 hover:text-bronze'
-                  }`}
-                  style={{
-                    textShadow: isDarkBackground
-                      ? '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.5)'
-                      : '0 1px 3px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.1)'
-                  }}
-                >
-                  {item.label}
-                  
-                  {/* Active indicator */}
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze shadow-sm"
-                    initial={false}
-                    animate={{
-                      scaleX: activeSection === item.id ? 1 : 0,
-                      opacity: activeSection === item.id ? 1 : 0
+                item.type === "page" && item.href ? (
+                  <Link key={item.id} href={item.href} data-testid={`link-${item.id}`}>
+                    <motion.button
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 * index }}
+                      whileHover={{ y: -2 }}
+                      className={`relative px-4 py-2 font-medium text-sm uppercase tracking-wider transition-all duration-700 ease-out group ${
+                        isDarkBackground
+                          ? 'text-white hover:text-bronze' 
+                          : 'text-charcoal/80 hover:text-bronze'
+                      }`}
+                      style={{
+                        textShadow: isDarkBackground
+                          ? '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.5)'
+                          : '0 1px 3px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.1)'
+                      }}
+                    >
+                      {item.label}
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left shadow-sm" />
+                    </motion.button>
+                  </Link>
+                ) : (
+                  <motion.button
+                    key={item.id}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 * index }}
+                    whileHover={{ y: -2 }}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`relative px-4 py-2 font-medium text-sm uppercase tracking-wider transition-all duration-700 ease-out group ${
+                      activeSection === item.id
+                        ? 'text-bronze'
+                        : isDarkBackground
+                          ? 'text-white hover:text-bronze' 
+                          : 'text-charcoal/80 hover:text-bronze'
+                    }`}
+                    style={{
+                      textShadow: isDarkBackground
+                        ? '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.5)'
+                        : '0 1px 3px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.1)'
                     }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  
-                  {/* Hover effect */}
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left shadow-sm" />
-                </motion.button>
+                    data-testid={`button-${item.id}`}
+                  >
+                    {item.label}
+                    
+                    {/* Active indicator */}
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze shadow-sm"
+                      initial={false}
+                      animate={{
+                        scaleX: activeSection === item.id ? 1 : 0,
+                        opacity: activeSection === item.id ? 1 : 0
+                      }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    
+                    {/* Hover effect */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-bronze/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left shadow-sm" />
+                  </motion.button>
+                )
               ))}
             </div>
 
@@ -549,20 +597,22 @@ export default function Home() {
             </p>
             
             {/* Interactive CTA Button */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm px-8 py-4 border border-bronze/30 hover:bg-bronze hover:text-white transition-all duration-300 cursor-pointer group"
-            >
-              <span className="text-charcoal group-hover:text-white font-italiana text-sm uppercase tracking-wider font-medium">
-                Explore Our Work
-              </span>
+            <Link href="/gallery" data-testid="link-explore-work">
               <motion.div
-                initial={{ x: 0 }}
-                whileHover={{ x: 5 }}
-                className="w-5 h-px bg-bronze group-hover:bg-white transition-colors duration-300"
-              ></motion.div>
-            </motion.div>
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm px-8 py-4 border border-bronze/30 hover:bg-bronze hover:text-white transition-all duration-300 cursor-pointer group"
+              >
+                <span className="text-charcoal group-hover:text-white font-italiana text-sm uppercase tracking-wider font-medium">
+                  Explore Our Work
+                </span>
+                <motion.div
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 5 }}
+                  className="w-5 h-px bg-bronze group-hover:bg-white transition-colors duration-300"
+                ></motion.div>
+              </motion.div>
+            </Link>
 
             {/* Floating Stats */}
             <motion.div
@@ -2120,21 +2170,23 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="pt-8"
               >
-                <div className="bg-gradient-to-r from-cream to-white p-6 border-l-4 border-bronze shadow-lg relative">
-                  <div className="absolute top-0 right-0 w-10 h-10 border-r border-t border-bronze/25"></div>
-                  <h4 className="font-italiana text-xl font-bold text-charcoal mb-2 tracking-wide">
-                    View Complete Portfolio
-                  </h4>
-                  <p className="text-charcoal/70 leading-relaxed mb-4">
-                    Explore our extensive collection of transformative interior design projects.
-                  </p>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-px bg-bronze"></div>
-                    <span className="text-bronze text-sm font-medium tracking-wider uppercase">
-                      Discover More
-                    </span>
+                <Link href="/gallery" data-testid="link-view-portfolio">
+                  <div className="bg-gradient-to-r from-cream to-white p-6 border-l-4 border-bronze shadow-lg relative cursor-pointer hover:shadow-xl transition-all duration-300 group">
+                    <div className="absolute top-0 right-0 w-10 h-10 border-r border-t border-bronze/25"></div>
+                    <h4 className="font-italiana text-xl font-bold text-charcoal mb-2 tracking-wide group-hover:text-bronze transition-colors duration-300">
+                      View Complete Portfolio
+                    </h4>
+                    <p className="text-charcoal/70 leading-relaxed mb-4">
+                      Explore our extensive collection of transformative interior design projects.
+                    </p>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-px bg-bronze group-hover:w-16 transition-all duration-300"></div>
+                      <span className="text-bronze text-sm font-medium tracking-wider uppercase group-hover:text-charcoal transition-colors duration-300">
+                        Discover More
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             </motion.div>
           </div>
@@ -3411,6 +3463,10 @@ export default function Home() {
           </div>
         </div>
       </motion.div>
+      {/* Collaboration Popup */}
+      <AnimatePresence>
+        {showPopup && <CollaborationPopup onClose={closePopup} />}
+      </AnimatePresence>
     </div>
   );
 }
