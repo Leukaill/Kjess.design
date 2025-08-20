@@ -57,6 +57,8 @@ const Gallery = () => {
   const [expandedImageAlt, setExpandedImageAlt] = useState<string>("");
   const [isLiked, setIsLiked] = useState<Record<number, boolean>>({});
   const [shareMenuOpen, setShareMenuOpen] = useState<number | null>(null);
+  const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
+  const [currentShareItem, setCurrentShareItem] = useState<typeof galleryItems[0] | null>(null);
 
   // ONLY authentic KJESS Designs project photos
   const galleryItems = [
@@ -321,6 +323,17 @@ const Gallery = () => {
     return messages;
   }, []);
 
+  const openShareModal = useCallback((item: typeof galleryItems[0]) => {
+    setCurrentShareItem(item);
+    setShareModalOpen(true);
+    setShareMenuOpen(null);
+  }, []);
+
+  const closeShareModal = useCallback(() => {
+    setShareModalOpen(false);
+    setCurrentShareItem(null);
+  }, []);
+
   const shareToSocial = useCallback((platform: string, item: typeof galleryItems[0]) => {
     const currentUrl = window.location.href;
     const messages = generateShareMessage(item);
@@ -341,8 +354,8 @@ const Gallery = () => {
     }
     
     window.open(shareUrls[platform as keyof typeof shareUrls], '_blank', 'width=600,height=400');
-    setShareMenuOpen(null);
-  }, [generateShareMessage]);
+    closeShareModal();
+  }, [generateShareMessage, closeShareModal]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream to-white">
@@ -515,71 +528,13 @@ const Gallery = () => {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          setShareMenuOpen(shareMenuOpen === item.id ? null : item.id);
+                          openShareModal(item);
                         }}
                         className="w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110"
                         data-testid={`button-share-${item.id}`}
                       >
                         <Share2 className="w-4 h-4 text-charcoal/60 hover:text-bronze" />
                       </button>
-                      
-                      {/* Social Share Menu for Gallery Items */}
-                      <AnimatePresence>
-                        {shareMenuOpen === item.id && (
-                          <motion.div
-                            initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-bronze/10 p-4 z-30 min-w-[200px]"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <p className="text-xs text-charcoal/60 mb-3 font-medium uppercase tracking-wider text-center">Share This Design</p>
-                            
-                            <div className="grid grid-cols-2 gap-2">
-                              <button
-                                onClick={() => shareToSocial('pinterest', item)}
-                                className="flex items-center space-x-2 p-2 hover:bg-red-50 rounded-lg transition-colors duration-200 group"
-                              >
-                                <SiPinterest className="w-4 h-4 text-red-600" />
-                                <span className="text-xs text-charcoal group-hover:text-red-600">Pinterest</span>
-                              </button>
-                              
-                              <button
-                                onClick={() => shareToSocial('facebook', item)}
-                                className="flex items-center space-x-2 p-2 hover:bg-blue-50 rounded-lg transition-colors duration-200 group"
-                              >
-                                <Facebook className="w-4 h-4 text-blue-600" />
-                                <span className="text-xs text-charcoal group-hover:text-blue-600">Facebook</span>
-                              </button>
-                              
-                              <button
-                                onClick={() => shareToSocial('whatsapp', item)}
-                                className="flex items-center space-x-2 p-2 hover:bg-green-50 rounded-lg transition-colors duration-200 group"
-                              >
-                                <FaWhatsapp className="w-4 h-4 text-green-600" />
-                                <span className="text-xs text-charcoal group-hover:text-green-600">WhatsApp</span>
-                              </button>
-                              
-                              <button
-                                onClick={() => shareToSocial('instagram', item)}
-                                className="flex items-center space-x-2 p-2 hover:bg-pink-50 rounded-lg transition-colors duration-200 group"
-                              >
-                                <SiInstagram className="w-4 h-4 text-pink-600" />
-                                <span className="text-xs text-charcoal group-hover:text-pink-600">Instagram</span>
-                              </button>
-                              
-                              <button
-                                onClick={() => shareToSocial('twitter', item)}
-                                className="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200 group col-span-2"
-                              >
-                                <FaXTwitter className="w-4 h-4 text-gray-800" />
-                                <span className="text-xs text-charcoal group-hover:text-gray-800">X (Twitter)</span>
-                              </button>
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
                     </div>
                     
                     {/* Love button */}
@@ -783,79 +738,15 @@ const Gallery = () => {
                             }`} 
                           />
                         </button>
-                        <div className="relative">
-                          <button 
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setShareMenuOpen(shareMenuOpen === currentItem.id ? null : currentItem.id);
-                            }}
-                            className="p-3 bg-cream hover:bg-bronze/10 rounded-full transition-colors duration-300"
-                          >
-                            <Share2 className="w-5 h-5 text-charcoal/60" />
-                          </button>
-                          
-                          {/* Social Share Menu */}
-                          <AnimatePresence>
-                            {shareMenuOpen === currentItem.id && (
-                              <motion.div
-                                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                                animate={{ opacity: 1, scale: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.8, y: 10 }}
-                                transition={{ duration: 0.2 }}
-                                className="absolute right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-bronze/10 p-4 z-20 min-w-[200px]"
-                                onClick={(e) => e.stopPropagation()}
-                              >
-                                <p className="text-xs text-charcoal/60 mb-3 font-medium uppercase tracking-wider text-center">Share This Design</p>
-                                
-                                <div className="grid grid-cols-2 gap-3">
-                                  <button
-                                    onClick={() => shareToSocial('pinterest', currentItem)}
-                                    className="flex items-center space-x-2 p-3 hover:bg-red-50 rounded-xl transition-colors duration-200 group"
-                                  >
-                                    <SiPinterest className="w-5 h-5 text-red-600" />
-                                    <span className="text-sm text-charcoal group-hover:text-red-600">Pinterest</span>
-                                  </button>
-                                  
-                                  <button
-                                    onClick={() => shareToSocial('facebook', currentItem)}
-                                    className="flex items-center space-x-2 p-3 hover:bg-blue-50 rounded-xl transition-colors duration-200 group"
-                                  >
-                                    <Facebook className="w-5 h-5 text-blue-600" />
-                                    <span className="text-sm text-charcoal group-hover:text-blue-600">Facebook</span>
-                                  </button>
-                                  
-                                  <button
-                                    onClick={() => shareToSocial('whatsapp', currentItem)}
-                                    className="flex items-center space-x-2 p-3 hover:bg-green-50 rounded-xl transition-colors duration-200 group"
-                                  >
-                                    <FaWhatsapp className="w-5 h-5 text-green-600" />
-                                    <span className="text-sm text-charcoal group-hover:text-green-600">WhatsApp</span>
-                                  </button>
-                                  
-                                  <button
-                                    onClick={() => shareToSocial('instagram', currentItem)}
-                                    className="flex items-center space-x-2 p-3 hover:bg-pink-50 rounded-xl transition-colors duration-200 group"
-                                  >
-                                    <SiInstagram className="w-5 h-5 text-pink-600" />
-                                    <span className="text-sm text-charcoal group-hover:text-pink-600">Instagram</span>
-                                  </button>
-                                  
-                                  <button
-                                    onClick={() => shareToSocial('twitter', currentItem)}
-                                    className="flex items-center space-x-2 p-3 hover:bg-gray-50 rounded-xl transition-colors duration-200 group col-span-2"
-                                  >
-                                    <FaXTwitter className="w-5 h-5 text-gray-800" />
-                                    <span className="text-sm text-charcoal group-hover:text-gray-800">X (Twitter)</span>
-                                  </button>
-                                </div>
-                                
-                                <div className="mt-3 pt-3 border-t border-bronze/10">
-                                  <p className="text-xs text-charcoal/40 text-center italic">Share the beauty of exceptional design</p>
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openShareModal(currentItem);
+                          }}
+                          className="p-3 bg-cream hover:bg-bronze/10 rounded-full transition-colors duration-300"
+                        >
+                          <Share2 className="w-5 h-5 text-charcoal/60" />
+                        </button>
                       </div>
                     </div>
                   </motion.div>
@@ -867,6 +758,157 @@ const Gallery = () => {
               <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-bronze/40"></div>
               <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-bronze/40"></div>
               <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-bronze/40"></div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Elegant Centered Social Share Modal */}
+      <AnimatePresence>
+        {shareModalOpen && currentShareItem && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-charcoal/80 backdrop-blur-md flex items-center justify-center p-6"
+            onClick={closeShareModal}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 50 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 50 }}
+              transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 30 }}
+              className="relative bg-white rounded-3xl shadow-3xl max-w-md w-full mx-auto overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={closeShareModal}
+                className="absolute top-4 right-4 w-10 h-10 bg-cream hover:bg-bronze/10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+              >
+                <X className="w-5 h-5 text-charcoal/60" />
+              </button>
+              
+              {/* Header */}
+              <div className="p-8 pb-4 text-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-br from-bronze to-bronze/80 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Share2 className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="font-italiana text-2xl font-bold text-charcoal mb-2">Share This Design</h3>
+                  <p className="text-charcoal/60 text-sm leading-relaxed">
+                    Inspire others with <span className="font-semibold text-bronze">{currentShareItem.title}</span>
+                  </p>
+                </motion.div>
+              </div>
+              
+              {/* Social Media Icons Grid */}
+              <div className="px-8 pb-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="grid grid-cols-2 gap-4"
+                >
+                  {/* Pinterest */}
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => shareToSocial('pinterest', currentShareItem)}
+                    className="flex flex-col items-center p-6 bg-gradient-to-br from-red-50 to-red-100/50 hover:from-red-100 hover:to-red-200/50 rounded-2xl transition-all duration-300 group shadow-sm hover:shadow-lg"
+                  >
+                    <div className="w-12 h-12 bg-red-500 hover:bg-red-600 rounded-2xl flex items-center justify-center mb-3 transition-colors duration-300 shadow-lg">
+                      <SiPinterest className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-sm font-semibold text-red-700 group-hover:text-red-800">Pinterest</span>
+                    <span className="text-xs text-red-500/70 mt-1">Pin inspiration</span>
+                  </motion.button>
+                  
+                  {/* Facebook */}
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => shareToSocial('facebook', currentShareItem)}
+                    className="flex flex-col items-center p-6 bg-gradient-to-br from-blue-50 to-blue-100/50 hover:from-blue-100 hover:to-blue-200/50 rounded-2xl transition-all duration-300 group shadow-sm hover:shadow-lg"
+                  >
+                    <div className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-2xl flex items-center justify-center mb-3 transition-colors duration-300 shadow-lg">
+                      <Facebook className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-sm font-semibold text-blue-700 group-hover:text-blue-800">Facebook</span>
+                    <span className="text-xs text-blue-500/70 mt-1">Share with friends</span>
+                  </motion.button>
+                  
+                  {/* WhatsApp */}
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => shareToSocial('whatsapp', currentShareItem)}
+                    className="flex flex-col items-center p-6 bg-gradient-to-br from-green-50 to-green-100/50 hover:from-green-100 hover:to-green-200/50 rounded-2xl transition-all duration-300 group shadow-sm hover:shadow-lg"
+                  >
+                    <div className="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-2xl flex items-center justify-center mb-3 transition-colors duration-300 shadow-lg">
+                      <FaWhatsapp className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-sm font-semibold text-green-700 group-hover:text-green-800">WhatsApp</span>
+                    <span className="text-xs text-green-500/70 mt-1">Send to contacts</span>
+                  </motion.button>
+                  
+                  {/* Instagram */}
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => shareToSocial('instagram', currentShareItem)}
+                    className="flex flex-col items-center p-6 bg-gradient-to-br from-pink-50 to-purple-100/50 hover:from-pink-100 hover:to-purple-200/50 rounded-2xl transition-all duration-300 group shadow-sm hover:shadow-lg"
+                  >
+                    <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 rounded-2xl flex items-center justify-center mb-3 transition-all duration-300 shadow-lg">
+                      <SiInstagram className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-sm font-semibold text-pink-700 group-hover:text-pink-800">Instagram</span>
+                    <span className="text-xs text-pink-500/70 mt-1">Copy caption</span>
+                  </motion.button>
+                </motion.div>
+                
+                {/* X (Twitter) - Full Width */}
+                <motion.button
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => shareToSocial('twitter', currentShareItem)}
+                  className="w-full flex items-center justify-center p-6 mt-4 bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 rounded-2xl transition-all duration-300 group shadow-sm hover:shadow-lg"
+                >
+                  <div className="w-12 h-12 bg-gray-800 hover:bg-black rounded-2xl flex items-center justify-center mr-4 transition-colors duration-300 shadow-lg">
+                    <FaXTwitter className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-left">
+                    <span className="text-sm font-semibold text-gray-800 group-hover:text-black block">X (Twitter)</span>
+                    <span className="text-xs text-gray-600/70">Share with the design community</span>
+                  </div>
+                </motion.button>
+              </div>
+              
+              {/* Footer */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="px-8 pb-8"
+              >
+                <div className="text-center pt-4 border-t border-bronze/10">
+                  <p className="text-xs text-charcoal/40 italic">Spread the beauty of exceptional design</p>
+                </div>
+              </motion.div>
+              
+              {/* Decorative corners */}
+              <div className="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-bronze/20 rounded-tl-lg"></div>
+              <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-bronze/20 rounded-tr-lg"></div>
+              <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-bronze/20 rounded-bl-lg"></div>
+              <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-bronze/20 rounded-br-lg"></div>
             </motion.div>
           </motion.div>
         )}
