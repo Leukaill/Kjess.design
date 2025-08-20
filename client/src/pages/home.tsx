@@ -341,14 +341,14 @@ export default function Home() {
                   src={logoUrl} 
                   alt="KJ Design Logo"
                   className={`w-6 h-6 sm:w-8 sm:h-8 object-contain transition-all duration-300 ${
-                    isDarkBackground 
-                      ? 'filter drop-shadow-lg' 
-                      : 'filter brightness-0 invert drop-shadow-lg'
+                    isScrolled 
+                      ? 'filter brightness-0 invert drop-shadow-lg' 
+                      : 'filter drop-shadow-lg'
                   }`}
                   style={{
-                    filter: isDarkBackground 
-                      ? 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' 
-                      : 'brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.1))'
+                    filter: isScrolled 
+                      ? 'brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.1))' 
+                      : 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
                   }}
                 />
               </div>
