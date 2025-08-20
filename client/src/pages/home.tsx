@@ -1721,7 +1721,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto">
             {[
               {
-                name: "Jessica Karumu",
+                name: "Jess Karumugabo",
                 role: "CEO & Creative Director",
                 image: ceoImage,
                 bio: "Leading visionary with exceptional talent in luxury interior design and creative direction",
@@ -1730,10 +1730,10 @@ export default function Home() {
                 twitter: "#"
               },
               {
-                name: "David Uwimana",
-                role: "Operational Manager",
-                image: operationalManagerImage,
-                bio: "Expert in operations management and project coordination with keen attention to detail",
+                name: "Team Member",
+                role: "Position Available",
+                image: "data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23f8f4f0'/%3E%3Ccircle cx='200' cy='200' r='80' fill='none' stroke='%23d4af37' stroke-width='3' stroke-dasharray='10,5'/%3E%3Ctext x='200' y='210' text-anchor='middle' font-family='serif' font-size='24' fill='%238B6F35'%3E?%3C/text%3E%3Ctext x='200' y='350' text-anchor='middle' font-family='serif' font-size='18' fill='%23666'%3EJoin Our Team%3C/text%3E%3C/svg%3E",
+                bio: "We're always looking for talented individuals to join our creative team",
                 linkedin: "#",
                 instagram: "#",
                 twitter: "#"
