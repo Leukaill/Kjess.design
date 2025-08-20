@@ -12,6 +12,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X } from "lucide-react";
 import logoUrl from "@assets/image_1755432338671.png";
+import ceoImage from "@assets/CEO  Creative Director_1755723463174.png";
+import operationalManagerImage from "@assets/Operational Manager (2)_1755723463171.png";
 import { Link } from "wouter";
 import { AnimatePresence } from "framer-motion";
 import { useActivityTracking } from "@/lib/cookies";
@@ -1662,7 +1664,7 @@ export default function Home() {
       </section>
 
       {/* Team Section - Sophisticated & Elegant Design */}
-      <section id="team" className="py-32 bg-gradient-to-br from-charcoal via-charcoal/98 to-charcoal relative overflow-hidden">
+      <section id="team" className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-charcoal via-charcoal/98 to-charcoal relative overflow-hidden">
         {/* Enhanced background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-96 h-96 border border-bronze/10 rotate-45 opacity-30"></div>
@@ -1679,7 +1681,7 @@ export default function Home() {
           ></motion.div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Enhanced header */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -1697,7 +1699,7 @@ export default function Home() {
               className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
             ></motion.div>
             
-            <h2 className="font-italiana text-6xl md:text-8xl mb-6 text-cream leading-tight tracking-wide">
+            <h2 className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 text-cream leading-tight tracking-wide">
               OUR CREATIVE
               <span className="block text-bronze">TEAM</span>
             </h2>
@@ -1716,31 +1718,22 @@ export default function Home() {
           </motion.div>
 
           {/* Team members grid */}
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto">
             {[
               {
                 name: "Jessica Karumu",
-                role: "Founder & Creative Director",
-                image: "data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23f8f4f0'/%3E%3Ccircle cx='200' cy='150' r='60' fill='%23d4af37' stroke='%23333' stroke-width='3'/%3E%3Ccircle cx='185' cy='140' r='8' fill='%23333'/%3E%3Ccircle cx='215' cy='140' r='8' fill='%23333'/%3E%3Cpath d='M 185 165 Q 200 175 215 165' stroke='%23333' stroke-width='3' fill='none'/%3E%3Crect x='150' y='210' width='100' height='120' fill='%23d4af37' stroke='%23333' stroke-width='3'/%3E%3Ctext x='200' y='400' text-anchor='middle' font-family='serif' font-size='16' fill='%23333'%3EFounder%3C/text%3E%3Ctext x='200' y='420' text-anchor='middle' font-family='serif' font-size='14' fill='%23666'%3E%26 Creative Director%3C/text%3E%3C/svg%3E",
-                bio: "Leading visionary with over 5 years of experience in luxury interior design",
+                role: "CEO & Creative Director",
+                image: ceoImage,
+                bio: "Leading visionary with exceptional talent in luxury interior design and creative direction",
                 linkedin: "#",
                 instagram: "@kjess_designs_rw",
                 twitter: "#"
               },
               {
                 name: "David Uwimana",
-                role: "Senior Interior Designer",
-                image: "data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23f8f4f0'/%3E%3Ccircle cx='200' cy='150' r='60' fill='%235c4033' stroke='%23333' stroke-width='3'/%3E%3Ccircle cx='185' cy='140' r='8' fill='%23333'/%3E%3Ccircle cx='215' cy='140' r='8' fill='%23333'/%3E%3Cpath d='M 185 165 Q 200 175 215 165' stroke='%23333' stroke-width='3' fill='none'/%3E%3Crect x='150' y='210' width='100' height='120' fill='%235c4033' stroke='%23333' stroke-width='3'/%3E%3Crect x='170' y='240' width='20' height='30' fill='%23333'/%3E%3Crect x='210' y='240' width='20' height='30' fill='%23333'/%3E%3Ctext x='200' y='400' text-anchor='middle' font-family='serif' font-size='16' fill='%23333'%3ESenior Designer%3C/text%3E%3C/svg%3E",
-                bio: "Specialist in modern and contemporary design with a passion for sustainable materials",
-                linkedin: "#",
-                instagram: "#",
-                twitter: "#"
-              },
-              {
-                name: "Sarah Mukamana",
-                role: "Project Manager & Designer",
-                image: "data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23f8f4f0'/%3E%3Ccircle cx='200' cy='150' r='60' fill='%23cd5c5c' stroke='%23333' stroke-width='3'/%3E%3Ccircle cx='185' cy='140' r='8' fill='%23333'/%3E%3Ccircle cx='215' cy='140' r='8' fill='%23333'/%3E%3Cpath d='M 185 165 Q 200 175 215 165' stroke='%23333' stroke-width='3' fill='none'/%3E%3Crect x='150' y='210' width='100' height='120' fill='%23cd5c5c' stroke='%23333' stroke-width='3'/%3E%3Ccircle cx='180' cy='250' r='8' fill='%23333'/%3E%3Ccircle cx='220' cy='250' r='8' fill='%23333'/%3E%3Ctext x='200' y='400' text-anchor='middle' font-family='serif' font-size='16' fill='%23333'%3EProject Manager%3C/text%3E%3Ctext x='200' y='420' text-anchor='middle' font-family='serif' font-size='14' fill='%23666'%3E%26 Designer%3C/text%3E%3C/svg%3E",
-                bio: "Expert in project coordination and client relations with eye for detail",
+                role: "Operational Manager",
+                image: operationalManagerImage,
+                bio: "Expert in operations management and project coordination with keen attention to detail",
                 linkedin: "#",
                 instagram: "#",
                 twitter: "#"
@@ -1759,7 +1752,7 @@ export default function Home() {
                 
                 <div className="relative bg-cream/5 backdrop-blur-sm border border-cream/10 hover:border-bronze/30 transition-all duration-500 group-hover:bg-cream/10 overflow-hidden">
                   {/* Member image */}
-                  <div className="relative h-80 overflow-hidden">
+                  <div className="relative h-64 sm:h-72 lg:h-80 overflow-hidden">
                     <img
                       src={member.image}
                       alt={member.name}
