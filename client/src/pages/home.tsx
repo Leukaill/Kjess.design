@@ -345,7 +345,7 @@ export default function Home() {
                   src={logoUrl} 
                   alt="KJ Design Logo"
                   className={`w-6 h-6 sm:w-8 sm:h-8 object-contain transition-all duration-300 ${
-                    isDarkBackground ? 'filter brightness-0 invert' : ''
+                    isDarkBackground ? '' : 'filter brightness-0 invert'
                   }`}
                 />
               </div>
