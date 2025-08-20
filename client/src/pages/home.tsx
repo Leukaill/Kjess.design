@@ -138,8 +138,8 @@ export default function Home() {
       const currentSectionElement = document.getElementById(activeSection);
       
       if (scrollPosition < heroSectionHeight * 0.8) {
-        // In hero section - use dark text as requested
-        backgroundIsDark = false;
+        // In hero section - use white text on dark background
+        backgroundIsDark = true;
       } else if (currentSectionElement) {
         // Check the computed background color of the current section
         const computedStyle = window.getComputedStyle(currentSectionElement);
