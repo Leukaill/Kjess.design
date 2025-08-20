@@ -707,6 +707,107 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Elegant Parallax Transition Section */}
+      <section className="relative h-screen overflow-hidden">
+        {/* Multiple parallax layers for depth */}
+        <motion.div
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -200]) }}
+          className="absolute inset-0 z-10"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-charcoal/95 via-charcoal/90 to-charcoal/95"></div>
+          <img
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200&q=95"
+            alt="Luxury interior design showcase"
+            className="w-full h-full object-cover opacity-60"
+          />
+        </motion.div>
+        
+        {/* Floating geometric elements */}
+        <motion.div
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -150]) }}
+          className="absolute top-20 right-20 w-64 h-64 border border-bronze/20 rotate-45 z-20"
+        ></motion.div>
+        
+        <motion.div
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
+          className="absolute bottom-32 left-24 w-48 h-48 bg-gradient-to-br from-bronze/15 to-transparent rounded-full blur-xl z-20"
+        ></motion.div>
+        
+        {/* Central content */}
+        <motion.div
+          style={{ y: useTransform(scrollYProgress, [0, 1], [0, -80]) }}
+          className="absolute inset-0 flex items-center justify-center z-30"
+        >
+          <div className="text-center max-w-4xl px-6">
+            {/* Decorative line */}
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "120px" }}
+              transition={{ duration: 1, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
+            ></motion.div>
+            
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="font-italiana text-5xl md:text-6xl lg:text-7xl text-white leading-tight tracking-wide mb-6"
+            >
+              CRAFTING
+              <span className="block text-bronze mt-2">EXCELLENCE</span>
+            </motion.h2>
+            
+            {/* Elegant decorative elements */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="flex items-center justify-center space-x-4 mb-8"
+            >
+              <div className="w-16 h-px bg-bronze/60"></div>
+              <div className="w-3 h-3 bg-bronze/60 rounded-full"></div>
+              <div className="w-20 h-px bg-bronze/40"></div>
+              <div className="w-3 h-3 bg-bronze/60 rounded-full"></div>
+              <div className="w-16 h-px bg-bronze/60"></div>
+            </motion.div>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1 }}
+              viewport={{ once: true }}
+              className="text-xl text-cream/90 font-light tracking-wide leading-relaxed"
+            >
+              Where vision meets precision, and dreams transform into reality through 
+              <span className="text-bronze"> timeless design</span>
+            </motion.p>
+          </div>
+        </motion.div>
+        
+        {/* Floating accent elements */}
+        <motion.div
+          style={{ 
+            y: useTransform(scrollYProgress, [0, 1], [0, -60]),
+            rotate: useTransform(scrollYProgress, [0, 1], [0, 180])
+          }}
+          className="absolute top-1/3 left-1/4 w-4 h-4 bg-bronze/40 rounded-full z-25"
+        ></motion.div>
+        
+        <motion.div
+          style={{ 
+            y: useTransform(scrollYProgress, [0, 1], [0, -40]),
+            rotate: useTransform(scrollYProgress, [0, 1], [0, -90])
+          }}
+          className="absolute bottom-1/3 right-1/3 w-2 h-2 bg-cream/50 rounded-full z-25"
+        ></motion.div>
+        
+        {/* Gradient overlay for smooth transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent z-40"></div>
+      </section>
+
       {/* Introduction Section - Mobile App Style */}
       <section className="mobile-app-section bg-white relative overflow-hidden">
         {/* Artistic background elements */}
@@ -2369,166 +2470,112 @@ export default function Home() {
 
 
 
-      {/* Testimonials Section - Luxurious & Sophisticated Design */}
-      <section id="testimonials" className="py-32 bg-gradient-to-br from-charcoal via-charcoal/98 to-charcoal relative overflow-hidden">
-        {/* Elegant background elements with depth */}
-        <div className="absolute inset-0">
-          <div className="absolute top-24 right-32 w-96 h-96 border border-bronze/10 rotate-45 opacity-40"></div>
-          <div className="absolute bottom-32 left-24 w-80 h-80 bg-gradient-to-br from-bronze/8 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute top-1/3 left-1/5 w-4 h-4 bg-bronze/30 rounded-full opacity-60"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-cream/40 rounded-full"></div>
-          
-          {/* Sophisticated floating geometric patterns */}
-          <motion.div
-            initial={{ opacity: 0, rotate: 0, scale: 0.8 }}
-            whileInView={{ opacity: 0.15, rotate: 180, scale: 1 }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute top-20 left-1/3 w-64 h-px bg-gradient-to-r from-transparent via-bronze/25 to-transparent"
-          ></motion.div>
-          <motion.div
-            initial={{ opacity: 0, rotate: 180 }}
-            whileInView={{ opacity: 0.1, rotate: 0 }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-20 right-1/3 w-48 h-px bg-gradient-to-l from-transparent via-cream/20 to-transparent"
-          ></motion.div>
+      {/* Testimonials Section - Refined & Beautiful Design */}
+      <section id="testimonials" className="py-20 bg-gradient-to-br from-white via-cream/20 to-warm-white relative overflow-hidden">
+        {/* Subtle background elements */}
+        <div className="absolute inset-0 opacity-40">
+          <div className="absolute top-20 right-20 w-64 h-64 border border-bronze/10 rotate-45"></div>
+          <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-bronze/5 to-transparent rounded-full blur-xl"></div>
+          <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-bronze/30 rounded-full"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-charcoal/20 rounded-full"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Elegant Section Header */}
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          {/* Refined Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
-            {/* Decorative top line */}
             <motion.div
               initial={{ width: 0 }}
-              whileInView={{ width: "150px" }}
-              transition={{ duration: 1.2, delay: 0.3 }}
+              whileInView={{ width: "80px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
+              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-6"
             ></motion.div>
             
-            <h2 className="font-italiana text-6xl md:text-7xl lg:text-8xl text-white leading-tight tracking-wide mb-6">
-              CLIENT
-              <span className="block text-bronze mt-2">STORIES</span>
+            <h2 className="font-italiana text-4xl md:text-5xl text-charcoal leading-tight mb-4">
+              Client <span className="text-bronze">Stories</span>
             </h2>
             
-            {/* Elegant decorative elements */}
-            <div className="flex items-center justify-center space-x-4 mb-8">
-              <div className="w-16 h-px bg-bronze/60"></div>
-              <div className="w-3 h-3 bg-bronze/60 rounded-full"></div>
-              <div className="w-20 h-px bg-bronze/40"></div>
-              <div className="w-3 h-3 bg-bronze/60 rounded-full"></div>
-              <div className="w-16 h-px bg-bronze/60"></div>
-            </div>
-            
-            <p className="text-xl text-cream/90 font-light tracking-wide max-w-2xl mx-auto">
-              What our distinguished clients say about their transformative experiences
+            <p className="text-lg text-charcoal/70 font-light max-w-xl mx-auto">
+              What our clients say about their design experience
             </p>
           </motion.div>
 
-          {/* Luxury Testimonial Cards */}
-          <div className="grid lg:grid-cols-3 gap-8 mb-24">
+          {/* Beautiful Testimonial Cards */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 60, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
                 className="group relative"
               >
-                {/* Sophisticated backdrop layers */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-bronze/15 via-transparent to-cream/5 rotate-1 group-hover:rotate-2 transition-all duration-700 opacity-0 group-hover:opacity-100"></div>
-                <div className="absolute -inset-2 bg-gradient-to-tl from-cream/5 via-transparent to-bronze/10 -rotate-1 group-hover:-rotate-2 transition-all duration-1000 opacity-0 group-hover:opacity-100"></div>
-                
-                {/* Main card */}
-                <div className="relative bg-cream/5 backdrop-blur-sm border border-cream/10 hover:border-bronze/30 transition-all duration-500 group-hover:bg-cream/10 overflow-hidden p-8">
-                  {/* Quote icon */}
-                  <div className="absolute top-6 left-6 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                    <Quote size={48} className="text-bronze" />
-                  </div>
+                {/* Card */}
+                <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 group-hover:border-bronze/20 relative overflow-hidden">
+                  {/* Subtle background accent */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-bronze to-bronze/60"></div>
                   
-                  {/* Rating stars - more elegant */}
-                  <div className="flex items-center justify-center mb-6">
+                  {/* Rating stars */}
+                  <div className="flex items-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: 0.5 + (i * 0.1) }}
-                        viewport={{ once: true }}
-                      >
-                        <Star size={20} className="text-bronze fill-bronze mx-1" />
-                      </motion.div>
+                      <Star key={i} size={16} className="text-bronze fill-bronze mr-1" />
                     ))}
                   </div>
 
-                  {/* Testimonial content with luxury typography */}
-                  <blockquote className="text-cream/95 text-lg leading-relaxed mb-8 text-center italic font-light relative z-10">
+                  {/* Testimonial content */}
+                  <blockquote className="text-charcoal/80 text-sm leading-relaxed mb-6 italic">
                     "{testimonial.content}"
                   </blockquote>
 
-                  {/* Client info with sophisticated design */}
-                  <div className="text-center border-t border-bronze/20 pt-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-bronze/20 to-bronze/30 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow duration-500">
-                      <span className="text-bronze font-italiana text-2xl font-bold">
+                  {/* Client info */}
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 rounded-full flex items-center justify-center mr-3 border border-bronze/20">
+                      <span className="text-bronze font-semibold text-lg">
                         {testimonial.name.charAt(0)}
                       </span>
                     </div>
-                    <h4 className="font-italiana text-xl text-cream mb-1 tracking-wide">{testimonial.name}</h4>
-                    <p className="text-cream/70 text-sm uppercase tracking-wider font-light">{testimonial.role}</p>
+                    <div>
+                      <h4 className="font-semibold text-charcoal text-sm">{testimonial.name}</h4>
+                      <p className="text-charcoal/60 text-xs">{testimonial.role}</p>
+                    </div>
                   </div>
-
-                  {/* Subtle decorative line at bottom */}
-                  <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-bronze/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-                
-                {/* Corner accent elements */}
-                <div className="absolute -top-3 -left-3 w-8 h-8 border-l-2 border-t-2 border-bronze/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute -bottom-3 -right-3 w-8 h-8 border-r-2 border-b-2 border-bronze/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </motion.div>
             ))}
           </div>
 
-          {/* Sophisticated Stats Section */}
+          {/* Elegant Stats Section */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="relative"
+            className="bg-gradient-to-r from-charcoal/5 via-charcoal/10 to-charcoal/5 rounded-xl p-8"
           >
-            {/* Decorative background for stats */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-bronze/5 to-transparent rounded-2xl"></div>
-            
-            <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-8 p-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { number: "100+", label: "Luxury Projects", description: "Completed" },
-                { number: "95%", label: "Client Satisfaction", description: "Rating" },
-                { number: "5+", label: "Years Experience", description: "Excellence" },
-                { number: "24/7", label: "Dedicated Support", description: "Service" }
+                { number: "100+", label: "Projects" },
+                { number: "95%", label: "Satisfaction" },
+                { number: "5+", label: "Years" },
+                { number: "24/7", label: "Support" }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.8 + (index * 0.1) }}
+                  transition={{ duration: 0.5, delay: 0.6 + (index * 0.1) }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="text-center group cursor-default"
+                  className="text-center group"
                 >
-                  <div className="relative mb-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-bronze/20 to-bronze/10 rounded-full flex items-center justify-center mx-auto border border-bronze/30 group-hover:border-bronze/50 transition-colors duration-300">
-                      <span className="font-italiana text-3xl font-bold text-bronze">{stat.number}</span>
-                    </div>
-                    <div className="absolute -inset-2 bg-bronze/10 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
-                  </div>
-                  <h4 className="font-italiana text-lg text-cream mb-1 tracking-wide">{stat.label}</h4>
-                  <p className="text-cream/60 text-sm uppercase tracking-wider font-light">{stat.description}</p>
+                  <div className="text-2xl font-bold text-bronze mb-1">{stat.number}</div>
+                  <div className="text-sm text-charcoal/70 uppercase tracking-wide">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
