@@ -2010,20 +2010,20 @@ export default function Home() {
                     projects: "100+ Pieces" 
                   }
                 ].map((category, index) => (
-                  <Link 
-                    key={index} 
-                    href={`/gallery/${category.slug}`} 
-                    data-testid={`link-gallery-${category.slug}`}
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30, x: 20 }}
+                    whileInView={{ opacity: 1, y: 0, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 30, x: 20 }}
-                      whileInView={{ opacity: 1, y: 0, x: 0 }}
-                      transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 group relative overflow-hidden cursor-pointer"
-                      data-testid={`card-category-${category.slug}`}
+                    <Link 
+                      href={`/gallery/${category.slug}`} 
+                      data-testid={`link-gallery-${category.slug}`}
+                      className="block"
                     >
-                      <div className="flex items-center">
+                      <div className="flex items-center cursor-pointer" data-testid={`card-category-${category.slug}`}>
                         <div className="w-24 h-20 overflow-hidden">
                           <img
                             src={category.image}
@@ -2045,11 +2045,11 @@ export default function Home() {
                           <div className="w-6 h-px bg-bronze opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                       </div>
-                      
-                      {/* Hover accent */}
-                      <div className="absolute left-0 top-0 w-1 h-full bg-bronze transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
-                    </motion.div>
-                  </Link>
+                    </Link>
+                    
+                    {/* Hover accent */}
+                    <div className="absolute left-0 top-0 w-1 h-full bg-bronze transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+                  </motion.div>
                 ))}
               </div>
 
