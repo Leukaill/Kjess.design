@@ -6,6 +6,16 @@ This is a sophisticated interior design company website for KJESS Designs built 
 
 Preferred communication style: Simple, everyday language.
 
+# Recent Changes
+
+## Gallery Enhancement (August 20, 2025)
+- Made gallery category cards clickable with smooth navigation to filtered sections
+- Implemented URL routing for gallery categories (/gallery/residential, /gallery/commercial, /gallery/furniture)
+- Added comprehensive filtering system with category counts
+- Organized gallery data structure with subcategories, project dates, locations, and featured flags
+- Prepared well-structured data model for future admin dashboard integration
+- Enhanced gallery items with detailed metadata for better management
+
 # System Architecture
 
 ## Frontend Architecture
