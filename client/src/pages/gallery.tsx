@@ -498,14 +498,8 @@ const Gallery = () => {
                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                     />
                     
-                    {/* Overlay with zoom icon */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="bg-white/90 p-3 rounded-full shadow-lg backdrop-blur-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                          <ZoomIn className="w-6 h-6 text-charcoal" />
-                        </div>
-                      </div>
-                    </div>
+                    {/* Subtle hover overlay without icon */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                     {/* Project info overlay with size variations */}
                     <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/90 to-transparent text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 ${
