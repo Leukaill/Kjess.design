@@ -14,6 +14,26 @@ import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X } from "lucide-rea
 import logoUrl from "@assets/image_1755432338671.png";
 import ceoImage from "@assets/CEO  Creative Director_1755723463174.png";
 import operationalManagerImage from "@assets/Operational Manager (2)_1755723463171.png";
+
+// Portfolio Images
+import portfolioImg1 from "@assets/IMG_0011_1755724301675.jpeg";
+import portfolioImg2 from "@assets/IMG_0021_1755724301676.jpeg";
+import portfolioImg3 from "@assets/IMG_3958_1755724301677.jpeg";
+import portfolioImg4 from "@assets/IMG_5416_1755724301677.jpeg";
+import portfolioImg5 from "@assets/IMG_5422_1755724301678.jpeg";
+import portfolioImg6 from "@assets/PHOTO-2024-11-11-13-25-27 2_1755724301679.jpeg";
+import portfolioImg7 from "@assets/PHOTO-2024-11-11-13-25-27 3_1755724301681.jpeg";
+import portfolioImg8 from "@assets/PHOTO-2024-11-11-13-25-27 6_1755724301684.jpeg";
+import portfolioImg9 from "@assets/PHOTO-2024-11-11-13-25-27 11_1755724301686.jpeg";
+import portfolioImg10 from "@assets/PHOTO-2024-11-11-13-25-27 14_1755724301688.jpeg";
+import portfolioImg11 from "@assets/PHOTO-2024-11-11-13-25-27 17_1755724301692.jpeg";
+import portfolioImg12 from "@assets/PHOTO-2024-11-11-13-25-27 25_1755724301693.jpeg";
+import portfolioImg13 from "@assets/PHOTO-2024-11-11-13-25-27 29_1755724301694.jpeg";
+import portfolioImg14 from "@assets/PHOTO-2024-11-11-13-25-27 43_1755724301695.jpeg";
+import portfolioImg15 from "@assets/PHOTO-2024-11-11-13-25-27 52_1755724301695.jpeg";
+import portfolioImg16 from "@assets/PHOTO-2024-11-11-13-25-27 59_1755724301696.jpeg";
+import portfolioImg17 from "@assets/PHOTO-2024-11-11-13-25-27 60_1755724301699.jpeg";
+import furnitureChair from "@assets/PHOTO-2024-11-11-13-25-27_17-removebg-preview_1755724395612.png";
 import { Link } from "wouter";
 import { AnimatePresence } from "framer-motion";
 import { useActivityTracking } from "@/lib/cookies";
@@ -739,8 +759,8 @@ export default function Home() {
                 {/* Enhanced main image container */}
                 <div className="relative bg-white p-6 shadow-2xl group-hover:shadow-3xl transition-all duration-700 overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=700&q=95"
-                    alt="Contemporary living room featuring marble accent wall, modern furnishing, and sophisticated design elements"
+                    src={portfolioImg9}
+                    alt="KJESS Designs contemporary living space featuring sophisticated design elements and premium furnishing"
                     className="w-full h-[350px] sm:h-[400px] lg:h-[450px] object-cover transition-all duration-1000 ease-out group-hover:scale-110"
                   />
                   
@@ -1036,8 +1056,8 @@ export default function Home() {
                     className="col-span-2 bg-white p-4 shadow-2xl hover:shadow-3xl transition-all duration-500 group relative"
                   >
                     <img
-                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&h=500"
-                      alt="Modern living room with sophisticated design elements and natural lighting"
+                      src={portfolioImg6}
+                      alt="KJESS Designs living space with sophisticated design elements and natural lighting"
                       className="w-full h-64 object-cover transition-all duration-700 group-hover:scale-105"
                     />
                     
@@ -1057,8 +1077,8 @@ export default function Home() {
                     className="bg-white p-3 shadow-xl hover:shadow-2xl transition-all duration-500 group relative"
                   >
                     <img
-                      src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=350"
-                      alt="Elegant contemporary furniture and design details"
+                      src={portfolioImg7}
+                      alt="KJESS Designs early work showcasing elegant contemporary furniture and design details"
                       className="w-full h-40 object-cover transition-all duration-500 group-hover:scale-110"
                     />
                     
@@ -1076,8 +1096,8 @@ export default function Home() {
                     className="bg-white p-3 shadow-xl hover:shadow-2xl transition-all duration-500 group relative mt-8"
                   >
                     <img
-                      src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=350"
-                      alt="Modern luxury interior with sophisticated artistic elements"
+                      src={portfolioImg8}
+                      alt="KJESS Designs current luxury interior with sophisticated artistic elements"
                       className="w-full h-40 object-cover transition-all duration-500 group-hover:scale-110"
                     />
                     
@@ -1504,8 +1524,8 @@ export default function Home() {
                 {/* Primary image container */}
                 <div className="relative bg-white p-6 shadow-2xl group-hover:shadow-3xl transition-all duration-500">
                   <img
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&h=500"
-                    alt="Elegant modern workspace with custom furniture and artistic lighting"
+                    src={portfolioImg10}
+                    alt="KJESS Designs elegant modern workspace with custom furniture and artistic lighting"
                     className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-105"
                   />
                   
@@ -1526,8 +1546,8 @@ export default function Home() {
                 className="absolute -top-8 -right-12 bg-white p-4 shadow-xl hover:shadow-2xl transition-all duration-500 group cursor-pointer"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
-                  alt="Luxury furniture craftsmanship detail"
+                  src={portfolioImg11}
+                  alt="KJESS Designs luxury furniture craftsmanship detail"
                   className="w-32 h-24 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="mt-2 text-center">
@@ -1543,8 +1563,8 @@ export default function Home() {
                 className="absolute -bottom-12 -left-8 bg-white p-4 shadow-xl hover:shadow-2xl transition-all duration-500 group cursor-pointer"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200"
-                  alt="Modern interior design excellence"
+                  src={portfolioImg12}
+                  alt="KJESS Designs modern interior design excellence and innovation"
                   className="w-32 h-24 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="mt-2 text-center">
@@ -1912,8 +1932,8 @@ export default function Home() {
                   
                   <div className="relative bg-white p-4 shadow-2xl group-hover:shadow-3xl transition-all duration-700">
                     <img
-                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400"
-                      alt="Modern dining room featuring elegant pendant lighting and sophisticated furniture arrangement"
+                      src={portfolioImg1}
+                      alt="KJESS Designs featured project showcasing elegant interior design and sophisticated furniture arrangement"
                       className="w-full h-64 object-cover transition-all duration-1000 group-hover:scale-110"
                     />
                     
@@ -1947,8 +1967,8 @@ export default function Home() {
                   >
                     <div className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                       <img
-                        src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=250"
-                        alt="Contemporary lighting fixtures with artistic design elements"
+                        src={portfolioImg2}
+                        alt="KJESS Designs lighting and interior elements showcasing contemporary design"
                         className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
                       />
                     </div>
@@ -1968,8 +1988,8 @@ export default function Home() {
                   >
                     <div className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                       <img
-                        src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=250"
-                        alt="Luxury leather furniture showcasing premium craftsmanship"
+                        src={furnitureChair}
+                        alt="KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship"
                         className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
                       />
                     </div>
@@ -1977,6 +1997,73 @@ export default function Home() {
                     {/* Floating category badge */}
                     <div className="absolute -top-2 -right-2 bg-charcoal text-white shadow-lg px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="text-xs font-medium tracking-wide">FURNITURE</span>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Additional portfolio showcase */}
+                <div className="mt-12 grid grid-cols-2 gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 40, rotate: -1 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    viewport={{ once: true }}
+                    className="relative group"
+                  >
+                    <div className="bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-500">
+                      <img
+                        src={portfolioImg13}
+                        alt="KJESS Designs portfolio showcase - residential project"
+                        className="w-full h-28 object-cover transition-all duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 40, rotate: 1 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ duration: 0.8, delay: 1 }}
+                    viewport={{ once: true }}
+                    className="relative group"
+                  >
+                    <div className="bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-500">
+                      <img
+                        src={portfolioImg14}
+                        alt="KJESS Designs portfolio showcase - commercial project"
+                        className="w-full h-28 object-cover transition-all duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 40, rotate: 1 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ duration: 0.8, delay: 1.2 }}
+                    viewport={{ once: true }}
+                    className="relative group"
+                  >
+                    <div className="bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-500">
+                      <img
+                        src={portfolioImg15}
+                        alt="KJESS Designs portfolio showcase - luxury interior"
+                        className="w-full h-28 object-cover transition-all duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 40, rotate: -1 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ duration: 0.8, delay: 1.4 }}
+                    viewport={{ once: true }}
+                    className="relative group"
+                  >
+                    <div className="bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-500">
+                      <img
+                        src={portfolioImg16}
+                        alt="KJESS Designs portfolio showcase - modern design"
+                        className="w-full h-28 object-cover transition-all duration-500 group-hover:scale-105"
+                      />
                     </div>
                   </motion.div>
                 </div>
@@ -1999,8 +2086,8 @@ export default function Home() {
                 
                 <div className="relative bg-white p-6 shadow-3xl group-hover:shadow-4xl transition-all duration-700">
                   <img
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
-                    alt="Signature interior design project featuring modern elegance and sophisticated spatial arrangement"
+                    src={portfolioImg3}
+                    alt="KJESS Designs signature project featuring modern elegance and sophisticated spatial arrangement"
                     className="w-full h-96 object-cover transition-all duration-1000 group-hover:scale-105"
                   />
                   
@@ -2039,6 +2126,25 @@ export default function Home() {
                 {/* Decorative corner */}
                 <div className="absolute top-1 right-1 w-4 h-4 border-r border-t border-bronze/40"></div>
               </motion.div>
+
+              {/* Final showcase image */}
+              <motion.div
+                initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                viewport={{ once: true }}
+                className="mt-8 relative group"
+              >
+                <div className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
+                  <img
+                    src={portfolioImg17}
+                    alt="KJESS Designs masterpiece - signature project showcase"
+                    className="w-full h-40 object-cover transition-all duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-3 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute bottom-3 right-3 w-4 h-4 border-r border-b border-bronze/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              </motion.div>
             </motion.div>
 
             {/* Right Column - Portfolio Details & Categories */}
@@ -2062,22 +2168,22 @@ export default function Home() {
                   { 
                     title: "Residential Interiors", 
                     slug: "residential",
-                    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-                    alt: "Elegant residential interior with modern furniture and sophisticated design",
+                    image: portfolioImg4,
+                    alt: "KJESS Designs residential interior with modern furniture and sophisticated design",
                     projects: "45+ Projects" 
                   },
                   { 
                     title: "Commercial Spaces", 
                     slug: "commercial",
-                    image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-                    alt: "Professional commercial interior with contemporary lighting and furniture",
+                    image: portfolioImg5,
+                    alt: "KJESS Designs commercial interior with contemporary lighting and furniture",
                     projects: "30+ Projects" 
                   },
                   { 
                     title: "Custom Furniture", 
                     slug: "furniture",
-                    image: "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-                    alt: "Luxury custom furniture pieces showcasing exceptional craftsmanship",
+                    image: furnitureChair,
+                    alt: "KJESS Designs custom furniture featuring traditional African patterns and exceptional craftsmanship",
                     projects: "100+ Pieces" 
                   }
                 ].map((category, index) => (
