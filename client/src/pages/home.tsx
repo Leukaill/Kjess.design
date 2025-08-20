@@ -617,7 +617,7 @@ export default function Home() {
         </div>
 
         {/* Elegant Content Container */}
-        <div className="relative z-10 text-center min-h-screen flex flex-col justify-center px-4 sm:px-6 max-w-6xl mx-auto">
+        <div className="relative z-10 text-center min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
           {/* Elegant Brand Typography */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -633,7 +633,7 @@ export default function Home() {
               className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
             ></motion.div>
             
-            <h1 className="font-italiana text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-4 text-white leading-tight tracking-wide">
+            <h1 className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 text-white leading-tight tracking-wide">
               KJESS
               <span className="block text-bronze mt-2">DESIGNS</span>
             </h1>
@@ -655,12 +655,12 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.8 }}
             className="mb-12"
           >
-            <p className="text-xl sm:text-2xl md:text-3xl text-white font-light tracking-wide mb-6 max-w-3xl mx-auto leading-relaxed" style={{
+            <p className="text-lg sm:text-xl md:text-2xl text-white font-light tracking-wide mb-6 max-w-2xl mx-auto leading-relaxed" style={{
               textShadow: '0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)'
             }}>
               Interior Design & Luxury Furniture
             </p>
-            <p className="text-lg sm:text-xl text-white/95 font-light tracking-wide max-w-2xl mx-auto" style={{
+            <p className="text-base sm:text-lg md:text-xl text-white/95 font-light tracking-wide max-w-xl mx-auto" style={{
               textShadow: '0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)'
             }}>
               Discover Our Premium Portfolio
@@ -676,7 +676,7 @@ export default function Home() {
           >
             <button
               onClick={() => scrollToSection('gallery')}
-              className="bg-bronze text-white px-12 py-4 text-lg font-medium tracking-wider uppercase transition-all duration-300 hover:bg-bronze/90 hover:scale-105 shadow-xl hover:shadow-2xl"
+              className="bg-bronze text-white px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-base sm:text-lg font-medium tracking-wider uppercase transition-all duration-300 hover:bg-bronze/90 hover:scale-105 shadow-xl hover:shadow-2xl"
               data-testid="button-explore-work"
             >
               Explore Our Work
@@ -718,8 +718,8 @@ export default function Home() {
           <div className="absolute top-1/4 left-1/5 w-1 h-1 bg-charcoal/30 rounded-full"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-24 items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-center py-16 sm:py-20">
             {/* Left Column - Enhanced Artistic Image Layout */}
             <motion.div
               initial={{ opacity: 0, x: -80, scale: 0.9 }}
@@ -739,7 +739,7 @@ export default function Home() {
                   <img
                     src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=700&q=95"
                     alt="Contemporary living room featuring marble accent wall, modern furnishing, and sophisticated design elements"
-                    className="w-full h-[520px] object-cover transition-all duration-1000 ease-out group-hover:scale-110"
+                    className="w-full h-[350px] sm:h-[400px] lg:h-[450px] object-cover transition-all duration-1000 ease-out group-hover:scale-110"
                   />
                   
                   {/* Sophisticated multi-layer overlays */}
@@ -813,14 +813,14 @@ export default function Home() {
                 className="mb-8 sm:mb-12 lg:mb-16"
               >
                 <div className="relative">
-                  <h2 className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 sm:mb-6 lg:mb-8 text-charcoal leading-[0.8] tracking-wider relative">
+                  <h2 className="font-italiana text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 sm:mb-6 lg:mb-8 text-charcoal leading-[0.8] tracking-wider relative">
                     INTRO<span className="text-bronze">DUCTION</span>
                   </h2>
                   {/* Enhanced decorative underline */}
                   <div className="absolute -bottom-2 left-0 w-32 h-1 bg-gradient-to-r from-bronze via-bronze/60 to-transparent"></div>
                 </div>
                 
-                <p className="text-base sm:text-lg lg:text-xl text-charcoal/70 font-light italic tracking-wide mt-4 sm:mt-6">
+                <p className="text-sm sm:text-base lg:text-lg text-charcoal/70 font-light italic tracking-wide mt-4 sm:mt-6">
                   Where creativity meets exceptional craftsmanship
                 </p>
               </motion.div>
@@ -838,13 +838,13 @@ export default function Home() {
                   <div className="absolute -top-4 -left-8 text-6xl text-bronze/20 font-serif leading-none">"</div>
                   
                   <div className="pl-6 space-y-6">
-                    <p className="text-xl leading-relaxed text-charcoal/85 font-light tracking-wide">
+                    <p className="text-base sm:text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
                       Kjess Designs is where <span className="font-italiana italic text-bronze font-medium">creativity meets craftsmanship</span>. 
                       We are a Rwandan-based interior design and furniture company dedicated to
                       transforming spaces into <span className="font-medium text-charcoal">timeless masterpieces</span>.
                     </p>
                     
-                    <p className="text-xl leading-relaxed text-charcoal/85 font-light tracking-wide">
+                    <p className="text-base sm:text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
                       With unwavering commitment to <span className="font-italiana italic text-bronze">excellence, elegance, and innovation</span>, we
                       bring your visions to life through thoughtful design and superior
                       <span className="font-italiana text-bronze font-medium"> attention to detail</span>.
@@ -879,7 +879,7 @@ export default function Home() {
                   className="bg-gradient-to-r from-cream/50 to-white p-6 border-l-4 border-bronze relative"
                 >
                   <div className="absolute top-0 right-0 w-12 h-12 border-r border-t border-bronze/20"></div>
-                  <h4 className="font-italiana text-2xl font-bold text-charcoal mb-3 tracking-wide">
+                  <h4 className="font-italiana text-lg sm:text-xl md:text-2xl font-bold text-charcoal mb-3 tracking-wide">
                     Our Promise
                   </h4>
                   <p className="text-charcoal/70 leading-relaxed">
@@ -893,7 +893,7 @@ export default function Home() {
       </section>
 
       {/* History Section - Sophisticated Journey & Heritage Design */}
-      <section className="py-32 bg-gradient-to-b from-cream via-warm-white to-cream relative overflow-hidden">
+      <section className="py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-cream via-warm-white to-cream relative overflow-hidden">
         {/* Artistic background elements */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 right-10 w-96 h-96 border border-bronze/12 rotate-12 opacity-50"></div>
@@ -2396,11 +2396,11 @@ export default function Home() {
               className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-6"
             ></motion.div>
             
-            <h2 className="font-italiana text-4xl md:text-5xl text-charcoal leading-tight mb-4">
+            <h2 className="font-italiana text-3xl sm:text-4xl md:text-5xl text-charcoal leading-tight mb-4">
               Client <span className="text-bronze">Stories</span>
             </h2>
             
-            <p className="text-lg text-charcoal/70 font-light max-w-xl mx-auto">
+            <p className="text-base sm:text-lg text-charcoal/70 font-light max-w-xl mx-auto">
               What our clients say about their design experience
             </p>
           </motion.div>
@@ -2429,7 +2429,7 @@ export default function Home() {
                   </div>
 
                   {/* Testimonial content */}
-                  <blockquote className="text-charcoal/80 text-sm leading-relaxed mb-6 italic">
+                  <blockquote className="text-xs sm:text-sm leading-relaxed mb-6 italic text-charcoal/80">
                     "{testimonial.content}"
                   </blockquote>
 
@@ -2441,7 +2441,7 @@ export default function Home() {
                       </span>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-charcoal text-sm">{testimonial.name}</h4>
+                      <h4 className="font-semibold text-charcoal text-xs sm:text-sm">{testimonial.name}</h4>
                       <p className="text-charcoal/60 text-xs">{testimonial.role}</p>
                     </div>
                   </div>
