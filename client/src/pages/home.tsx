@@ -336,11 +336,7 @@ export default function Home() {
               className="flex items-center space-x-3 cursor-pointer"
               onClick={() => scrollToSection('home')}
             >
-              <div className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center transition-all duration-300 ${
-                isScrolled 
-                  ? 'bg-transparent shadow-lg' 
-                  : 'bg-transparent shadow-xl'
-              }`}>
+              <div className="flex items-center justify-center transition-all duration-300">
                 <img 
                   src={logoUrl} 
                   alt="KJ Design Logo"
@@ -457,46 +453,147 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile Navigation Overlay */}
-        <motion.div
-          initial={false}
-          animate={{
-            opacity: isNavOpen ? 1 : 0,
-            y: isNavOpen ? 0 : -20
-          }}
-          transition={{ duration: 0.3 }}
-          className={`lg:hidden absolute top-full left-0 right-0 bg-cream/98 backdrop-blur-lg border-b border-bronze/10 shadow-xl ${
-            isNavOpen ? 'pointer-events-auto' : 'pointer-events-none'
-          }`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
-            <div className="space-y-3 sm:space-y-4">
-              {navigationItems.map((item, index) => (
-                <motion.button
-                  key={item.id}
-                  initial={{ opacity: 0, x: -20 }}
+        {/* Mobile Navigation Overlay with Elegant Animation */}
+        <AnimatePresence>
+          {isNavOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ 
+                opacity: 1, 
+                height: "auto",
+                transition: {
+                  duration: 0.4,
+                  ease: [0.4, 0.0, 0.2, 1],
+                  height: {
+                    duration: 0.4,
+                    ease: [0.4, 0.0, 0.2, 1]
+                  }
+                }
+              }}
+              exit={{ 
+                opacity: 0, 
+                height: 0,
+                transition: {
+                  duration: 0.3,
+                  ease: [0.4, 0.0, 0.2, 1]
+                }
+              }}
+              className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-bronze/20 shadow-2xl overflow-hidden"
+            >
+              <motion.div
+                initial={{ y: -20 }}
+                animate={{ 
+                  y: 0,
+                  transition: {
+                    duration: 0.4,
+                    delay: 0.1,
+                    ease: [0.4, 0.0, 0.2, 1]
+                  }
+                }}
+                exit={{ y: -20 }}
+                className="px-6 py-8"
+              >
+                <div className="space-y-2">
+                  {navigationItems.map((item, index) => (
+                    item.type === "page" && item.href ? (
+                      <Link key={item.id} href={item.href}>
+                        <motion.div
+                          initial={{ opacity: 0, x: -30, scale: 0.95 }}
+                          animate={{ 
+                            opacity: 1, 
+                            x: 0, 
+                            scale: 1,
+                            transition: {
+                              duration: 0.4,
+                              delay: 0.1 + (index * 0.05),
+                              ease: [0.4, 0.0, 0.2, 1]
+                            }
+                          }}
+                          exit={{ 
+                            opacity: 0, 
+                            x: -30, 
+                            scale: 0.95,
+                            transition: {
+                              duration: 0.2,
+                              delay: (navigationItems.length - index - 1) * 0.03
+                            }
+                          }}
+                          whileTap={{ scale: 0.98 }}
+                          className="block w-full text-left px-6 py-4 font-medium text-base uppercase tracking-wider transition-all duration-300 border-l-4 border-transparent hover:border-bronze hover:bg-bronze/5 group cursor-pointer"
+                          onClick={() => setIsNavOpen(false)}
+                        >
+                          <span className="text-charcoal group-hover:text-bronze transition-colors duration-300">
+                            {item.label}
+                          </span>
+                        </motion.div>
+                      </Link>
+                    ) : (
+                      <motion.button
+                        key={item.id}
+                        initial={{ opacity: 0, x: -30, scale: 0.95 }}
+                        animate={{ 
+                          opacity: 1, 
+                          x: 0, 
+                          scale: 1,
+                          transition: {
+                            duration: 0.4,
+                            delay: 0.1 + (index * 0.05),
+                            ease: [0.4, 0.0, 0.2, 1]
+                          }
+                        }}
+                        exit={{ 
+                          opacity: 0, 
+                          x: -30, 
+                          scale: 0.95,
+                          transition: {
+                            duration: 0.2,
+                            delay: (navigationItems.length - index - 1) * 0.03
+                          }
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          scrollToSection(item.id);
+                          setIsNavOpen(false);
+                        }}
+                        className={`block w-full text-left px-6 py-4 font-medium text-base uppercase tracking-wider transition-all duration-300 border-l-4 group ${
+                          activeSection === item.id
+                            ? 'text-bronze border-bronze bg-bronze/10'
+                            : 'text-charcoal border-transparent hover:border-bronze hover:bg-bronze/5 hover:text-bronze'
+                        }`}
+                      >
+                        {item.label}
+                      </motion.button>
+                    )
+                  ))}
+                </div>
+                
+                {/* Elegant bottom decoration */}
+                <motion.div
+                  initial={{ opacity: 0, scaleX: 0 }}
                   animate={{ 
-                    opacity: isNavOpen ? 1 : 0, 
-                    x: isNavOpen ? 0 : -20 
+                    opacity: 1, 
+                    scaleX: 1,
+                    transition: {
+                      duration: 0.6,
+                      delay: 0.3,
+                      ease: [0.4, 0.0, 0.2, 1]
+                    }
                   }}
-                  transition={{ duration: 0.3, delay: isNavOpen ? 0.1 * index : 0 }}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-4 py-3 font-medium text-sm uppercase tracking-wider transition-all duration-300 border-l-2 mobile-touch-target ${
-                    activeSection === item.id
-                      ? 'text-bronze border-bronze bg-bronze/5'
-                      : 'text-charcoal/80 border-transparent hover:text-bronze hover:border-bronze/30 hover:bg-bronze/5'
-                  }`}
-                  style={{
-                    textShadow: '0 1px 2px rgba(0,0,0,0.1)',
-                    filter: 'drop-shadow(0 1px 1px rgba(255,255,255,0.1))'
-                  }}
+                  exit={{ opacity: 0, scaleX: 0 }}
+                  className="mt-8 pt-6 border-t border-bronze/20"
                 >
-                  {item.label}
-                </motion.button>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+                  <div className="flex items-center justify-center space-x-4">
+                    <div className="w-8 h-px bg-bronze/40"></div>
+                    <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+                    <div className="text-xs text-charcoal/60 font-medium tracking-wider uppercase">KJESS DESIGNS</div>
+                    <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+                    <div className="w-8 h-px bg-bronze/40"></div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
 
       {/* Hero Section with Sliding Pictures and Darkened Overlay */}
