@@ -337,27 +337,17 @@ export default function Home() {
               onClick={() => scrollToSection('home')}
             >
               <div className="flex items-center justify-center transition-all duration-300">
-                {isScrolled ? (
-                  <img 
-                    src={logoUrl} 
-                    alt="KJ Design Logo"
-                    className="w-6 h-6 sm:w-8 sm:h-8 object-contain transition-all duration-300"
-                    style={{
-                      filter: 'brightness(0) invert(1)',
-                      opacity: 1
-                    }}
-                  />
-                ) : (
-                  <img 
-                    src={logoUrl} 
-                    alt="KJ Design Logo"
-                    className="w-6 h-6 sm:w-8 sm:h-8 object-contain transition-all duration-300"
-                    style={{
-                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))',
-                      opacity: 1
-                    }}
-                  />
-                )}
+                <img 
+                  src={logoUrl} 
+                  alt="KJ Design Logo"
+                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain transition-all duration-300"
+                  style={{
+                    filter: isScrolled 
+                      ? 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' 
+                      : 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))',
+                    opacity: 1
+                  }}
+                />
               </div>
               <div className="hidden md:block">
                 <h1 className={`font-italiana text-lg sm:text-xl tracking-wide transition-all duration-700 ease-out ${
