@@ -1990,57 +1990,66 @@ export default function Home() {
                 {[
                   { 
                     title: "Residential Interiors", 
+                    slug: "residential",
                     image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
                     alt: "Elegant residential interior with modern furniture and sophisticated design",
                     projects: "45+ Projects" 
                   },
                   { 
                     title: "Commercial Spaces", 
+                    slug: "commercial",
                     image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
                     alt: "Professional commercial interior with contemporary lighting and furniture",
                     projects: "30+ Projects" 
                   },
                   { 
                     title: "Custom Furniture", 
+                    slug: "furniture",
                     image: "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
                     alt: "Luxury custom furniture pieces showcasing exceptional craftsmanship",
                     projects: "100+ Pieces" 
                   }
                 ].map((category, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30, x: 20 }}
-                    whileInView={{ opacity: 1, y: 0, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
+                  <Link 
+                    key={index} 
+                    href={`/gallery/${category.slug}`} 
+                    data-testid={`link-gallery-${category.slug}`}
                   >
-                    <div className="flex items-center">
-                      <div className="w-24 h-20 overflow-hidden">
-                        <img
-                          src={category.image}
-                          alt={category.alt}
-                          className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                        />
+                    <motion.div
+                      initial={{ opacity: 0, y: 30, x: 20 }}
+                      whileInView={{ opacity: 1, y: 0, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 group relative overflow-hidden cursor-pointer"
+                      data-testid={`card-category-${category.slug}`}
+                    >
+                      <div className="flex items-center">
+                        <div className="w-24 h-20 overflow-hidden">
+                          <img
+                            src={category.image}
+                            alt={category.alt}
+                            className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                        
+                        <div className="flex-1 p-4">
+                          <h4 className="font-italiana text-lg font-semibold text-charcoal mb-1 tracking-wide group-hover:text-bronze transition-colors duration-300">
+                            {category.title}
+                          </h4>
+                          <p className="text-sm text-charcoal/70 font-medium tracking-wider">
+                            {category.projects}
+                          </p>
+                        </div>
+                        
+                        <div className="pr-4">
+                          <div className="w-6 h-px bg-bronze opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
                       </div>
                       
-                      <div className="flex-1 p-4">
-                        <h4 className="font-italiana text-lg font-semibold text-charcoal mb-1 tracking-wide">
-                          {category.title}
-                        </h4>
-                        <p className="text-sm text-charcoal/70 font-medium tracking-wider">
-                          {category.projects}
-                        </p>
-                      </div>
-                      
-                      <div className="pr-4">
-                        <div className="w-6 h-px bg-bronze opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      </div>
-                    </div>
-                    
-                    {/* Hover accent */}
-                    <div className="absolute left-0 top-0 w-1 h-full bg-bronze transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
-                  </motion.div>
+                      {/* Hover accent */}
+                      <div className="absolute left-0 top-0 w-1 h-full bg-bronze transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
 

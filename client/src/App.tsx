@@ -15,6 +15,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/gallery" component={Gallery} />
+      <Route path="/gallery/:category" component={Gallery} />
       <Route path="/about" component={About} />
       <Route path="/cookie-policy" component={CookiePolicy} />
       <Route component={NotFound} />
