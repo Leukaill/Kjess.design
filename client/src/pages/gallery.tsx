@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Filter, X, ChevronLeft, ChevronRight, Heart, Share2, Calendar, MapPin, ZoomIn } from "lucide-react";
+import { ArrowLeft, Filter, X, ChevronLeft, ChevronRight, Heart, Share2, Calendar, MapPin, ZoomIn, Facebook, MessageCircle, Send } from "lucide-react";
+import { SiPinterest, SiInstagram } from "react-icons/si";
+import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 import { Link, useParams } from "wouter";
 import { useState, useMemo, useCallback } from "react";
 
@@ -54,6 +56,7 @@ const Gallery = () => {
   const [expandedImage, setExpandedImage] = useState<string | null>(null);
   const [expandedImageAlt, setExpandedImageAlt] = useState<string>("");
   const [isLiked, setIsLiked] = useState<Record<number, boolean>>({});
+  const [shareMenuOpen, setShareMenuOpen] = useState<number | null>(null);
 
   // ONLY authentic KJESS Designs project photos
   const galleryItems = [
@@ -306,6 +309,41 @@ const Gallery = () => {
     setExpandedImageAlt(newItem.description);
   }, [selectedImage, filteredItems]);
 
+  // Social sharing functionality with subtle marketing
+  const generateShareMessage = useCallback((item: typeof galleryItems[0]) => {
+    const messages = {
+      pinterest: `${item.title} - Discover the art of sophisticated living through exceptional interior design. Every space tells a story of elegance and innovation. #InteriorDesign #HomeDecor #LuxuryLiving #KigaliDesign`,
+      facebook: `✨ Inspired by this stunning ${item.title} design! There's something magical about spaces that perfectly blend functionality with beauty. What makes a home truly exceptional? It's the thoughtful details that create lasting impressions. #DesignInspiration #InteriorDesign #HomeDesign`,
+      whatsapp: `🏠 Look at this amazing ${item.title}! The attention to detail is incredible. This is what happens when creativity meets craftsmanship. Thought you'd appreciate this beautiful design! 🎨`,
+      instagram: `${item.title} 🏡\n\nWhen design transcends decoration and becomes art... Every element carefully curated to create spaces that inspire daily life. ✨\n\n#InteriorDesign #DesignInspiration #HomeDecor #LuxuryInteriors #ModernLiving #DesignDetails #HomeDesign #Architecture`,
+      twitter: `${item.title} - Where thoughtful design meets everyday living. Spaces that don't just look beautiful, but feel extraordinary. 🏠✨ #InteriorDesign #HomeDesign #DesignInspiration`
+    };
+    return messages;
+  }, []);
+
+  const shareToSocial = useCallback((platform: string, item: typeof galleryItems[0]) => {
+    const currentUrl = window.location.href;
+    const messages = generateShareMessage(item);
+    const imageUrl = item.image; // In a real app, this would be a full URL
+    
+    const shareUrls = {
+      pinterest: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(currentUrl)}&media=${encodeURIComponent(imageUrl)}&description=${encodeURIComponent(messages.pinterest)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}&quote=${encodeURIComponent(messages.facebook)}`,
+      whatsapp: `https://wa.me/?text=${encodeURIComponent(messages.whatsapp + ' ' + currentUrl)}`,
+      instagram: `https://www.instagram.com/`, // Instagram doesn't support direct sharing via URL, opens Instagram
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(messages.twitter)}&url=${encodeURIComponent(currentUrl)}`
+    };
+
+    if (platform === 'instagram') {
+      // Copy text to clipboard for Instagram
+      navigator.clipboard.writeText(messages.instagram + '\n\n' + currentUrl);
+      alert('Caption copied to clipboard! Open Instagram to share.');
+    }
+    
+    window.open(shareUrls[platform as keyof typeof shareUrls], '_blank', 'width=600,height=400');
+    setShareMenuOpen(null);
+  }, [generateShareMessage]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream to-white">
       {/* Elegant Header */}
@@ -470,21 +508,96 @@ const Gallery = () => {
                     </div>
                   )}
                   
-                  {/* Love button */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleLike(item.id);
-                    }}
-                    className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110"
-                    data-testid={`button-like-${item.id}`}
-                  >
-                    <Heart 
-                      className={`w-5 h-5 transition-colors duration-300 ${
-                        isLiked[item.id] ? 'text-red-500 fill-current' : 'text-charcoal/60 hover:text-red-500'
-                      }`} 
-                    />
-                  </button>
+                  {/* Action buttons */}
+                  <div className="absolute top-4 right-4 z-10 flex space-x-2">
+                    {/* Share button */}
+                    <div className="relative">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setShareMenuOpen(shareMenuOpen === item.id ? null : item.id);
+                        }}
+                        className="w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110"
+                        data-testid={`button-share-${item.id}`}
+                      >
+                        <Share2 className="w-4 h-4 text-charcoal/60 hover:text-bronze" />
+                      </button>
+                      
+                      {/* Social Share Menu for Gallery Items */}
+                      <AnimatePresence>
+                        {shareMenuOpen === item.id && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-bronze/10 p-4 z-30 min-w-[200px]"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <p className="text-xs text-charcoal/60 mb-3 font-medium uppercase tracking-wider text-center">Share This Design</p>
+                            
+                            <div className="grid grid-cols-2 gap-2">
+                              <button
+                                onClick={() => shareToSocial('pinterest', item)}
+                                className="flex items-center space-x-2 p-2 hover:bg-red-50 rounded-lg transition-colors duration-200 group"
+                              >
+                                <SiPinterest className="w-4 h-4 text-red-600" />
+                                <span className="text-xs text-charcoal group-hover:text-red-600">Pinterest</span>
+                              </button>
+                              
+                              <button
+                                onClick={() => shareToSocial('facebook', item)}
+                                className="flex items-center space-x-2 p-2 hover:bg-blue-50 rounded-lg transition-colors duration-200 group"
+                              >
+                                <Facebook className="w-4 h-4 text-blue-600" />
+                                <span className="text-xs text-charcoal group-hover:text-blue-600">Facebook</span>
+                              </button>
+                              
+                              <button
+                                onClick={() => shareToSocial('whatsapp', item)}
+                                className="flex items-center space-x-2 p-2 hover:bg-green-50 rounded-lg transition-colors duration-200 group"
+                              >
+                                <FaWhatsapp className="w-4 h-4 text-green-600" />
+                                <span className="text-xs text-charcoal group-hover:text-green-600">WhatsApp</span>
+                              </button>
+                              
+                              <button
+                                onClick={() => shareToSocial('instagram', item)}
+                                className="flex items-center space-x-2 p-2 hover:bg-pink-50 rounded-lg transition-colors duration-200 group"
+                              >
+                                <SiInstagram className="w-4 h-4 text-pink-600" />
+                                <span className="text-xs text-charcoal group-hover:text-pink-600">Instagram</span>
+                              </button>
+                              
+                              <button
+                                onClick={() => shareToSocial('twitter', item)}
+                                className="flex items-center space-x-2 p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200 group col-span-2"
+                              >
+                                <FaXTwitter className="w-4 h-4 text-gray-800" />
+                                <span className="text-xs text-charcoal group-hover:text-gray-800">X (Twitter)</span>
+                              </button>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                    
+                    {/* Love button */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleLike(item.id);
+                      }}
+                      className="w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110"
+                      data-testid={`button-like-${item.id}`}
+                    >
+                      <Heart 
+                        className={`w-5 h-5 transition-colors duration-300 ${
+                          isLiked[item.id] ? 'text-red-500 fill-current' : 'text-charcoal/60 hover:text-red-500'
+                        }`} 
+                      />
+                    </button>
+                  </div>
 
                   {/* Image container with aesthetic variations */}
                   <div className={`relative overflow-hidden ${
@@ -569,7 +682,10 @@ const Gallery = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-50 bg-charcoal/95 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={closeLightbox}
+            onClick={(e) => {
+              closeLightbox();
+              setShareMenuOpen(null);
+            }}
           >
             {/* Navigation arrows */}
             <button
@@ -667,9 +783,79 @@ const Gallery = () => {
                             }`} 
                           />
                         </button>
-                        <button className="p-3 bg-cream hover:bg-bronze/10 rounded-full transition-colors duration-300">
-                          <Share2 className="w-5 h-5 text-charcoal/60" />
-                        </button>
+                        <div className="relative">
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setShareMenuOpen(shareMenuOpen === currentItem.id ? null : currentItem.id);
+                            }}
+                            className="p-3 bg-cream hover:bg-bronze/10 rounded-full transition-colors duration-300"
+                          >
+                            <Share2 className="w-5 h-5 text-charcoal/60" />
+                          </button>
+                          
+                          {/* Social Share Menu */}
+                          <AnimatePresence>
+                            {shareMenuOpen === currentItem.id && (
+                              <motion.div
+                                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.8, y: 10 }}
+                                transition={{ duration: 0.2 }}
+                                className="absolute right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-bronze/10 p-4 z-20 min-w-[200px]"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <p className="text-xs text-charcoal/60 mb-3 font-medium uppercase tracking-wider text-center">Share This Design</p>
+                                
+                                <div className="grid grid-cols-2 gap-3">
+                                  <button
+                                    onClick={() => shareToSocial('pinterest', currentItem)}
+                                    className="flex items-center space-x-2 p-3 hover:bg-red-50 rounded-xl transition-colors duration-200 group"
+                                  >
+                                    <SiPinterest className="w-5 h-5 text-red-600" />
+                                    <span className="text-sm text-charcoal group-hover:text-red-600">Pinterest</span>
+                                  </button>
+                                  
+                                  <button
+                                    onClick={() => shareToSocial('facebook', currentItem)}
+                                    className="flex items-center space-x-2 p-3 hover:bg-blue-50 rounded-xl transition-colors duration-200 group"
+                                  >
+                                    <Facebook className="w-5 h-5 text-blue-600" />
+                                    <span className="text-sm text-charcoal group-hover:text-blue-600">Facebook</span>
+                                  </button>
+                                  
+                                  <button
+                                    onClick={() => shareToSocial('whatsapp', currentItem)}
+                                    className="flex items-center space-x-2 p-3 hover:bg-green-50 rounded-xl transition-colors duration-200 group"
+                                  >
+                                    <FaWhatsapp className="w-5 h-5 text-green-600" />
+                                    <span className="text-sm text-charcoal group-hover:text-green-600">WhatsApp</span>
+                                  </button>
+                                  
+                                  <button
+                                    onClick={() => shareToSocial('instagram', currentItem)}
+                                    className="flex items-center space-x-2 p-3 hover:bg-pink-50 rounded-xl transition-colors duration-200 group"
+                                  >
+                                    <SiInstagram className="w-5 h-5 text-pink-600" />
+                                    <span className="text-sm text-charcoal group-hover:text-pink-600">Instagram</span>
+                                  </button>
+                                  
+                                  <button
+                                    onClick={() => shareToSocial('twitter', currentItem)}
+                                    className="flex items-center space-x-2 p-3 hover:bg-gray-50 rounded-xl transition-colors duration-200 group col-span-2"
+                                  >
+                                    <FaXTwitter className="w-5 h-5 text-gray-800" />
+                                    <span className="text-sm text-charcoal group-hover:text-gray-800">X (Twitter)</span>
+                                  </button>
+                                </div>
+                                
+                                <div className="mt-3 pt-3 border-t border-bronze/10">
+                                  <p className="text-xs text-charcoal/40 text-center italic">Share the beauty of exceptional design</p>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
