@@ -693,22 +693,7 @@ export default function Home() {
             </button>
           </motion.div>
 
-          {/* Elegant Stats Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.6 }}
-            className="grid grid-cols-2 gap-8 max-w-md mx-auto"
-          >
-            <div className="text-center">
-              <div className="text-5xl sm:text-6xl font-italiana text-white mb-2 tracking-wide">100+</div>
-              <div className="text-sm text-cream/70 uppercase tracking-widest font-medium">Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl sm:text-6xl font-italiana text-white mb-2 tracking-wide">5+</div>
-              <div className="text-sm text-cream/70 uppercase tracking-widest font-medium">Years</div>
-            </div>
-          </motion.div>
+
         </div>
 
         {/* Scroll Indicator - Mobile Friendly */}
