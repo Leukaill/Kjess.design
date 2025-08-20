@@ -13,7 +13,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X } from "lucide-react";
 import logoUrl from "@assets/image_1755432338671.png";
 import { Link } from "wouter";
-import { CollaborationPopup, useCollaborationPopup } from "@/components/collaboration-popup";
 import { AnimatePresence } from "framer-motion";
 import { useActivityTracking } from "@/lib/cookies";
 
@@ -37,8 +36,6 @@ export default function Home() {
   // Hero carousel states
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  // Collaboration popup
-  const { showPopup, closePopup } = useCollaborationPopup();
   
   // Activity tracking
   const { trackPageView, trackInteraction } = useActivityTracking();
@@ -3465,7 +3462,6 @@ export default function Home() {
       </motion.div>
       {/* Collaboration Popup */}
       <AnimatePresence>
-        {showPopup && <CollaborationPopup onClose={closePopup} />}
       </AnimatePresence>
     </div>
   );

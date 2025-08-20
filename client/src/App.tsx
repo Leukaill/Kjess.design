@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CookieBanner } from "@/components/cookie-banner";
+import CollaborationPopup from "@/components/CollaborationPopup";
 import Home from "@/pages/home";
 import Gallery from "@/pages/gallery";
 import About from "@/pages/about";
@@ -30,6 +31,7 @@ function App() {
         <Toaster />
         <Router />
         <CookieBanner />
+        <CollaborationPopup />
       </TooltipProvider>
     </QueryClientProvider>
   );
