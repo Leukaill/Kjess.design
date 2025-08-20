@@ -2162,166 +2162,97 @@ export default function Home() {
                 <div className="w-20 h-px bg-bronze/60 mb-8"></div>
               </div>
 
-              {/* Enhanced Portfolio Categories */}
-              <div className="space-y-8">
+              {/* Portfolio categories - Original Stacked Layout */}
+              <div className="space-y-6">
                 {[
                   { 
                     title: "Residential Interiors", 
                     slug: "residential",
                     image: portfolioImg4,
                     alt: "KJESS Designs residential interior with modern furniture and sophisticated design",
-                    projects: "45+ Projects",
-                    description: "Elegant homes designed for modern living"
+                    projects: "45+ Projects" 
                   },
                   { 
                     title: "Commercial Spaces", 
                     slug: "commercial",
                     image: portfolioImg5,
                     alt: "KJESS Designs commercial interior with contemporary lighting and furniture",
-                    projects: "30+ Projects",
-                    description: "Professional environments that inspire"
+                    projects: "30+ Projects" 
                   },
                   { 
                     title: "Custom Furniture", 
                     slug: "furniture",
                     image: furnitureChair,
                     alt: "KJESS Designs custom furniture featuring traditional African patterns and exceptional craftsmanship",
-                    projects: "100+ Pieces",
-                    description: "Handcrafted artistry meets functionality"
+                    projects: "100+ Pieces" 
                   }
                 ].map((category, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 40, x: 30 }}
+                    initial={{ opacity: 0, y: 30, x: 20 }}
                     whileInView={{ opacity: 1, y: 0, x: 0 }}
-                    transition={{ duration: 0.7, delay: 0.8 + index * 0.15, ease: "easeOut" }}
+                    transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
                     viewport={{ once: true }}
-                    className="bg-gradient-to-r from-white to-cream/30 shadow-2xl hover:shadow-3xl transition-all duration-700 group relative overflow-hidden rounded-lg border border-bronze/20"
+                    className="bg-white shadow-xl hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
                   >
-                    {/* Elegant backdrop */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-bronze/5 via-transparent to-charcoal/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
                     <Link 
                       href={`/gallery/${category.slug}`} 
                       data-testid={`link-gallery-${category.slug}`}
-                      className="block relative z-10"
+                      className="block"
                     >
-                      <div className="flex items-stretch cursor-pointer" data-testid={`card-category-${category.slug}`}>
-                        {/* Enhanced Image Container */}
-                        <div className="relative w-28 h-24 overflow-hidden rounded-l-lg">
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-bronze/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="flex items-center cursor-pointer" data-testid={`card-category-${category.slug}`}>
+                        <div className="w-24 h-20 overflow-hidden">
                           <img
                             src={category.image}
                             alt={category.alt}
-                            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-115 filter brightness-95 group-hover:brightness-100"
+                            className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                           />
-                          {/* Image overlay accent */}
-                          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-bronze/60 to-bronze/30 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                         </div>
                         
-                        {/* Enhanced Text Content */}
-                        <div className="flex-1 p-5 flex flex-col justify-center bg-white/80 group-hover:bg-white/90 transition-colors duration-500">
-                          <h4 className="font-italiana text-xl font-bold text-charcoal mb-2 tracking-wide group-hover:text-bronze transition-colors duration-400 leading-tight">
+                        <div className="flex-1 p-4">
+                          <h4 className="font-italiana text-lg font-semibold text-charcoal mb-1 tracking-wide group-hover:text-bronze transition-colors duration-300">
                             {category.title}
                           </h4>
-                          <p className="text-sm text-bronze/80 font-semibold tracking-wider mb-1 uppercase">
+                          <p className="text-sm text-charcoal/70 font-medium tracking-wider">
                             {category.projects}
-                          </p>
-                          <p className="text-xs text-charcoal/60 font-light leading-relaxed italic group-hover:text-charcoal/80 transition-colors duration-300">
-                            {category.description}
                           </p>
                         </div>
                         
-                        {/* Enhanced Action Indicator */}
-                        <div className="flex items-center pr-5">
-                          <div className="flex flex-col items-center space-y-1">
-                            <div className="w-8 h-px bg-bronze/50 group-hover:bg-bronze transition-colors duration-300 group-hover:w-10 transition-all duration-400"></div>
-                            <div className="w-1 h-1 bg-bronze/40 rounded-full group-hover:bg-bronze group-hover:scale-150 transition-all duration-300"></div>
-                          </div>
+                        <div className="pr-4">
+                          <div className="w-6 h-px bg-bronze opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                       </div>
                     </Link>
                     
-                    {/* Enhanced Hover Accents */}
-                    <div className="absolute left-0 top-0 w-2 h-full bg-gradient-to-b from-bronze to-bronze/50 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top"></div>
-                    <div className="absolute right-0 bottom-0 w-6 h-6 border-r-2 border-b-2 border-bronze/30 opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
+                    {/* Hover accent */}
+                    <div className="absolute left-0 top-0 w-1 h-full bg-bronze transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* Spectacular Call-to-Action */}
+              {/* Enhanced call-to-action - Better Text Positioning */}
               <motion.div
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
                 viewport={{ once: true }}
-                className="pt-10"
+                className="pt-8"
               >
                 <Link href="/gallery" data-testid="link-view-portfolio">
-                  <div className="relative bg-gradient-to-br from-white via-cream/30 to-white p-8 border border-bronze/30 shadow-2xl cursor-pointer hover:shadow-3xl transition-all duration-700 group overflow-hidden rounded-xl">
-                    {/* Animated background elements */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-bronze/8 via-transparent to-charcoal/8 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    <div className="absolute -top-20 -right-20 w-40 h-40 bg-bronze/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000"></div>
-                    
-                    {/* Elegant corner accents */}
-                    <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-bronze/40 rounded-tr-xl opacity-60 group-hover:opacity-100 transition-opacity duration-400"></div>
-                    <div className="absolute bottom-0 left-0 w-12 h-12 border-l-2 border-b-2 border-bronze/30 rounded-bl-xl opacity-40 group-hover:opacity-80 transition-opacity duration-500"></div>
-                    
-                    {/* Content with improved typography */}
-                    <div className="relative z-10">
-                      <div className="flex items-start justify-between mb-6">
-                        <div className="flex-1">
-                          <motion.h4 
-                            className="font-italiana text-2xl font-bold text-charcoal mb-3 tracking-wide group-hover:text-bronze transition-colors duration-400 leading-tight"
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6, delay: 1.4 }}
-                          >
-                            View Complete Portfolio
-                          </motion.h4>
-                          
-                          <motion.p 
-                            className="text-charcoal/70 leading-relaxed mb-6 text-base font-light group-hover:text-charcoal/90 transition-colors duration-400"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 1.5 }}
-                          >
-                            Explore our extensive collection of transformative interior design projects that showcase elegance, innovation, and timeless sophistication.
-                          </motion.p>
-                        </div>
-                        
-                        {/* Decorative icon */}
-                        <motion.div 
-                          className="w-12 h-12 border-2 border-bronze/40 rounded-full flex items-center justify-center group-hover:bg-bronze/10 transition-colors duration-400 ml-4"
-                          initial={{ opacity: 0, rotate: -180 }}
-                          whileInView={{ opacity: 1, rotate: 0 }}
-                          transition={{ duration: 0.8, delay: 1.6 }}
-                        >
-                          <div className="w-6 h-6 border-r-2 border-b-2 border-bronze rotate-45 group-hover:scale-110 transition-transform duration-300"></div>
-                        </motion.div>
-                      </div>
-                      
-                      {/* Enhanced action indicator */}
-                      <motion.div 
-                        className="flex items-center space-x-4"
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.7, delay: 1.7 }}
-                      >
-                        <div className="flex items-center space-x-3 group">
-                          <div className="w-16 h-px bg-gradient-to-r from-bronze to-bronze/60 group-hover:w-20 transition-all duration-500"></div>
-                          <div className="w-2 h-2 bg-bronze rounded-full group-hover:scale-125 transition-transform duration-300"></div>
-                          <div className="w-8 h-px bg-gradient-to-r from-bronze/60 to-transparent group-hover:w-12 transition-all duration-500"></div>
-                        </div>
-                        
-                        <span className="text-bronze text-sm font-semibold tracking-wider uppercase group-hover:text-charcoal transition-colors duration-400 group-hover:tracking-widest transition-all duration-400">
-                          Discover More
-                        </span>
-                      </motion.div>
+                  <div className="bg-gradient-to-r from-cream to-white p-6 border-l-4 border-bronze shadow-lg relative cursor-pointer hover:shadow-xl transition-all duration-300 group">
+                    <div className="absolute top-0 right-0 w-10 h-10 border-r border-t border-bronze/25"></div>
+                    <h4 className="font-italiana text-xl font-bold text-charcoal mb-2 tracking-wide group-hover:text-bronze transition-colors duration-300 leading-tight">
+                      View Complete Portfolio
+                    </h4>
+                    <p className="text-charcoal/70 leading-relaxed mb-4 text-sm">
+                      Explore our extensive collection of transformative interior design projects.
+                    </p>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-px bg-bronze group-hover:w-16 transition-all duration-300"></div>
+                      <span className="text-bronze text-sm font-medium tracking-wider uppercase group-hover:text-charcoal transition-colors duration-300">
+                        Discover More
+                      </span>
                     </div>
-                    
-                    {/* Subtle glow effect */}
-                    <div className="absolute inset-0 rounded-xl border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-500"></div>
                   </div>
                 </Link>
               </motion.div>
