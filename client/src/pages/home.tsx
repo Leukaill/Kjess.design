@@ -1917,8 +1917,8 @@ export default function Home() {
                 <div className="w-20 h-px bg-bronze/60 mb-8"></div>
               </div>
               
-              {/* Sophisticated image grid */}
-              <div className="space-y-8">
+              {/* Sophisticated image grid - Compact */}
+              <div className="space-y-6">
                 {/* Primary showcase image */}
                 <motion.div
                   initial={{ opacity: 0, y: 40, scale: 0.95 }}
@@ -1956,8 +1956,8 @@ export default function Home() {
                   </motion.div>
                 </motion.div>
 
-                {/* Secondary images grid */}
-                <div className="grid grid-cols-2 gap-6">
+                {/* Secondary images grid - Reduced spacing */}
+                <div className="grid grid-cols-2 gap-4">
                   <motion.div
                     initial={{ opacity: 0, y: 40, rotate: -2 }}
                     whileInView={{ opacity: 1, y: 0, rotate: 0 }}
@@ -2001,17 +2001,17 @@ export default function Home() {
                   </motion.div>
                 </div>
 
-                {/* Artistically Stacked Portfolio Showcase - Compact */}
-                <div className="mt-8 relative h-48">
-                  {/* First image - bottom layer, rotated left */}
+                {/* Creative Stacked Portfolio - Viewport Optimized */}
+                <div className="mt-6 relative h-36">
+                  {/* First image - bottom layer, positioned carefully */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40, rotate: -6 }}
+                    initial={{ opacity: 0, y: 20, rotate: -6 }}
                     whileInView={{ opacity: 1, y: 0, rotate: -3 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                     viewport={{ once: true }}
-                    className="absolute top-0 left-0 w-24 h-28 group z-10"
+                    className="absolute top-0 left-0 w-20 h-24 group z-10"
                   >
-                    <div className="bg-white p-2 shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1">
+                    <div className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1">
                       <img
                         src={portfolioImg13}
                         alt="KJESS Designs portfolio showcase - residential project"
@@ -2020,15 +2020,15 @@ export default function Home() {
                     </div>
                   </motion.div>
 
-                  {/* Second image - overlapping on top right */}
+                  {/* Second image - overlapping artistically */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40, rotate: 4 }}
+                    initial={{ opacity: 0, y: 20, rotate: 4 }}
                     whileInView={{ opacity: 1, y: 0, rotate: 2 }}
                     transition={{ duration: 0.8, delay: 1 }}
                     viewport={{ once: true }}
-                    className="absolute top-3 left-16 w-28 h-32 group z-20"
+                    className="absolute top-2 left-12 w-24 h-28 group z-20"
                   >
-                    <div className="bg-white p-2 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0">
+                    <div className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0">
                       <img
                         src={portfolioImg14}
                         alt="KJESS Designs portfolio showcase - commercial project"
@@ -2037,15 +2037,15 @@ export default function Home() {
                     </div>
                   </motion.div>
 
-                  {/* Third image - stacked on top, slightly rotated */}
+                  {/* Third image - elegantly stacked */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40, rotate: -2 }}
+                    initial={{ opacity: 0, y: 20, rotate: -2 }}
                     whileInView={{ opacity: 1, y: 0, rotate: -1 }}
                     transition={{ duration: 0.8, delay: 1.2 }}
                     viewport={{ once: true }}
-                    className="absolute top-8 left-6 w-26 h-30 group z-30"
+                    className="absolute top-6 left-4 w-22 h-26 group z-30"
                   >
-                    <div className="bg-white p-2 shadow-3xl group-hover:shadow-4xl transition-all duration-500 rotate-1 group-hover:rotate-2">
+                    <div className="bg-white p-1.5 shadow-3xl group-hover:shadow-4xl transition-all duration-500 rotate-1 group-hover:rotate-2">
                       <img
                         src={portfolioImg15}
                         alt="KJESS Designs portfolio showcase - luxury interior"
@@ -2054,19 +2054,19 @@ export default function Home() {
                     </div>
                   </motion.div>
 
-                  {/* Fourth image - artistically placed on the right */}
+                  {/* Fourth image - perfectly positioned to fit */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40, rotate: 3 }}
+                    initial={{ opacity: 0, y: 20, rotate: 3 }}
                     whileInView={{ opacity: 1, y: 0, rotate: 4 }}
                     transition={{ duration: 0.8, delay: 1.4 }}
                     viewport={{ once: true }}
-                    className="absolute top-12 right-2 w-22 h-26 group z-25"
+                    className="absolute top-8 right-4 w-18 h-22 group z-25"
                   >
-                    <div className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-2 group-hover:-rotate-1">
+                    <div className="bg-white p-1 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-2 group-hover:-rotate-1">
                       <img
                         src={portfolioImg16}
                         alt="KJESS Designs portfolio showcase - modern design"
-                        className="w-full h-20 object-cover transition-all duration-500 group-hover:scale-110"
+                        className="w-full h-18 object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     </div>
                   </motion.div>
