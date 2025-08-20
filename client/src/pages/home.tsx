@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X, ZoomIn } from "lucide-react";
 import logoUrl from "@assets/image_1755432338671.png";
 import ceoImage from "@assets/CEO  Creative Director_1755723463174.png";
 import operationalManagerImage from "@assets/Operational Manager (2)_1755723463171.png";
@@ -65,6 +65,8 @@ export default function Home() {
   // Interactive state management
   const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState("overview");
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
+  const [expandedImageAlt, setExpandedImageAlt] = useState<string>("");
   
   // Hero images array
   const heroImages = [
@@ -1930,12 +1932,23 @@ export default function Home() {
                   {/* Artistic backdrop */}
                   <div className="absolute -inset-6 bg-gradient-to-br from-bronze/12 via-transparent to-charcoal/8 rotate-1 group-hover:rotate-2 transition-all duration-700 opacity-60"></div>
                   
-                  <div className="relative bg-white p-4 shadow-2xl group-hover:shadow-3xl transition-all duration-700">
-                    <img
-                      src={portfolioImg1}
-                      alt="KJESS Designs featured project showcasing elegant interior design and sophisticated furniture arrangement"
-                      className="w-full h-64 object-cover transition-all duration-1000 group-hover:scale-110"
-                    />
+                  <div 
+                    className="relative bg-white p-4 shadow-2xl group-hover:shadow-3xl transition-all duration-700 cursor-pointer"
+                    onClick={() => {
+                      setExpandedImage(portfolioImg1);
+                      setExpandedImageAlt("KJESS Designs featured project showcasing elegant interior design and sophisticated furniture arrangement");
+                    }}
+                  >
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={portfolioImg1}
+                        alt="KJESS Designs featured project showcasing elegant interior design and sophisticated furniture arrangement"
+                        className="w-full h-64 object-cover transition-all duration-1000 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-all duration-300 flex items-center justify-center">
+                        <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    </div>
                     
                     {/* Image overlay */}
                     <div className="absolute inset-4 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -1965,12 +1978,23 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="relative group"
                   >
-                    <div className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                      <img
-                        src={portfolioImg2}
-                        alt="KJESS Designs lighting and interior elements showcasing contemporary design"
-                        className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
-                      />
+                    <div 
+                      className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                      onClick={() => {
+                        setExpandedImage(portfolioImg2);
+                        setExpandedImageAlt("KJESS Designs lighting and interior elements showcasing contemporary design");
+                      }}
+                    >
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={portfolioImg2}
+                          alt="KJESS Designs lighting and interior elements showcasing contemporary design"
+                          className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-all duration-300 flex items-center justify-center">
+                          <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      </div>
                     </div>
                     
                     {/* Floating category badge */}
@@ -1986,12 +2010,23 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="relative group mt-4"
                   >
-                    <div className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                      <img
-                        src={furnitureChair}
-                        alt="KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship"
-                        className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
-                      />
+                    <div 
+                      className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                      onClick={() => {
+                        setExpandedImage(furnitureChair);
+                        setExpandedImageAlt("KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship");
+                      }}
+                    >
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={furnitureChair}
+                          alt="KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship"
+                          className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-all duration-300 flex items-center justify-center">
+                          <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      </div>
                     </div>
                     
                     {/* Floating category badge */}
@@ -2011,12 +2046,23 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="absolute top-0 left-0 w-20 h-24 group z-10"
                   >
-                    <div className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1">
-                      <img
-                        src={portfolioImg13}
-                        alt="KJESS Designs portfolio showcase - residential project"
-                        className="w-full h-20 object-cover transition-all duration-500 group-hover:scale-110"
-                      />
+                    <div 
+                      className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1 cursor-pointer"
+                      onClick={() => {
+                        setExpandedImage(portfolioImg13);
+                        setExpandedImageAlt("KJESS Designs portfolio showcase - residential project");
+                      }}
+                    >
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={portfolioImg13}
+                          alt="KJESS Designs portfolio showcase - residential project"
+                          className="w-full h-20 object-cover transition-all duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/30 transition-all duration-300 flex items-center justify-center">
+                          <ZoomIn className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
 
@@ -2028,12 +2074,23 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="absolute top-2 left-12 w-24 h-28 group z-20"
                   >
-                    <div className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0">
-                      <img
-                        src={portfolioImg14}
-                        alt="KJESS Designs portfolio showcase - commercial project"
-                        className="w-full h-24 object-cover transition-all duration-500 group-hover:scale-110"
-                      />
+                    <div 
+                      className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0 cursor-pointer"
+                      onClick={() => {
+                        setExpandedImage(portfolioImg14);
+                        setExpandedImageAlt("KJESS Designs portfolio showcase - commercial project");
+                      }}
+                    >
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={portfolioImg14}
+                          alt="KJESS Designs portfolio showcase - commercial project"
+                          className="w-full h-24 object-cover transition-all duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/30 transition-all duration-300 flex items-center justify-center">
+                          <ZoomIn className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
 
@@ -2045,12 +2102,23 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="absolute top-6 left-4 w-22 h-26 group z-30"
                   >
-                    <div className="bg-white p-1.5 shadow-3xl group-hover:shadow-4xl transition-all duration-500 rotate-1 group-hover:rotate-2">
-                      <img
-                        src={portfolioImg15}
-                        alt="KJESS Designs portfolio showcase - luxury interior"
-                        className="w-full h-22 object-cover transition-all duration-500 group-hover:scale-110"
-                      />
+                    <div 
+                      className="bg-white p-1.5 shadow-3xl group-hover:shadow-4xl transition-all duration-500 rotate-1 group-hover:rotate-2 cursor-pointer"
+                      onClick={() => {
+                        setExpandedImage(portfolioImg15);
+                        setExpandedImageAlt("KJESS Designs portfolio showcase - luxury interior");
+                      }}
+                    >
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={portfolioImg15}
+                          alt="KJESS Designs portfolio showcase - luxury interior"
+                          className="w-full h-22 object-cover transition-all duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/30 transition-all duration-300 flex items-center justify-center">
+                          <ZoomIn className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
 
@@ -2062,12 +2130,23 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="absolute top-8 right-4 w-18 h-22 group z-25"
                   >
-                    <div className="bg-white p-1 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-2 group-hover:-rotate-1">
-                      <img
-                        src={portfolioImg16}
-                        alt="KJESS Designs portfolio showcase - modern design"
-                        className="w-full h-18 object-cover transition-all duration-500 group-hover:scale-110"
-                      />
+                    <div 
+                      className="bg-white p-1 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-2 group-hover:-rotate-1 cursor-pointer"
+                      onClick={() => {
+                        setExpandedImage(portfolioImg16);
+                        setExpandedImageAlt("KJESS Designs portfolio showcase - modern design");
+                      }}
+                    >
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={portfolioImg16}
+                          alt="KJESS Designs portfolio showcase - modern design"
+                          className="w-full h-18 object-cover transition-all duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/30 transition-all duration-300 flex items-center justify-center">
+                          <ZoomIn className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 </div>
@@ -2089,12 +2168,23 @@ export default function Home() {
                 <div className="absolute -inset-6 bg-gradient-to-tl from-charcoal/8 via-transparent to-bronze/12 -rotate-1 group-hover:-rotate-2 transition-all duration-1200 opacity-40"></div>
                 
                 {/* Main signature image - slightly rotated */}
-                <div className="relative bg-white p-6 shadow-3xl group-hover:shadow-4xl transition-all duration-700 rotate-1 group-hover:rotate-0 z-20">
-                  <img
-                    src={portfolioImg3}
-                    alt="KJESS Designs signature project featuring modern elegance and sophisticated spatial arrangement"
-                    className="w-full h-96 object-cover transition-all duration-1000 group-hover:scale-105"
-                  />
+                <div 
+                  className="relative bg-white p-6 shadow-3xl group-hover:shadow-4xl transition-all duration-700 rotate-1 group-hover:rotate-0 z-20 cursor-pointer"
+                  onClick={() => {
+                    setExpandedImage(portfolioImg3);
+                    setExpandedImageAlt("KJESS Designs signature project featuring modern elegance and sophisticated spatial arrangement");
+                  }}
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={portfolioImg3}
+                      alt="KJESS Designs signature project featuring modern elegance and sophisticated spatial arrangement"
+                      className="w-full h-96 object-cover transition-all duration-1000 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-all duration-500 flex items-center justify-center">
+                      <ZoomIn className="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+                  </div>
                   
                   {/* Multi-layer overlays */}
                   <div className="absolute inset-6 bg-gradient-to-t from-charcoal/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
@@ -2112,12 +2202,23 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="absolute -top-2 -right-4 w-48 h-64 z-10"
                 >
-                  <div className="bg-white p-4 shadow-xl -rotate-2">
-                    <img
-                      src={portfolioImg17}
-                      alt="KJESS Designs layered portfolio piece"
-                      className="w-full h-56 object-cover opacity-80"
-                    />
+                  <div 
+                    className="bg-white p-4 shadow-xl -rotate-2 cursor-pointer group"
+                    onClick={() => {
+                      setExpandedImage(portfolioImg17);
+                      setExpandedImageAlt("KJESS Designs layered portfolio piece");
+                    }}
+                  >
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={portfolioImg17}
+                        alt="KJESS Designs layered portfolio piece"
+                        className="w-full h-56 object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                      />
+                      <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-all duration-300 flex items-center justify-center">
+                        <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
                 
@@ -2301,6 +2402,64 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Elegant Image Expansion Modal */}
+      <AnimatePresence>
+        {expandedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 bg-charcoal/90 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={() => setExpandedImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 50 }}
+              transition={{ duration: 0.5, type: "spring", stiffness: 200, damping: 20 }}
+              className="relative max-w-6xl max-h-[90vh] bg-white p-6 shadow-3xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setExpandedImage(null)}
+                className="absolute -top-4 -right-4 w-12 h-12 bg-bronze hover:bg-bronze/90 text-white rounded-full flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 z-10"
+                data-testid="button-close-modal"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              
+              {/* Expanded image */}
+              <motion.img
+                src={expandedImage}
+                alt={expandedImageAlt}
+                className="w-full h-auto max-h-[80vh] object-contain"
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+              
+              {/* Image description */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="mt-4 text-center"
+              >
+                <p className="text-charcoal/70 text-sm font-light italic">{expandedImageAlt}</p>
+              </motion.div>
+              
+              {/* Decorative corners */}
+              <div className="absolute top-2 left-2 w-6 h-6 border-l-2 border-t-2 border-bronze/40"></div>
+              <div className="absolute top-2 right-2 w-6 h-6 border-r-2 border-t-2 border-bronze/40"></div>
+              <div className="absolute bottom-2 left-2 w-6 h-6 border-l-2 border-b-2 border-bronze/40"></div>
+              <div className="absolute bottom-2 right-2 w-6 h-6 border-r-2 border-b-2 border-bronze/40"></div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Visionary Transition Divider */}
       <div className="h-32 bg-gradient-to-b from-white via-cream/20 to-cream/60 relative overflow-hidden">
