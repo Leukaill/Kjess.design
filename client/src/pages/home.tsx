@@ -669,10 +669,14 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.8 }}
             className="mb-12"
           >
-            <p className="text-xl sm:text-2xl md:text-3xl text-cream/95 font-light tracking-wide mb-6 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl md:text-3xl text-white font-light tracking-wide mb-6 max-w-3xl mx-auto leading-relaxed" style={{
+              textShadow: '0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)'
+            }}>
               Interior Design & Luxury Furniture
             </p>
-            <p className="text-lg sm:text-xl text-cream/80 font-light tracking-wide max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-white/95 font-light tracking-wide max-w-2xl mx-auto" style={{
+              textShadow: '0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)'
+            }}>
               Discover Our Premium Portfolio
             </p>
           </motion.div>
