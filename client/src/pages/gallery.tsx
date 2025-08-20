@@ -478,22 +478,44 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Gallery Grid - Sophisticated Magazine-Style Layout */}
-      <section className="py-16">
+      {/* Gallery Grid - Ultra-Sophisticated Aesthetic Layout */}
+      <section className="py-20 bg-gradient-to-b from-white via-cream/30 to-white relative">
         <div className="container mx-auto px-6">
+          {/* Section intro */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center space-x-4 mb-6">
+              <div className="w-16 h-px bg-gradient-to-r from-transparent via-bronze to-transparent"></div>
+              <div className="w-2 h-2 bg-bronze rounded-full"></div>
+              <div className="w-16 h-px bg-gradient-to-l from-transparent via-bronze to-transparent"></div>
+            </div>
+            <p className="font-italiana text-lg text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
+              {selectedCategory === 'all' 
+                ? 'A curated collection of our finest interior design masterpieces' 
+                : `Explore our ${GALLERY_CATEGORIES[selectedCategory as CategorySlug]?.description?.toLowerCase() || 'exceptional projects'}`
+              }
+            </p>
+          </motion.div>
+          
           <motion.div 
             key={selectedCategory}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-8 space-y-8"
           >
             {filteredItems.map((item, index) => {
-              // Create aesthetic variations for different items
+              // Enhanced aesthetic variations with more sophistication
+              const isHero = index === 0 && item.featured; // First featured item gets hero treatment
               const isLarge = index % 7 === 0 || index % 11 === 0; // Featured large items
-              const isWide = index % 5 === 0 && !isLarge; // Wide aspect items
-              const hasRotation = index % 13 === 0; // Slight rotation for artistic feel
+              const isWide = index % 5 === 0 && !isLarge && !isHero; // Wide aspect items
+              const hasRotation = index % 13 === 0 && !isHero; // Slight rotation for artistic feel
               const isElevated = index % 9 === 0; // Extra elevation for depth
+              const isGlowing = item.featured && !isHero; // Subtle glow for featured items
               
               return (
                 <motion.div
@@ -521,38 +543,6 @@ const Gallery = () => {
                     </div>
                   )}
                   
-                  {/* Action buttons */}
-                  <div className="absolute top-4 right-4 z-10 flex space-x-2">
-                    {/* Share button */}
-                    <div className="relative">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openShareModal(item);
-                        }}
-                        className="w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110"
-                        data-testid={`button-share-${item.id}`}
-                      >
-                        <Share2 className="w-4 h-4 text-charcoal/60 hover:text-bronze" />
-                      </button>
-                    </div>
-                    
-                    {/* Love button */}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleLike(item.id);
-                      }}
-                      className="w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110"
-                      data-testid={`button-like-${item.id}`}
-                    >
-                      <Heart 
-                        className={`w-5 h-5 transition-colors duration-300 ${
-                          isLiked[item.id] ? 'text-red-500 fill-current' : 'text-charcoal/60 hover:text-red-500'
-                        }`} 
-                      />
-                    </button>
-                  </div>
 
                   {/* Image container with aesthetic variations */}
                   <div className={`relative overflow-hidden ${
