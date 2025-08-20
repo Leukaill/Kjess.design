@@ -4,62 +4,25 @@ import { ArrowLeft, Filter, X, ChevronLeft, ChevronRight, Heart, Share2, Calenda
 import { Link, useParams } from "wouter";
 import { useState, useMemo, useCallback } from "react";
 
-// Import real KJESS Designs project images
+// Import ONLY authentic KJESS Designs project images
 import projectImg1 from "@assets/IMG_0011_1755724301675.jpeg";
 import projectImg2 from "@assets/IMG_0021_1755724301676.jpeg";
-import projectImg3 from "@assets/IMG_3958_1755724301677.jpeg";
-import projectImg4 from "@assets/IMG_5416_1755724301677.jpeg";
+import projectImg3 from "@assets/IMG_3958_1755727527464.jpeg";
+import projectImg4 from "@assets/IMG_5416_1755727527465.jpeg";
 import projectImg5 from "@assets/IMG_5422_1755724301678.jpeg";
-import projectImg6 from "@assets/PHOTO-2024-11-11-13-25-27 2_1755724301679.jpeg";
-import projectImg7 from "@assets/PHOTO-2024-11-11-13-25-27 3_1755724301681.jpeg";
-import projectImg8 from "@assets/PHOTO-2024-11-11-13-25-27 6_1755724301684.jpeg";
-import projectImg9 from "@assets/PHOTO-2024-11-11-13-25-27 11_1755724301686.jpeg";
-import projectImg10 from "@assets/PHOTO-2024-11-11-13-25-27 14_1755724301688.jpeg";
-import projectImg11 from "@assets/PHOTO-2024-11-11-13-25-27 17_1755724301692.jpeg";
-import projectImg12 from "@assets/PHOTO-2024-11-11-13-25-27 25_1755724301693.jpeg";
-import projectImg13 from "@assets/PHOTO-2024-11-11-13-25-27 29_1755724301694.jpeg";
-import projectImg14 from "@assets/PHOTO-2024-11-11-13-25-27 43_1755724301695.jpeg";
-import projectImg15 from "@assets/PHOTO-2024-11-11-13-25-27 52_1755724301695.jpeg";
-import projectImg16 from "@assets/PHOTO-2024-11-11-13-25-27 59_1755724301696.jpeg";
-import projectImg17 from "@assets/PHOTO-2024-11-11-13-25-27 60_1755724301699.jpeg";
-import furnitureChair from "@assets/PHOTO-2024-11-11-13-25-27_17-removebg-preview_1755724395612.png";
-import interiorImg1 from "@assets/image_1755104650441.png";
-import interiorImg2 from "@assets/image_1755104680089.png";
-import interiorImg3 from "@assets/image_1755104729823.png";
-import interiorImg4 from "@assets/image_1755104762607.png";
-import interiorImg5 from "@assets/image_1755104785392.png";
-import interiorImg6 from "@assets/image_1755104813921.png";
-import interiorImg7 from "@assets/image_1755104844178.png";
-import interiorImg8 from "@assets/image_1755104869069.png";
-import interiorImg9 from "@assets/image_1755104895646.png";
-import interiorImg10 from "@assets/image_1755104918264.png";
-import interiorImg11 from "@assets/image_1755104942771.png";
-import commercialImg1 from "@assets/image_1755106453821.png";
-import commercialImg2 from "@assets/image_1755106786925.png";
-import commercialImg3 from "@assets/image_1755107055502.png";
-import commercialImg4 from "@assets/image_1755108355220.png";
-import commercialImg5 from "@assets/image_1755108466201.png";
-import furnitureImg1 from "@assets/image_1755112607322.png";
-import furnitureImg2 from "@assets/image_1755113167474.png";
-import furnitureImg3 from "@assets/image_1755113400426.png";
-import luxuryImg1 from "@assets/image_1755717970699.png";
-import luxuryImg2 from "@assets/image_1755718192050.png";
-import luxuryImg3 from "@assets/image_1755718394711.png";
-import luxuryImg4 from "@assets/image_1755719366080.png";
-import luxuryImg5 from "@assets/image_1755719619382.png";
-import luxuryImg6 from "@assets/image_1755719885931.png";
-import luxuryImg7 from "@assets/image_1755720116208.png";
-import luxuryImg8 from "@assets/image_1755720418895.png";
-import luxuryImg9 from "@assets/image_1755720815914.png";
-import luxuryImg10 from "@assets/image_1755721224386.png";
-import luxuryImg11 from "@assets/image_1755721331301.png";
-import luxuryImg12 from "@assets/image_1755721382971.png";
-import luxuryImg13 from "@assets/image_1755721499635.png";
-import luxuryImg14 from "@assets/image_1755721564259.png";
-import luxuryImg15 from "@assets/image_1755721649514.png";
-import luxuryImg16 from "@assets/image_1755721896611.png";
-import luxuryImg17 from "@assets/image_1755722080826.png";
-import signatureImg from "@assets/image_1755723808536.png";
+import projectImg6 from "@assets/PHOTO-2024-11-11-13-25-27 2_1755727527466.jpeg";
+import projectImg7 from "@assets/PHOTO-2024-11-11-13-25-27 3_1755727527467.jpeg";
+import projectImg8 from "@assets/PHOTO-2024-11-11-13-25-27 6_1755727527467.jpeg";
+import projectImg9 from "@assets/PHOTO-2024-11-11-13-25-27 11_1755727527468.jpeg";
+import projectImg10 from "@assets/PHOTO-2024-11-11-13-25-27 14_1755727515902.jpeg";
+import projectImg11 from "@assets/PHOTO-2024-11-11-13-25-27 17_1755727515903.jpeg";
+import projectImg12 from "@assets/PHOTO-2024-11-11-13-25-27 25_1755727515903.jpeg";
+import projectImg13 from "@assets/PHOTO-2024-11-11-13-25-27 29_1755727503846.jpeg";
+import projectImg14 from "@assets/PHOTO-2024-11-11-13-25-27 43_1755727503847.jpeg";
+import projectImg15 from "@assets/PHOTO-2024-11-11-13-25-27 52_1755727503847.jpeg";
+import projectImg16 from "@assets/PHOTO-2024-11-11-13-25-27 59_1755727419390.jpeg";
+import projectImg17 from "@assets/PHOTO-2024-11-11-13-25-27 60_1755727419391.jpeg";
+import furnitureChair from "@assets/PHOTO-2024-11-11-13-25-27_17-removebg-preview_1755727365622.png";
 
 // Organized gallery categories
 const GALLERY_CATEGORIES = {
@@ -77,11 +40,6 @@ const GALLERY_CATEGORIES = {
     title: "Custom Furniture",
     description: "Handcrafted pieces that blend artistry with functionality",
     slug: "furniture"
-  },
-  luxury: {
-    title: "Luxury Projects",
-    description: "Premium designs with sophisticated finishes",
-    slug: "luxury"
   }
 } as const;
 
@@ -97,7 +55,7 @@ const Gallery = () => {
   const [expandedImageAlt, setExpandedImageAlt] = useState<string>("");
   const [isLiked, setIsLiked] = useState<Record<number, boolean>>({});
 
-  // Real KJESS Designs project gallery organized by category
+  // ONLY authentic KJESS Designs project photos
   const galleryItems = [
     // Featured Residential Projects (Best Images First)
     {
@@ -124,7 +82,7 @@ const Gallery = () => {
     },
     {
       id: 3,
-      image: luxuryImg1,
+      image: projectImg10,
       title: "Modern Kitchen Design",
       category: "residential",
       subcategory: "Kitchens",
@@ -135,7 +93,7 @@ const Gallery = () => {
     },
     {
       id: 4,
-      image: interiorImg1,
+      image: projectImg6,
       title: "Master Bedroom Suite",
       category: "residential",
       subcategory: "Bedrooms",
@@ -146,7 +104,7 @@ const Gallery = () => {
     },
     {
       id: 5,
-      image: interiorImg2,
+      image: projectImg7,
       title: "Dining Room Excellence",
       category: "residential",
       subcategory: "Dining Rooms",
@@ -157,7 +115,7 @@ const Gallery = () => {
     },
     {
       id: 6,
-      image: luxuryImg2,
+      image: projectImg8,
       title: "Luxury Bathroom Design",
       category: "residential",
       subcategory: "Bathrooms",
@@ -168,7 +126,7 @@ const Gallery = () => {
     },
     {
       id: 7,
-      image: interiorImg3,
+      image: projectImg9,
       title: "Open Concept Living",
       category: "residential",
       subcategory: "Living Areas",
@@ -179,7 +137,7 @@ const Gallery = () => {
     },
     {
       id: 8,
-      image: luxuryImg3,
+      image: projectImg11,
       title: "Modern Family Kitchen",
       category: "residential",
       subcategory: "Kitchens",
@@ -188,11 +146,33 @@ const Gallery = () => {
       location: "Gasabo, Kigali",
       featured: false
     },
+    {
+      id: 9,
+      image: projectImg12,
+      title: "Elegant Bedroom Design",
+      category: "residential",
+      subcategory: "Bedrooms",
+      description: "Sophisticated bedroom with custom headboard and luxury bedding",
+      projectDate: "2024",
+      location: "Kinyinya, Kigali",
+      featured: false
+    },
+    {
+      id: 10,
+      image: projectImg13,
+      title: "Contemporary Living Room",
+      category: "residential",
+      subcategory: "Living Rooms",
+      description: "Modern living space with artistic elements and comfortable seating",
+      projectDate: "2023",
+      location: "Gikondo, Kigali",
+      featured: false
+    },
 
     // Commercial Projects
     {
       id: 20,
-      image: commercialImg1,
+      image: projectImg14,
       title: "Executive Office Suite",
       category: "commercial",
       subcategory: "Offices",
@@ -203,7 +183,7 @@ const Gallery = () => {
     },
     {
       id: 21,
-      image: commercialImg2,
+      image: projectImg15,
       title: "Corporate Conference Room",
       category: "commercial",
       subcategory: "Meeting Spaces",
@@ -214,7 +194,7 @@ const Gallery = () => {
     },
     {
       id: 22,
-      image: commercialImg3,
+      image: projectImg16,
       title: "Modern Reception Area",
       category: "commercial",
       subcategory: "Reception",
@@ -225,24 +205,46 @@ const Gallery = () => {
     },
     {
       id: 23,
-      image: commercialImg4,
-      title: "Restaurant Interior",
+      image: projectImg17,
+      title: "Professional Office Space",
       category: "commercial",
-      subcategory: "Restaurants",
-      description: "Upscale dining establishment with custom lighting and premium furnishings",
+      subcategory: "Offices",
+      description: "Contemporary office design with open-plan layout and modern furnishings",
       projectDate: "2023",
       location: "Remera, Kigali",
       featured: false
     },
     {
       id: 24,
-      image: commercialImg5,
+      image: projectImg2,
       title: "Retail Showroom",
       category: "commercial",
       subcategory: "Retail",
       description: "Elegant retail space with strategic lighting and display solutions",
       projectDate: "2024",
       location: "Kimisagara, Kigali",
+      featured: false
+    },
+    {
+      id: 25,
+      image: projectImg4,
+      title: "Corporate Workspace",
+      category: "commercial",
+      subcategory: "Offices",
+      description: "Modern corporate environment designed for productivity and collaboration",
+      projectDate: "2024",
+      location: "Gishushu, Kigali",
+      featured: false
+    },
+    {
+      id: 26,
+      image: projectImg5,
+      title: "Business Meeting Room",
+      category: "commercial",
+      subcategory: "Meeting Spaces",
+      description: "Professional meeting space with elegant furniture and proper lighting",
+      projectDate: "2023",
+      location: "Kacyiru, Kigali",
       featured: false
     },
 
@@ -253,100 +255,10 @@ const Gallery = () => {
       title: "Traditional African Chair",
       category: "furniture",
       subcategory: "Seating",
-      description: "Handcrafted chair featuring traditional African patterns with modern comfort",
+      description: "Handcrafted chair featuring traditional African patterns with modern comfort and premium upholstery",
       projectDate: "2024",
       location: "KJESS Workshop",
       featured: true
-    },
-    {
-      id: 41,
-      image: furnitureImg1,
-      title: "Custom Dining Table",
-      category: "furniture",
-      subcategory: "Tables",
-      description: "Elegant dining table with premium wood finish and sophisticated design",
-      projectDate: "2024",
-      location: "KJESS Workshop",
-      featured: true
-    },
-    {
-      id: 42,
-      image: furnitureImg2,
-      title: "Luxury Bedroom Set",
-      category: "furniture",
-      subcategory: "Bedroom Furniture",
-      description: "Complete bedroom furniture collection with matching nightstands and dresser",
-      projectDate: "2023",
-      location: "KJESS Workshop",
-      featured: false
-    },
-    {
-      id: 43,
-      image: furnitureImg3,
-      title: "Modern Coffee Table",
-      category: "furniture",
-      subcategory: "Tables",
-      description: "Contemporary coffee table with glass top and artistic base design",
-      projectDate: "2024",
-      location: "KJESS Workshop",
-      featured: false
-    },
-
-    // Luxury Projects
-    {
-      id: 60,
-      image: signatureImg,
-      title: "Signature Luxury Project",
-      category: "luxury",
-      subcategory: "Premium Residences",
-      description: "Award-winning luxury interior featuring bespoke elements and premium materials",
-      projectDate: "2024",
-      location: "Kiyovu, Kigali",
-      featured: true
-    },
-    {
-      id: 61,
-      image: luxuryImg4,
-      title: "Premium Penthouse",
-      category: "luxury",
-      subcategory: "Penthouse",
-      description: "Sophisticated penthouse design with panoramic views and luxury finishes",
-      projectDate: "2024",
-      location: "Nyarutarama Heights",
-      featured: true
-    },
-    {
-      id: 62,
-      image: luxuryImg5,
-      title: "Executive Villa",
-      category: "luxury",
-      subcategory: "Villas",
-      description: "Elegant villa interior with custom furniture and artistic lighting",
-      projectDate: "2023",
-      location: "Kacyiru Hills",
-      featured: false
-    },
-    {
-      id: 63,
-      image: luxuryImg6,
-      title: "Luxury Master Suite",
-      category: "luxury",
-      subcategory: "Master Bedrooms",
-      description: "Opulent master bedroom with walk-in closet and en-suite bathroom",
-      projectDate: "2024",
-      location: "Gishushu",
-      featured: false
-    },
-    {
-      id: 64,
-      image: luxuryImg7,
-      title: "Premium Living Space",
-      category: "luxury",
-      subcategory: "Living Areas",
-      description: "Grand living room with double-height ceilings and designer furniture",
-      projectDate: "2023",
-      location: "Kibagabaga",
-      featured: false
     }
   ];
 
@@ -515,7 +427,7 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Gallery Grid - Enhanced Aesthetic Design */}
+      {/* Gallery Grid - Sophisticated Magazine-Style Layout */}
       <section className="py-16">
         <div className="container mx-auto px-6">
           <motion.div 
@@ -523,19 +435,34 @@ const Gallery = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+            className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-8 space-y-8"
           >
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
-                className="group cursor-pointer"
-                onClick={() => openLightbox(item.id)}
-                data-testid={`gallery-item-${item.id}`}
-              >
-                <div className="relative overflow-hidden rounded-2xl shadow-xl group-hover:shadow-2xl transition-all duration-500 bg-white">
+            {filteredItems.map((item, index) => {
+              // Create aesthetic variations for different items
+              const isLarge = index % 7 === 0 || index % 11 === 0; // Featured large items
+              const isWide = index % 5 === 0 && !isLarge; // Wide aspect items
+              const hasRotation = index % 13 === 0; // Slight rotation for artistic feel
+              const isElevated = index % 9 === 0; // Extra elevation for depth
+              
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.05 }}
+                  className={`group cursor-pointer break-inside-avoid mb-8 ${
+                    hasRotation ? 'transform hover:rotate-0 rotate-1' : ''
+                  } ${
+                    isElevated ? 'relative z-10' : ''
+                  }`}
+                  onClick={() => openLightbox(item.id)}
+                  data-testid={`gallery-item-${item.id}`}
+                >
+                  <div className={`relative overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 bg-white ${
+                    isLarge ? 'rounded-3xl p-6' : isWide ? 'rounded-2xl p-4' : 'rounded-2xl p-3'
+                  } ${
+                    isElevated ? 'shadow-2xl' : ''
+                  }`}>
                   {/* Featured badge */}
                   {item.featured && (
                     <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-bronze to-bronze/80 text-white px-3 py-1.5 text-xs font-semibold rounded-full backdrop-blur-sm" data-testid={`badge-featured-${item.id}`}>
@@ -559,8 +486,12 @@ const Gallery = () => {
                     />
                   </button>
 
-                  {/* Image container with hover effects */}
-                  <div className="relative overflow-hidden aspect-[4/3]">
+                  {/* Image container with aesthetic variations */}
+                  <div className={`relative overflow-hidden ${
+                    isLarge ? 'aspect-[3/4] rounded-2xl' : 
+                    isWide ? 'aspect-[16/9] rounded-xl' : 
+                    'aspect-[4/3] rounded-xl'
+                  }`}>
                     <img
                       src={item.image}
                       alt={item.description}
@@ -576,26 +507,40 @@ const Gallery = () => {
                       </div>
                     </div>
 
-                    {/* Project info overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal/90 to-transparent text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                      <p className="text-xs text-bronze/90 font-medium mb-1 uppercase tracking-wider">{item.subcategory}</p>
-                      <h3 className="font-italiana text-lg font-bold mb-2 leading-tight">{item.title}</h3>
+                    {/* Project info overlay with size variations */}
+                    <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/90 to-transparent text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 ${
+                      isLarge ? 'p-6' : 'p-4'
+                    }`}>
+                      <p className={`text-bronze/90 font-medium mb-1 uppercase tracking-wider ${
+                        isLarge ? 'text-sm' : 'text-xs'
+                      }`}>{item.subcategory}</p>
+                      <h3 className={`font-italiana font-bold mb-2 leading-tight ${
+                        isLarge ? 'text-2xl' : 'text-lg'
+                      }`}>{item.title}</h3>
                       
-                      <div className="flex items-center justify-between text-xs text-cream/80">
+                      <div className={`flex items-center justify-between text-cream/80 ${
+                        isLarge ? 'text-sm' : 'text-xs'
+                      }`}>
                         <div className="flex items-center space-x-1">
-                          <Calendar className="w-3 h-3" />
+                          <Calendar className={isLarge ? 'w-4 h-4' : 'w-3 h-3'} />
                           <span>{item.projectDate}</span>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <MapPin className="w-3 h-3" />
+                          <MapPin className={isLarge ? 'w-4 h-4' : 'w-3 h-3'} />
                           <span>{item.location}</span>
                         </div>
                       </div>
                     </div>
                   </div>
+                  
+                  {/* Artistic corner accent for special items */}
+                  {(item.featured || isLarge) && (
+                    <div className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 border-bronze/30"></div>
+                  )}
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </motion.div>
 
           {/* No results state */}
