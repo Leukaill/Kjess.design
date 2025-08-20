@@ -585,6 +585,48 @@ const Gallery = () => {
                     </div>
                   </div>
                   
+                  {/* Project Description Section */}
+                  <div className={`px-4 py-5 bg-gradient-to-b from-white to-cream/30 ${
+                    isLarge ? 'px-6 py-6' : 'px-4 py-5'
+                  }`}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.05 + 0.5 }}
+                    >
+                      {/* Project title and category */}
+                      <div className="mb-3">
+                        <h3 className={`font-italiana font-bold text-charcoal mb-1 ${
+                          isLarge ? 'text-2xl' : 'text-lg'
+                        }`}>{item.title}</h3>
+                        <p className={`text-bronze font-medium uppercase tracking-wider ${
+                          isLarge ? 'text-sm' : 'text-xs'
+                        }`}>{item.subcategory}</p>
+                      </div>
+                      
+                      {/* Description */}
+                      <p className={`text-charcoal/70 leading-relaxed mb-4 ${
+                        isLarge ? 'text-base' : 'text-sm'
+                      }`}>
+                        {item.description}
+                      </p>
+                      
+                      {/* Project details */}
+                      <div className={`flex items-center justify-between text-charcoal/50 ${
+                        isLarge ? 'text-sm' : 'text-xs'
+                      }`}>
+                        <div className="flex items-center space-x-1">
+                          <Calendar className={isLarge ? 'w-4 h-4' : 'w-3 h-3'} />
+                          <span>{item.projectDate}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <MapPin className={isLarge ? 'w-4 h-4' : 'w-3 h-3'} />
+                          <span className="truncate max-w-24">{item.location}</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                  
                   {/* Artistic corner accent for special items */}
                   {(item.featured || isLarge) && (
                     <div className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 border-bronze/30"></div>
