@@ -2001,21 +2001,21 @@ export default function Home() {
                   </motion.div>
                 </div>
 
-                {/* Artistically Stacked Portfolio Showcase */}
-                <div className="mt-12 relative h-80">
+                {/* Artistically Stacked Portfolio Showcase - Compact */}
+                <div className="mt-8 relative h-48">
                   {/* First image - bottom layer, rotated left */}
                   <motion.div
                     initial={{ opacity: 0, y: 40, rotate: -6 }}
                     whileInView={{ opacity: 1, y: 0, rotate: -3 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                     viewport={{ once: true }}
-                    className="absolute top-0 left-0 w-32 h-40 group z-10"
+                    className="absolute top-0 left-0 w-24 h-28 group z-10"
                   >
-                    <div className="bg-white p-3 shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1">
+                    <div className="bg-white p-2 shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1">
                       <img
                         src={portfolioImg13}
                         alt="KJESS Designs portfolio showcase - residential project"
-                        className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-110"
+                        className="w-full h-20 object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     </div>
                   </motion.div>
@@ -2026,13 +2026,13 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0, rotate: 2 }}
                     transition={{ duration: 0.8, delay: 1 }}
                     viewport={{ once: true }}
-                    className="absolute top-6 left-20 w-36 h-44 group z-20"
+                    className="absolute top-3 left-16 w-28 h-32 group z-20"
                   >
-                    <div className="bg-white p-3 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0">
+                    <div className="bg-white p-2 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0">
                       <img
                         src={portfolioImg14}
                         alt="KJESS Designs portfolio showcase - commercial project"
-                        className="w-full h-36 object-cover transition-all duration-500 group-hover:scale-110"
+                        className="w-full h-24 object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     </div>
                   </motion.div>
@@ -2043,13 +2043,13 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0, rotate: -1 }}
                     transition={{ duration: 0.8, delay: 1.2 }}
                     viewport={{ once: true }}
-                    className="absolute top-12 left-8 w-34 h-42 group z-30"
+                    className="absolute top-8 left-6 w-26 h-30 group z-30"
                   >
-                    <div className="bg-white p-3 shadow-3xl group-hover:shadow-4xl transition-all duration-500 rotate-1 group-hover:rotate-2">
+                    <div className="bg-white p-2 shadow-3xl group-hover:shadow-4xl transition-all duration-500 rotate-1 group-hover:rotate-2">
                       <img
                         src={portfolioImg15}
                         alt="KJESS Designs portfolio showcase - luxury interior"
-                        className="w-full h-34 object-cover transition-all duration-500 group-hover:scale-110"
+                        className="w-full h-22 object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     </div>
                   </motion.div>
@@ -2060,13 +2060,13 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0, rotate: 4 }}
                     transition={{ duration: 0.8, delay: 1.4 }}
                     viewport={{ once: true }}
-                    className="absolute top-20 right-0 w-30 h-38 group z-25"
+                    className="absolute top-12 right-2 w-22 h-26 group z-25"
                   >
-                    <div className="bg-white p-2 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-2 group-hover:-rotate-1">
+                    <div className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-2 group-hover:-rotate-1">
                       <img
                         src={portfolioImg16}
                         alt="KJESS Designs portfolio showcase - modern design"
-                        className="w-full h-30 object-cover transition-all duration-500 group-hover:scale-110"
+                        className="w-full h-20 object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     </div>
                   </motion.div>
