@@ -4,6 +4,7 @@ import { X, ArrowRight } from "lucide-react";
 
 const CollaborationPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
     // Show popup after a short delay on every page load
@@ -19,9 +20,36 @@ const CollaborationPopup = () => {
   };
 
   const handleCollaborate = () => {
-    // Handle collaboration logic here
-    console.log("User wants to collaborate!");
-    setIsVisible(false);
+    setIsNavigating(true);
+    
+    // Close popup after showing loading state
+    setTimeout(() => {
+      setIsVisible(false);
+      
+      // Scroll to contact section
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Focus on the first input field after scroll completes
+          setTimeout(() => {
+            const firstInput = contactSection.querySelector('input[name="name"]') as HTMLInputElement;
+            if (firstInput) {
+              firstInput.focus();
+              // Add a subtle highlight animation
+              firstInput.style.boxShadow = '0 0 0 3px rgba(184, 134, 11, 0.2)';
+              setTimeout(() => {
+                firstInput.style.boxShadow = '';
+              }, 2000);
+            }
+          }, 800);
+        }
+      }, 200);
+    }, 600);
   };
 
   return (
@@ -108,11 +136,25 @@ const CollaborationPopup = () => {
                 <div className="space-y-3">
                   <button
                     onClick={handleCollaborate}
-                    className="w-full bg-charcoal text-white py-3 px-6 rounded-xl font-medium transition-all duration-300 hover:bg-charcoal/90 flex items-center justify-center gap-2 group"
+                    disabled={isNavigating}
+                    className="w-full bg-charcoal text-white py-3 px-6 rounded-xl font-medium transition-all duration-300 hover:bg-charcoal/90 flex items-center justify-center gap-2 group disabled:opacity-70"
                     data-testid="button-start-collaboration"
                   >
-                    <span>Begin Collaboration</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                    {isNavigating ? (
+                      <>
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                        />
+                        <span>Taking you there...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Begin Collaboration</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                      </>
+                    )}
                   </button>
                   
                   <button
