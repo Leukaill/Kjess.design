@@ -79,7 +79,6 @@ export default function Home() {
     { id: "vision", label: "Vision", type: "scroll" },
     { id: "about", label: "About", type: "page", href: "/about" },
     { id: "testimonials", label: "Testimonials", type: "scroll" },
-    { id: "team", label: "Team", type: "scroll" },
     { id: "gallery", label: "Gallery", type: "page", href: "/gallery" },
     { id: "contact", label: "Contact", type: "scroll" },
   ];
@@ -2478,54 +2477,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Team Section - Interactive Cards */}
-      <section id="team" className="py-20 bg-gradient-to-b from-white via-cream/30 to-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Section header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="font-italiana text-5xl md:text-6xl text-charcoal leading-tight mb-4">
-              Our <span className="text-bronze">Team</span>
-            </h2>
-            <div className="w-32 h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto"></div>
-          </motion.div>
-
-          {/* Team cards in compact layout */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: "Jesse Karumu", role: "Principal Designer", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" },
-              { name: "Design Team", role: "Creative Specialists", image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" },
-              { name: "Craft Team", role: "Master Artisans", image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" }
-            ].map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-bronze/10 hover:border-bronze/30"
-              >
-                <div className="w-24 h-24 mx-auto mb-4 overflow-hidden rounded-full border-4 border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="text-center">
-                  <h3 className="font-italiana text-xl font-bold text-charcoal mb-1">{member.name}</h3>
-                  <p className="text-charcoal/70 text-sm">{member.role}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section - Interactive & Compact Design */}
       <section id="contact" className="py-20 bg-gradient-to-br from-white via-cream/10 to-warm-white/30 relative overflow-hidden">
@@ -3252,7 +3203,6 @@ export default function Home() {
                 {[
                   "About Us",
                   "Portfolio",
-                  "Our Team",
                   "Testimonials",
                   "Contact",
                   "Newsletter"
