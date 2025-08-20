@@ -526,91 +526,83 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
         </div>
 
-        {/* Mobile App-Style Content Container */}
-        <div className="relative z-10 mobile-app-container text-center min-h-screen flex flex-col justify-center mobile-safe-top mobile-safe-bottom">
-          {/* App-Style Logo Card */}
+        {/* Elegant Content Container */}
+        <div className="relative z-10 text-center min-h-screen flex flex-col justify-center px-4 sm:px-6 max-w-6xl mx-auto">
+          {/* Elegant Brand Typography */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-8"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="mb-12"
           >
-            <div className="w-20 h-20 mx-auto mb-6 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-xl border border-white/30">
-              <span className="text-3xl font-bold text-white font-italiana">K</span>
+            {/* Decorative top line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "120px" }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
+            ></motion.div>
+            
+            <h1 className="font-italiana text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-4 text-white leading-tight tracking-wide">
+              KJESS
+              <span className="block text-bronze mt-2">DESIGNS</span>
+            </h1>
+            
+            {/* Decorative elements */}
+            <div className="flex items-center justify-center space-x-4 mt-8">
+              <div className="w-12 h-px bg-bronze/60"></div>
+              <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+              <div className="w-16 h-px bg-bronze/40"></div>
+              <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+              <div className="w-12 h-px bg-bronze/60"></div>
             </div>
           </motion.div>
 
-          {/* Mobile-First Brand Typography */}
+          {/* Elegant Tagline */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="mb-8"
+            transition={{ duration: 1, delay: 0.8 }}
+            className="mb-12"
           >
-            <h1 className="mobile-app-hero-text text-white mb-2">
-              KJESS
-            </h1>
-            <h1 className="mobile-app-hero-text text-bronze">
-              DESIGNS
-            </h1>
+            <p className="text-xl sm:text-2xl md:text-3xl text-cream/95 font-light tracking-wide mb-6 max-w-3xl mx-auto leading-relaxed">
+              Interior Design & Luxury Furniture
+            </p>
+            <p className="text-lg sm:text-xl text-cream/80 font-light tracking-wide max-w-2xl mx-auto">
+              Discover Our Premium Portfolio
+            </p>
           </motion.div>
 
-          {/* Mobile App Divider */}
-          <motion.div
-            initial={{ width: 0, opacity: 0 }}
-            animate={{ width: "4rem", opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="h-1 bg-bronze rounded-full mx-auto mb-6"
-          />
-
-          {/* App-Style Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mobile-app-subtitle text-cream/90 mb-4"
-          >
-            Interior Design & Luxury Furniture
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mobile-app-body text-cream/80 mb-8 px-4"
-          >
-            Discover Our Premium Portfolio
-          </motion.p>
-
-          {/* Mobile App-Style CTA Button */}
+          {/* Elegant CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="mb-12 px-8"
+            transition={{ duration: 1, delay: 1.2 }}
+            className="mb-16"
           >
             <button
-              onClick={() => scrollToSection('portfolio')}
-              className="mobile-app-button bg-bronze text-white hover:bg-bronze/90"
+              onClick={() => scrollToSection('gallery')}
+              className="bg-bronze text-white px-12 py-4 text-lg font-medium tracking-wider uppercase transition-all duration-300 hover:bg-bronze/90 hover:scale-105 shadow-xl hover:shadow-2xl"
+              data-testid="button-explore-work"
             >
               Explore Our Work
             </button>
           </motion.div>
 
-          {/* Mobile App Stats Cards */}
+          {/* Elegant Stats Cards */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="grid grid-cols-2 gap-4 px-8"
+            transition={{ duration: 1, delay: 1.6 }}
+            className="grid grid-cols-2 gap-8 max-w-md mx-auto"
           >
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-              <div className="text-2xl font-bold text-cream mb-1">100+</div>
-              <div className="text-xs text-cream/70 uppercase tracking-wider">Projects</div>
+            <div className="text-center">
+              <div className="text-5xl sm:text-6xl font-italiana text-white mb-2 tracking-wide">100+</div>
+              <div className="text-sm text-cream/70 uppercase tracking-widest font-medium">Projects</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-              <div className="text-2xl font-bold text-cream mb-1">5+</div>
-              <div className="text-xs text-cream/70 uppercase tracking-wider">Years</div>
+            <div className="text-center">
+              <div className="text-5xl sm:text-6xl font-italiana text-white mb-2 tracking-wide">5+</div>
+              <div className="text-sm text-cream/70 uppercase tracking-widest font-medium">Years</div>
             </div>
           </motion.div>
         </div>
