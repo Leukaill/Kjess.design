@@ -2563,24 +2563,47 @@ export default function Home() {
                 {/* Contact methods grid */}
                 <div className="p-6 space-y-6">
                   {/* Phone */}
-                  <div className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300">
-                    <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
-                      <Phone className="text-bronze" size={20} />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-charcoal mb-1">Phone</p>
-                      <p className="text-sm text-charcoal/70">+250 784024818</p>
-                      <p className="text-sm text-charcoal/70">+250 786515555</p>
-                    </div>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-8 h-8 border border-bronze/30 flex items-center justify-center">
-                        <div className="w-4 h-4 bg-bronze/40"></div>
+                  <div className="space-y-1">
+                    <a 
+                      href="tel:+250784024818"
+                      className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300 cursor-pointer"
+                      data-testid="phone-link-1"
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
+                        <Phone className="text-bronze" size={20} />
                       </div>
-                    </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-charcoal mb-1">Phone</p>
+                        <p className="text-sm text-charcoal/70">+250 784024818</p>
+                      </div>
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-8 h-8 border border-bronze/30 flex items-center justify-center">
+                          <div className="w-4 h-4 bg-bronze/40"></div>
+                        </div>
+                      </div>
+                    </a>
+                    <a 
+                      href="tel:+250786515555"
+                      className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300 cursor-pointer ml-16"
+                      data-testid="phone-link-2"
+                    >
+                      <div className="flex-1">
+                        <p className="text-sm text-charcoal/70">+250 786515555</p>
+                      </div>
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-8 h-8 border border-bronze/30 flex items-center justify-center">
+                          <div className="w-4 h-4 bg-bronze/40"></div>
+                        </div>
+                      </div>
+                    </a>
                   </div>
                   
                   {/* Email */}
-                  <div className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300">
+                  <a 
+                    href="mailto:karumujess@gmail.com"
+                    className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300 cursor-pointer"
+                    data-testid="email-link"
+                  >
                     <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
                       <Mail className="text-bronze" size={20} />
                     </div>
@@ -2593,10 +2616,16 @@ export default function Home() {
                         <div className="w-4 h-4 bg-bronze/40"></div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                   
                   {/* Location */}
-                  <div className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300">
+                  <a 
+                    href="https://maps.google.com/?q=Kigali,+Rwanda+Gisozi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300 cursor-pointer"
+                    data-testid="location-link"
+                  >
                     <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
                       <MapPin className="text-bronze" size={20} />
                     </div>
@@ -2609,10 +2638,16 @@ export default function Home() {
                         <div className="w-4 h-4 bg-bronze/40"></div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                   
                   {/* Instagram */}
-                  <div className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300">
+                  <a 
+                    href="https://instagram.com/kjess_designs_rw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300 cursor-pointer"
+                    data-testid="instagram-link"
+                  >
                     <div className="w-12 h-12 bg-gradient-to-br from-bronze/15 to-bronze/10 flex items-center justify-center border border-bronze/20 group-hover:border-bronze/40 transition-colors duration-300">
                       <Instagram className="text-bronze" size={20} />
                     </div>
@@ -2625,7 +2660,7 @@ export default function Home() {
                         <div className="w-4 h-4 bg-bronze/40"></div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 </div>
                 
                 {/* Bottom decorative element */}
