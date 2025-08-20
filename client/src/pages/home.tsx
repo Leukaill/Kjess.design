@@ -2001,68 +2001,72 @@ export default function Home() {
                   </motion.div>
                 </div>
 
-                {/* Additional portfolio showcase */}
-                <div className="mt-12 grid grid-cols-2 gap-4">
+                {/* Artistically Stacked Portfolio Showcase */}
+                <div className="mt-12 relative h-80">
+                  {/* First image - bottom layer, rotated left */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40, rotate: -1 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    initial={{ opacity: 0, y: 40, rotate: -6 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: -3 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                     viewport={{ once: true }}
-                    className="relative group"
+                    className="absolute top-0 left-0 w-32 h-40 group z-10"
                   >
-                    <div className="bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-500">
+                    <div className="bg-white p-3 shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1">
                       <img
                         src={portfolioImg13}
                         alt="KJESS Designs portfolio showcase - residential project"
-                        className="w-full h-28 object-cover transition-all duration-500 group-hover:scale-105"
+                        className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     </div>
                   </motion.div>
 
+                  {/* Second image - overlapping on top right */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40, rotate: 1 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    initial={{ opacity: 0, y: 40, rotate: 4 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 2 }}
                     transition={{ duration: 0.8, delay: 1 }}
                     viewport={{ once: true }}
-                    className="relative group"
+                    className="absolute top-6 left-20 w-36 h-44 group z-20"
                   >
-                    <div className="bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-500">
+                    <div className="bg-white p-3 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0">
                       <img
                         src={portfolioImg14}
                         alt="KJESS Designs portfolio showcase - commercial project"
-                        className="w-full h-28 object-cover transition-all duration-500 group-hover:scale-105"
+                        className="w-full h-36 object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     </div>
                   </motion.div>
 
+                  {/* Third image - stacked on top, slightly rotated */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40, rotate: 1 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    initial={{ opacity: 0, y: 40, rotate: -2 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: -1 }}
                     transition={{ duration: 0.8, delay: 1.2 }}
                     viewport={{ once: true }}
-                    className="relative group"
+                    className="absolute top-12 left-8 w-34 h-42 group z-30"
                   >
-                    <div className="bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-500">
+                    <div className="bg-white p-3 shadow-3xl group-hover:shadow-4xl transition-all duration-500 rotate-1 group-hover:rotate-2">
                       <img
                         src={portfolioImg15}
                         alt="KJESS Designs portfolio showcase - luxury interior"
-                        className="w-full h-28 object-cover transition-all duration-500 group-hover:scale-105"
+                        className="w-full h-34 object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     </div>
                   </motion.div>
 
+                  {/* Fourth image - artistically placed on the right */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40, rotate: -1 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                    initial={{ opacity: 0, y: 40, rotate: 3 }}
+                    whileInView={{ opacity: 1, y: 0, rotate: 4 }}
                     transition={{ duration: 0.8, delay: 1.4 }}
                     viewport={{ once: true }}
-                    className="relative group"
+                    className="absolute top-20 right-0 w-30 h-38 group z-25"
                   >
-                    <div className="bg-white p-2 shadow-lg group-hover:shadow-xl transition-all duration-500">
+                    <div className="bg-white p-2 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-2 group-hover:-rotate-1">
                       <img
                         src={portfolioImg16}
                         alt="KJESS Designs portfolio showcase - modern design"
-                        className="w-full h-28 object-cover transition-all duration-500 group-hover:scale-105"
+                        className="w-full h-30 object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     </div>
                   </motion.div>
@@ -2078,13 +2082,14 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Signature project showcase */}
+              {/* Signature project showcase with layered effect */}
               <div className="relative group">
                 {/* Artistic multi-layer backdrop */}
                 <div className="absolute -inset-8 bg-gradient-to-br from-bronze/15 via-transparent to-charcoal/10 rotate-2 group-hover:rotate-3 transition-all duration-1000 opacity-50"></div>
                 <div className="absolute -inset-6 bg-gradient-to-tl from-charcoal/8 via-transparent to-bronze/12 -rotate-1 group-hover:-rotate-2 transition-all duration-1200 opacity-40"></div>
                 
-                <div className="relative bg-white p-6 shadow-3xl group-hover:shadow-4xl transition-all duration-700">
+                {/* Main signature image - slightly rotated */}
+                <div className="relative bg-white p-6 shadow-3xl group-hover:shadow-4xl transition-all duration-700 rotate-1 group-hover:rotate-0 z-20">
                   <img
                     src={portfolioImg3}
                     alt="KJESS Designs signature project featuring modern elegance and sophisticated spatial arrangement"
@@ -2099,9 +2104,26 @@ export default function Home() {
                   <div className="absolute inset-6 border border-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
                 
+                {/* Layered image behind - partially visible */}
+                <motion.div
+                  initial={{ opacity: 0, rotate: -8, scale: 0.9 }}
+                  whileInView={{ opacity: 0.6, rotate: -3, scale: 0.95 }}
+                  transition={{ duration: 1, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="absolute -top-2 -right-4 w-48 h-64 z-10"
+                >
+                  <div className="bg-white p-4 shadow-xl -rotate-2">
+                    <img
+                      src={portfolioImg17}
+                      alt="KJESS Designs layered portfolio piece"
+                      className="w-full h-56 object-cover opacity-80"
+                    />
+                  </div>
+                </motion.div>
+                
                 {/* Enhanced corner accents */}
-                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-bronze/60 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-bronze/60 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-bronze/60 opacity-0 group-hover:opacity-100 transition-all duration-500 z-30"></div>
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-bronze/60 opacity-0 group-hover:opacity-100 transition-all duration-700 z-30"></div>
               </div>
 
               {/* Signature project info card */}
