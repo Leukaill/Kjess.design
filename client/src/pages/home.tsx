@@ -3394,22 +3394,22 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="group cursor-pointer"
               >
-                <div className="bg-white/60 backdrop-blur-sm border border-bronze/10 rounded-lg p-6 hover:bg-white/90 hover:border-bronze/30 hover:shadow-xl transition-all duration-500 group-hover:shadow-bronze/10 h-24 flex items-center justify-center">
+                <div className="bg-white/70 backdrop-blur-sm border border-bronze/15 rounded-lg p-6 hover:bg-white hover:border-bronze/40 hover:shadow-2xl hover:shadow-bronze/20 transition-all duration-500 group-hover:scale-105 h-24 flex items-center justify-center relative overflow-hidden">
+                  {/* Subtle background accent on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-bronze/5 to-charcoal/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
                   <img
                     src={partner.logo}
                     alt={partner.alt}
-                    className="max-w-full max-h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                    className="max-w-full max-h-16 object-contain transition-all duration-500 group-hover:scale-110 relative z-10"
                     style={{ 
-                      filter: 'grayscale(1) opacity(0.7)',
+                      filter: 'brightness(1) contrast(1.1)',
                       transition: 'all 0.5s ease'
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.filter = 'grayscale(0) opacity(1)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.filter = 'grayscale(1) opacity(0.7)';
-                    }}
                   />
+                  
+                  {/* Elegant corner accent */}
+                  <div className="absolute top-2 right-2 w-4 h-4 border-r border-t border-bronze/0 group-hover:border-bronze/30 transition-all duration-500"></div>
                 </div>
               </motion.div>
             ))}
