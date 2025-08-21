@@ -34,6 +34,23 @@ import portfolioImg15 from "@assets/PHOTO-2024-11-11-13-25-27 52_1755724301695.j
 import portfolioImg16 from "@assets/PHOTO-2024-11-11-13-25-27 59_1755724301696.jpeg";
 import portfolioImg17 from "@assets/PHOTO-2024-11-11-13-25-27 60_1755724301699.jpeg";
 import furnitureChair from "@assets/PHOTO-2024-11-11-13-25-27_17-removebg-preview_1755724395612.png";
+
+// Partner Logos
+import bankOfKigaliLogo from "@assets/0f879fa4-14a7-4c2a-8e54-792f7841df89-removebg-preview_1755788711982.png";
+import solidAfricaLogo from "@assets/IMG_4746-removebg-preview_1755788711983.png";
+import volcanoesLogo from "@assets/IMG_4747-removebg-preview_1755788711985.png";
+import kingFaisalLogo from "@assets/IMG_4748-removebg-preview_1755788711986.png";
+import spiroLogo from "@assets/IMG_4749-removebg-preview_1755788711987.png";
+import questionCoffeeLogo from "@assets/IMG_4751-removebg-preview_1755788711988.png";
+import ecciGlobalLogo from "@assets/IMG_4753-removebg-preview_1755788711989.png";
+import greenHillsLogo from "@assets/IMG_4754-removebg-preview_1755788711990.png";
+import buffettFoundationLogo from "@assets/IMG_4755-removebg-preview_1755788711991.png";
+import kachResidenceLogo from "@assets/IMG_4756-removebg-preview_1755788711992.png";
+import kigaliGolfLogo from "@assets/IMG_4758-removebg-preview_1755788711994.png";
+import wildlifeLogo from "@assets/IMG_4759-removebg-preview_1755788711995.png";
+import africasTouchLogo from "@assets/IMG_4761-removebg-preview_1755788711996.png";
+import governorResidenceLogo from "@assets/WhatsApp_Image_2025-08-21_at_16.33.10_819d8e42-removebg-preview_1755788711997.png";
+
 import { Link } from "wouter";
 import { AnimatePresence } from "framer-motion";
 import { useActivityTracking } from "@/lib/cookies";
@@ -3309,80 +3326,111 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Client Logos Section - Matching eleventh design */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Partner Logos Section - Elegant & Sophisticated */}
+      <section className="py-20 bg-gradient-to-br from-white via-cream/10 to-warm-white/20 relative overflow-hidden">
+        {/* Subtle background elements */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 right-20 w-64 h-64 border border-bronze/10 rotate-45"></div>
+          <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-bronze/5 to-transparent rounded-full blur-xl"></div>
+          <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-bronze/30 rounded-full"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-charcoal/20 rounded-full"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h3 className="font-italiana text-2xl text-charcoal/70 mb-8">Proudly Served</h3>
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-6"
+            ></motion.div>
             
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-60">
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-blue-600 font-bold text-sm">BANK OF KIGALI</span>
+            <h3 className="font-italiana text-3xl md:text-4xl text-charcoal leading-tight mb-4">
+              Proudly <span className="text-bronze">Served</span>
+            </h3>
+            
+            <p className="text-lg text-charcoal/70 font-light max-w-2xl mx-auto">
+              Trusted by Rwanda's most prestigious organizations and discerning clients
+            </p>
+          </motion.div>
+
+          {/* Logo Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
+          >
+            {[
+              { logo: bankOfKigaliLogo, alt: "Bank of Kigali - Financially transforming lives", delay: 0.1 },
+              { logo: kigaliGolfLogo, alt: "Kigali Golf Resort & Villas", delay: 0.15 },
+              { logo: greenHillsLogo, alt: "Green Hills Academy", delay: 0.2 },
+              { logo: governorResidenceLogo, alt: "Governor's Residence", delay: 0.25 },
+              { logo: solidAfricaLogo, alt: "Solid Africa", delay: 0.3 },
+              { logo: questionCoffeeLogo, alt: "Question Coffee", delay: 0.35 },
+              { logo: wildlifeLogo, alt: "African Wildlife Foundation", delay: 0.4 },
+              { logo: buffettFoundationLogo, alt: "The Susan Thompson Buffett Foundation", delay: 0.45 },
+              { logo: volcanoesLogo, alt: "Volcanoes", delay: 0.5 },
+              { logo: africasTouchLogo, alt: "Africa's Touch & Leisure", delay: 0.55 },
+              { logo: kingFaisalLogo, alt: "King Faisal Hospital Kigali", delay: 0.6 },
+              { logo: spiroLogo, alt: "Spiro", delay: 0.65 },
+              { logo: ecciGlobalLogo, alt: "ECCI Global", delay: 0.7 },
+              { logo: kachResidenceLogo, alt: "Kach Residence", delay: 0.75 }
+            ].map((partner, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: partner.delay }}
+                viewport={{ once: true }}
+                className="group cursor-pointer"
+              >
+                <div className="bg-white/60 backdrop-blur-sm border border-bronze/10 rounded-lg p-6 hover:bg-white/90 hover:border-bronze/30 hover:shadow-xl transition-all duration-500 group-hover:shadow-bronze/10 h-24 flex items-center justify-center">
+                  <img
+                    src={partner.logo}
+                    alt={partner.alt}
+                    className="max-w-full max-h-16 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                    style={{ 
+                      filter: 'grayscale(1) opacity(0.7)',
+                      transition: 'all 0.5s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.filter = 'grayscale(0) opacity(1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.filter = 'grayscale(1) opacity(0.7)';
+                    }}
+                  />
                 </div>
-                <p className="text-xs text-charcoal/50">Financially transforming lives</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Bottom decorative element */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+            <div className="inline-flex items-center space-x-6">
+              <div className="w-20 h-px bg-gradient-to-r from-transparent to-bronze/50"></div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
+                <div className="w-3 h-3 bg-bronze/40 rounded-full"></div>
+                <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
               </div>
-              
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-green-600 font-bold text-sm">KIGALI GOLF</span>
-                </div>
-                <p className="text-xs text-charcoal/50">Resort & Villas</p>
-              </div>
-              
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-green-700 font-bold text-sm">Green Hills Academy</span>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-blue-800 font-bold text-sm">GOVERNOR'S RESIDENCE</span>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-red-600 font-bold text-sm">SOLID AFRICA</span>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-gray-600 font-bold text-sm">QUESTION COFFEE</span>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-orange-600 font-bold text-sm">AFRICAN WILDLIFE FOUNDATION</span>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-red-800 font-bold text-sm">The Susan Thompson Buffett Foundation</span>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-green-600 font-bold text-sm">Volcanoes</span>
-                </div>
-              </div>
-              
-              <div className="text-center">
-                <div className="h-12 flex items-center justify-center mb-2">
-                  <span className="text-yellow-600 font-bold text-sm">AFRICA'S TOUCH & LEISURE</span>
-                </div>
-              </div>
+              <div className="w-20 h-px bg-gradient-to-l from-transparent to-bronze/50"></div>
             </div>
           </motion.div>
         </div>
