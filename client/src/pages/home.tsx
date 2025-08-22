@@ -785,63 +785,28 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Main showcase image with sophisticated multi-layer framing */}
+              {/* Clean, elegant image container */}
               <div className="relative group">
-                {/* Artistic backdrop layers */}
-                <div className="absolute -inset-8 bg-gradient-to-br from-bronze/12 via-transparent to-charcoal/8 rotate-1 group-hover:rotate-2 transition-all duration-700 opacity-70"></div>
-                <div className="absolute -inset-6 bg-gradient-to-tl from-charcoal/5 via-transparent to-bronze/8 -rotate-1 group-hover:-rotate-2 transition-all duration-1000 opacity-50"></div>
-                
-                {/* Enhanced main image container */}
-                <div className="relative bg-white p-6 shadow-2xl group-hover:shadow-3xl transition-all duration-700 overflow-hidden">
+                <div className="overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-500">
                   <img
                     src={portfolioImg9}
                     alt="KJESS Designs contemporary living space featuring sophisticated design elements and premium furnishing"
-                    className="w-full h-[350px] sm:h-[400px] lg:h-[450px] object-cover transition-all duration-1000 ease-out group-hover:scale-110"
+                    className="w-full h-[350px] sm:h-[400px] lg:h-[450px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  
-                  {/* Sophisticated multi-layer overlays */}
-                  <div className="absolute inset-6 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                  <div className="absolute inset-6 bg-gradient-to-br from-transparent via-transparent to-bronze/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                  
-                  {/* Interior frame details */}
-                  <div className="absolute inset-6 border border-white/40 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
-                
-                {/* Enhanced corner accent elements */}
-                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-bronze/50 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-bronze/50 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-                
-                {/* Floating decorative elements */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20, rotate: -10 }}
-                  whileInView={{ opacity: 1, y: 0, rotate: -15 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  viewport={{ once: true }}
-                  className="absolute -top-6 -right-8 w-16 h-16 bg-bronze/20 rotate-45 opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-                ></motion.div>
               </div>
 
-              {/* Floating information card */}
+              {/* Simple caption */}
               <motion.div
-                initial={{ opacity: 0, y: 60, x: -40 }}
-                whileInView={{ opacity: 1, y: 0, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="absolute -bottom-12 -left-12 bg-white shadow-2xl p-6 border border-bronze/30 hover:shadow-3xl transition-all duration-500 group cursor-pointer"
+                className="mt-4 text-center"
               >
-                <div className="text-center">
-                  <div className="w-16 h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-3"></div>
-                  <h4 className="font-italiana text-lg font-bold text-charcoal tracking-wider mb-1">
-                    CREATIVE VISION
-                  </h4>
-                  <p className="text-sm text-charcoal/70 font-light">
-                    Where artistry meets functionality
-                  </p>
-                  <div className="w-8 h-px bg-bronze/40 mx-auto mt-3"></div>
-                </div>
-                
-                {/* Decorative corner */}
-                <div className="absolute top-1 right-1 w-4 h-4 border-r border-t border-bronze/30"></div>
+                <p className="text-sm text-charcoal/70 italic">
+                  Where creativity meets craftsmanship
+                </p>
               </motion.div>
             </motion.div>
             
@@ -853,13 +818,6 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Enhanced side decoration */}
-              <div className="absolute -left-12 top-0 flex flex-col items-center opacity-60">
-                <div className="w-px h-20 bg-gradient-to-b from-bronze/80 to-transparent"></div>
-                <div className="w-3 h-3 bg-bronze/60 rounded-full my-3"></div>
-                <div className="w-px h-20 bg-gradient-to-t from-bronze/80 to-transparent"></div>
-                <div className="w-2 h-2 bg-bronze/40 rounded-full mt-6"></div>
-              </div>
               
               {/* Enhanced Typography section */}
               <motion.div
@@ -878,7 +836,7 @@ export default function Home() {
                 </div>
                 
                 <p className="text-sm sm:text-base lg:text-lg text-charcoal/70 font-light italic tracking-wide mt-4 sm:mt-6">
-                  Where creativity meets exceptional craftsmanship
+                  Where creativity meets expert craftsmanship
                 </p>
               </motion.div>
               
@@ -896,36 +854,18 @@ export default function Home() {
                   
                   <div className="pl-6 space-y-6">
                     <p className="text-base sm:text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
-                      Kjess Designs is where <span className="font-italiana italic text-bronze font-medium">creativity meets craftsmanship</span>. 
-                      We are a Rwandan-based interior design and furniture company dedicated to
-                      transforming spaces into <span className="font-medium text-charcoal">timeless masterpieces</span>.
+                      Kjess Designs is where <span className="font-italiana italic text-bronze font-bold">creativity meets craftsmanship</span>. 
+                      We are a Rwandan interior design company that creates
+                      beautiful <span className="font-bold text-charcoal">custom spaces</span>.
                     </p>
                     
                     <p className="text-base sm:text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
-                      With unwavering commitment to <span className="font-italiana italic text-bronze">excellence, elegance, and innovation</span>, we
-                      bring your visions to life through thoughtful design and superior
-                      <span className="font-italiana text-bronze font-medium"> attention to detail</span>.
+                      We focus on <span className="font-italiana italic text-bronze font-bold">quality, beauty, and innovation</span> to
+                      bring your ideas to life with careful design and <span className="font-italiana text-bronze font-bold">attention to detail</span>.
                     </p>
                   </div>
                 </div>
 
-                {/* Enhanced elegant separator with animation */}
-                <motion.div 
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  whileInView={{ scaleX: 1, opacity: 1 }}
-                  transition={{ duration: 1.2, delay: 0.9 }}
-                  viewport={{ once: true }}
-                  className="flex items-center justify-center py-8"
-                >
-                  <div className="flex items-center space-x-6">
-                    <div className="w-20 h-px bg-gradient-to-r from-transparent via-bronze/70 to-bronze/70"></div>
-                    <div className="relative">
-                      <div className="w-4 h-4 bg-bronze/50 rounded-full"></div>
-                      <div className="absolute inset-0 w-4 h-4 bg-bronze/30 rounded-full animate-ping"></div>
-                    </div>
-                    <div className="w-20 h-px bg-gradient-to-l from-transparent via-bronze/70 to-bronze/70"></div>
-                  </div>
-                </motion.div>
 
                 {/* Call to action section */}
                 <motion.div
@@ -933,14 +873,13 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1.1 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-r from-cream/50 to-white p-6 border-l-4 border-bronze relative"
+                  className="bg-cream/30 p-6 border-l-2 border-bronze"
                 >
-                  <div className="absolute top-0 right-0 w-12 h-12 border-r border-t border-bronze/20"></div>
-                  <h4 className="font-italiana text-lg sm:text-xl md:text-2xl font-bold text-charcoal mb-3 tracking-wide">
+                  <h4 className="font-italiana text-xl font-bold text-charcoal mb-3">
                     Our Promise
                   </h4>
                   <p className="text-charcoal/70 leading-relaxed">
-                    Every project we undertake is a testament to our dedication to creating spaces that not only inspire but also reflect the unique personality and lifestyle of our clients.
+                    Each project reflects your unique style and creates spaces that inspire you.
                   </p>
                 </motion.div>
               </motion.div>
