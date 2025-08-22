@@ -959,7 +959,7 @@ export default function Home() {
                 className="mb-16"
               >
                 <div className="relative">
-                  <h2 className="font-italiana text-7xl md:text-8xl mb-8 text-charcoal leading-[0.8] tracking-wider">
+                  <h2 className="font-italiana text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 sm:mb-6 lg:mb-8 text-charcoal leading-[0.8] tracking-wider">
                     OUR <span className="text-bronze">HERITAGE</span>
                   </h2>
                   {/* Enhanced decorative underline */}
@@ -1204,7 +1204,7 @@ export default function Home() {
               {/* Refined title with elegant styling */}
               <div className="mb-12">
                 <div className="relative">
-                  <h2 className="font-italiana text-5xl md:text-6xl mb-6 text-charcoal leading-tight tracking-wide">
+                  <h2 className="font-italiana text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 sm:mb-6 lg:mb-8 text-charcoal leading-[0.8] tracking-wider">
                     OUR SERVICES
                   </h2>
                   {/* Elegant decorative accent */}
@@ -1431,7 +1431,7 @@ export default function Home() {
             className="text-center mb-20"
           >
             <div className="relative inline-block">
-              <h2 className="font-italiana text-7xl md:text-8xl text-charcoal leading-tight tracking-wide relative">
+              <h2 className="font-italiana text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-charcoal leading-[0.8] tracking-wider relative mb-4 sm:mb-6 lg:mb-8">
                 OUR <span className="text-bronze">MISSION</span>
               </h2>
               {/* Elegant underline */}
