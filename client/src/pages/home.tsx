@@ -1298,6 +1298,25 @@ export default function Home() {
                 />
               </div>
 
+              {/* Simple info card */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-6 -right-6 bg-white shadow-lg p-6 border border-bronze/20"
+              >
+                <div className="text-center">
+                  <div className="w-12 h-px bg-bronze mx-auto mb-3"></div>
+                  <h4 className="font-italiana text-lg font-bold text-charcoal tracking-wider mb-2">
+                    SINCE 2015
+                  </h4>
+                  <p className="text-sm text-charcoal/70 font-light">
+                    Excellence in Design
+                  </p>
+                </div>
+              </motion.div>
+
             </motion.div>
 
             {/* Center Column - Content */}
