@@ -1348,43 +1348,68 @@ export default function Home() {
             {/* Bottom Section: Stats + Services - Natural Flow Down */}
             <div className="grid md:grid-cols-2 gap-12 items-start">
               
-              {/* Elegant Horizontal Statistics */}
+              {/* Sophisticated Statistics Showcase */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-r from-white via-cream/20 to-white p-8 shadow-lg border border-bronze/10"
+                className="relative"
               >
-                <div className="grid grid-cols-3 divide-x divide-bronze/20">
-                  {[
-                    { number: "100+", label: "Projects Completed", accent: "bronze" },
-                    { number: "99+", label: "Happy Clients", accent: "charcoal" },
-                    { number: "10", label: "Years of Experience", accent: "bronze" }
-                  ].map((stat, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.5 + index * 0.15 }}
-                      viewport={{ once: true }}
-                      className="text-center px-6 relative group"
-                    >
-                      {/* Elegant top accent */}
-                      <div className={`w-8 h-px ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'} mx-auto mb-4 opacity-60`}></div>
-                      
-                      <h3 className="text-4xl font-italiana font-bold text-charcoal mb-2 group-hover:text-bronze transition-colors duration-300">
-                        {stat.number}
-                      </h3>
-                      
-                      <p className="text-xs text-charcoal/60 uppercase tracking-wider font-medium leading-relaxed">
-                        {stat.label}
-                      </p>
-                      
-                      {/* Subtle bottom accent */}
-                      <div className={`w-4 h-px ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'}/30 mx-auto mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                    </motion.div>
-                  ))}
+                {/* Elegant background with depth */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white via-cream/40 to-bronze/5 shadow-2xl transform rotate-1"></div>
+                <div className="absolute inset-0 bg-gradient-to-tl from-charcoal/5 via-transparent to-bronze/10 shadow-xl transform -rotate-1"></div>
+                
+                {/* Main container */}
+                <div className="relative bg-white/90 backdrop-blur-sm p-8 border border-bronze/15 shadow-xl">
+                  {/* Decorative header */}
+                  <div className="flex items-center justify-center mb-8">
+                    <div className="w-8 h-px bg-bronze/40"></div>
+                    <div className="mx-4 w-2 h-2 bg-bronze/60 rounded-full"></div>
+                    <div className="w-8 h-px bg-bronze/40"></div>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-8">
+                    {[
+                      { number: "100+", label: "Projects\nCompleted", accent: "bronze", icon: "◆" },
+                      { number: "99+", label: "Happy\nClients", accent: "charcoal", icon: "●" },
+                      { number: "10", label: "Years of\nExperience", accent: "bronze", icon: "◆" }
+                    ].map((stat, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.5 + index * 0.2 }}
+                        viewport={{ once: true }}
+                        className="text-center relative group"
+                      >
+                        {/* Elegant icon */}
+                        <div className={`text-2xl mb-4 ${stat.accent === 'bronze' ? 'text-bronze' : 'text-charcoal'} opacity-60 group-hover:opacity-100 transition-opacity duration-300`}>
+                          {stat.icon}
+                        </div>
+                        
+                        {/* Main number */}
+                        <h3 className="text-5xl font-italiana font-bold text-charcoal mb-3 group-hover:scale-110 transition-transform duration-300">
+                          {stat.number}
+                        </h3>
+                        
+                        {/* Label with line breaks */}
+                        <p className="text-xs text-charcoal/70 uppercase tracking-widest font-medium whitespace-pre-line leading-tight">
+                          {stat.label}
+                        </p>
+                        
+                        {/* Animated underline */}
+                        <div className={`w-0 group-hover:w-12 h-px ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'} mx-auto mt-4 transition-all duration-500`}></div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  {/* Decorative footer */}
+                  <div className="flex items-center justify-center mt-8">
+                    <div className="w-6 h-px bg-bronze/30"></div>
+                    <div className="mx-3 w-1 h-1 bg-bronze/40 rounded-full"></div>
+                    <div className="w-6 h-px bg-bronze/30"></div>
+                  </div>
                 </div>
               </motion.div>
 
