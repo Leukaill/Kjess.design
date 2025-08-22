@@ -1490,7 +1490,7 @@ export default function Home() {
                 {/* Primary image container - no frame */}
                 <div className="relative transition-all duration-500">
                   <img
-                    src={portfolioImg10}
+                    src={portfolioImg1}
                     alt="KJESS Designs elegant modern workspace"
                     className="w-full h-96 object-cover transition-all duration-700 group-hover:scale-105"
                   />
