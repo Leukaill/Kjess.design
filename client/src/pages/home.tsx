@@ -1279,80 +1279,83 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
-            {/* Left Column - Artistic Image Layout */}
-            <motion.div
-              initial={{ opacity: 0, x: -60, scale: 0.9 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="relative group"
-            >
-              {/* Clean main image */}
-              <div className="relative">
-                <img
-                  src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
-                  alt="Elegant interior design showcase with modern furniture and artistic lighting"
-                  className="w-full h-[450px] object-cover shadow-lg"
-                />
-              </div>
-
-              {/* Simple info card */}
+          {/* Dynamic Main Content Layout for Better Visual Flow */}
+          <div className="space-y-16">
+            
+            {/* Top Section: Content + Image */}
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Left: Main Content - First Stop for Eye */}
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="absolute -bottom-6 -right-6 bg-white shadow-lg p-6 border border-bronze/20"
+                className="space-y-8"
               >
-                <div className="text-center">
-                  <div className="w-12 h-px bg-bronze mx-auto mb-3"></div>
-                  <h4 className="font-italiana text-lg font-bold text-charcoal tracking-wider mb-2">
-                    SINCE 2015
-                  </h4>
-                  <p className="text-sm text-charcoal/70 font-light">
-                    Excellence in Design
+                <div className="space-y-6">
+                  <p className="text-xl leading-relaxed text-charcoal/85 font-light">
+                    We create beautiful spaces that reflect <span className="font-bold text-bronze">elegance, comfort, and style</span>.
+                  </p>
+                  
+                  <p className="text-xl leading-relaxed text-charcoal/85 font-light">
+                    Our skilled team works closely with clients to design spaces that are both <span className="font-bold text-bronze">functional and beautiful</span>.
+                  </p>
+                  
+                  <p className="text-xl leading-relaxed text-charcoal/85 font-light">
+                    We focus on every detail to match your <span className="font-bold text-charcoal">style and needs</span>.
                   </p>
                 </div>
               </motion.div>
 
-            </motion.div>
+              {/* Right: Image with Card - Visual Anchor */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                {/* Clean main image */}
+                <div className="relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
+                    alt="Elegant interior design showcase with modern furniture and artistic lighting"
+                    className="w-full h-[400px] object-cover shadow-lg"
+                  />
+                </div>
 
-            {/* Center Column - Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="space-y-8 relative"
-            >
-              <div className="space-y-6">
-                <p className="text-lg leading-relaxed text-charcoal/85 font-light">
-                  We create beautiful spaces that reflect <span className="font-bold text-bronze">elegance, comfort, and style</span>.
-                </p>
-                
-                <p className="text-lg leading-relaxed text-charcoal/85 font-light">
-                  Our skilled team works closely with clients to design spaces that are both <span className="font-bold text-bronze">functional and beautiful</span>.
-                </p>
-                
-                <p className="text-lg leading-relaxed text-charcoal/85 font-light">
-                  We focus on every detail to match your <span className="font-bold text-charcoal">style and needs</span>.
-                </p>
-              </div>
+                {/* Simple info card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="absolute -bottom-6 -right-6 bg-white shadow-lg p-6 border border-bronze/20"
+                >
+                  <div className="text-center">
+                    <div className="w-12 h-px bg-bronze mx-auto mb-3"></div>
+                    <h4 className="font-italiana text-lg font-bold text-charcoal tracking-wider mb-2">
+                      SINCE 2015
+                    </h4>
+                    <p className="text-sm text-charcoal/70 font-light">
+                      Excellence in Design
+                    </p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
 
-            </motion.div>
-
-            {/* Right Column - Stats and Features */}
-            <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              {/* Stats cards */}
-              <div className="space-y-6">
+            {/* Bottom Section: Stats + Services - Natural Flow Down */}
+            <div className="grid md:grid-cols-2 gap-12 items-start">
+              
+              {/* Left: Statistics - Eye flows here next */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
                 {[
                   { number: "100+", label: "Projects Completed", accent: "bronze" },
                   { number: "99+", label: "Happy Clients", accent: "charcoal" },
@@ -1360,9 +1363,9 @@ export default function Home() {
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                     viewport={{ once: true }}
                     className="bg-white p-6 shadow-lg border-l-4 border-bronze/30"
                   >
@@ -1379,21 +1382,28 @@ export default function Home() {
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
-              {/* Simple expertise section */}
-              <div className="bg-cream/20 p-6 border-l-2 border-bronze/40">
-                <h4 className="font-italiana text-xl font-bold text-charcoal mb-3 tracking-wide">
+              {/* Right: Services - Final destination */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="bg-cream/20 p-8 border-l-2 border-bronze/40 h-fit"
+              >
+                <h4 className="font-italiana text-2xl font-bold text-charcoal mb-6 tracking-wide">
                   Our Services
                 </h4>
-                <div className="space-y-2 text-sm text-charcoal/80">
+                <div className="space-y-3 text-base text-charcoal/80">
                   <p>• <span className="font-bold text-bronze">Interior Design</span></p>
                   <p>• <span className="font-bold text-bronze">Custom Furniture</span></p>
                   <p>• <span className="font-bold text-bronze">Space Planning</span></p>
                   <p>• <span className="font-bold text-bronze">Project Management</span></p>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
+
           </div>
 
           {/* Bottom decorative element */}
