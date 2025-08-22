@@ -1696,7 +1696,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="font-italiana text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-8 text-cream leading-[0.85] tracking-wide relative"
+                className="font-italiana text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-8 text-white leading-[0.85] tracking-wide relative"
               >
                 <span className="relative">
                   OUR CREATIVE
@@ -1727,7 +1727,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="text-xl text-cream/85 font-light tracking-wide max-w-3xl mx-auto mt-12 leading-relaxed"
+              className="text-xl text-white/85 font-light tracking-wide max-w-3xl mx-auto mt-12 leading-relaxed"
             >
               Meet the <span className="text-bronze font-medium">visionary minds</span> and <span className="text-bronze font-medium">creative talents</span> who transform your dreams into extraordinary living spaces
             </motion.p>
@@ -1795,7 +1795,7 @@ export default function Home() {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-115 filter contrast-110 saturate-110"
+                      className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 filter contrast-110 saturate-110"
                     />
                     
                     {/* Sophisticated overlay gradients */}
@@ -1837,7 +1837,7 @@ export default function Home() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.3 + 0.8 }}
                         viewport={{ once: true }}
-                        className="font-italiana text-3xl text-cream mb-3 group-hover:text-bronze transition-all duration-500 tracking-wide"
+                        className="font-italiana text-3xl text-white mb-3 group-hover:text-bronze transition-all duration-500 tracking-wide"
                       >
                         {member.name}
                       </motion.h3>
@@ -1870,7 +1870,7 @@ export default function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.3 + 1.4 }}
                       viewport={{ once: true }}
-                      className="text-cream/85 text-sm leading-relaxed font-light text-center group-hover:text-cream transition-colors duration-500 tracking-wide"
+                      className="text-white/85 text-sm leading-relaxed font-light text-center group-hover:text-white transition-colors duration-500 tracking-wide"
                     >
                       {member.bio}
                     </motion.p>
