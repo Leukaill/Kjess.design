@@ -72,6 +72,8 @@ export default function Home() {
   const [isDarkBackground, setIsDarkBackground] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   
   // Hero carousel states
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -154,9 +156,22 @@ export default function Home() {
           const documentHeight = document.documentElement.scrollHeight - viewportHeight;
           const progress = documentHeight > 0 ? Math.min(Math.max(scrollPosition / documentHeight, 0), 1) : 0;
           
+          // Smart navigation visibility logic
+          const isScrollingUp = scrollPosition < lastScrollY;
+          const isPastHero = scrollPosition > heroSectionHeight;
+          
           setIsScrolled(scrollPosition > 50);
           setScrollProgress(progress);
           setShowBackToTop(scrollPosition > 300);
+          
+          // Hide nav when scrolling down past hero, show when scrolling up
+          if (isScrollingUp) {
+            setIsNavVisible(true);
+          } else if (isPastHero) {
+            setIsNavVisible(false);
+          }
+          
+          setLastScrollY(scrollPosition);
           
           ticking = false;
         });
@@ -358,8 +373,11 @@ export default function Home() {
       {/* Sophisticated Navigation Bar */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        animate={{ 
+          y: isNavVisible ? 0 : -100, 
+          opacity: isNavVisible ? 1 : 0 
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 mobile-safe-top ${
           isScrolled 
             ? 'bg-white/95 backdrop-blur-xl shadow-xl border-b border-gray-200' 
