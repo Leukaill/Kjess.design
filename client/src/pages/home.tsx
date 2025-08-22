@@ -1448,17 +1448,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission Section - Compact and Interactive */}
-      <section className="py-16 bg-gradient-to-b from-white via-cream/20 to-white relative overflow-hidden">
-        {/* Artistic background elements */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-20 left-20 w-80 h-80 bg-gradient-to-br from-bronze/20 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-64 h-64 bg-gradient-to-tl from-charcoal/10 to-transparent rounded-full blur-2xl"></div>
+      {/* Mission Section - Elegant and Minimalistic */}
+      <section className="py-16 bg-gradient-to-b from-white via-cream/10 to-white relative overflow-hidden">
+        {/* Subtle background elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <div className="absolute top-20 left-20 w-40 h-40 bg-gradient-to-br from-bronze/20 to-transparent rounded-full blur-2xl"></div>
         </div>
-        
-        {/* Decorative geometric shapes */}
-        <div className="absolute top-16 right-16 w-24 h-24 border border-bronze/15 rotate-45 opacity-40"></div>
-        <div className="absolute bottom-24 left-24 w-32 h-32 border-2 border-charcoal/10 rotate-12 opacity-30"></div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           {/* Section header with enhanced typography */}
@@ -1476,8 +1471,8 @@ export default function Home() {
               {/* Elegant underline */}
               <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-40 h-1 bg-gradient-to-r from-transparent via-bronze to-transparent"></div>
             </div>
-            <p className="text-xl text-charcoal/60 mt-8 font-light italic tracking-wide">
-              Transforming spaces, enriching lives
+            <p className="text-xl text-charcoal/60 mt-8 font-light tracking-wide">
+              Creating beautiful spaces for better living
             </p>
           </motion.div>
 
@@ -1490,24 +1485,15 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Main showcase image with sophisticated framing */}
+              {/* Main showcase image */}
               <div className="relative group">
-                {/* Artistic backdrop */}
-                <div className="absolute -inset-8 bg-gradient-to-br from-bronze/10 via-transparent to-charcoal/5 rotate-1 group-hover:rotate-2 transition-transform duration-700 opacity-60"></div>
-                
-                {/* Primary image container */}
-                <div className="relative bg-white p-6 shadow-2xl group-hover:shadow-3xl transition-all duration-500">
+                {/* Primary image container - no frame */}
+                <div className="relative transition-all duration-500">
                   <img
                     src={portfolioImg10}
-                    alt="KJESS Designs elegant modern workspace with custom furniture and artistic lighting"
-                    className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-105"
+                    alt="KJESS Designs elegant modern workspace"
+                    className="w-full h-96 object-cover transition-all duration-700 group-hover:scale-105"
                   />
-                  
-                  {/* Sophisticated overlay */}
-                  <div className="absolute inset-6 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Corner accent */}
-                  <div className="absolute bottom-6 right-6 w-8 h-8 border-r-2 border-b-2 border-bronze/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </div>
 
@@ -1555,20 +1541,17 @@ export default function Home() {
               viewport={{ once: true }}
               className="space-y-12"
             >
-              {/* Mission statement with enhanced typography */}
+              {/* Mission statement */}
               <div className="relative">
-                {/* Decorative quote */}
-                <div className="absolute -top-8 -left-6 text-8xl text-bronze/20 font-serif leading-none">"</div>
-                
-                <div className="space-y-6 pl-8">
+                <div className="space-y-6">
                   <p className="text-xl leading-relaxed text-charcoal/85 font-light">
-                    To create <span className="font-medium text-charcoal">beautiful, functional, and inspiring</span> interior spaces by
-                    combining design expertise with premium craftsmanship.
+                    To create <span className="font-bold text-charcoal">beautiful, functional, and inspiring</span> interior spaces with
+                    expert design and quality craftsmanship.
                   </p>
                   
                   <p className="text-xl leading-relaxed text-charcoal/85 font-light">
-                    We strive to exceed our clients' expectations through 
-                    <span className="italic text-bronze"> professionalism, creativity</span>, and a deep commitment to quality.
+                    We exceed client expectations through 
+                    <span className="font-bold text-bronze">professionalism, creativity</span>, and commitment to quality.
                   </p>
                 </div>
               </div>
@@ -1581,8 +1564,8 @@ export default function Home() {
                 
                 <div className="space-y-4">
                   {[
-                    { icon: "✦", title: "Excellence", desc: "Uncompromising quality in every detail" },
-                    { icon: "◆", title: "Innovation", desc: "Cutting-edge design solutions" },
+                    { icon: "✦", title: "Excellence", desc: "Quality in every detail" },
+                    { icon: "◆", title: "Innovation", desc: "Creative design solutions" },
                     { icon: "★", title: "Dedication", desc: "Committed to client satisfaction" }
                   ].map((pillar, index) => (
                     <motion.div
@@ -1626,7 +1609,7 @@ export default function Home() {
                       Ready to Transform Your Space?
                     </h4>
                     <p className="text-charcoal/70 text-sm mb-4">
-                      Let's bring your vision to life with our expertise and craftsmanship.
+                      Let's bring your vision to life with our design expertise.
                     </p>
                     <div className="flex items-center space-x-3">
                       <div className="w-12 h-px bg-bronze"></div>
