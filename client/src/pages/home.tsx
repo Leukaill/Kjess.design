@@ -1180,22 +1180,16 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Main image with clean, elegant framing */}
+              {/* Main image - elegant and refined */}
               <div className="relative group">
-                {/* Subtle shadow frame */}
-                <div className="absolute -inset-2 bg-gradient-to-br from-bronze/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=650"
+                  alt="Modern living room with round wooden coffee table, plants, and natural lighting"
+                  className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-[1.02] shadow-xl"
+                />
                 
-                {/* Main image container */}
-                <div className="relative bg-white p-1 shadow-lg rounded-lg overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                    alt="Modern living room with round wooden coffee table, plants, and natural lighting"
-                    className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.05] rounded-md"
-                  />
-                  
-                  {/* Elegant overlay gradient */}
-                  <div className="absolute inset-1 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"></div>
-                </div>
+                {/* Subtle overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
             </motion.div>
 
