@@ -785,14 +785,16 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Clean, elegant image container */}
+              {/* Elegant image container */}
               <div className="relative group">
-                <div className="overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-500">
+                <div className="relative overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700">
                   <img
                     src={portfolioImg9}
                     alt="KJESS Designs contemporary living space featuring sophisticated design elements and premium furnishing"
-                    className="w-full h-[350px] sm:h-[400px] lg:h-[450px] object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-[350px] sm:h-[400px] lg:h-[450px] object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  {/* Elegant border accent */}
+                  <div className="absolute inset-0 border border-bronze/20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </div>
 
