@@ -7,12 +7,19 @@ const CollaborationPopup = () => {
   const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
-    // Show popup after a short delay on every page load
-    const timer = setTimeout(() => {
+    // Show popup after 5 seconds on page load
+    const showTimer = setTimeout(() => {
       setIsVisible(true);
-    }, 2500);
+      
+      // Auto-dismiss after 5 seconds of being visible
+      const hideTimer = setTimeout(() => {
+        setIsVisible(false);
+      }, 5000);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(hideTimer);
+    }, 5000);
+
+    return () => clearTimeout(showTimer);
   }, []);
 
   const handleClose = () => {
@@ -89,8 +96,8 @@ const CollaborationPopup = () => {
               ease: [0.16, 1, 0.3, 1]
             }}
             className="fixed top-4 left-4 right-4 z-50 w-auto max-w-xs 
-                     sm:top-6 sm:left-6 sm:right-auto sm:max-w-sm
-                     md:top-8 md:left-8 md:max-w-md"
+                     sm:top-6 sm:left-6 sm:right-auto sm:max-w-xs
+                     md:top-8 md:left-8 md:max-w-sm"
             data-testid="collaboration-popup"
           >
             <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-charcoal/5 relative overflow-hidden">
@@ -107,37 +114,37 @@ const CollaborationPopup = () => {
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-bronze to-transparent" />
 
               {/* Content */}
-              <div className="p-6 md:p-8">
+              <div className="p-4 md:p-5">
                 {/* Refined title */}
-                <h3 className="font-italiana text-2xl font-semibold text-charcoal mb-3 leading-tight">
+                <h3 className="font-italiana text-lg font-semibold text-charcoal mb-2 leading-tight">
                   Let's Create Something
                   <span className="block text-bronze font-normal">Beautiful Together</span>
                 </h3>
 
                 {/* Elegant description */}
-                <p className="text-charcoal/70 leading-relaxed mb-6 text-sm">
+                <p className="text-charcoal/70 leading-relaxed mb-4 text-xs">
                   Transform your space with personalized design that reflects your unique vision and lifestyle.
                 </p>
 
                 {/* Refined benefits */}
-                <div className="space-y-2 mb-6">
-                  <div className="text-sm text-charcoal/80">
+                <div className="space-y-1 mb-4">
+                  <div className="text-xs text-charcoal/80">
                     • Complimentary design consultation
                   </div>
-                  <div className="text-sm text-charcoal/80">
+                  <div className="text-xs text-charcoal/80">
                     • Professional 3D visualization
                   </div>
-                  <div className="text-sm text-charcoal/80">
+                  <div className="text-xs text-charcoal/80">
                     • Collaborative design process
                   </div>
                 </div>
 
                 {/* Elegant action buttons */}
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <button
                     onClick={handleCollaborate}
                     disabled={isNavigating}
-                    className="w-full bg-charcoal text-white py-3 px-6 rounded-xl font-medium transition-all duration-300 hover:bg-charcoal/90 flex items-center justify-center gap-2 group disabled:opacity-70"
+                    className="w-full bg-charcoal text-white py-2 px-4 rounded-lg font-medium transition-all duration-300 hover:bg-charcoal/90 flex items-center justify-center gap-2 group disabled:opacity-70 text-sm"
                     data-testid="button-start-collaboration"
                   >
                     {isNavigating ? (
@@ -145,21 +152,21 @@ const CollaborationPopup = () => {
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                          className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                          className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full"
                         />
-                        <span>Taking you there...</span>
+                        <span className="text-xs">Taking you there...</span>
                       </>
                     ) : (
                       <>
                         <span>Begin Collaboration</span>
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                        <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
                       </>
                     )}
                   </button>
                   
                   <button
                     onClick={handleClose}
-                    className="w-full py-2 text-charcoal/50 hover:text-charcoal/70 transition-colors duration-200 text-sm"
+                    className="w-full py-1 text-charcoal/50 hover:text-charcoal/70 transition-colors duration-200 text-xs"
                     data-testid="button-maybe-later"
                   >
                     Perhaps later
