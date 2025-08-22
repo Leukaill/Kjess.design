@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X, ZoomIn } from "lucide-react";
-import logoUrl from "@assets/image_1755432338671.png";
+import logoUrl from "@assets/WhatsApp_Image_2025-08-13_at_7.56.31_PM-removebg-preview_1755850108303.png";
 import ceoImage from "@assets/CEO  Creative Director_1755723463174.png";
 import operationalManagerImage from "@assets/Operational Manager (2)_1755723463171.png";
 
@@ -688,8 +688,10 @@ export default function Home() {
               />
             </motion.div>
             
-            <h1 className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 text-white leading-tight tracking-wide">
-              <span className="text-bronze">KJESS DESIGN</span>
+            <h1 className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 leading-tight tracking-wide">
+              <span className="text-white drop-shadow-2xl" style={{
+                textShadow: '0 4px 12px rgba(0,0,0,0.9), 0 2px 6px rgba(0,0,0,0.8), 0 0 30px rgba(184,134,11,0.3)'
+              }}>KJESS DESIGN</span>
             </h1>
             
             {/* Decorative elements */}
