@@ -1289,46 +1289,15 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative group"
             >
-              {/* Main featured image with sophisticated framing */}
+              {/* Clean main image */}
               <div className="relative">
-                {/* Artistic shadow overlay */}
-                <div className="absolute -inset-6 bg-gradient-to-br from-bronze/15 via-transparent to-charcoal/10 rotate-1 group-hover:rotate-2 transition-transform duration-700"></div>
-                
-                {/* Main image container */}
-                <div className="relative bg-white p-4 shadow-2xl group-hover:shadow-3xl transition-all duration-500">
-                  <img
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
-                    alt="Elegant interior design showcase with modern furniture and artistic lighting"
-                    className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-105"
-                  />
-                  
-                  {/* Elegant overlay gradient */}
-                  <div className="absolute inset-4 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </div>
-                
-                {/* Floating accent elements */}
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-bronze/20 rotate-45 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 border-2 border-bronze/40 rotate-12 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+                <img
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
+                  alt="Elegant interior design showcase with modern furniture and artistic lighting"
+                  className="w-full h-80 object-cover shadow-lg"
+                />
               </div>
 
-              {/* Floating info card */}
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="absolute -bottom-8 -right-8 bg-white shadow-xl p-6 border border-bronze/20 hover:shadow-2xl transition-all duration-500"
-              >
-                <div className="text-center">
-                  <div className="w-12 h-px bg-bronze mx-auto mb-3"></div>
-                  <h4 className="font-italiana text-lg font-bold text-charcoal tracking-wider mb-2">
-                    SINCE 2015
-                  </h4>
-                  <p className="text-sm text-charcoal/70 font-light">
-                    Excellence in Design
-                  </p>
-                </div>
-              </motion.div>
             </motion.div>
 
             {/* Center Column - Content */}
@@ -1339,38 +1308,20 @@ export default function Home() {
               viewport={{ once: true }}
               className="space-y-8 relative"
             >
-              {/* Decorative quote mark */}
-              <div className="absolute -top-6 -left-4 text-6xl text-bronze/20 font-serif">"</div>
-              
               <div className="space-y-6">
-                <p className="text-lg leading-relaxed text-charcoal/80 font-light relative pl-8">
-                  At Kjess Designs, we specialize in interior design solutions and
-                  custom-made furniture that reflect <span className="font-medium text-charcoal">elegance, comfort, and purpose</span>.
+                <p className="text-lg leading-relaxed text-charcoal/85 font-light">
+                  We create beautiful spaces that reflect <span className="font-bold text-bronze">elegance, comfort, and style</span>.
                 </p>
                 
-                <p className="text-lg leading-relaxed text-charcoal/80 font-light pl-8">
-                  Our team of talented designers and skilled artisans works closely
-                  with clients to craft environments that are both <span className="italic text-bronze">functional and
-                  inspiring</span>.
+                <p className="text-lg leading-relaxed text-charcoal/85 font-light">
+                  Our skilled team works closely with clients to design spaces that are both <span className="font-bold text-bronze">functional and beautiful</span>.
                 </p>
                 
-                <p className="text-lg leading-relaxed text-charcoal/80 font-light pl-8">
-                  From contemporary to classic styles, we curate every
-                  detail to align with your <span className="font-medium">personality and lifestyle</span>.
+                <p className="text-lg leading-relaxed text-charcoal/85 font-light">
+                  We focus on every detail to match your <span className="font-bold text-charcoal">style and needs</span>.
                 </p>
               </div>
 
-              {/* Enhanced call-to-action element */}
-              <div className="pt-8">
-                <div className="flex items-center space-x-4">
-                  <div className="w-16 h-px bg-gradient-to-r from-bronze to-transparent"></div>
-                  <div className="bg-white px-6 py-3 border border-bronze/30 hover:bg-bronze hover:text-white transition-all duration-300 cursor-pointer group">
-                    <span className="text-charcoal group-hover:text-white uppercase tracking-wider text-sm font-medium">
-                      Our Philosophy
-                    </span>
-                  </div>
-                </div>
-              </div>
             </motion.div>
 
             {/* Right Column - Stats and Features */}
@@ -1411,19 +1362,16 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Feature highlight */}
-              <div className="bg-gradient-to-br from-bronze/10 to-charcoal/5 p-6 relative overflow-hidden">
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-bronze/20"></div>
-                
+              {/* Simple expertise section */}
+              <div className="bg-cream/20 p-6 border-l-2 border-bronze/40">
                 <h4 className="font-italiana text-xl font-bold text-charcoal mb-3 tracking-wide">
-                  Our Expertise
+                  Our Services
                 </h4>
                 <div className="space-y-2 text-sm text-charcoal/80">
-                  <p>• Luxury Interior Design</p>
-                  <p>• Custom Furniture Creation</p>
-                  <p>• Space Optimization</p>
-                  <p>• Project Management</p>
+                  <p>• <span className="font-bold text-bronze">Interior Design</span></p>
+                  <p>• <span className="font-bold text-bronze">Custom Furniture</span></p>
+                  <p>• <span className="font-bold text-bronze">Space Planning</span></p>
+                  <p>• <span className="font-bold text-bronze">Project Management</span></p>
                 </div>
               </div>
             </motion.div>
