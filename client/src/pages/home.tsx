@@ -1165,13 +1165,13 @@ export default function Home() {
       </section>
 
       {/* Services Section - Enhanced elegant design */}
-      <section id="services" className="py-24 bg-white relative overflow-hidden">
+      <section id="services" className="py-16 bg-white relative overflow-hidden">
         {/* Subtle background decorative elements */}
         <div className="absolute top-10 right-10 w-96 h-96 border border-bronze/5 rotate-12 opacity-30"></div>
         <div className="absolute bottom-10 left-10 w-64 h-64 border border-charcoal/5 rotate-45 opacity-20"></div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid md:grid-cols-2 gap-20 items-start">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left side - Enhanced image layout with integrated branding */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -1180,63 +1180,23 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Main image with sophisticated framing */}
-              <div className="relative group mb-8">
-                {/* Decorative shadow frame */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-bronze/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              {/* Main image with clean, elegant framing */}
+              <div className="relative group">
+                {/* Subtle shadow frame */}
+                <div className="absolute -inset-2 bg-gradient-to-br from-bronze/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg"></div>
                 
                 {/* Main image container */}
-                <div className="relative bg-white p-2 shadow-xl">
+                <div className="relative bg-white p-1 shadow-lg rounded-lg overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
                     alt="Modern living room with round wooden coffee table, plants, and natural lighting"
-                    className="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.05] rounded-md"
                   />
                   
                   {/* Elegant overlay gradient */}
-                  <div className="absolute inset-2 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-1 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-md"></div>
                 </div>
               </div>
-
-              {/* Redesigned branding card - positioned as floating element */}
-              <motion.div
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="absolute -bottom-8 -right-8 bg-white shadow-2xl border border-bronze/20 overflow-hidden group/card hover:shadow-3xl transition-all duration-500"
-              >
-                {/* Card content with better proportions */}
-                <div className="w-64 p-6">
-                  {/* Image section */}
-                  <div className="mb-4 overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250"
-                      alt="Elegant modern furniture showcase"
-                      className="w-full h-32 object-cover transition-transform duration-500 group-hover/card:scale-110"
-                    />
-                  </div>
-                  
-                  {/* Branding section with enhanced typography */}
-                  <div className="text-center relative">
-                    {/* Decorative line above */}
-                    <div className="w-16 h-px bg-bronze mx-auto mb-3"></div>
-                    
-                    <h4 className="font-italiana text-lg font-bold mb-2 text-charcoal tracking-wider">
-                      KJESS DESIGNS
-                    </h4>
-                    <p className="text-sm text-charcoal/80 font-light tracking-wide mb-3">
-                      Interior Design Studio
-                    </p>
-                    
-                    {/* Decorative line below */}
-                    <div className="w-8 h-px bg-bronze/40 mx-auto"></div>
-                  </div>
-                </div>
-                
-                {/* Subtle accent corner */}
-                <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-bronze/30"></div>
-              </motion.div>
             </motion.div>
 
             {/* Right side - Enhanced services list */}
@@ -1247,14 +1207,17 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Enhanced title with decorative elements */}
-              <div className="mb-16">
+              {/* Refined title with elegant styling */}
+              <div className="mb-12">
                 <div className="relative">
-                  <h2 className="font-italiana text-6xl md:text-7xl mb-4 text-charcoal leading-tight tracking-wide">
+                  <h2 className="font-italiana text-5xl md:text-6xl mb-6 text-charcoal leading-tight tracking-wide">
                     OUR SERVICES
                   </h2>
-                  {/* Decorative accent */}
-                  <div className="w-24 h-1 bg-gradient-to-r from-bronze to-bronze/40 mb-8"></div>
+                  {/* Elegant decorative accent */}
+                  <div className="w-20 h-0.5 bg-gradient-to-r from-bronze to-bronze/30 mb-6"></div>
+                  <p className="text-charcoal/60 font-light italic text-lg">
+                    Transforming spaces with expert craftsmanship
+                  </p>
                 </div>
               </div>
               
@@ -1285,9 +1248,9 @@ export default function Home() {
                 ))}
               </div>
               
-              {/* Subtle decorative element at bottom */}
-              <div className="mt-16 flex justify-end">
-                <div className="w-32 h-px bg-gradient-to-r from-transparent to-bronze/30"></div>
+              {/* Refined decorative element */}
+              <div className="mt-12 flex justify-end">
+                <div className="w-24 h-px bg-gradient-to-r from-transparent to-bronze/40"></div>
               </div>
             </motion.div>
           </div>
