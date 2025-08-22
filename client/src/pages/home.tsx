@@ -1251,12 +1251,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Us Section - Sophisticated and Aesthetic Design */}
-      <section id="about" className="py-32 bg-gradient-to-br from-cream via-white to-cream/50 relative overflow-hidden">
-        {/* Elegant background decorative elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 border border-bronze/8 rotate-45 opacity-40"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 border border-charcoal/5 rotate-12 opacity-30"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-bronze/5 to-transparent rounded-full opacity-20"></div>
+      {/* About Us Section - Elegant and Minimalistic */}
+      <section id="about" className="py-20 bg-gradient-to-b from-cream via-warm-white to-cream relative overflow-hidden">
+        {/* Minimalist background elements */}
+        <div className="absolute top-20 right-20 w-64 h-64 border border-bronze/8 rotate-12 opacity-30"></div>
+        <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-br from-bronze/5 to-transparent rounded-full blur-xl"></div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           {/* Enhanced Title Section */}
@@ -1265,19 +1264,14 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-center mb-24"
+            className="text-center mb-16"
           >
-            <div className="relative inline-block">
-              {/* Decorative elements around title */}
-              <div className="absolute -top-8 -left-8 w-16 h-16 border border-bronze/20 rotate-45 opacity-60"></div>
-              <div className="absolute -bottom-6 -right-6 w-12 h-12 bg-bronze/10 rotate-12"></div>
-              
-              <h2 className="font-italiana text-6xl md:text-8xl mb-6 text-charcoal leading-tight tracking-wide relative">
-                A LITTLE <span className="text-bronze">About</span> Us
+            <div className="relative">
+              <h2 className="font-italiana text-6xl md:text-7xl mb-6 text-charcoal leading-tight tracking-wide">
+                A LITTLE <span className="text-bronze font-bold">About</span> Us
               </h2>
-              
-              {/* Elegant underline with gradient */}
-              <div className="w-32 h-1 bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"></div>
+              {/* Simple underline */}
+              <div className="w-24 h-0.5 bg-bronze mx-auto mb-8"></div>
             </div>
             
             <p className="text-xl text-charcoal/70 max-w-2xl mx-auto font-light italic tracking-wide">
@@ -1286,7 +1280,7 @@ export default function Home() {
           </motion.div>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-3 gap-16 items-center">
+          <div className="grid lg:grid-cols-3 gap-12 items-center">
             {/* Left Column - Artistic Image Layout */}
             <motion.div
               initial={{ opacity: 0, x: -60, scale: 0.9 }}
@@ -1328,7 +1322,7 @@ export default function Home() {
                 <div className="text-center">
                   <div className="w-12 h-px bg-bronze mx-auto mb-3"></div>
                   <h4 className="font-italiana text-lg font-bold text-charcoal tracking-wider mb-2">
-                    SINCE 2020
+                    SINCE 2015
                   </h4>
                   <p className="text-sm text-charcoal/70 font-light">
                     Excellence in Design
