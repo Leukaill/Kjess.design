@@ -1761,10 +1761,10 @@ export default function Home() {
                 twitter: "#"
               },
               {
-                name: "Team Member",
-                role: "Position Available",
-                image: "data:image/svg+xml,%3Csvg width='400' height='500' viewBox='0 0 400 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23f8f4f0'/%3E%3Ccircle cx='200' cy='200' r='80' fill='none' stroke='%23d4af37' stroke-width='3' stroke-dasharray='10,5'/%3E%3Ctext x='200' y='210' text-anchor='middle' font-family='serif' font-size='24' fill='%238B6F35'%3E?%3C/text%3E%3Ctext x='200' y='350' text-anchor='middle' font-family='serif' font-size='18' fill='%23666'%3EJoin Our Team%3C/text%3E%3C/svg%3E",
-                bio: "We're always looking for talented individuals to join our creative team",
+                name: "Operational Manager",
+                role: "Operations & Strategy",
+                image: operationalManagerImage,
+                bio: "Expert in operational excellence and strategic planning for luxury interior design projects",
                 linkedin: "#",
                 instagram: "#",
                 twitter: "#"
@@ -1795,7 +1795,7 @@ export default function Home() {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 filter contrast-110 saturate-110"
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                     />
                     
                     {/* Sophisticated overlay gradients */}
