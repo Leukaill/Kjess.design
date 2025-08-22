@@ -790,12 +790,23 @@ export default function Home() {
                 {/* Sophisticated backdrop */}
                 <div className="absolute -inset-4 bg-gradient-to-br from-bronze/8 via-transparent to-charcoal/5 opacity-50 group-hover:opacity-70 transition-opacity duration-700"></div>
                 
-                <div className="relative overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700">
+                <div 
+                  className="relative overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700 cursor-pointer"
+                  onClick={() => {
+                    setExpandedImage(portfolioImg9);
+                    setExpandedImageAlt("KJESS Designs contemporary living space featuring sophisticated design elements and premium furnishing");
+                  }}
+                >
                   <img
                     src={portfolioImg9}
                     alt="KJESS Designs contemporary living space featuring sophisticated design elements and premium furnishing"
                     className="w-full h-[350px] sm:h-[400px] lg:h-[450px] object-cover transition-all duration-700 group-hover:scale-105"
                   />
+                  
+                  {/* Elegant zoom indicator */}
+                  <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-all duration-300 flex items-center justify-center">
+                    <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
                   
                   {/* Elegant overlays */}
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
