@@ -1022,16 +1022,15 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              {/* Enhanced call-to-action */}
+              {/* Legacy section */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 viewport={{ once: true }}
-                className="mt-12 bg-white p-6 border-l-4 border-bronze shadow-lg relative"
+                className="mt-12 bg-cream/30 p-6 border-l-2 border-bronze"
               >
-                <div className="absolute top-0 right-0 w-10 h-10 border-r border-t border-bronze/25"></div>
-                <h4 className="font-italiana text-xl font-bold text-charcoal mb-2 tracking-wide">
+                <h4 className="font-italiana text-xl font-bold text-charcoal mb-2">
                   Legacy of Excellence
                 </h4>
                 <p className="text-charcoal/70 leading-relaxed">
