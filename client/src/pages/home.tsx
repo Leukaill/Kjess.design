@@ -931,12 +931,6 @@ export default function Home() {
               viewport={{ once: true }}
               className="order-2 lg:order-1 relative"
             >
-              {/* Decorative side element */}
-              <div className="absolute -left-8 top-0 flex flex-col items-center opacity-50">
-                <div className="w-px h-24 bg-gradient-to-b from-bronze/60 to-transparent"></div>
-                <div className="w-4 h-4 bg-bronze/40 rounded-full my-4"></div>
-                <div className="w-px h-24 bg-gradient-to-t from-bronze/60 to-transparent"></div>
-              </div>
 
               {/* Enhanced title section */}
               <motion.div
@@ -955,7 +949,7 @@ export default function Home() {
                 </div>
                 
                 <p className="text-xl text-charcoal/70 font-light italic tracking-wide mt-8">
-                  A decade of design excellence and innovation
+                  Ten years of great design and innovation
                 </p>
               </motion.div>
               
@@ -975,8 +969,8 @@ export default function Home() {
                       The Beginning
                     </h4>
                     <p className="text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
-                      Founded over a decade ago, Kjess Designs began as a 
-                      <span className="font-italiana italic text-bronze font-medium"> small design studio</span> with a passion for refined interiors and handcrafted furniture.
+                      Kjess Designs started as a 
+                      <span className="font-italiana italic text-bronze font-bold">small design studio</span> with a love for beautiful interiors and custom furniture.
                     </p>
                   </div>
                 </div>
@@ -988,9 +982,9 @@ export default function Home() {
                       Growth & Recognition
                     </h4>
                     <p className="text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
-                      Through years of dedication, we have grown into a 
-                      <span className="font-medium text-charcoal">trusted name in Rwanda's design industry</span>, collaborating with
-                      individuals, luxury residences, and institutions to deliver exceptional spaces.
+                      We have grown into a 
+                      <span className="font-bold text-charcoal">trusted name in Rwanda's design</span>, working with
+                      homes, businesses, and institutions to create amazing spaces.
                     </p>
                   </div>
                 </div>
@@ -998,13 +992,13 @@ export default function Home() {
                 <div className="relative">
                   <div className="absolute -left-4 top-2 w-2 h-2 bg-bronze/60 rounded-full"></div>
                   <div className="pl-8">
-                    <h4 className="font-italiana text-xl font-semibold text-charcoal mb-3 tracking-wide">
+                    <h4 className="font-italiana text-xl font-semibold text-charcoal mb-3">
                       Our Philosophy
                     </h4>
                     <p className="text-lg leading-relaxed text-charcoal/85 font-light tracking-wide">
-                      Our journey has been shaped by a 
-                      <span className="font-italiana italic text-bronze">relentless pursuit of quality</span> and a deep understanding of 
-                      <span className="font-medium text-charcoal">design aesthetics</span>.
+                      We focus on 
+                      <span className="font-italiana italic text-bronze font-bold">quality and creativity</span> with a deep understanding of 
+                      <span className="font-bold text-charcoal">beautiful design</span>.
                     </p>
                   </div>
                 </div>
@@ -1023,7 +1017,7 @@ export default function Home() {
                   Legacy of Excellence
                 </h4>
                 <p className="text-charcoal/70 leading-relaxed">
-                  Every project we complete adds to our rich heritage of transforming ordinary spaces into extraordinary experiences.
+                  Each project adds to our story of turning ordinary spaces into extraordinary places.
                 </p>
               </motion.div>
             </motion.div>
@@ -1049,7 +1043,11 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                     viewport={{ once: true }}
-                    className="col-span-2 bg-white p-4 shadow-2xl hover:shadow-3xl transition-all duration-500 group relative"
+                    className="col-span-2 shadow-xl hover:shadow-2xl transition-all duration-500 group relative cursor-pointer overflow-hidden"
+                    onClick={() => {
+                      setExpandedImage(portfolioImg6);
+                      setExpandedImageAlt("KJESS Designs living space with sophisticated design elements and natural lighting");
+                    }}
                   >
                     <img
                       src={portfolioImg6}
@@ -1057,11 +1055,10 @@ export default function Home() {
                       className="w-full h-64 object-cover transition-all duration-700 group-hover:scale-105"
                     />
                     
-                    {/* Image overlay */}
-                    <div className="absolute inset-4 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
-                    {/* Corner accents */}
-                    <div className="absolute bottom-4 right-4 w-6 h-6 border-r border-b border-bronze/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    {/* Elegant zoom indicator */}
+                    <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-all duration-300 flex items-center justify-center">
+                      <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
                   </motion.div>
                   
                   {/* Secondary images with staggered animation */}
@@ -1070,13 +1067,22 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                     viewport={{ once: true }}
-                    className="bg-white p-3 shadow-xl hover:shadow-2xl transition-all duration-500 group relative"
+                    className="shadow-lg hover:shadow-xl transition-all duration-500 group relative cursor-pointer overflow-hidden"
+                    onClick={() => {
+                      setExpandedImage(portfolioImg7);
+                      setExpandedImageAlt("KJESS Designs early work showcasing elegant contemporary furniture and design details");
+                    }}
                   >
                     <img
                       src={portfolioImg7}
                       alt="KJESS Designs early work showcasing elegant contemporary furniture and design details"
                       className="w-full h-40 object-cover transition-all duration-500 group-hover:scale-110"
                     />
+                    
+                    {/* Elegant zoom indicator */}
+                    <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-all duration-300 flex items-center justify-center">
+                      <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
                     
                     {/* Floating label */}
                     <div className="absolute -bottom-2 -left-2 bg-bronze/90 text-white px-3 py-1 text-xs font-medium tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1089,13 +1095,22 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                     viewport={{ once: true }}
-                    className="bg-white p-3 shadow-xl hover:shadow-2xl transition-all duration-500 group relative mt-8"
+                    className="shadow-lg hover:shadow-xl transition-all duration-500 group relative mt-8 cursor-pointer overflow-hidden"
+                    onClick={() => {
+                      setExpandedImage(portfolioImg8);
+                      setExpandedImageAlt("KJESS Designs current luxury interior with sophisticated artistic elements");
+                    }}
                   >
                     <img
                       src={portfolioImg8}
                       alt="KJESS Designs current luxury interior with sophisticated artistic elements"
                       className="w-full h-40 object-cover transition-all duration-500 group-hover:scale-110"
                     />
+                    
+                    {/* Elegant zoom indicator */}
+                    <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-all duration-300 flex items-center justify-center">
+                      <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
                     
                     {/* Floating label */}
                     <div className="absolute -bottom-2 -right-2 bg-charcoal text-white px-3 py-1 text-xs font-medium tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
