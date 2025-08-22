@@ -1400,7 +1400,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     viewport={{ once: true }}
-                    className="bg-cream/20 p-6 border border-bronze/20 border-l-4 border-l-bronze/50"
+                    className="p-8 bg-gradient-to-r from-transparent via-cream/10 to-transparent"
                   >
                     <div className="flex items-center space-x-4">
                       <div className={`w-2 h-2 ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'} rounded-full`}></div>
