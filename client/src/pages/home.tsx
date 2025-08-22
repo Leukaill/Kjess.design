@@ -1391,8 +1391,8 @@ export default function Home() {
               <div className="space-y-6">
                 {[
                   { number: "100+", label: "Projects Completed", accent: "bronze" },
-                  { number: "50+", label: "Happy Clients", accent: "charcoal" },
-                  { number: "5+", label: "Years Experience", accent: "bronze" }
+                  { number: "99+", label: "Happy Clients", accent: "charcoal" },
+                  { number: "10", label: "Years of Experience", accent: "bronze" }
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
@@ -1400,10 +1400,10 @@ export default function Home() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     viewport={{ once: true }}
-                    className="bg-white p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-bronze/30 hover:border-bronze group"
+                    className="bg-white p-6 shadow-lg border-l-4 border-bronze/30"
                   >
                     <div className="flex items-center space-x-4">
-                      <div className={`w-2 h-2 ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'} rounded-full group-hover:scale-150 transition-transform duration-300`}></div>
+                      <div className={`w-2 h-2 ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'} rounded-full`}></div>
                       <div>
                         <h3 className="text-3xl font-italiana font-bold text-charcoal mb-1">
                           {stat.number}
