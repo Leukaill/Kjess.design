@@ -1611,12 +1611,19 @@ export default function Home() {
                     <p className="text-charcoal/70 text-sm mb-4">
                       Let's bring your vision to life with our design expertise.
                     </p>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-px bg-bronze"></div>
-                      <span className="text-bronze text-sm font-medium tracking-wider uppercase">
+                    <a 
+                      href="#contact" 
+                      className="flex items-center space-x-3 group cursor-pointer hover:translate-x-1 transition-transform duration-300"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      <div className="w-12 h-px bg-bronze group-hover:w-16 transition-all duration-300"></div>
+                      <span className="text-bronze text-sm font-medium tracking-wider uppercase group-hover:text-bronze/80 transition-colors duration-300">
                         Start Your Journey
                       </span>
-                    </div>
+                    </a>
                   </div>
                 </div>
               </motion.div>
