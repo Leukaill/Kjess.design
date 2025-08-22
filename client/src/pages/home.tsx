@@ -41,7 +41,7 @@ import bankOfKigaliLogo from "@assets/0f879fa4-14a7-4c2a-8e54-792f7841df89-remov
 import solidAfricaLogo from "@assets/IMG_4746-removebg-preview_1755788711983.png";
 import volcanoesLogo from "@assets/IMG_4747-removebg-preview_1755788711985.png";
 import kingFaisalLogo from "@assets/IMG_4748-removebg-preview_1755788711986.png";
-import spiroLogo from "@assets/IMG_4749-removebg-preview_1755788711987.png";
+import spiroLogo from "@assets/IMG_4757-removebg-preview_1755788711993.png";
 import questionCoffeeLogo from "@assets/IMG_4751-removebg-preview_1755788711988.png";
 import ecciGlobalLogo from "@assets/IMG_4753-removebg-preview_1755788711989.png";
 import greenHillsLogo from "@assets/IMG_4754-removebg-preview_1755788711990.png";
@@ -3384,7 +3384,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
           >
             {[
               { logo: bankOfKigaliLogo, alt: "Bank of Kigali - Financially transforming lives", delay: 0.1 },
@@ -3410,22 +3410,29 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="group cursor-pointer"
               >
-                <div className="bg-white/70 backdrop-blur-sm border border-bronze/15 rounded-lg p-6 hover:bg-white hover:border-bronze/40 hover:shadow-2xl hover:shadow-bronze/20 transition-all duration-500 group-hover:scale-105 h-24 flex items-center justify-center relative overflow-hidden">
-                  {/* Subtle background accent on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-bronze/5 to-charcoal/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="bg-white/80 backdrop-blur-xl border border-bronze/20 rounded-xl p-8 hover:bg-white hover:border-bronze/50 hover:shadow-2xl hover:shadow-bronze/25 transition-all duration-500 group-hover:scale-105 h-32 sm:h-36 flex items-center justify-center relative overflow-hidden">
+                  {/* Enhanced background gradient on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-bronze/8 to-charcoal/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Subtle inner glow */}
+                  <div className="absolute inset-1 rounded-lg bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   <img
                     src={partner.logo}
                     alt={partner.alt}
-                    className="max-w-full max-h-16 object-contain transition-all duration-500 group-hover:scale-110 relative z-10"
+                    className="max-w-full max-h-20 sm:max-h-24 object-contain transition-all duration-500 group-hover:scale-110 relative z-10"
                     style={{ 
-                      filter: 'brightness(1) contrast(1.1)',
+                      filter: 'brightness(1) contrast(1.15) saturate(1.1)',
                       transition: 'all 0.5s ease'
                     }}
                   />
                   
-                  {/* Elegant corner accent */}
-                  <div className="absolute top-2 right-2 w-4 h-4 border-r border-t border-bronze/0 group-hover:border-bronze/30 transition-all duration-500"></div>
+                  {/* Enhanced corner accents */}
+                  <div className="absolute top-3 right-3 w-6 h-6 border-r-2 border-t-2 border-bronze/0 group-hover:border-bronze/40 transition-all duration-500 rounded-tr-md"></div>
+                  <div className="absolute bottom-3 left-3 w-6 h-6 border-l-2 border-b-2 border-bronze/0 group-hover:border-bronze/40 transition-all duration-500 rounded-bl-md"></div>
+                  
+                  {/* Subtle shine effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 translate-x-full group-hover:translate-x-[-100%] transition-transform duration-1000 ease-out"></div>
                 </div>
               </motion.div>
             ))}
