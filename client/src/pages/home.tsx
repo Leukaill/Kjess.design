@@ -1348,40 +1348,44 @@ export default function Home() {
             {/* Bottom Section: Stats + Services - Natural Flow Down */}
             <div className="grid md:grid-cols-2 gap-12 items-start">
               
-              {/* Left: Statistics - Eye flows here next */}
+              {/* Elegant Horizontal Statistics */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="space-y-6"
+                className="bg-gradient-to-r from-white via-cream/20 to-white p-8 shadow-lg border border-bronze/10"
               >
-                {[
-                  { number: "100+", label: "Projects Completed", accent: "bronze" },
-                  { number: "99+", label: "Happy Clients", accent: "charcoal" },
-                  { number: "10", label: "Years of Experience", accent: "bronze" }
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-white p-6 shadow-lg border-l-4 border-bronze/30"
-                  >
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-2 h-2 ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'} rounded-full`}></div>
-                      <div>
-                        <h3 className="text-3xl font-italiana font-bold text-charcoal mb-1">
-                          {stat.number}
-                        </h3>
-                        <p className="text-sm text-charcoal/70 uppercase tracking-wider font-medium">
-                          {stat.label}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+                <div className="grid grid-cols-3 divide-x divide-bronze/20">
+                  {[
+                    { number: "100+", label: "Projects Completed", accent: "bronze" },
+                    { number: "99+", label: "Happy Clients", accent: "charcoal" },
+                    { number: "10", label: "Years of Experience", accent: "bronze" }
+                  ].map((stat, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.5 + index * 0.15 }}
+                      viewport={{ once: true }}
+                      className="text-center px-6 relative group"
+                    >
+                      {/* Elegant top accent */}
+                      <div className={`w-8 h-px ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'} mx-auto mb-4 opacity-60`}></div>
+                      
+                      <h3 className="text-4xl font-italiana font-bold text-charcoal mb-2 group-hover:text-bronze transition-colors duration-300">
+                        {stat.number}
+                      </h3>
+                      
+                      <p className="text-xs text-charcoal/60 uppercase tracking-wider font-medium leading-relaxed">
+                        {stat.label}
+                      </p>
+                      
+                      {/* Subtle bottom accent */}
+                      <div className={`w-4 h-px ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'}/30 mx-auto mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
 
               {/* Right: Services - Final destination */}
