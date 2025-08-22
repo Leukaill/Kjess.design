@@ -1066,7 +1066,7 @@ export default function Home() {
                     <img
                       src={portfolioImg6}
                       alt="KJESS Designs living space with sophisticated design elements and natural lighting"
-                      className="w-full h-64 object-cover transition-all duration-700 group-hover:scale-105"
+                      className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-105"
                     />
                     
                     {/* Elegant zoom indicator */}
@@ -1090,7 +1090,7 @@ export default function Home() {
                     <img
                       src={portfolioImg7}
                       alt="KJESS Designs early work showcasing elegant contemporary furniture and design details"
-                      className="w-full h-40 object-cover transition-all duration-500 group-hover:scale-110"
+                      className="w-full h-52 object-cover transition-all duration-500 group-hover:scale-110"
                     />
                     
                     {/* Elegant zoom indicator */}
@@ -1114,7 +1114,7 @@ export default function Home() {
                     <img
                       src={portfolioImg8}
                       alt="KJESS Designs current luxury interior with sophisticated artistic elements"
-                      className="w-full h-40 object-cover transition-all duration-500 group-hover:scale-110"
+                      className="w-full h-52 object-cover transition-all duration-500 group-hover:scale-110"
                     />
                     
                     {/* Elegant zoom indicator */}
