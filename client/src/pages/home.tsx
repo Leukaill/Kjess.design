@@ -790,7 +790,7 @@ export default function Home() {
                 {/* Sophisticated backdrop */}
                 <div className="absolute -inset-4 bg-gradient-to-br from-bronze/8 via-transparent to-charcoal/5 opacity-50 group-hover:opacity-70 transition-opacity duration-700"></div>
                 
-                <div className="relative overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700 bg-white p-1">
+                <div className="relative overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700">
                   <img
                     src={portfolioImg9}
                     alt="KJESS Designs contemporary living space featuring sophisticated design elements and premium furnishing"
