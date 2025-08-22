@@ -1400,18 +1400,16 @@ export default function Home() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     viewport={{ once: true }}
-                    className="p-8 bg-gradient-to-r from-transparent via-cream/10 to-transparent"
+                    className="text-center py-6"
                   >
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-2 h-2 ${stat.accent === 'bronze' ? 'bg-bronze' : 'bg-charcoal'} rounded-full`}></div>
-                      <div>
-                        <h3 className="text-3xl font-italiana font-bold text-charcoal mb-1">
-                          {stat.number}
-                        </h3>
-                        <p className="text-sm text-charcoal/70 uppercase tracking-wider font-medium">
-                          {stat.label}
-                        </p>
-                      </div>
+                    <div className="relative">
+                      <h3 className="text-5xl font-italiana font-bold text-charcoal mb-2">
+                        {stat.number}
+                      </h3>
+                      <div className="w-12 h-px bg-bronze mx-auto mb-3"></div>
+                      <p className="text-sm text-charcoal/70 uppercase tracking-wider font-medium">
+                        {stat.label}
+                      </p>
                     </div>
                   </motion.div>
                 ))}
