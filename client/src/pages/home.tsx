@@ -674,9 +674,22 @@ export default function Home() {
               className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
             ></motion.div>
             
+            {/* Logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="mb-6"
+            >
+              <img 
+                src={logoUrl} 
+                alt="KJESS Design Logo" 
+                className="mx-auto h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-contain"
+              />
+            </motion.div>
+            
             <h1 className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 text-white leading-tight tracking-wide">
-              KJESS
-              <span className="block text-bronze mt-2">DESIGNS</span>
+              <span className="text-bronze">KJESS DESIGN</span>
             </h1>
             
             {/* Decorative elements */}
@@ -699,7 +712,7 @@ export default function Home() {
             <p className="text-lg sm:text-xl md:text-2xl text-white font-light tracking-wide mb-6 max-w-2xl mx-auto leading-relaxed" style={{
               textShadow: '0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)'
             }}>
-              Interior Design & Luxury Furniture
+              Interior Design & Luxurious Furniture
             </p>
             <p className="text-base sm:text-lg md:text-xl text-white/95 font-light tracking-wide max-w-xl mx-auto" style={{
               textShadow: '0 4px 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)'
