@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X, ZoomIn } from "lucide-react";
 import logoUrl from "@assets/WhatsApp_Image_2025-08-13_at_7.56.31_PM-removebg-preview_1755850108303.png";
+import oldLogoUrl from "@assets/image_1755432338671.png";
 import ceoImage from "@assets/CEO  Creative Director_1755723463174.png";
 import operationalManagerImage from "@assets/Operational Manager (2)_1755723463171.png";
 
@@ -375,7 +376,7 @@ export default function Home() {
             >
               <div className="flex items-center justify-center transition-all duration-300">
                 <img 
-                  src={logoUrl} 
+                  src={oldLogoUrl} 
                   alt="KJ Design Logo"
                   className="w-6 h-6 sm:w-8 sm:h-8 object-contain transition-all duration-300"
                   style={{
