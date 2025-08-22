@@ -787,15 +787,24 @@ export default function Home() {
             >
               {/* Elegant image container */}
               <div className="relative group">
-                <div className="relative overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700">
+                {/* Sophisticated backdrop */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-bronze/8 via-transparent to-charcoal/5 opacity-50 group-hover:opacity-70 transition-opacity duration-700"></div>
+                
+                <div className="relative overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-700 bg-white p-1">
                   <img
                     src={portfolioImg9}
                     alt="KJESS Designs contemporary living space featuring sophisticated design elements and premium furnishing"
-                    className="w-full h-[350px] sm:h-[400px] lg:h-[450px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[350px] sm:h-[400px] lg:h-[450px] object-cover transition-all duration-700 group-hover:scale-105"
                   />
-                  {/* Elegant border accent */}
-                  <div className="absolute inset-0 border border-bronze/20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Elegant overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 border border-bronze/30 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
+                
+                {/* Elegant corner accents */}
+                <div className="absolute -top-2 -left-2 w-6 h-6 border-l-2 border-t-2 border-bronze/40 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100"></div>
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-r-2 border-b-2 border-bronze/40 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200"></div>
               </div>
 
               {/* Simple caption */}
