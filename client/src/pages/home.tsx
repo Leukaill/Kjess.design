@@ -1294,7 +1294,7 @@ export default function Home() {
                 <img
                   src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
                   alt="Elegant interior design showcase with modern furniture and artistic lighting"
-                  className="w-full h-96 object-cover shadow-lg"
+                  className="w-full h-[450px] object-cover shadow-lg"
                 />
               </div>
 
