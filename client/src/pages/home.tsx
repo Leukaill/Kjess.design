@@ -1047,20 +1047,17 @@ export default function Home() {
               viewport={{ once: true }}
               className="order-1 lg:order-2 relative"
             >
-              {/* Sophisticated gallery layout with overlapping elements */}
+              {/* Organized gallery layout */}
               <div className="relative">
-                {/* Background artistic elements */}
-                <div className="absolute -inset-12 bg-gradient-to-br from-bronze/8 via-transparent to-charcoal/5 rotate-3 opacity-40"></div>
-                
                 {/* Main gallery grid */}
-                <div className="relative grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-2 gap-4">
                   {/* Primary showcase image */}
                   <motion.div
-                    initial={{ opacity: 0, y: 40, rotate: -2 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="col-span-2 shadow-xl hover:shadow-2xl transition-all duration-500 group relative cursor-pointer overflow-hidden"
+                    className="col-span-2 shadow-lg hover:shadow-xl transition-all duration-300 group relative cursor-pointer overflow-hidden"
                     onClick={() => {
                       setExpandedImage(portfolioImg6);
                       setExpandedImageAlt("KJESS Designs living space with sophisticated design elements and natural lighting");
@@ -1078,13 +1075,13 @@ export default function Home() {
                     </div>
                   </motion.div>
                   
-                  {/* Secondary images with staggered animation */}
+                  {/* Secondary images */}
                   <motion.div
-                    initial={{ opacity: 0, y: 60, rotate: 2 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
                     viewport={{ once: true }}
-                    className="shadow-lg hover:shadow-xl transition-all duration-500 group relative cursor-pointer overflow-hidden"
+                    className="shadow-lg hover:shadow-xl transition-all duration-300 group relative cursor-pointer overflow-hidden"
                     onClick={() => {
                       setExpandedImage(portfolioImg7);
                       setExpandedImageAlt("KJESS Designs early work showcasing elegant contemporary furniture and design details");
@@ -1101,18 +1098,14 @@ export default function Home() {
                       <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                     
-                    {/* Floating label */}
-                    <div className="absolute -bottom-2 -left-2 bg-bronze/90 text-white px-3 py-1 text-xs font-medium tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      THEN
-                    </div>
                   </motion.div>
                   
                   <motion.div
-                    initial={{ opacity: 0, y: 60, rotate: -2 }}
-                    whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
                     viewport={{ once: true }}
-                    className="shadow-lg hover:shadow-xl transition-all duration-500 group relative mt-8 cursor-pointer overflow-hidden"
+                    className="shadow-lg hover:shadow-xl transition-all duration-300 group relative cursor-pointer overflow-hidden"
                     onClick={() => {
                       setExpandedImage(portfolioImg8);
                       setExpandedImageAlt("KJESS Designs current luxury interior with sophisticated artistic elements");
@@ -1129,20 +1122,16 @@ export default function Home() {
                       <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                     
-                    {/* Floating label */}
-                    <div className="absolute -bottom-2 -right-2 bg-charcoal text-white px-3 py-1 text-xs font-medium tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      NOW
-                    </div>
                   </motion.div>
                 </div>
 
-                {/* Floating milestone badge */}
+                {/* Years badge */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                  whileInView={{ opacity: 1, scale: 1, rotate: -8 }}
-                  transition={{ duration: 0.8, delay: 1 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
                   viewport={{ once: true }}
-                  className="absolute -top-8 -left-8 bg-white shadow-2xl p-6 border border-bronze/30 hover:shadow-3xl transition-all duration-500 group cursor-pointer"
+                  className="absolute -top-6 -left-6 bg-white shadow-lg p-4 border border-bronze/20 transition-shadow duration-300"
                 >
                   <div className="text-center">
                     <div className="w-12 h-px bg-bronze mx-auto mb-3"></div>
@@ -1156,13 +1145,13 @@ export default function Home() {
                   <div className="absolute top-1 right-1 w-3 h-3 border-r border-t border-bronze/40"></div>
                 </motion.div>
 
-                {/* Floating achievement badge */}
+                {/* Projects badge */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, rotate: 8 }}
-                  whileInView={{ opacity: 1, scale: 1, rotate: 6 }}
-                  transition={{ duration: 0.8, delay: 1.2 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 1 }}
                   viewport={{ once: true }}
-                  className="absolute -bottom-6 -right-6 bg-bronze text-white p-4 shadow-2xl hover:shadow-3xl transition-all duration-500"
+                  className="absolute -bottom-4 -right-4 bg-bronze text-white p-3 shadow-lg transition-shadow duration-300"
                 >
                   <div className="text-center">
                     <div className="text-2xl font-italiana font-bold mb-1">100+</div>
