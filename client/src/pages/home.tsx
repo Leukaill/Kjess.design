@@ -1649,35 +1649,103 @@ export default function Home() {
 
       {/* Team Section - Sophisticated & Elegant Design */}
       <section id="team" className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-charcoal via-charcoal/98 to-charcoal relative overflow-hidden">
-        {/* Enhanced background elements */}
+        {/* Luxury background elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 right-20 w-80 h-80 border border-bronze/10 rotate-45 opacity-30"></div>
-          <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-bronze/5 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute top-1/3 left-1/4 w-3 h-3 bg-bronze/40 rounded-full opacity-70"></div>
-          <div className="absolute bottom-1/3 right-1/3 w-2 h-2 bg-cream/30 rounded-full"></div>
+          <div className="absolute top-20 right-20 w-96 h-96 border border-bronze/15 rotate-45 opacity-40"></div>
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-bronze/8 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute top-1/3 left-1/4 w-4 h-4 bg-bronze/50 rounded-full opacity-80 animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-cream/40 rounded-full animate-pulse"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-conic from-bronze/5 via-transparent to-bronze/5 rounded-full blur-3xl opacity-30"></div>
+          
+          {/* Floating geometric patterns */}
+          <motion.div
+            initial={{ opacity: 0, rotate: 0 }}
+            whileInView={{ opacity: 0.2, rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="absolute top-1/4 left-1/3 w-px h-32 bg-gradient-to-b from-transparent via-bronze/30 to-transparent transform rotate-45"
+          ></motion.div>
+          <motion.div
+            initial={{ opacity: 0, rotate: 0 }}
+            whileInView={{ opacity: 0.15, rotate: -360 }}
+            transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-1/4 right-1/3 w-24 h-px bg-gradient-to-r from-transparent via-bronze/20 to-transparent"
+          ></motion.div>
         </div>
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Enhanced header */}
+          {/* Luxury header with premium styling */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-24"
           >
+            {/* Decorative top accent */}
+            <motion.div
+              initial={{ width: 0, opacity: 0 }}
+              whileInView={{ width: "160px", opacity: 1 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
+            ></motion.div>
+            
             <div className="relative inline-block">
-              <h2 className="font-italiana text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 text-cream leading-tight tracking-wide">
-                OUR CREATIVE
-                <span className="block text-bronze">TEAM</span>
-              </h2>
-              {/* Elegant underline */}
-              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-40 h-1 bg-gradient-to-r from-transparent via-bronze to-transparent"></div>
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="font-italiana text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-8 text-cream leading-[0.85] tracking-wide relative"
+              >
+                <span className="relative">
+                  OUR CREATIVE
+                  <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/90 to-cream bg-clip-text text-transparent"></div>
+                </span>
+                <span className="block text-bronze relative mt-2">
+                  TEAM
+                  <div className="absolute inset-0 bg-gradient-to-r from-bronze via-bronze/90 to-bronze bg-clip-text text-transparent"></div>
+                </span>
+              </motion.h2>
+              
+              {/* Sophisticated underline */}
+              <motion.div
+                initial={{ scaleX: 0, opacity: 0 }}
+                whileInView={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-48 h-1.5 bg-gradient-to-r from-transparent via-bronze to-transparent"
+              ></motion.div>
+              
+              {/* Side accents */}
+              <div className="absolute top-1/2 -left-16 transform -translate-y-1/2 w-8 h-px bg-bronze/40 hidden lg:block"></div>
+              <div className="absolute top-1/2 -right-16 transform -translate-y-1/2 w-8 h-px bg-bronze/40 hidden lg:block"></div>
             </div>
             
-            <p className="text-lg text-cream/80 font-light tracking-wide max-w-2xl mx-auto mt-8">
-              Meet the talented individuals who bring your design visions to life
-            </p>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="text-xl text-cream/85 font-light tracking-wide max-w-3xl mx-auto mt-12 leading-relaxed"
+            >
+              Meet the <span className="text-bronze font-medium">visionary minds</span> and <span className="text-bronze font-medium">creative talents</span> who transform your dreams into extraordinary living spaces
+            </motion.p>
+            
+            {/* Decorative bottom flourish */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              viewport={{ once: true }}
+              className="flex items-center justify-center space-x-4 mt-8"
+            >
+              <div className="w-6 h-px bg-bronze/60"></div>
+              <div className="w-2 h-2 bg-bronze/70 rounded-full"></div>
+              <div className="w-8 h-px bg-bronze/40"></div>
+              <div className="w-2 h-2 bg-bronze/70 rounded-full"></div>
+              <div className="w-6 h-px bg-bronze/60"></div>
+            </motion.div>
           </motion.div>
 
           {/* Team members grid */}
@@ -1704,24 +1772,39 @@ export default function Home() {
             ].map((member, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                initial={{ opacity: 0, y: 80, scale: 0.85 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                transition={{ 
+                  duration: 1, 
+                  delay: index * 0.3,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
                 viewport={{ once: true }}
                 className="group relative"
               >
-                {/* Decorative frame */}
-                <div className="absolute -inset-2 bg-gradient-to-br from-bronze/15 via-transparent to-bronze/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Luxury glow effect */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-bronze/20 via-bronze/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"></div>
                 
-                <div className="relative bg-cream/5 backdrop-blur-sm border border-cream/10 hover:border-bronze/30 transition-all duration-500 group-hover:bg-cream/10 overflow-hidden">
-                  {/* Member image */}
-                  <div className="relative h-80 sm:h-96 overflow-hidden">
+                {/* Premium card frame */}
+                <div className="absolute -inset-1 bg-gradient-to-br from-bronze/30 via-bronze/10 to-bronze/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-sm"></div>
+                
+                <div className="relative bg-gradient-to-br from-cream/8 via-cream/5 to-cream/8 backdrop-blur-md border border-cream/15 hover:border-bronze/40 transition-all duration-700 group-hover:bg-gradient-to-br group-hover:from-cream/12 group-hover:via-cream/8 group-hover:to-cream/12 overflow-hidden shadow-2xl hover:shadow-bronze/10">
+                  {/* Premium member image */}
+                  <div className="relative h-96 sm:h-[420px] overflow-hidden">
+                    {/* Image with luxury filter */}
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-115 filter contrast-110 saturate-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"></div>
+                    
+                    {/* Sophisticated overlay gradients */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-bronze/5 to-bronze/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    
+                    {/* Premium corner accents */}
+                    <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-bronze/40 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200"></div>
+                    <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-bronze/40 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300"></div>
                     
                     {/* Social media overlay */}
                     <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -1745,42 +1828,110 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  {/* Member info */}
-                  <div className="p-8">
-                    <div className="text-center mb-6">
-                      <h3 className="font-italiana text-2xl text-cream mb-2 group-hover:text-bronze/90 transition-colors duration-300">
+                  {/* Luxury member info */}
+                  <div className="p-10">
+                    <div className="text-center mb-8">
+                      {/* Premium name styling */}
+                      <motion.h3 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.3 + 0.8 }}
+                        viewport={{ once: true }}
+                        className="font-italiana text-3xl text-cream mb-3 group-hover:text-bronze transition-all duration-500 tracking-wide"
+                      >
                         {member.name}
-                      </h3>
-                      <p className="text-bronze text-sm font-bold tracking-wider uppercase mb-4">
-                        {member.role}
-                      </p>
-                      <div className="w-12 h-px bg-bronze/60 mx-auto group-hover:w-16 transition-all duration-300"></div>
+                      </motion.h3>
+                      
+                      {/* Premium role badge */}
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: index * 0.3 + 1 }}
+                        viewport={{ once: true }}
+                        className="inline-block"
+                      >
+                        <p className="text-bronze text-sm font-bold tracking-[0.2em] uppercase mb-6 px-4 py-2 border border-bronze/30 group-hover:border-bronze/60 group-hover:bg-bronze/10 transition-all duration-500">
+                          {member.role}
+                        </p>
+                      </motion.div>
+                      
+                      {/* Elegant divider */}
+                      <motion.div
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        transition={{ duration: 0.8, delay: index * 0.3 + 1.2 }}
+                        viewport={{ once: true }}
+                        className="w-16 h-px bg-gradient-to-r from-transparent via-bronze/70 to-transparent mx-auto group-hover:w-20 transition-all duration-500"
+                      ></motion.div>
                     </div>
                     
-                    <p className="text-cream/80 text-sm leading-relaxed font-light text-center group-hover:text-cream transition-colors duration-300">
+                    <motion.p 
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.3 + 1.4 }}
+                      viewport={{ once: true }}
+                      className="text-cream/85 text-sm leading-relaxed font-light text-center group-hover:text-cream transition-colors duration-500 tracking-wide"
+                    >
                       {member.bio}
-                    </p>
+                    </motion.p>
                   </div>
                   
-                  {/* Bottom decorative accent */}
-                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-bronze/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {/* Premium corner decorations */}
+                  <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-bronze/30 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100"></div>
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-bronze/30 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200"></div>
                 </div>
               </motion.div>
             ))}
           </div>
           
-          {/* Bottom decorative element */}
+          {/* Luxury bottom flourish */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            initial={{ opacity: 0, scale: 0.8, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-center mt-24"
+            className="text-center mt-32"
           >
-            <div className="inline-flex items-center space-x-4">
-              <div className="w-16 h-px bg-gradient-to-r from-transparent to-bronze/40"></div>
-              <div className="w-3 h-3 bg-bronze rounded-full opacity-60"></div>
-              <div className="w-16 h-px bg-gradient-to-l from-transparent to-bronze/40"></div>
+            <div className="inline-flex items-center space-x-6">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 1.5 }}
+                viewport={{ once: true }}
+                className="w-24 h-px bg-gradient-to-r from-transparent to-bronze/50"
+              ></motion.div>
+              
+              <div className="flex items-center space-x-3">
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 0.7 }}
+                  transition={{ duration: 0.6, delay: 1.8 }}
+                  viewport={{ once: true }}
+                  className="w-2 h-2 bg-bronze rounded-full animate-pulse"
+                ></motion.div>
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 0.9 }}
+                  transition={{ duration: 0.6, delay: 1.9 }}
+                  viewport={{ once: true }}
+                  className="w-4 h-4 bg-bronze/60 rounded-full"
+                ></motion.div>
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 0.7 }}
+                  transition={{ duration: 0.6, delay: 2 }}
+                  viewport={{ once: true }}
+                  className="w-2 h-2 bg-bronze rounded-full animate-pulse"
+                ></motion.div>
+              </div>
+              
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                transition={{ duration: 1, delay: 1.6 }}
+                viewport={{ once: true }}
+                className="w-24 h-px bg-gradient-to-l from-transparent to-bronze/50"
+              ></motion.div>
             </div>
           </motion.div>
         </div>
