@@ -155,18 +155,22 @@ export default function Home() {
           const documentHeight = document.documentElement.scrollHeight - viewportHeight;
           const progress = documentHeight > 0 ? Math.min(Math.max(scrollPosition / documentHeight, 0), 1) : 0;
           
-          // Smart navigation visibility logic
-          const isScrollingUp = scrollPosition < lastScrollY;
+          // Improved navigation visibility logic with scroll direction detection
+          const scrollDifference = scrollPosition - lastScrollY;
+          const isScrollingUp = scrollDifference < -5; // Must scroll up at least 5px to trigger
+          const isScrollingDown = scrollDifference > 5; // Must scroll down at least 5px to trigger
           const isPastHero = scrollPosition > heroSectionHeight;
           
           setIsScrolled(scrollPosition > 50);
           setScrollProgress(progress);
           setShowBackToTop(scrollPosition > 300);
           
-          // Hide nav when scrolling down past hero, show when scrolling up
-          if (isScrollingUp) {
+          // Enhanced navigation visibility logic
+          if (isScrollingUp || scrollPosition <= 100) {
+            // Show navbar when scrolling up or at top of page
             setIsNavVisible(true);
-          } else if (isPastHero) {
+          } else if (isScrollingDown && isPastHero) {
+            // Hide navbar when scrolling down and past hero section
             setIsNavVisible(false);
           }
           
