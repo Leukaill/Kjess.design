@@ -9,6 +9,10 @@ import Home from "@/pages/home";
 import Gallery from "@/pages/gallery";
 import About from "@/pages/about";
 import CookiePolicy from "@/pages/cookie-policy";
+import AdminLogin from "@/pages/admin-login";
+import AdminDashboard from "@/pages/admin-dashboard";
+import AdminGallery from "@/pages/admin-gallery";
+import AdminContent from "@/pages/admin-content";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -19,6 +23,10 @@ function Router() {
       <Route path="/gallery/:category" component={Gallery} />
       <Route path="/about" component={About} />
       <Route path="/cookie-policy" component={CookiePolicy} />
+      <Route path="/admin/login" component={AdminLogin} />
+      <Route path="/admin/dashboard" component={AdminDashboard} />
+      <Route path="/admin/gallery" component={AdminGallery} />
+      <Route path="/admin/content" component={AdminContent} />
       <Route component={NotFound} />
     </Switch>
   );

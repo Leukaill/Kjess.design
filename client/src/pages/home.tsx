@@ -13,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X, ZoomIn } from "lucide-react";
 import logoUrl from "@assets/WhatsApp_Image_2025-08-13_at_7.56.31_PM-removebg-preview_1755850108303.png";
 import oldLogoUrl from "@assets/image_1755432338671.png";
+import { AdminLongPressLogo } from "@/components/AdminLongPressLogo";
 import ceoImage from "@assets/CEO  Creative Director_1755723463174.png";
 import operationalManagerImage from "@assets/Operational Manager (2)_1755723463171.png";
 
@@ -389,39 +390,41 @@ export default function Home() {
       >
         <div className="mx-4 sm:mx-6">
           <div className="flex items-center justify-between h-16">
-            {/* Enhanced Logo */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center space-x-3 cursor-pointer"
-              onClick={() => scrollToSection('home')}
-            >
-              <div className="flex items-center justify-center transition-all duration-300">
-                <img 
-                  src={oldLogoUrl} 
-                  alt="KJ Design Logo"
-                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain transition-all duration-300"
-                  style={{
-                    filter: isScrolled 
-                      ? 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' 
-                      : 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))',
-                    opacity: 1
-                  }}
-                />
-              </div>
-              <div className="hidden md:block">
-                <h1 className={`font-italiana text-lg sm:text-xl tracking-wide transition-all duration-700 ease-out ${
-                  isDarkBackground
-                    ? 'text-white' 
-                    : 'text-charcoal'
-                }`} style={{
-                  textShadow: isDarkBackground
-                    ? '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.5)'
-                    : '0 1px 3px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.1)'
-                }}>
-                  KJESS DESIGNS
-                </h1>
-              </div>
-            </motion.div>
+            {/* Enhanced Logo with Admin Access */}
+            <AdminLongPressLogo>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center space-x-3 cursor-pointer"
+                onClick={() => scrollToSection('home')}
+              >
+                <div className="flex items-center justify-center transition-all duration-300">
+                  <img 
+                    src={oldLogoUrl} 
+                    alt="KJ Design Logo"
+                    className="w-6 h-6 sm:w-8 sm:h-8 object-contain transition-all duration-300"
+                    style={{
+                      filter: isScrolled 
+                        ? 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' 
+                        : 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))',
+                      opacity: 1
+                    }}
+                  />
+                </div>
+                <div className="hidden md:block">
+                  <h1 className={`font-italiana text-lg sm:text-xl tracking-wide transition-all duration-700 ease-out ${
+                    isDarkBackground
+                      ? 'text-white' 
+                      : 'text-charcoal'
+                  }`} style={{
+                    textShadow: isDarkBackground
+                      ? '0 2px 4px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.5)'
+                      : '0 1px 3px rgba(255,255,255,0.8), 0 1px 2px rgba(0,0,0,0.1)'
+                  }}>
+                    KJESS DESIGNS
+                  </h1>
+                </div>
+              </motion.div>
+            </AdminLongPressLogo>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
