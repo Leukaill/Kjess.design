@@ -1175,7 +1175,7 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left side - Enhanced image layout with integrated branding */}
+            {/* Left side - 3 service images in same space */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1183,16 +1183,49 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Main image - elegant and refined */}
-              <div className="relative group">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=650"
-                  alt="Modern living room with round wooden coffee table, plants, and natural lighting"
-                  className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-[1.02] shadow-xl"
-                />
+              {/* 3 Service Images Layout */}
+              <div className="grid grid-rows-2 gap-3 h-[500px]">
+                {/* Top Image - Interior Design & Space Planning */}
+                <div className="relative group overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=240"
+                    alt="Interior design and space planning - elegant living room layout"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] shadow-lg"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute bottom-2 left-3 bg-white/90 px-3 py-1 text-xs font-medium text-charcoal backdrop-blur-sm">
+                    Interior Design & Planning
+                  </div>
+                </div>
                 
-                {/* Subtle overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Bottom Row - 2 Images Side by Side */}
+                <div className="grid grid-cols-2 gap-3">
+                  {/* Custom Furniture */}
+                  <div className="relative group overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&h=240"
+                      alt="Custom furniture craftsmanship - handmade wooden pieces"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] shadow-lg"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-2 left-2 bg-white/90 px-2 py-1 text-xs font-medium text-charcoal backdrop-blur-sm">
+                      Custom Furniture
+                    </div>
+                  </div>
+                  
+                  {/* Lighting & Decor */}
+                  <div className="relative group overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&h=240"
+                      alt="Lighting design and decorative solutions for interior spaces"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] shadow-lg"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-2 left-2 bg-white/90 px-2 py-1 text-xs font-medium text-charcoal backdrop-blur-sm">
+                      Lighting & Decor
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
