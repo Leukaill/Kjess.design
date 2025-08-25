@@ -359,9 +359,20 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Minimalist Header */}
-      <section className="relative bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90 text-white py-16 overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
+      {/* Elegant Hero Header */}
+      <section className="relative h-96 overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={projectImg3}
+            alt="Elegant interior design showcase"
+            className="w-full h-full object-cover"
+          />
+          {/* Elegant overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10 h-full flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
