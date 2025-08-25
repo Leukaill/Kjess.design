@@ -358,101 +358,73 @@ const Gallery = () => {
   }, [generateShareMessage, closeShareModal]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-cream to-white">
-      {/* Elegant Header */}
-      <section className="relative bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90 text-white py-24 overflow-hidden">
-        {/* Artistic backdrop elements */}
-        <div className="absolute inset-0">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-            animate={{ opacity: 0.1, scale: 1.2, rotate: 10 }}
-            transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-            className="absolute top-10 right-10 w-96 h-96 border border-bronze/20 rounded-full"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 1.2, rotate: 10 }}
-            animate={{ opacity: 0.05, scale: 0.8, rotate: -10 }}
-            transition={{ duration: 25, repeat: Infinity, repeatType: "reverse" }}
-            className="absolute bottom-10 left-10 w-72 h-72 border border-bronze/30 rounded-full"
-          />
-        </div>
-
+    <div className="min-h-screen bg-white">
+      {/* Minimalist Header */}
+      <section className="relative bg-gradient-to-br from-charcoal via-charcoal/95 to-charcoal/90 text-white py-16 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="text-center"
           >
             {/* Navigation */}
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="mb-8"
             >
               <Link href="/" className="inline-flex items-center text-bronze hover:text-white transition-colors duration-300 group">
-                <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
-                <span className="font-medium tracking-wide">Back to Home</span>
+                <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
+                <span className="font-light tracking-wide text-sm">Back to Home</span>
               </Link>
             </motion.div>
 
             {/* Title */}
             <motion.h1
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 100 }}
-              className="font-italiana text-6xl md:text-8xl font-bold mb-6 tracking-wider"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="font-italiana text-4xl md:text-5xl font-light mb-4 tracking-widest"
             >
-              PROJECT GALLERY
+              GALLERY
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-xl text-cream/90 max-w-3xl mx-auto leading-relaxed font-light"
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-cream/80 max-w-xl mx-auto leading-relaxed font-light text-sm"
             >
-              Explore our portfolio of exceptional interior design projects, showcasing elegance, innovation, and timeless sophistication.
+              Curated collection of our finest interior design work
             </motion.p>
-
-            {/* Decorative element */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="mt-8 flex justify-center items-center space-x-4"
-            >
-              <div className="w-20 h-px bg-gradient-to-r from-transparent to-bronze/60"></div>
-              <div className="w-3 h-3 bg-bronze/60 rounded-full"></div>
-              <div className="w-20 h-px bg-gradient-to-l from-transparent to-bronze/60"></div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Category Filter Bar */}
-      <section className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-bronze/20 py-6">
+      {/* Minimalist Filter Bar */}
+      <section className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 py-4">
         <div className="container mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="flex justify-center"
           >
-            <div className="flex flex-wrap justify-center gap-3 bg-white/80 p-4 rounded-2xl shadow-lg">
+            <div className="flex flex-wrap justify-center gap-2">
               <Button
-                variant={selectedCategory === 'all' ? 'default' : 'outline'}
+                variant={selectedCategory === 'all' ? 'default' : 'ghost'}
                 onClick={() => setSelectedCategory('all')}
-                className={`px-6 py-3 font-medium tracking-wide transition-all duration-300 ${
+                className={`px-4 py-2 text-xs font-light tracking-wider uppercase transition-all duration-300 ${
                   selectedCategory === 'all'
-                    ? 'bg-bronze text-white hover:bg-bronze/90 shadow-lg scale-105'
-                    : 'border-bronze text-bronze hover:bg-bronze/10 hover:border-bronze/60'
+                    ? 'bg-charcoal text-white hover:bg-charcoal/90'
+                    : 'text-charcoal/70 hover:text-charcoal hover:bg-gray-50'
                 }`}
                 data-testid="button-filter-all"
               >
-                All Projects ({galleryItems.length})
+                All ({galleryItems.length})
               </Button>
               
               {Object.entries(GALLERY_CATEGORIES).map(([slug, info]) => {
@@ -460,16 +432,16 @@ const Gallery = () => {
                 return (
                   <Button
                     key={slug}
-                    variant={selectedCategory === slug ? 'default' : 'outline'}
+                    variant={selectedCategory === slug ? 'default' : 'ghost'}
                     onClick={() => setSelectedCategory(slug as CategorySlug)}
-                    className={`px-6 py-3 font-medium tracking-wide transition-all duration-300 ${
+                    className={`px-4 py-2 text-xs font-light tracking-wider uppercase transition-all duration-300 ${
                       selectedCategory === slug 
-                        ? 'bg-bronze text-white hover:bg-bronze/90 shadow-lg scale-105' 
-                        : 'border-bronze text-bronze hover:bg-bronze/10 hover:border-bronze/60'
+                        ? 'bg-charcoal text-white hover:bg-charcoal/90' 
+                        : 'text-charcoal/70 hover:text-charcoal hover:bg-gray-50'
                     }`}
                     data-testid={`button-filter-${slug}`}
                   >
-                    {info.title} ({itemCount})
+                    {slug === 'residential' ? 'Residential' : slug === 'commercial' ? 'Commercial' : 'Furniture'} ({itemCount})
                   </Button>
                 );
               })}
@@ -481,158 +453,93 @@ const Gallery = () => {
       {/* Gallery Grid - Ultra-Sophisticated Aesthetic Layout */}
       <section className="py-20 bg-gradient-to-b from-white via-cream/30 to-white relative">
         <div className="container mx-auto px-6">
-          {/* Section intro */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center space-x-4 mb-6">
-              <div className="w-16 h-px bg-gradient-to-r from-transparent via-bronze to-transparent"></div>
-              <div className="w-2 h-2 bg-bronze rounded-full"></div>
-              <div className="w-16 h-px bg-gradient-to-l from-transparent via-bronze to-transparent"></div>
-            </div>
-            <p className="font-italiana text-lg text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
-              {selectedCategory === 'all' 
-                ? 'A curated collection of our finest interior design masterpieces' 
-                : `Explore our ${GALLERY_CATEGORIES[selectedCategory as CategorySlug]?.description?.toLowerCase() || 'exceptional projects'}`
-              }
-            </p>
-          </motion.div>
-          
           <motion.div 
             key={selectedCategory}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-8 space-y-8"
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             {filteredItems.map((item, index) => {
-              // Enhanced aesthetic variations with more sophistication
-              const isHero = index === 0 && item.featured; // First featured item gets hero treatment
-              const isLarge = index % 7 === 0 || index % 11 === 0; // Featured large items
-              const isWide = index % 5 === 0 && !isLarge && !isHero; // Wide aspect items
-              const hasRotation = index % 13 === 0 && !isHero; // Slight rotation for artistic feel
-              const isElevated = index % 9 === 0; // Extra elevation for depth
-              const isGlowing = item.featured && !isHero; // Subtle glow for featured items
-              
               return (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                  className={`group cursor-pointer break-inside-avoid mb-8 ${
-                    hasRotation ? 'transform hover:rotate-0 rotate-1' : ''
-                  } ${
-                    isElevated ? 'relative z-10' : ''
-                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.02 }}
+                  className="group cursor-pointer"
                   onClick={() => openLightbox(item.id)}
                   data-testid={`gallery-item-${item.id}`}
                 >
-                  <div className={`relative overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500 bg-white ${
-                    isLarge ? 'rounded-3xl p-6' : isWide ? 'rounded-2xl p-4' : 'rounded-2xl p-3'
-                  } ${
-                    isElevated ? 'shadow-2xl' : ''
-                  }`}>
-                  {/* Featured badge */}
-                  {item.featured && (
-                    <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-bronze to-bronze/80 text-white px-3 py-1.5 text-xs font-semibold rounded-full backdrop-blur-sm" data-testid={`badge-featured-${item.id}`}>
-                      Featured
-                    </div>
-                  )}
-                  
+                  <div className="relative bg-white hover:shadow-md transition-shadow duration-300">
+                    {/* Featured indicator */}
+                    {item.featured && (
+                      <div className="absolute top-3 left-3 z-20 w-2 h-2 bg-charcoal rounded-full" data-testid={`badge-featured-${item.id}`}></div>
+                    )}
 
-                  {/* Image container with aesthetic variations */}
-                  <div className={`relative overflow-hidden ${
-                    isLarge ? 'aspect-[3/4] rounded-2xl' : 
-                    isWide ? 'aspect-[16/9] rounded-xl' : 
-                    'aspect-[4/3] rounded-xl'
-                  }`}>
-                    <img
-                      src={item.image}
-                      alt={item.description}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-                    />
-                    
-                    {/* Subtle hover overlay without icon */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    {/* Image container */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img
+                        src={item.image}
+                        alt={item.description}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
 
-                    {/* Project info overlay with size variations */}
-                    <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/90 to-transparent text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 ${
-                      isLarge ? 'p-6' : 'p-4'
-                    }`}>
-                      <p className={`text-bronze/90 font-medium mb-1 uppercase tracking-wider ${
-                        isLarge ? 'text-sm' : 'text-xs'
-                      }`}>{item.subcategory}</p>
-                      <h3 className={`font-italiana font-bold mb-2 leading-tight ${
-                        isLarge ? 'text-2xl' : 'text-lg'
-                      }`}>{item.title}</h3>
-                      
-                      <div className={`flex items-center justify-between text-cream/80 ${
-                        isLarge ? 'text-sm' : 'text-xs'
-                      }`}>
-                        <div className="flex items-center space-x-1">
-                          <Calendar className={isLarge ? 'w-4 h-4' : 'w-3 h-3'} />
-                          <span>{item.projectDate}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <MapPin className={isLarge ? 'w-4 h-4' : 'w-3 h-3'} />
-                          <span>{item.location}</span>
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+
+                      {/* Share button - Always visible on image */}
+                      <div className="absolute top-3 right-3 z-20">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setShareMenuOpen(shareMenuOpen === item.id ? null : item.id);
+                          }}
+                          className="bg-white/90 backdrop-blur-sm text-charcoal p-2 rounded-full hover:bg-white transition-all duration-200 shadow-sm"
+                          data-testid={`button-share-${item.id}`}
+                        >
+                          <Share2 className="w-4 h-4" />
+                        </motion.button>
+
+                        {/* Share dropdown */}
+                        <AnimatePresence>
+                          {shareMenuOpen === item.id && (
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0.95, y: 5 }}
+                              animate={{ opacity: 1, scale: 1, y: 0 }}
+                              exit={{ opacity: 0, scale: 0.95, y: 5 }}
+                              transition={{ duration: 0.15 }}
+                              className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-100 p-2 min-w-32 z-30"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <button
+                                onClick={() => openShareModal(item)}
+                                className="flex items-center space-x-2 w-full p-2 text-charcoal/80 hover:bg-gray-50 rounded-md transition-colors duration-150 text-sm"
+                              >
+                                <Share2 className="w-3 h-3" />
+                                <span>Share</span>
+                              </button>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+
+                      {/* Location - Always visible on image */}
+                      <div className="absolute bottom-3 left-3 z-20">
+                        <div className="flex items-center space-x-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 text-charcoal text-xs">
+                          <MapPin className="w-3 h-3" />
+                          <span className="font-medium">{item.location}</span>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Clean title below image */}
+                    <div className="p-4">
+                      <h3 className="font-light text-charcoal/90 text-sm leading-tight">{item.title}</h3>
                     </div>
                   </div>
-                  
-                  {/* Project Description Section */}
-                  <div className={`px-4 py-5 bg-gradient-to-b from-white to-cream/30 ${
-                    isLarge ? 'px-6 py-6' : 'px-4 py-5'
-                  }`}>
-                    <motion.div
-                      initial={{ opacity: 0, y: 15 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.05 + 0.5 }}
-                    >
-                      {/* Project title and category */}
-                      <div className="mb-3">
-                        <h3 className={`font-italiana font-bold text-charcoal mb-1 ${
-                          isLarge ? 'text-2xl' : 'text-lg'
-                        }`}>{item.title}</h3>
-                        <p className={`text-bronze font-medium uppercase tracking-wider ${
-                          isLarge ? 'text-sm' : 'text-xs'
-                        }`}>{item.subcategory}</p>
-                      </div>
-                      
-                      {/* Description */}
-                      <p className={`text-charcoal/70 leading-relaxed mb-4 ${
-                        isLarge ? 'text-base' : 'text-sm'
-                      }`}>
-                        {item.description}
-                      </p>
-                      
-                      {/* Project details */}
-                      <div className={`flex items-center justify-between text-charcoal/50 ${
-                        isLarge ? 'text-sm' : 'text-xs'
-                      }`}>
-                        <div className="flex items-center space-x-1">
-                          <Calendar className={isLarge ? 'w-4 h-4' : 'w-3 h-3'} />
-                          <span>{item.projectDate}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <MapPin className={isLarge ? 'w-4 h-4' : 'w-3 h-3'} />
-                          <span className="truncate max-w-24">{item.location}</span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-                  
-                  {/* Artistic corner accent for special items */}
-                  {(item.featured || isLarge) && (
-                    <div className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 border-bronze/30"></div>
-                  )}
-                </div>
-              </motion.div>
+                </motion.div>
               );
             })}
           </motion.div>
