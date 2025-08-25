@@ -22,16 +22,72 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   }));
 
+  // Check if admin exists
+  app.get('/api/admin/exists', async (req, res) => {
+    try {
+      const adminExists = await storage.checkAdminExists();
+      res.json({ exists: adminExists });
+    } catch (error) {
+      console.error('Admin exists check error:', error);
+      res.status(500).json({ message: 'Failed to check admin status' });
+    }
+  });
+
+  // Admin setup (initial password creation)
+  app.post('/api/admin/setup', async (req, res) => {
+    try {
+      const { password, username } = req.body;
+      
+      if (!password || !username) {
+        return res.status(400).json({ message: 'Username and password are required' });
+      }
+
+      // Check if admin already exists
+      const adminExists = await storage.checkAdminExists();
+      if (adminExists) {
+        return res.status(409).json({ message: 'Admin account already exists' });
+      }
+
+      // Create admin account
+      const admin = await storage.createAdmin({ username, password });
+      
+      // Set session
+      (req.session as any).adminId = admin.id;
+      
+      res.json({ 
+        message: 'Admin account created successfully',
+        admin: { 
+          id: admin.id,
+          username: admin.username 
+        } 
+      });
+    } catch (error) {
+      console.error('Admin setup error:', error);
+      res.status(500).json({ message: 'Setup failed' });
+    }
+  });
+
   // Admin authentication endpoints
   app.post("/api/admin/login", async (req, res) => {
     try {
       const validatedData = adminLoginSchema.parse(req.body);
-      const admin = await storage.getAdmin();
       
-      if (!admin || admin.password !== validatedData.password) {
-        return res.status(401).json({ 
-          message: "Invalid password" 
-        });
+      // Check if admin exists
+      const adminExists = await storage.checkAdminExists();
+      if (!adminExists) {
+        return res.status(404).json({ message: 'No admin account found. Please set up an admin account first.' });
+      }
+
+      // Verify password
+      const isValidPassword = await storage.verifyAdminPassword(validatedData.password);
+      if (!isValidPassword) {
+        return res.status(401).json({ message: 'Invalid password' });
+      }
+
+      // Get admin details
+      const admin = await storage.getAdmin();
+      if (!admin) {
+        return res.status(500).json({ message: 'Admin account error' });
       }
 
       // Set session

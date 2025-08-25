@@ -20,6 +20,8 @@ export interface IStorage {
   getAdmin(): Promise<Admin | undefined>;
   createAdmin(admin: InsertAdmin): Promise<Admin>;
   updateAdminPassword(password: string): Promise<Admin>;
+  checkAdminExists(): Promise<boolean>;
+  verifyAdminPassword(password: string): Promise<boolean>;
   
   // Gallery management
   getGalleryImages(): Promise<GalleryImage[]>;
@@ -132,6 +134,17 @@ export class MemStorage implements IStorage {
     }
     this.adminData.password = password;
     return this.adminData;
+  }
+
+  async checkAdminExists(): Promise<boolean> {
+    return this.adminData !== null;
+  }
+
+  async verifyAdminPassword(password: string): Promise<boolean> {
+    if (!this.adminData) {
+      return false;
+    }
+    return this.adminData.password === password;
   }
 
   // Gallery management methods
@@ -289,6 +302,16 @@ export class DatabaseStorage implements IStorage {
       throw new Error("Admin not found");
     }
     return result[0];
+  }
+
+  async checkAdminExists(): Promise<boolean> {
+    const result = await this.db.select().from(admin).limit(1);
+    return result.length > 0;
+  }
+
+  async verifyAdminPassword(password: string): Promise<boolean> {
+    const result = await this.db.select().from(admin).where(eq(admin.password, password)).limit(1);
+    return result.length > 0;
   }
 
   // Gallery management methods

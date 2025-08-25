@@ -107,7 +107,7 @@ const AdminContent = () => {
 
   // Get effective content (with pending changes)
   const getEffectiveContent = (section: string, field: string) => {
-    const originalValue = contentData?.[section]?.[field] || '';
+    const originalValue = (contentData as any)?.[section]?.[field] || '';
     return pendingChanges[section]?.[field] ?? originalValue;
   };
 
