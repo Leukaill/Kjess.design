@@ -918,7 +918,7 @@ const Gallery = () => {
       </AnimatePresence>
 
       {/* Elegant Call-to-Action Section */}
-      <section className="py-20 bg-gradient-to-br from-white via-cream/40 to-bronze/20 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-cream via-[#f5f1ed] to-[#8b7355] relative overflow-hidden">
         {/* Subtle decorative background elements */}
         <div className="absolute inset-0">
           <motion.div
