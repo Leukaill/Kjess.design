@@ -1360,8 +1360,8 @@ export default function Home() {
                 {/* Clean main image */}
                 <div className="relative">
                   <img
-                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
-                    alt="Elegant interior design showcase with modern furniture and artistic lighting"
+                    src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
+                    alt="Professional interior designer working on architectural plans and design concepts"
                     className="w-full h-[400px] object-cover shadow-lg"
                   />
                 </div>
