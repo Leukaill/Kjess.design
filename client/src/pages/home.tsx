@@ -1194,7 +1194,7 @@ export default function Home() {
                 {/* Top Image - Interior Design & Space Planning */}
                 <div className="relative group overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=240"
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=240"
                     alt="Interior design and space planning - elegant living room layout"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] shadow-lg"
                   />
@@ -1209,7 +1209,7 @@ export default function Home() {
                   {/* Custom Furniture */}
                   <div className="relative group overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&h=240"
+                      src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&h=240"
                       alt="Custom furniture craftsmanship - handmade wooden pieces"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] shadow-lg"
                     />
@@ -1222,7 +1222,7 @@ export default function Home() {
                   {/* Lighting & Decor */}
                   <div className="relative group overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&h=240"
+                      src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=450&h=240"
                       alt="Lighting design and decorative solutions for interior spaces"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] shadow-lg"
                     />
