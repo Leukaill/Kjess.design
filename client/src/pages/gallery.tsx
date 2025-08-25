@@ -399,15 +399,15 @@ const Gallery = () => {
             transition={{ duration: 0.8 }}
             className="text-center text-white"
           >
-            {/* Elegant Navigation */}
+            {/* Enhanced Navigation */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-12"
             >
-              <Link href="/" className="inline-flex items-center text-bronze hover:text-white transition-colors duration-300 group">
-                <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
+              <Link href="/" className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full text-white hover:bg-white hover:text-charcoal transition-all duration-300 group shadow-lg hover:shadow-xl">
+                <ArrowLeft className="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform duration-300" />
                 <span className="font-medium tracking-wide text-sm uppercase">Back to Home</span>
               </Link>
             </motion.div>
@@ -464,21 +464,6 @@ const Gallery = () => {
               </p>
             </motion.div>
 
-            {/* Sophisticated Call-to-Action */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.1 }}
-              className="mt-12"
-            >
-              <div className="flex justify-center items-center space-x-4">
-                <div className="w-24 h-px bg-gradient-to-r from-transparent to-bronze/40"></div>
-                <div className="px-6 py-2 border border-bronze/40 rounded-full text-bronze/90 text-sm font-light tracking-wider uppercase backdrop-blur-sm bg-white/10">
-                  Discover Our Work
-                </div>
-                <div className="w-24 h-px bg-gradient-to-l from-transparent to-bronze/40"></div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
