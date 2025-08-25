@@ -963,12 +963,15 @@ const Gallery = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/#contact">
+              <Link href="/" onClick={(e) => { 
+                e.preventDefault(); 
+                window.location.href = '/#contact'; 
+              }}>
                 <Button className="bg-bronze hover:bg-bronze/90 text-white px-8 py-4 text-lg font-semibold tracking-wide transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                   Start Your Project
                 </Button>
               </Link>
-              <Link href="/">
+              <Link href="/about">
                 <Button variant="outline" className="border-bronze/60 text-bronze hover:bg-bronze hover:text-white px-8 py-4 text-lg font-semibold tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-lg">
                   Learn More About Us
                 </Button>
