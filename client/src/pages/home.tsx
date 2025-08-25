@@ -1539,40 +1539,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Floating showcase cards */}
-              <motion.div
-                initial={{ opacity: 0, y: 60, rotate: -5 }}
-                whileInView={{ opacity: 1, y: 0, rotate: -8 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="absolute -top-8 -right-12 bg-white p-4 shadow-xl hover:shadow-2xl transition-all duration-500 group cursor-pointer"
-              >
-                <img
-                  src={portfolioImg11}
-                  alt="KJESS Designs luxury furniture craftsmanship detail"
-                  className="w-32 h-24 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="mt-2 text-center">
-                  <p className="text-xs text-charcoal/70 font-medium tracking-wide">CRAFTSMANSHIP</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 60, rotate: 3 }}
-                whileInView={{ opacity: 1, y: 0, rotate: 6 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                viewport={{ once: true }}
-                className="absolute -bottom-12 -left-8 bg-white p-4 shadow-xl hover:shadow-2xl transition-all duration-500 group cursor-pointer"
-              >
-                <img
-                  src={portfolioImg12}
-                  alt="KJESS Designs modern interior design excellence and innovation"
-                  className="w-32 h-24 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="mt-2 text-center">
-                  <p className="text-xs text-charcoal/70 font-medium tracking-wide">INNOVATION</p>
-                </div>
-              </motion.div>
             </motion.div>
 
             {/* Right Column - Enhanced Mission Content */}
