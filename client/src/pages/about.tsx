@@ -148,8 +148,8 @@ const About = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-bronze/20 to-transparent rounded-2xl blur-2xl transform rotate-3"></div>
                 <div className="relative overflow-hidden rounded-2xl">
                   <img
-                    src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=95"
-                    alt="KJESS Designs creative process and studio workspace"
+                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=95"
+                    alt="Elegant KJESS Designs luxury interior featuring sophisticated furniture and artistic lighting"
                     className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent"></div>
