@@ -917,34 +917,74 @@ const Gallery = () => {
         )}
       </AnimatePresence>
 
-      {/* Call-to-Action Section */}
-      <section className="py-20 bg-gradient-to-br from-charcoal to-charcoal/90 text-white">
-        <div className="container mx-auto px-6 text-center">
+      {/* Elegant Call-to-Action Section */}
+      <section className="py-20 bg-gradient-to-br from-white via-cream/40 to-bronze/20 relative overflow-hidden">
+        {/* Subtle decorative background elements */}
+        <div className="absolute inset-0">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+            animate={{ opacity: 0.05, scale: 1.1, rotate: 10 }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
+            className="absolute top-10 right-10 w-96 h-96 border border-bronze/20 rounded-full"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 1.1, rotate: 10 }}
+            animate={{ opacity: 0.03, scale: 0.9, rotate: -10 }}
+            transition={{ duration: 25, repeat: Infinity, repeatType: "reverse" }}
+            className="absolute bottom-10 left-10 w-80 h-80 border border-bronze/15 rounded-full"
+          />
+        </div>
+
+        <div className="container mx-auto px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-italiana text-4xl md:text-5xl font-bold mb-6 tracking-wide">
+            {/* Elegant divider */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="flex justify-center items-center mb-8"
+            >
+              <div className="w-20 h-px bg-gradient-to-r from-transparent to-bronze/60"></div>
+              <div className="mx-4 w-2 h-2 bg-bronze/60 rounded-full"></div>
+              <div className="w-20 h-px bg-gradient-to-l from-transparent to-bronze/60"></div>
+            </motion.div>
+
+            <h2 className="font-italiana text-4xl md:text-5xl font-bold mb-6 tracking-wide text-charcoal">
               Ready to Transform Your Space?
             </h2>
-            <p className="text-xl text-cream/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-charcoal/80 mb-8 max-w-2xl mx-auto leading-relaxed font-light">
               Let's create something extraordinary together. Contact us to discuss your next interior design project.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/#contact">
-                <Button className="bg-bronze hover:bg-bronze/90 text-white px-8 py-4 text-lg font-semibold tracking-wide transition-all duration-300 hover:scale-105">
+                <Button className="bg-bronze hover:bg-bronze/90 text-white px-8 py-4 text-lg font-semibold tracking-wide transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                   Start Your Project
                 </Button>
               </Link>
               <Link href="/">
-                <Button variant="outline" className="border-bronze text-bronze hover:bg-bronze hover:text-white px-8 py-4 text-lg font-semibold tracking-wide transition-all duration-300 hover:scale-105">
+                <Button variant="outline" className="border-bronze/60 text-bronze hover:bg-bronze hover:text-white px-8 py-4 text-lg font-semibold tracking-wide transition-all duration-300 hover:scale-105 shadow-sm hover:shadow-lg">
                   Learn More About Us
                 </Button>
               </Link>
             </div>
+
+            {/* Bottom decorative element */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="flex justify-center items-center mt-12"
+            >
+              <div className="w-32 h-px bg-gradient-to-r from-transparent via-bronze/40 to-transparent"></div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
