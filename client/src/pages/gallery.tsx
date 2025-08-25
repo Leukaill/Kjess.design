@@ -359,58 +359,126 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Elegant Hero Header */}
-      <section className="relative h-96 overflow-hidden">
-        {/* Hero Background Image */}
+      {/* Sophisticated Hero Header */}
+      <section className="relative h-[70vh] min-h-[600px] overflow-hidden">
+        {/* Hero Background Image with Parallax Effect */}
         <div className="absolute inset-0">
-          <img
+          <motion.img
             src={projectImg3}
             alt="Elegant interior design showcase"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-105"
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1.05 }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
           />
-          {/* Elegant overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
+          {/* Sophisticated Multi-layer Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent"></div>
+        </div>
+
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            animate={{ opacity: 0.1, scale: 1.2, rotate: 5 }}
+            transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
+            className="absolute top-20 right-20 w-96 h-96 border border-bronze/30 rounded-full"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 1.2, rotate: 5 }}
+            animate={{ opacity: 0.05, scale: 0.8, rotate: -5 }}
+            transition={{ duration: 25, repeat: Infinity, repeatType: "reverse" }}
+            className="absolute bottom-20 left-20 w-80 h-80 border border-cream/20 rounded-full"
+          />
         </div>
         
-        <div className="container mx-auto px-6 relative z-10 h-full flex items-center justify-center">
+        <div className="container mx-auto px-6 relative z-20 h-full flex items-center justify-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+            transition={{ duration: 0.8 }}
+            className="text-center text-white"
           >
-            {/* Navigation */}
+            {/* Elegant Navigation */}
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="mb-8"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-12"
             >
               <Link href="/" className="inline-flex items-center text-bronze hover:text-white transition-colors duration-300 group">
-                <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
-                <span className="font-light tracking-wide text-sm">Back to Home</span>
+                <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
+                <span className="font-medium tracking-wide text-sm uppercase">Back to Home</span>
               </Link>
             </motion.div>
 
-            {/* Title */}
-            <motion.h1
+            {/* Sophisticated Title with Decorative Elements */}
+            <div className="relative mb-8">
+              {/* Top decorative line */}
+              <motion.div
+                initial={{ opacity: 0, scaleX: 0 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.4 }}
+                className="flex justify-center items-center mb-8"
+              >
+                <div className="w-20 h-px bg-gradient-to-r from-transparent to-bronze/60"></div>
+                <div className="mx-4 w-2 h-2 bg-bronze/60 rounded-full"></div>
+                <div className="w-20 h-px bg-gradient-to-l from-transparent to-bronze/60"></div>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 1, delay: 0.5, type: "spring", stiffness: 100 }}
+                className="font-italiana text-6xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-[0.2em] relative"
+                style={{
+                  textShadow: '0 4px 8px rgba(0,0,0,0.6), 0 2px 4px rgba(0,0,0,0.4)'
+                }}
+              >
+                PROJECT GALLERY
+              </motion.h1>
+
+              {/* Bottom decorative line */}
+              <motion.div
+                initial={{ opacity: 0, scaleX: 0 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="flex justify-center items-center mt-8"
+              >
+                <div className="w-32 h-px bg-gradient-to-r from-transparent via-cream/60 to-transparent"></div>
+              </motion.div>
+            </div>
+
+            {/* Elegant Subtitle */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="font-italiana text-4xl md:text-5xl font-light mb-4 tracking-widest"
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="max-w-2xl mx-auto"
             >
-              GALLERY
-            </motion.h1>
+              <p className="text-xl md:text-2xl text-cream/90 leading-relaxed font-light mb-4">
+                Explore our portfolio of exceptional interior design
+              </p>
+              <p className="text-lg text-cream/80 leading-relaxed font-light">
+                Where elegance meets innovation in every carefully curated space
+              </p>
+            </motion.div>
 
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
+            {/* Sophisticated Call-to-Action */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-cream/80 max-w-xl mx-auto leading-relaxed font-light text-sm"
+              transition={{ duration: 0.6, delay: 1.1 }}
+              className="mt-12"
             >
-              Curated collection of our finest interior design work
-            </motion.p>
+              <div className="flex justify-center items-center space-x-4">
+                <div className="w-24 h-px bg-gradient-to-r from-transparent to-bronze/40"></div>
+                <div className="px-6 py-2 border border-bronze/40 rounded-full text-bronze/90 text-sm font-light tracking-wider uppercase backdrop-blur-sm bg-white/10">
+                  Discover Our Work
+                </div>
+                <div className="w-24 h-px bg-gradient-to-l from-transparent to-bronze/40"></div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
