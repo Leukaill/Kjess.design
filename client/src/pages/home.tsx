@@ -1360,8 +1360,8 @@ export default function Home() {
                 {/* Clean main image */}
                 <div className="relative">
                   <img
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
-                    alt="Elegant KJESS Designs luxury living room showcasing sophisticated interior design with premium furniture and artistic lighting"
+                    src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=700"
+                    alt="Modern KJESS Designs kitchen with sophisticated finishes and luxury appliances"
                     className="w-full h-[400px] object-cover shadow-lg"
                   />
                 </div>
