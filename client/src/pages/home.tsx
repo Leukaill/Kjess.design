@@ -34,7 +34,6 @@ import portfolioImg14 from "@assets/PHOTO-2024-11-11-13-25-27 43_1755724301695.j
 import portfolioImg15 from "@assets/PHOTO-2024-11-11-13-25-27 52_1755724301695.jpeg";
 import portfolioImg16 from "@assets/PHOTO-2024-11-11-13-25-27 59_1755724301696.jpeg";
 import portfolioImg17 from "@assets/PHOTO-2024-11-11-13-25-27 60_1755724301699.jpeg";
-import furnitureChair from "@assets/PHOTO-2024-11-11-13-25-27_17-removebg-preview_1755724395612.png";
 
 // Partner Logos
 import bankOfKigaliLogo from "@assets/0f879fa4-14a7-4c2a-8e54-792f7841df89-removebg-preview_1755788711982.png";
@@ -2101,13 +2100,11 @@ export default function Home() {
                     <div 
                       className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
                       onClick={() => {
-                        setExpandedImage(furnitureChair);
                         setExpandedImageAlt("KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship");
                       }}
                     >
                       <div className="relative overflow-hidden">
                         <img
-                          src={furnitureChair}
                           alt="KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship"
                           className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
                         />
@@ -2393,7 +2390,6 @@ export default function Home() {
                   { 
                     title: "Custom Furniture", 
                     slug: "furniture",
-                    image: furnitureChair,
                     alt: "KJESS Designs custom furniture featuring traditional African patterns and exceptional craftsmanship",
                     projects: "100+ Pieces" 
                   }

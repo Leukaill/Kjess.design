@@ -24,7 +24,6 @@ import projectImg14 from "@assets/PHOTO-2024-11-11-13-25-27 43_1755727503847.jpe
 import projectImg15 from "@assets/PHOTO-2024-11-11-13-25-27 52_1755727503847.jpeg";
 import projectImg16 from "@assets/PHOTO-2024-11-11-13-25-27 59_1755727419390.jpeg";
 import projectImg17 from "@assets/PHOTO-2024-11-11-13-25-27 60_1755727419391.jpeg";
-import furnitureChair from "@assets/PHOTO-2024-11-11-13-25-27_17-removebg-preview_1755727365622.png";
 
 // Organized gallery categories
 const GALLERY_CATEGORIES = {
@@ -253,18 +252,6 @@ const Gallery = () => {
       featured: false
     },
 
-    // Custom Furniture Projects
-    {
-      id: 40,
-      image: furnitureChair,
-      title: "Traditional African Chair",
-      category: "furniture",
-      subcategory: "Seating",
-      description: "Handcrafted chair featuring traditional African patterns with modern comfort and premium upholstery",
-      projectDate: "2024",
-      location: "KJESS Workshop",
-      featured: true
-    }
   ];
 
   // Filter items based on selected category
