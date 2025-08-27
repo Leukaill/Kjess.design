@@ -241,7 +241,7 @@ const AdminGallery = () => {
                 <ImageIcon className="h-8 w-8 text-blue-600" />
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Total Images</p>
-                  <p className="text-2xl font-bold text-gray-900">{galleryImages?.length || 0}</p>
+                  <p className="text-2xl font-bold text-gray-900">{Array.isArray(galleryImages) ? galleryImages.length : 0}</p>
                 </div>
               </div>
             </CardContent>
@@ -254,7 +254,7 @@ const AdminGallery = () => {
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Featured</p>
                   <p className="text-2xl font-bold text-gray-900">
-                    {galleryImages?.filter((img: any) => img.featured).length || 0}
+                    {Array.isArray(galleryImages) ? galleryImages.filter((img: any) => img.featured).length : 0}
                   </p>
                 </div>
               </div>
@@ -270,7 +270,7 @@ const AdminGallery = () => {
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Residential</p>
                   <p className="text-2xl font-bold text-gray-900">
-                    {galleryImages?.filter((img: any) => img.category === 'residential').length || 0}
+                    {Array.isArray(galleryImages) ? galleryImages.filter((img: any) => img.category === 'residential').length : 0}
                   </p>
                 </div>
               </div>
@@ -286,7 +286,7 @@ const AdminGallery = () => {
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Commercial</p>
                   <p className="text-2xl font-bold text-gray-900">
-                    {galleryImages?.filter((img: any) => img.category === 'commercial').length || 0}
+                    {Array.isArray(galleryImages) ? galleryImages.filter((img: any) => img.category === 'commercial').length : 0}
                   </p>
                 </div>
               </div>
