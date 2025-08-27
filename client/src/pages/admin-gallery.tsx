@@ -383,6 +383,14 @@ const UploadForm: React.FC<{
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Upload form submission triggered with data:', formData);
+    
+    // Basic validation
+    if (!formData.title || !formData.category || !formData.subcategory || !formData.description) {
+      alert('Please fill in all required fields: Title, Category, Subcategory, and Description');
+      return;
+    }
+    
     onSubmit(formData);
   };
 
@@ -391,7 +399,7 @@ const UploadForm: React.FC<{
       {/* File Upload */}
       <div className="space-y-2">
         <Label htmlFor="image">Image File</Label>
-        <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 relative cursor-pointer hover:border-gray-400 transition-colors" onClick={() => document.getElementById('image')?.click()}>
+        <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 relative cursor-pointer hover:border-gray-400 transition-colors" onClick={(e) => { e.stopPropagation(); document.getElementById('image')?.click(); }}>
           {previewUrl ? (
             <div className="text-center">
               <img src={previewUrl} alt="Preview" className="max-w-full h-32 object-cover rounded mx-auto" />
