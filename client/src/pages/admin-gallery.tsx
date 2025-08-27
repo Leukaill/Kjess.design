@@ -437,9 +437,10 @@ const UploadForm: React.FC<{
       {/* Form Fields */}
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label htmlFor="title">Title</Label>
+          <Label htmlFor="upload-title">Title</Label>
           <Input
-            id="title"
+            id="upload-title"
+            name="title"
             value={formData.title}
             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             required
@@ -447,9 +448,9 @@ const UploadForm: React.FC<{
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="category">Category</Label>
+          <Label htmlFor="upload-category">Category</Label>
           <Select value={formData.category} onValueChange={(value) => setFormData({ ...formData, category: value })}>
-            <SelectTrigger>
+            <SelectTrigger id="upload-category">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent>
@@ -462,9 +463,10 @@ const UploadForm: React.FC<{
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="subcategory">Subcategory</Label>
+        <Label htmlFor="upload-subcategory">Subcategory</Label>
         <Input
-          id="subcategory"
+          id="upload-subcategory"
+          name="subcategory"
           value={formData.subcategory}
           onChange={(e) => setFormData({ ...formData, subcategory: e.target.value })}
           placeholder="e.g., Living Rooms, Kitchens"
@@ -473,9 +475,10 @@ const UploadForm: React.FC<{
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="description">Description</Label>
+        <Label htmlFor="upload-description">Description</Label>
         <Textarea
-          id="description"
+          id="upload-description"
+          name="description"
           value={formData.description}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           rows={3}
@@ -485,9 +488,10 @@ const UploadForm: React.FC<{
 
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label htmlFor="projectDate">Project Date</Label>
+          <Label htmlFor="upload-projectDate">Project Date</Label>
           <Input
-            id="projectDate"
+            id="upload-projectDate"
+            name="projectDate"
             value={formData.projectDate}
             onChange={(e) => setFormData({ ...formData, projectDate: e.target.value })}
             placeholder="2024"
@@ -495,9 +499,10 @@ const UploadForm: React.FC<{
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="location">Location</Label>
+          <Label htmlFor="upload-location">Location</Label>
           <Input
-            id="location"
+            id="upload-location"
+            name="location"
             value={formData.location}
             onChange={(e) => setFormData({ ...formData, location: e.target.value })}
             placeholder="Kigali, Rwanda"
@@ -508,12 +513,13 @@ const UploadForm: React.FC<{
       <div className="flex items-center space-x-2">
         <input
           type="checkbox"
-          id="featured"
+          id="upload-featured"
+          name="featured"
           checked={formData.featured}
           onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
           className="rounded"
         />
-        <Label htmlFor="featured">Featured Image</Label>
+        <Label htmlFor="upload-featured">Featured Image</Label>
       </div>
 
       <button 
