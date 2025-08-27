@@ -4,7 +4,8 @@ import { ArrowLeft, Filter, X, ChevronLeft, ChevronRight, Heart, Share2, Calenda
 import { SiPinterest, SiInstagram } from "react-icons/si";
 import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 import { Link, useParams } from "wouter";
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import { apiRequest } from '@/lib/queryClient';
 
 // Import ONLY authentic KJESS Designs project images
 import projectImg1 from "@assets/IMG_0011_1755724301675.jpeg";
@@ -51,13 +52,14 @@ const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState<CategorySlug | 'all'>(
     (category && category in GALLERY_CATEGORIES) ? category as CategorySlug : 'all'
   );
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<number | string | null>(null);
   const [expandedImage, setExpandedImage] = useState<string | null>(null);
   const [expandedImageAlt, setExpandedImageAlt] = useState<string>("");
-  const [isLiked, setIsLiked] = useState<Record<number, boolean>>({});
-  const [shareMenuOpen, setShareMenuOpen] = useState<number | null>(null);
+  const [isLiked, setIsLiked] = useState<Record<number | string, boolean>>({});
+  const [shareMenuOpen, setShareMenuOpen] = useState<number | string | null>(null);
   const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
-  const [currentShareItem, setCurrentShareItem] = useState<typeof galleryItems[0] | null>(null);
+  const [currentShareItem, setCurrentShareItem] = useState<typeof allGalleryItems[0] | null>(null);
+  const [databaseImages, setDatabaseImages] = useState<any[]>([]);
 
   // ONLY authentic KJESS Designs project photos
   const galleryItems = [
@@ -254,24 +256,63 @@ const Gallery = () => {
 
   ];
 
+  // Fetch database images
+  useEffect(() => {
+    const fetchDatabaseImages = async () => {
+      try {
+        // Use a public endpoint that doesn't require admin auth
+        const response = await fetch('/api/gallery/public');
+        if (response.ok) {
+          const dbImages = await response.json();
+          setDatabaseImages(dbImages);
+        } else {
+          // If public endpoint doesn't exist, fallback to empty array
+          setDatabaseImages([]);
+        }
+      } catch (error) {
+        console.log('Database images not available, using hardcoded images only');
+        setDatabaseImages([]);
+      }
+    };
+
+    fetchDatabaseImages();
+  }, []);
+
+  // Combine hardcoded and database images
+  const allGalleryItems = useMemo(() => {
+    const dbItems = databaseImages.map((dbImage: any) => ({
+      id: `db_${dbImage.id}`,
+      image: dbImage.imageUrl,
+      title: dbImage.title,
+      category: dbImage.category,
+      subcategory: dbImage.subcategory,
+      description: dbImage.description,
+      projectDate: dbImage.projectDate || "2024",
+      location: dbImage.location || "Kigali, Rwanda",
+      featured: dbImage.featured || false
+    }));
+    
+    return [...galleryItems, ...dbItems];
+  }, [databaseImages]);
+
   // Filter items based on selected category
   const filteredItems = useMemo(() => {
-    if (selectedCategory === 'all') return galleryItems;
-    return galleryItems.filter(item => item.category === selectedCategory);
-  }, [selectedCategory]);
+    if (selectedCategory === 'all') return allGalleryItems;
+    return allGalleryItems.filter(item => item.category === selectedCategory);
+  }, [selectedCategory, allGalleryItems]);
 
-  const toggleLike = useCallback((id: number) => {
+  const toggleLike = useCallback((id: number | string) => {
     setIsLiked(prev => ({ ...prev, [id]: !prev[id] }));
   }, []);
 
-  const openLightbox = useCallback((id: number) => {
-    const item = galleryItems.find(item => item.id === id);
+  const openLightbox = useCallback((id: number | string) => {
+    const item = allGalleryItems.find(item => item.id === id);
     if (item) {
       setExpandedImage(item.image);
       setExpandedImageAlt(item.description);
       setSelectedImage(id);
     }
-  }, [galleryItems]);
+  }, [allGalleryItems]);
 
   const closeLightbox = useCallback(() => {
     setSelectedImage(null);
@@ -475,11 +516,11 @@ const Gallery = () => {
                 }`}
                 data-testid="button-filter-all"
               >
-                All ({galleryItems.length})
+                All ({allGalleryItems.length})
               </Button>
               
               {Object.entries(GALLERY_CATEGORIES).map(([slug, info]) => {
-                const itemCount = galleryItems.filter(item => item.category === slug).length;
+                const itemCount = allGalleryItems.filter(item => item.category === slug).length;
                 return (
                   <Button
                     key={slug}

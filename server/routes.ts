@@ -227,20 +227,54 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Image upload endpoint
+  // Image upload endpoint - Now automatically creates gallery entries
   app.post("/api/admin/upload", requireAdmin, upload.single('image'), async (req, res) => {
     try {
       if (!req.file) {
         return res.status(400).json({ message: "No image file provided" });
       }
 
-      const { category = 'gallery' } = req.body;
-      const uploadResult = await processAndUploadImage(req.file.buffer, category);
+      const { 
+        category = 'residential',
+        title,
+        subcategory,
+        description,
+        projectDate,
+        location,
+        featured = false
+      } = req.body;
       
-      res.json({
-        message: "Image uploaded successfully",
-        ...uploadResult
-      });
+      // Upload the image first
+      const uploadResult = await processAndUploadImage(req.file.buffer, 'gallery');
+      
+      // Create gallery entry automatically if required fields are provided
+      if (title && subcategory && description) {
+        const galleryImageData = {
+          title,
+          category,
+          subcategory,
+          description,
+          imageUrl: uploadResult.originalUrl,
+          thumbnailUrl: uploadResult.thumbnailUrl,
+          projectDate: projectDate || null,
+          location: location || null,
+          featured: featured === 'true' || featured === true,
+          sortOrder: 0
+        };
+
+        const galleryImage = await storage.createGalleryImage(galleryImageData);
+        
+        res.json({
+          message: "Image uploaded and gallery entry created successfully",
+          upload: uploadResult,
+          galleryImage
+        });
+      } else {
+        res.json({
+          message: "Image uploaded successfully",
+          ...uploadResult
+        });
+      }
     } catch (error) {
       console.error('Upload error:', error);
       res.status(500).json({ message: "Failed to upload image" });
@@ -362,6 +396,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(newsletters);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch newsletter subscriptions" });
+    }
+  });
+
+  // Public gallery endpoint for frontend
+  app.get("/api/gallery/public", async (req, res) => {
+    try {
+      const images = await storage.getGalleryImages();
+      res.json(images);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch gallery images" });
     }
   });
 
