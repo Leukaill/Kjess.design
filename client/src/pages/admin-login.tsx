@@ -23,7 +23,7 @@ const AdminLogin = () => {
   // Check if admin exists
   const { data: adminExistsData, isLoading: checkingAdmin } = useQuery({
     queryKey: ['/api/admin/exists'],
-    queryFn: () => apiRequest('/api/admin/exists', 'GET', {}),
+    queryFn: () => apiRequest('GET', '/api/admin/exists', {}),
   });
 
   // Update setup mode when admin existence data changes
@@ -35,7 +35,7 @@ const AdminLogin = () => {
 
   const loginMutation = useMutation({
     mutationFn: (credentials: { password: string }) => 
-      apiRequest('/api/admin/login', 'POST', credentials),
+      apiRequest('POST', '/api/admin/login', credentials),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/check'] });
       setLocation('/admin/dashboard');
@@ -47,7 +47,7 @@ const AdminLogin = () => {
 
   const setupMutation = useMutation({
     mutationFn: (credentials: { username: string; password: string }) => 
-      apiRequest('/api/admin/setup', 'POST', credentials),
+      apiRequest('POST', '/api/admin/setup', credentials),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/check'] });
       setLocation('/admin/dashboard');
