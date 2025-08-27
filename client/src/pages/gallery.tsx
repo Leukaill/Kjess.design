@@ -7,24 +7,7 @@ import { Link, useParams } from "wouter";
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { apiRequest } from '@/lib/queryClient';
 
-// Import ONLY authentic KJESS Designs project images
-import projectImg1 from "@assets/IMG_0011_1755724301675.jpeg";
-import projectImg2 from "@assets/IMG_0021_1755724301676.jpeg";
-import projectImg3 from "@assets/IMG_3958_1755727527464.jpeg";
-import projectImg4 from "@assets/IMG_5416_1755727527465.jpeg";
-import projectImg5 from "@assets/IMG_5422_1755724301678.jpeg";
-import projectImg6 from "@assets/PHOTO-2024-11-11-13-25-27 2_1755727527466.jpeg";
-import projectImg7 from "@assets/PHOTO-2024-11-11-13-25-27 3_1755727527467.jpeg";
-import projectImg8 from "@assets/PHOTO-2024-11-11-13-25-27 6_1755727527467.jpeg";
-import projectImg9 from "@assets/PHOTO-2024-11-11-13-25-27 11_1755727527468.jpeg";
-import projectImg10 from "@assets/PHOTO-2024-11-11-13-25-27 14_1755727515902.jpeg";
-import projectImg11 from "@assets/PHOTO-2024-11-11-13-25-27 17_1755727515903.jpeg";
-import projectImg12 from "@assets/PHOTO-2024-11-11-13-25-27 25_1755727515903.jpeg";
-import projectImg13 from "@assets/PHOTO-2024-11-11-13-25-27 29_1755727503846.jpeg";
-import projectImg14 from "@assets/PHOTO-2024-11-11-13-25-27 43_1755727503847.jpeg";
-import projectImg15 from "@assets/PHOTO-2024-11-11-13-25-27 52_1755727503847.jpeg";
-import projectImg16 from "@assets/PHOTO-2024-11-11-13-25-27 59_1755727419390.jpeg";
-import projectImg17 from "@assets/PHOTO-2024-11-11-13-25-27 60_1755727419391.jpeg";
+// All gallery images now come from admin panel uploads to Supabase
 
 // Organized gallery categories
 const GALLERY_CATEGORIES = {
@@ -58,203 +41,10 @@ const Gallery = () => {
   const [isLiked, setIsLiked] = useState<Record<number | string, boolean>>({});
   const [shareMenuOpen, setShareMenuOpen] = useState<number | string | null>(null);
   const [shareModalOpen, setShareModalOpen] = useState<boolean>(false);
-  const [currentShareItem, setCurrentShareItem] = useState<typeof allGalleryItems[0] | null>(null);
+  const [currentShareItem, setCurrentShareItem] = useState<any | null>(null);
   const [databaseImages, setDatabaseImages] = useState<any[]>([]);
 
-  // ONLY authentic KJESS Designs project photos
-  const galleryItems = [
-    // Featured Residential Projects (Best Images First)
-    {
-      id: 1,
-      image: projectImg3,
-      title: "Signature Living Space",
-      category: "residential",
-      subcategory: "Living Rooms",
-      description: "Award-winning modern living room with sophisticated furniture and lighting design",
-      projectDate: "2024",
-      location: "Kigali, Rwanda",
-      featured: true
-    },
-    {
-      id: 2,
-      image: projectImg1,
-      title: "Contemporary Family Home",
-      category: "residential", 
-      subcategory: "Living Areas",
-      description: "Elegant family space with premium finishes and custom elements",
-      projectDate: "2024",
-      location: "Nyarutarama, Kigali",
-      featured: true
-    },
-    {
-      id: 3,
-      image: projectImg10,
-      title: "Modern Kitchen Design",
-      category: "residential",
-      subcategory: "Kitchens",
-      description: "State-of-the-art kitchen with luxury appliances and sophisticated storage solutions",
-      projectDate: "2024",
-      location: "Kimihurura, Kigali",
-      featured: true
-    },
-    {
-      id: 4,
-      image: projectImg6,
-      title: "Master Bedroom Suite",
-      category: "residential",
-      subcategory: "Bedrooms",
-      description: "Tranquil bedroom retreat with custom furniture and elegant lighting",
-      projectDate: "2024",
-      location: "Gacuriro, Kigali",
-      featured: false
-    },
-    {
-      id: 5,
-      image: projectImg7,
-      title: "Dining Room Excellence",
-      category: "residential",
-      subcategory: "Dining Rooms",
-      description: "Sophisticated dining space perfect for entertaining and family gatherings",
-      projectDate: "2023",
-      location: "Kacyiru, Kigali",
-      featured: false
-    },
-    {
-      id: 6,
-      image: projectImg8,
-      title: "Luxury Bathroom Design",
-      category: "residential",
-      subcategory: "Bathrooms",
-      description: "Spa-like bathroom with premium marble finishes and modern fixtures",
-      projectDate: "2024",
-      location: "Remera, Kigali",
-      featured: false
-    },
-    {
-      id: 7,
-      image: projectImg9,
-      title: "Open Concept Living",
-      category: "residential",
-      subcategory: "Living Areas",
-      description: "Spacious open-plan design with seamless indoor-outdoor flow",
-      projectDate: "2023",
-      location: "Nyamirambo, Kigali",
-      featured: false
-    },
-    {
-      id: 8,
-      image: projectImg11,
-      title: "Modern Family Kitchen",
-      category: "residential",
-      subcategory: "Kitchens",
-      description: "Contemporary kitchen design with island seating and premium appliances",
-      projectDate: "2024",
-      location: "Gasabo, Kigali",
-      featured: false
-    },
-    {
-      id: 9,
-      image: projectImg12,
-      title: "Elegant Bedroom Design",
-      category: "residential",
-      subcategory: "Bedrooms",
-      description: "Sophisticated bedroom with custom headboard and luxury bedding",
-      projectDate: "2024",
-      location: "Kinyinya, Kigali",
-      featured: false
-    },
-    {
-      id: 10,
-      image: projectImg13,
-      title: "Contemporary Living Room",
-      category: "residential",
-      subcategory: "Living Rooms",
-      description: "Modern living space with artistic elements and comfortable seating",
-      projectDate: "2023",
-      location: "Gikondo, Kigali",
-      featured: false
-    },
-
-    // Commercial Projects
-    {
-      id: 20,
-      image: projectImg14,
-      title: "Executive Office Suite",
-      category: "commercial",
-      subcategory: "Offices",
-      description: "Professional workspace with modern aesthetic and premium finishes",
-      projectDate: "2024",
-      location: "City Center, Kigali",
-      featured: true
-    },
-    {
-      id: 21,
-      image: projectImg15,
-      title: "Corporate Conference Room",
-      category: "commercial",
-      subcategory: "Meeting Spaces",
-      description: "Sophisticated meeting space with advanced technology integration",
-      projectDate: "2024",
-      location: "Kigali Heights",
-      featured: true
-    },
-    {
-      id: 22,
-      image: projectImg16,
-      title: "Modern Reception Area",
-      category: "commercial",
-      subcategory: "Reception",
-      description: "Welcoming reception space with artistic elements and comfortable seating",
-      projectDate: "2023",
-      location: "Nyarugenge, Kigali",
-      featured: false
-    },
-    {
-      id: 23,
-      image: projectImg17,
-      title: "Professional Office Space",
-      category: "commercial",
-      subcategory: "Offices",
-      description: "Contemporary office design with open-plan layout and modern furnishings",
-      projectDate: "2023",
-      location: "Remera, Kigali",
-      featured: false
-    },
-    {
-      id: 24,
-      image: projectImg2,
-      title: "Retail Showroom",
-      category: "commercial",
-      subcategory: "Retail",
-      description: "Elegant retail space with strategic lighting and display solutions",
-      projectDate: "2024",
-      location: "Kimisagara, Kigali",
-      featured: false
-    },
-    {
-      id: 25,
-      image: projectImg4,
-      title: "Corporate Workspace",
-      category: "commercial",
-      subcategory: "Offices",
-      description: "Modern corporate environment designed for productivity and collaboration",
-      projectDate: "2024",
-      location: "Gishushu, Kigali",
-      featured: false
-    },
-    {
-      id: 26,
-      image: projectImg5,
-      title: "Business Meeting Room",
-      category: "commercial",
-      subcategory: "Meeting Spaces",
-      description: "Professional meeting space with elegant furniture and proper lighting",
-      projectDate: "2023",
-      location: "Kacyiru, Kigali",
-      featured: false
-    },
-
-  ];
+  // Gallery now uses only images uploaded through admin panel
 
   // Fetch database images
   useEffect(() => {
@@ -270,7 +60,7 @@ const Gallery = () => {
           setDatabaseImages([]);
         }
       } catch (error) {
-        console.log('Database images not available, using hardcoded images only');
+        console.log('Database images not available, gallery will be empty');
         setDatabaseImages([]);
       }
     };
@@ -278,9 +68,9 @@ const Gallery = () => {
     fetchDatabaseImages();
   }, []);
 
-  // Combine hardcoded and database images
+  // Use only database images from admin panel uploads
   const allGalleryItems = useMemo(() => {
-    const dbItems = databaseImages.map((dbImage: any) => ({
+    return databaseImages.map((dbImage: any) => ({
       id: `db_${dbImage.id}`,
       image: dbImage.imageUrl,
       title: dbImage.title,
@@ -291,8 +81,6 @@ const Gallery = () => {
       location: dbImage.location || "Kigali, Rwanda",
       featured: dbImage.featured || false
     }));
-    
-    return [...galleryItems, ...dbItems];
   }, [databaseImages]);
 
   // Filter items based on selected category
