@@ -181,11 +181,11 @@ const AdminGallery = () => {
     }
   }, [deleteMutation]);
 
-  // Filter images
-  const filteredImages = galleryImages?.filter((img: any) => {
+  // Filter images - ensure galleryImages is always an array
+  const filteredImages = Array.isArray(galleryImages) ? galleryImages.filter((img: any) => {
     if (filter === 'all') return true;
     return img.category === filter;
-  }) || [];
+  }) : [];
 
   if (isLoading) {
     return (
