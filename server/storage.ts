@@ -1,7 +1,7 @@
 import { type User, type InsertUser, type Contact, type InsertContact, type Newsletter, type InsertNewsletter, type Admin, type InsertAdmin, type GalleryImage, type InsertGalleryImage, type SiteContent, type InsertSiteContent, users, contacts, newsletters, admin, galleryImages, siteContent } from "@shared/schema";
 import { randomUUID } from "crypto";
-import { neon } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-http";
+import postgres from "postgres";
+import { drizzle } from "drizzle-orm/postgres-js";
 import { eq } from "drizzle-orm";
 
 export interface IStorage {
@@ -240,7 +240,7 @@ export class DatabaseStorage implements IStorage {
     if (!process.env.DATABASE_URL) {
       throw new Error("DATABASE_URL is required for production storage");
     }
-    const sql = neon(process.env.DATABASE_URL);
+    const sql = postgres(process.env.DATABASE_URL);
     this.db = drizzle(sql);
   }
 
