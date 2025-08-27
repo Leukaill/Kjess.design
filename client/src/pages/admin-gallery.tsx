@@ -512,14 +512,17 @@ const UploadForm: React.FC<{
         <Label htmlFor="featured">Featured Image</Label>
       </div>
 
-      <Button 
+      <button 
         type="submit" 
-        className="w-full" 
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         disabled={isLoading}
-        onClick={(e) => console.log('Upload button clicked', e)}
+        onClick={(e) => {
+          console.log('Upload button clicked', e);
+          console.log('Form data at click:', formData);
+        }}
       >
         {isLoading ? 'Uploading...' : 'Upload Image'}
-      </Button>
+      </button>
     </form>
   );
 };
