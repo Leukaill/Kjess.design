@@ -6,6 +6,7 @@ delete process.env.DATABASE_URL;
 dotenv.config();
 
 import express, { type Request, Response, NextFunction } from "express";
+import path from "path";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
@@ -42,6 +43,9 @@ app.use((req, res, next) => {
 
   next();
 });
+
+// Serve uploaded images from attached_assets/uploads
+app.use('/assets/uploads', express.static(path.resolve('attached_assets/uploads')));
 
 (async () => {
   const server = await registerRoutes(app);

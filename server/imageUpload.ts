@@ -115,11 +115,34 @@ export async function processAndUploadImage(
         filename: filename
       };
     } else {
-      // Fallback: Return mock URLs for development
-      console.log('Using fallback storage - images processed but not uploaded');
+      // Fallback: Save to local attached_assets folder
+      console.log('Using local storage fallback - saving images to attached_assets');
+      
+      const fs = await import('fs');
+      const path = await import('path');
+      
+      // Create directory structure
+      const uploadDir = path.resolve('attached_assets/uploads');
+      const thumbnailDir = path.resolve('attached_assets/uploads/thumbnails');
+      
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+      if (!fs.existsSync(thumbnailDir)) {
+        fs.mkdirSync(thumbnailDir, { recursive: true });
+      }
+      
+      // Save main image
+      const mainImagePath = path.join(uploadDir, filename);
+      fs.writeFileSync(mainImagePath, processedImage);
+      
+      // Save thumbnail
+      const thumbnailPath = path.join(thumbnailDir, thumbnailFilename);
+      fs.writeFileSync(thumbnailPath, thumbnailImage);
+      
       return {
-        originalUrl: `https://example.com/gallery/${category}/${filename}`,
-        thumbnailUrl: `https://example.com/gallery/${category}/thumbnails/${thumbnailFilename}`,
+        originalUrl: `/assets/uploads/${filename}`,
+        thumbnailUrl: `/assets/uploads/thumbnails/${thumbnailFilename}`,
         filename: filename
       };
     }
