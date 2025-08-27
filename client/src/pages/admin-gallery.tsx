@@ -385,12 +385,20 @@ const UploadForm: React.FC<{
     e.preventDefault();
     console.log('Upload form submission triggered with data:', formData);
     
+    // Check if an image file has been selected by looking at the file input
+    const fileInput = document.getElementById('image') as HTMLInputElement;
+    if (!fileInput?.files?.length) {
+      alert('Please select an image file first');
+      return;
+    }
+    
     // Basic validation
     if (!formData.title || !formData.category || !formData.subcategory || !formData.description) {
       alert('Please fill in all required fields: Title, Category, Subcategory, and Description');
       return;
     }
     
+    console.log('All validation passed, calling onSubmit');
     onSubmit(formData);
   };
 
@@ -504,7 +512,12 @@ const UploadForm: React.FC<{
         <Label htmlFor="featured">Featured Image</Label>
       </div>
 
-      <Button type="submit" className="w-full" disabled={isLoading}>
+      <Button 
+        type="submit" 
+        className="w-full" 
+        disabled={isLoading}
+        onClick={(e) => console.log('Upload button clicked', e)}
+      >
         {isLoading ? 'Uploading...' : 'Upload Image'}
       </Button>
     </form>
