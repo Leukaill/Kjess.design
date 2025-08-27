@@ -8,6 +8,14 @@ Preferred communication style: Simple, everyday language.
 
 # Recent Changes
 
+## Database Configuration Protection (August 27, 2025)
+- **CRITICAL**: Fixed database connection to use correct Supabase database instead of "heliumdb"
+- Implemented environment variable protection system to prevent Replit conflicts
+- Added lazy storage initialization to ensure proper loading order
+- Created comprehensive setup documentation for future developers
+- Added database connection validation and warning system
+- Made configuration bulletproof against system environment variable interference
+
 ## Gallery Enhancement (August 20, 2025)
 - Made gallery category cards clickable with smooth navigation to filtered sections
 - Implemented URL routing for gallery categories (/gallery/residential, /gallery/commercial, /gallery/furniture)
@@ -35,10 +43,11 @@ Preferred communication style: Simple, everyday language.
 - **Validation**: Zod schemas for request validation with proper error responses
 
 ## Data Storage
-- **Database**: PostgreSQL using Neon Database as the serverless provider
+- **Database**: PostgreSQL using Supabase as the provider (configured via .env file)
 - **ORM**: Drizzle ORM with migrations support for schema management
 - **Schema Management**: Shared schema definitions using drizzle-zod for type-safe validation
-- **Tables**: Users, contacts, and newsletters with proper constraints and relationships
+- **Tables**: Admin, contacts, newsletters, gallery_images, site_content, and users tables
+- **Connection Protection**: Environment variable system prevents conflicts with Replit's built-in databases
 
 ## Development Setup
 - **Monorepo Structure**: Organized into client/, server/, and shared/ directories
@@ -46,10 +55,24 @@ Preferred communication style: Simple, everyday language.
 - **Build Process**: Separate build processes for client (Vite) and server (esbuild)
 - **TypeScript**: Strict mode enabled with path mapping for clean imports
 
+# Critical Configuration Notes
+
+## Database Connection Requirements
+- **NEVER REMOVE** the `delete process.env.DATABASE_URL` line in server/index.ts
+- **ALWAYS USE** Transaction pooler connection string format from Supabase
+- **ENVIRONMENT PRIORITY**: .env file takes precedence over system environment variables
+- **LAZY INITIALIZATION**: Storage is initialized after environment variables are loaded
+
+## Setup for New Environments
+1. Copy `.env.example` to `.env`
+2. Fill in Supabase credentials using Transaction pooler format
+3. Run `npm run db:push` to sync schema
+4. Access admin panel to create initial admin account
+
 # External Dependencies
 
 ## Core Technologies
-- **@neondatabase/serverless**: Serverless PostgreSQL database connection
+- **postgres**: Direct PostgreSQL connection for Supabase
 - **drizzle-orm**: Type-safe ORM for database operations
 - **@tanstack/react-query**: Server state management and caching
 - **framer-motion**: Animation library for smooth UI transitions

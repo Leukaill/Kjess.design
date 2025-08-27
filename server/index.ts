@@ -1,5 +1,7 @@
 import dotenv from "dotenv";
-// Force unset the system DATABASE_URL to use .env file instead
+// CRITICAL: Force unset system DATABASE_URL to prevent conflicts with Replit's built-in databases
+// This ensures our .env file takes precedence and connects to the correct Supabase database
+// DO NOT REMOVE this line - it prevents connection to wrong databases like "heliumdb"
 delete process.env.DATABASE_URL;
 dotenv.config();
 

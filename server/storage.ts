@@ -240,7 +240,16 @@ export class DatabaseStorage implements IStorage {
     if (!process.env.DATABASE_URL) {
       throw new Error("DATABASE_URL is required for production storage");
     }
-    console.log("Connecting to database:", process.env.DATABASE_URL.split('@')[1]); // Log connection without password
+    
+    // Log database connection (without password) for debugging
+    const connectionInfo = process.env.DATABASE_URL.split('@')[1] || 'unknown';
+    console.log("✅ Connecting to database:", connectionInfo);
+    
+    // Verify we're not connecting to Replit's default database
+    if (connectionInfo.includes('helium')) {
+      console.warn("⚠️  WARNING: Connecting to heliumdb - check your .env configuration!");
+    }
+    
     const sql = postgres(process.env.DATABASE_URL);
     this.db = drizzle(sql);
   }
@@ -387,7 +396,9 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-// Lazy initialization to ensure environment variables are loaded first
+// CRITICAL: Lazy initialization to ensure environment variables are loaded first
+// This prevents DatabaseStorage from being instantiated before environment variables are properly set
+// DO NOT CHANGE this to direct instantiation - it will cause database connection issues
 let _storage: IStorage | null = null;
 
 export function getStorage(): IStorage {
@@ -399,7 +410,8 @@ export function getStorage(): IStorage {
   return _storage;
 }
 
-// Backward compatibility export
+// Proxy-based storage export to maintain lazy initialization
+// This ensures proper loading order: index.ts → env setup → storage initialization
 export const storage = new Proxy({} as IStorage, {
   get(target, prop, receiver) {
     return Reflect.get(getStorage(), prop, receiver);
