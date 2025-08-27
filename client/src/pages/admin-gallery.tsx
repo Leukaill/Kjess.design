@@ -403,7 +403,11 @@ const UploadForm: React.FC<{
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form 
+      onSubmit={handleSubmit} 
+      className="space-y-4"
+      onSubmitCapture={() => console.log('Upload form onSubmit event captured')}
+    >
       {/* File Upload */}
       <div className="space-y-2">
         <Label htmlFor="image">Image File</Label>
@@ -516,10 +520,6 @@ const UploadForm: React.FC<{
         type="submit" 
         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         disabled={isLoading}
-        onClick={(e) => {
-          console.log('Upload button clicked', e);
-          console.log('Form data at click:', formData);
-        }}
       >
         {isLoading ? 'Uploading...' : 'Upload Image'}
       </button>
