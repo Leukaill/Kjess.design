@@ -240,6 +240,7 @@ export class DatabaseStorage implements IStorage {
     if (!process.env.DATABASE_URL) {
       throw new Error("DATABASE_URL is required for production storage");
     }
+    console.log("Connecting to database:", process.env.DATABASE_URL.split('@')[1]); // Log connection without password
     const sql = postgres(process.env.DATABASE_URL);
     this.db = drizzle(sql);
   }
@@ -386,7 +387,21 @@ export class DatabaseStorage implements IStorage {
   }
 }
 
-// Use database storage if DATABASE_URL is available, otherwise use memory storage
-export const storage: IStorage = process.env.DATABASE_URL 
-  ? new DatabaseStorage() 
-  : new MemStorage();
+// Lazy initialization to ensure environment variables are loaded first
+let _storage: IStorage | null = null;
+
+export function getStorage(): IStorage {
+  if (!_storage) {
+    _storage = process.env.DATABASE_URL 
+      ? new DatabaseStorage() 
+      : new MemStorage();
+  }
+  return _storage;
+}
+
+// Backward compatibility export
+export const storage = new Proxy({} as IStorage, {
+  get(target, prop, receiver) {
+    return Reflect.get(getStorage(), prop, receiver);
+  }
+});

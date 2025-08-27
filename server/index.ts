@@ -1,4 +1,6 @@
 import dotenv from "dotenv";
+// Force unset the system DATABASE_URL to use .env file instead
+delete process.env.DATABASE_URL;
 dotenv.config();
 
 import express, { type Request, Response, NextFunction } from "express";
