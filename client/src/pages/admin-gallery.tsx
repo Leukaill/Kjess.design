@@ -43,7 +43,7 @@ const AdminGallery = () => {
   // Fetch gallery images
   const { data: galleryImages, isLoading } = useQuery({
     queryKey: ['/api/admin/gallery'],
-    queryFn: () => apiRequest('/api/admin/gallery', 'GET', {}),
+    queryFn: () => apiRequest('GET', '/api/admin/gallery', {}),
   });
 
   // Upload image mutation
@@ -82,7 +82,7 @@ const AdminGallery = () => {
 
   // Delete image mutation
   const deleteMutation = useMutation({
-    mutationFn: (id: string) => apiRequest(`/api/admin/gallery/${id}`, 'DELETE', {}),
+    mutationFn: (id: string) => apiRequest('DELETE', `/api/admin/gallery/${id}`, {}),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/gallery'] });
       toast({
@@ -102,7 +102,7 @@ const AdminGallery = () => {
   // Update image mutation
   const updateMutation = useMutation({
     mutationFn: ({ id, data }: { id: string; data: any }) => 
-      apiRequest(`/api/admin/gallery/${id}`, 'PUT', data),
+      apiRequest('PUT', `/api/admin/gallery/${id}`, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/gallery'] });
       setIsEditModalOpen(false);

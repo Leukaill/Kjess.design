@@ -38,7 +38,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 
   const { data: authCheck, isError } = useQuery({
     queryKey: ['/api/admin/check'],
-    queryFn: () => apiRequest('/api/admin/check'),
+    queryFn: () => apiRequest('GET', '/api/admin/check'),
     retry: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
@@ -52,7 +52,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 
   const handleLogout = async () => {
     try {
-      await apiRequest('/api/admin/logout', 'POST', {});
+      await apiRequest('POST', '/api/admin/logout', {});
       queryClient.clear();
       setLocation('/');
     } catch (error) {
@@ -245,17 +245,17 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 const AdminDashboard = () => {
   const { data: contacts } = useQuery({
     queryKey: ['/api/contacts'],
-    queryFn: () => apiRequest('/api/contacts', 'GET', {}),
+    queryFn: () => apiRequest('GET', '/api/contacts', {}),
   });
 
   const { data: newsletters } = useQuery({
     queryKey: ['/api/newsletters'],
-    queryFn: () => apiRequest('/api/newsletters', 'GET', {}),
+    queryFn: () => apiRequest('GET', '/api/newsletters', {}),
   });
 
   const { data: galleryImages } = useQuery({
     queryKey: ['/api/admin/gallery'],
-    queryFn: () => apiRequest('/api/admin/gallery', 'GET', {}),
+    queryFn: () => apiRequest('GET', '/api/admin/gallery', {}),
   });
 
   const stats = [

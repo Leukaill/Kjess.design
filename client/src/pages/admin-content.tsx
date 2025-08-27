@@ -45,13 +45,13 @@ const AdminContent = () => {
   // Fetch content data
   const { data: contentData, isLoading } = useQuery({
     queryKey: ['/api/admin/content'],
-    queryFn: () => apiRequest('/api/admin/content', 'GET', {}),
+    queryFn: () => apiRequest('GET', '/api/admin/content', {}),
   });
 
   // Update content mutation
   const updateMutation = useMutation({
     mutationFn: ({ section, data }: { section: string; data: any }) => 
-      apiRequest(`/api/admin/content/${section}`, 'PUT', data),
+      apiRequest('PUT', `/api/admin/content/${section}`, data),
     onSuccess: (_, { section }) => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/content'] });
       setEditingSection(null);
