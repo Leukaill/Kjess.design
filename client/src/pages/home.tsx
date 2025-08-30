@@ -52,7 +52,6 @@ import governorResidenceLogo from "@assets/WhatsApp_Image_2025-08-21_at_16.33.10
 
 import { Link } from "wouter";
 import { AnimatePresence } from "framer-motion";
-import { useActivityTracking } from "@/lib/cookies";
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -78,7 +77,6 @@ export default function Home() {
   
   
   // Activity tracking
-  const { trackPageView, trackInteraction } = useActivityTracking();
   
   // Interactive state management
   const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
@@ -138,8 +136,7 @@ export default function Home() {
 
   // Track page view on mount
   useEffect(() => {
-    trackPageView('/');
-  }, [trackPageView]);
+  }, []);
 
   // Smart background detection and scroll logic with throttling
   useEffect(() => {
@@ -265,7 +262,6 @@ export default function Home() {
         top: offsetTop,
         behavior: 'smooth'
       });
-      trackInteraction(`scroll_to_${sectionId}`);
     }
     setIsNavOpen(false);
   };
