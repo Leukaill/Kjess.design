@@ -46,14 +46,16 @@ const ChatBot = () => {
     queryKey: ['/api/chat/settings'],
     queryFn: async () => {
       const response = await apiRequest('GET', '/api/chat/settings');
-      return response as any;
+      return await response.json() as any;
     }
   });
 
   // Start conversation mutation
   const startConversationMutation = useMutation({
-    mutationFn: (data: { sessionId: string; userEmail?: string; userName?: string }) => 
-      apiRequest('POST', '/api/chat/start', data),
+    mutationFn: async (data: { sessionId: string; userEmail?: string; userName?: string }) => {
+      const response = await apiRequest('POST', '/api/chat/start', data);
+      return await response.json();
+    },
     onSuccess: (data: any) => {
       setConversationId(data.id);
     }
@@ -63,7 +65,7 @@ const ChatBot = () => {
   const sendMessageMutation = useMutation({
     mutationFn: async (data: { conversationId: string; message: string; isFromUser: boolean }) => {
       const response = await apiRequest('POST', '/api/chat/message', data);
-      return response as ChatResponse;
+      return await response.json() as ChatResponse;
     },
     onSuccess: (data: ChatResponse) => {
       setMessages(prev => [...prev, data.userMessage, data.aiMessage]);

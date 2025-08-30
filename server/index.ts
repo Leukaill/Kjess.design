@@ -6,10 +6,12 @@ const envPath = path.resolve(process.cwd(), '.env');
 console.log('🔍 Loading .env from:', envPath);
 dotenv.config({ path: envPath });
 
-// Use Replit's built-in database if available, otherwise fall back to .env
-if (!process.env.DATABASE_URL || process.env.DATABASE_URL.length === 0) {
-  dotenv.config({ path: envPath });
-}
+// CRITICAL: Force unset system DATABASE_URL to use Supabase database where your data exists
+// This ensures we connect to your Supabase database instead of empty Replit database
+delete process.env.DATABASE_URL;
+
+// Reload the DATABASE_URL from .env after deletion to connect to Supabase
+dotenv.config({ path: envPath });
 
 // Debug environment loading
 console.log('🔍 Environment variables loaded:');
