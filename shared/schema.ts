@@ -115,6 +115,44 @@ export const insertGalleryImageSchema = createInsertSchema(galleryImages).pick({
   sortOrder: z.number().int().optional().default(0),
 });
 
+// AI Chatbot tables
+export const chatConversations = pgTable("chat_conversations", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  sessionId: text("session_id").notNull(), // For anonymous users
+  userEmail: text("user_email"), // Optional for registered users
+  userName: text("user_name"), // Optional for registered users
+  isActive: boolean("is_active").default(true),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const chatMessages = pgTable("chat_messages", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  conversationId: varchar("conversation_id").notNull().references(() => chatConversations.id, { onDelete: "cascade" }),
+  message: text("message").notNull(),
+  isFromUser: boolean("is_from_user").notNull(),
+  timestamp: timestamp("timestamp").defaultNow(),
+});
+
+export const chatSettings = pgTable("chat_settings", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  isEnabled: boolean("is_enabled").default(true),
+  welcomeMessage: text("welcome_message").default("Hello! How can I help you with your interior design needs today?"),
+  tone: text("tone").default("professional"), // professional, friendly, casual
+  restrictToRelevantTopics: boolean("restrict_to_relevant_topics").default(true),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const chatKnowledgeBase = pgTable("chat_knowledge_base", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  title: text("title").notNull(),
+  content: text("content").notNull(),
+  category: text("category").notNull(), // services, portfolio, pricing, faq, etc.
+  isActive: boolean("is_active").default(true),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
 // Site content schemas
 export const insertSiteContentSchema = createInsertSchema(siteContent).pick({
   section: true,
@@ -122,6 +160,51 @@ export const insertSiteContentSchema = createInsertSchema(siteContent).pick({
 }).extend({
   section: z.enum(["about", "services"]),
   content: z.string().min(1, "Content is required"),
+});
+
+// Chat schemas
+export const insertChatConversationSchema = createInsertSchema(chatConversations).pick({
+  sessionId: true,
+  userEmail: true,
+  userName: true,
+}).extend({
+  sessionId: z.string().min(1, "Session ID is required"),
+  userEmail: z.string().email().optional(),
+  userName: z.string().optional(),
+});
+
+export const insertChatMessageSchema = createInsertSchema(chatMessages).pick({
+  conversationId: true,
+  message: true,
+  isFromUser: true,
+}).extend({
+  conversationId: z.string().min(1, "Conversation ID is required"),
+  message: z.string().min(1, "Message cannot be empty"),
+  isFromUser: z.boolean(),
+});
+
+export const updateChatSettingsSchema = createInsertSchema(chatSettings).pick({
+  isEnabled: true,
+  welcomeMessage: true,
+  tone: true,
+  restrictToRelevantTopics: true,
+}).extend({
+  isEnabled: z.boolean(),
+  welcomeMessage: z.string().min(1, "Welcome message is required"),
+  tone: z.enum(["professional", "friendly", "casual"]),
+  restrictToRelevantTopics: z.boolean(),
+});
+
+export const insertKnowledgeBaseSchema = createInsertSchema(chatKnowledgeBase).pick({
+  title: true,
+  content: true,
+  category: true,
+  isActive: true,
+}).extend({
+  title: z.string().min(1, "Title is required"),
+  content: z.string().min(10, "Content must be at least 10 characters"),
+  category: z.string().min(1, "Category is required"),
+  isActive: z.boolean().optional().default(true),
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
@@ -140,3 +223,13 @@ export type GalleryImage = typeof galleryImages.$inferSelect;
 
 export type InsertSiteContent = z.infer<typeof insertSiteContentSchema>;
 export type SiteContent = typeof siteContent.$inferSelect;
+
+// Chat types
+export type InsertChatConversation = z.infer<typeof insertChatConversationSchema>;
+export type ChatConversation = typeof chatConversations.$inferSelect;
+export type InsertChatMessage = z.infer<typeof insertChatMessageSchema>;
+export type ChatMessage = typeof chatMessages.$inferSelect;
+export type UpdateChatSettings = z.infer<typeof updateChatSettingsSchema>;
+export type ChatSettings = typeof chatSettings.$inferSelect;
+export type InsertKnowledgeBase = z.infer<typeof insertKnowledgeBaseSchema>;
+export type KnowledgeBase = typeof chatKnowledgeBase.$inferSelect;
