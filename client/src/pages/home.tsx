@@ -2013,11 +2013,8 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="relative group"
                 >
-                  {/* Artistic backdrop */}
-                  <div className="absolute -inset-6 bg-gradient-to-br from-bronze/12 via-transparent to-charcoal/8 rotate-1 group-hover:rotate-2 transition-all duration-700 opacity-60"></div>
-                  
                   <div 
-                    className="relative shadow-2xl group-hover:shadow-3xl transition-all duration-700 cursor-pointer"
+                    className="relative cursor-pointer"
                     onClick={() => {
                       setExpandedImage(portfolioImg1);
                       setExpandedImageAlt("KJESS Designs featured project showcasing elegant interior design and sophisticated furniture arrangement");
@@ -2034,11 +2031,6 @@ export default function Home() {
                       </div>
                     </div>
                     
-                    {/* Image overlay */}
-                    <div className="absolute inset-4 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
-                    {/* Corner accent */}
-                    <div className="absolute bottom-4 right-4 w-6 h-6 border-r border-b border-bronze/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
                   
                   {/* Project label */}
@@ -2063,7 +2055,7 @@ export default function Home() {
                     className="relative group"
                   >
                     <div 
-                      className="shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => {
                         setExpandedImage(portfolioImg2);
                         setExpandedImageAlt("KJESS Designs lighting and interior elements showcasing contemporary design");
@@ -2095,7 +2087,7 @@ export default function Home() {
                     className="relative group mt-4"
                   >
                     <div 
-                      className="shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => {
                         setExpandedImage(portfolioImg4);
                         setExpandedImageAlt("KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship");
@@ -2131,7 +2123,7 @@ export default function Home() {
                     className="absolute top-0 left-0 w-20 h-24 group z-10"
                   >
                     <div 
-                      className="shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1 cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => {
                         setExpandedImage(portfolioImg13);
                         setExpandedImageAlt("KJESS Designs portfolio showcase - residential project");
@@ -2159,7 +2151,7 @@ export default function Home() {
                     className="absolute top-2 left-12 w-24 h-28 group z-20"
                   >
                     <div 
-                      className="shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0 cursor-pointer"
+                      className="cursor-pointer"
                       onClick={() => {
                         setExpandedImage(portfolioImg14);
                         setExpandedImageAlt("KJESS Designs portfolio showcase - commercial project");
@@ -2247,13 +2239,9 @@ export default function Home() {
             >
               {/* Signature project showcase with layered effect */}
               <div className="relative group">
-                {/* Artistic multi-layer backdrop */}
-                <div className="absolute -inset-8 bg-gradient-to-br from-bronze/15 via-transparent to-charcoal/10 rotate-2 group-hover:rotate-3 transition-all duration-1000 opacity-50"></div>
-                <div className="absolute -inset-6 bg-gradient-to-tl from-charcoal/8 via-transparent to-bronze/12 -rotate-1 group-hover:-rotate-2 transition-all duration-1200 opacity-40"></div>
-                
-                {/* Main signature image - slightly rotated */}
+                {/* Main signature image */}
                 <div 
-                  className="relative shadow-3xl group-hover:shadow-4xl transition-all duration-700 rotate-1 group-hover:rotate-0 z-20 cursor-pointer"
+                  className="relative cursor-pointer"
                   onClick={() => {
                     setExpandedImage(portfolioImg3);
                     setExpandedImageAlt("KJESS Designs signature project featuring modern elegance and sophisticated spatial arrangement");
@@ -2270,12 +2258,7 @@ export default function Home() {
                     </div>
                   </div>
                   
-                  {/* Multi-layer overlays */}
-                  <div className="absolute inset-6 bg-gradient-to-t from-charcoal/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                  <div className="absolute inset-6 bg-gradient-to-br from-transparent via-transparent to-bronze/15 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
                   
-                  {/* Interior frame */}
-                  <div className="absolute inset-6 border border-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
                 
                 {/* Layered image behind - partially visible */}
@@ -2348,8 +2331,6 @@ export default function Home() {
                     alt="KJESS Designs masterpiece - signature project showcase"
                     className="w-full h-40 object-cover transition-all duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-3 bg-gradient-to-t from-charcoal/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute bottom-3 right-3 w-4 h-4 border-r border-b border-bronze/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </motion.div>
             </motion.div>
@@ -2389,6 +2370,7 @@ export default function Home() {
                   { 
                     title: "Custom Furniture", 
                     slug: "furniture",
+                    image: portfolioImg16,
                     alt: "KJESS Designs custom furniture featuring traditional African patterns and exceptional craftsmanship",
                     projects: "100+ Pieces" 
                   }
