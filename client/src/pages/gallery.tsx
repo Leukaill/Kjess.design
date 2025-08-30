@@ -6,7 +6,7 @@ import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 import { Link, useParams } from "wouter";
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { apiRequest } from '@/lib/queryClient';
-import galleryHeroImage from '@assets/image_1755719366080.png';
+import galleryHeroImage from '@assets/PHOTO-2024-11-11-13-25-27 17_1755724301692.jpeg';
 
 // All gallery images now come from admin panel uploads to Supabase
 
