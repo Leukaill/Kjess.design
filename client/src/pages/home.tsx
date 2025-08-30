@@ -1755,7 +1755,7 @@ export default function Home() {
           </motion.div>
 
           {/* Team members grid */}
-          <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto" style={{ border: '10px solid green', background: 'blue', padding: '20px' }}>
+          <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto">
             {[
               {
                 name: "Jess Karumugabo",
@@ -1788,26 +1788,15 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="group relative"
               >
-                {/* Luxury glow effect */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-bronze/20 via-bronze/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 blur-xl"></div>
-                
-                {/* Premium card frame */}
-                <div className="absolute -inset-1 bg-gradient-to-br from-bronze/30 via-bronze/10 to-bronze/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-sm"></div>
-                
-                <div className="relative bg-gradient-to-br from-cream/8 via-cream/5 to-cream/8 backdrop-blur-md border border-cream/15 hover:border-bronze/40 transition-all duration-700 group-hover:bg-gradient-to-br group-hover:from-cream/12 group-hover:via-cream/8 group-hover:to-cream/12 overflow-hidden shadow-2xl hover:shadow-bronze/10">
+                <div className="relative bg-gradient-to-br from-cream/8 via-cream/5 to-cream/8 backdrop-blur-md border border-cream/15 hover:border-bronze/40 transition-all duration-700 overflow-hidden shadow-2xl">
                   {/* Premium member image */}
-                  <div className="relative h-96 sm:h-[420px] overflow-hidden bg-red-500">
+                  <div className="relative h-96 sm:h-[420px] overflow-hidden">
                     {/* Image with luxury filter */}
                     <img
-                      src={member.image || "/ceo.png"}
+                      src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover"
-                      style={{ border: '5px solid red', background: 'yellow' }}
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                     />
-                    
-                    {/* Sophisticated overlay gradients */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-bronze/5 to-bronze/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     
                     {/* Premium corner accents */}
                     <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-bronze/40 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200"></div>
