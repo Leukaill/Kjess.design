@@ -275,7 +275,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         const galleryImage = await storage.createGalleryImage(galleryImageData);
         
-        console.log('✅ Gallery entry created successfully');
+        console.log('✅ Gallery entry created successfully:', galleryImage.id);
         
         res.json({
           message: "Image uploaded and gallery entry created successfully",
