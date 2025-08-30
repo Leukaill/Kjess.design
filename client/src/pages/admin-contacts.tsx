@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -32,20 +31,28 @@ interface Contact {
 const AdminContacts = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Fetch contacts data
-  const { data: contactsData, isLoading, error } = useQuery({
-    queryKey: ['/api/contacts'],
-    queryFn: () => apiRequest('GET', '/api/contacts', {}),
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
-  });
+  // Simple fetch for contacts
+  useEffect(() => {
+    const fetchContacts = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('/api/contacts');
+        const data = await response.json();
+        console.log('Fetched contacts:', data);
+        setContacts(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error('Error fetching contacts:', error);
+        setContacts([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  // Ensure contacts is always an array
-  const contacts = Array.isArray(contactsData) ? contactsData : [];
-  
-  // Debug logging
-  console.log('Contacts debug:', { contactsData, contacts, isLoading, error });
+    fetchContacts();
+  }, []);
 
   // Filter contacts based on search term
   const filteredContacts = contacts.filter((contact: Contact) =>

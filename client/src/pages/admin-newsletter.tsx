@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -31,17 +30,28 @@ const AdminNewsletter = () => {
   const [showCompose, setShowCompose] = useState(false);
   const [emailSubject, setEmailSubject] = useState('');
   const [emailContent, setEmailContent] = useState('');
+  const [newsletters, setNewsletters] = useState<Newsletter[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Fetch newsletter subscriptions
-  const { data: newslettersData, isLoading, error } = useQuery({
-    queryKey: ['/api/newsletters'],
-    queryFn: () => apiRequest('GET', '/api/newsletters', {}),
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
-  });
+  // Simple fetch for newsletters
+  useEffect(() => {
+    const fetchNewsletters = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('/api/newsletters');
+        const data = await response.json();
+        console.log('Fetched newsletters:', data);
+        setNewsletters(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error('Error fetching newsletters:', error);
+        setNewsletters([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  // Ensure newsletters is always an array
-  const newsletters = Array.isArray(newslettersData) ? newslettersData : [];
+    fetchNewsletters();
+  }, []);
 
   // Filter newsletters based on search term
   const filteredNewsletters = newsletters.filter((newsletter: Newsletter) =>
