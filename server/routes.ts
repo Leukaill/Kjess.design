@@ -1,14 +1,17 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSchema, insertNewsletterSchema, adminLoginSchema, insertGalleryImageSchema, insertSiteContentSchema } from "@shared/schema";
+import { insertContactSchema, insertNewsletterSchema, adminLoginSchema, insertGalleryImageSchema, insertSiteContentSchema, insertChatConversationSchema, insertChatMessageSchema, updateChatSettingsSchema, insertKnowledgeBaseSchema } from "@shared/schema";
 import { z } from "zod";
 import session from "express-session";
 import { upload, processAndUploadImage, deleteImageFromStorage, initializeStorageBucket } from "./imageUpload";
+import postgres from "postgres";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Initialize Supabase Storage bucket
   await initializeStorageBucket();
+  
+  console.log('🛠️ Registering API routes...');
 
   // Session middleware for admin authentication
   app.use(session({
@@ -24,6 +27,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Check if admin exists
   app.get('/api/admin/exists', async (req, res) => {
+    console.log('🔍 API route hit: /api/admin/exists');
     try {
       const adminExists = await storage.checkAdminExists();
       res.json({ exists: adminExists });
@@ -426,6 +430,317 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(images);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch gallery images" });
+    }
+  });
+
+  // ===== CHAT API ROUTES =====
+  
+  // Debug route to check table existence and create missing tables
+  app.get("/api/debug/setup-chat", async (req, res) => {
+    try {
+      // Use raw SQL to check what tables exist and create missing ones
+      const sql = postgres(process.env.DATABASE_URL!);
+      
+      // Check existing tables
+      const tables = await sql`
+        SELECT table_name 
+        FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        ORDER BY table_name
+      `;
+      
+      console.log('📋 Existing tables:', tables.map(t => t.table_name));
+      
+      // Create all chat tables if they don't exist
+      await sql`
+        CREATE TABLE IF NOT EXISTS chat_settings (
+          id VARCHAR PRIMARY KEY DEFAULT gen_random_uuid(),
+          is_enabled BOOLEAN DEFAULT true,
+          welcome_message TEXT DEFAULT 'Hello! How can I help you with your interior design needs today?',
+          tone TEXT DEFAULT 'professional',
+          restrict_to_relevant_topics BOOLEAN DEFAULT true,
+          updated_at TIMESTAMP DEFAULT now()
+        )
+      `;
+      
+      await sql`
+        CREATE TABLE IF NOT EXISTS chat_conversations (
+          id VARCHAR PRIMARY KEY DEFAULT gen_random_uuid(),
+          session_id TEXT NOT NULL,
+          user_email TEXT,
+          user_name TEXT,
+          is_active BOOLEAN DEFAULT true,
+          created_at TIMESTAMP DEFAULT now(),
+          updated_at TIMESTAMP DEFAULT now()
+        )
+      `;
+      
+      await sql`
+        CREATE TABLE IF NOT EXISTS chat_messages (
+          id VARCHAR PRIMARY KEY DEFAULT gen_random_uuid(),
+          conversation_id VARCHAR NOT NULL REFERENCES chat_conversations(id) ON DELETE CASCADE,
+          message TEXT NOT NULL,
+          is_from_user BOOLEAN NOT NULL,
+          timestamp TIMESTAMP DEFAULT now()
+        )
+      `;
+      
+      await sql`
+        CREATE TABLE IF NOT EXISTS chat_knowledge_base (
+          id VARCHAR PRIMARY KEY DEFAULT gen_random_uuid(),
+          title TEXT NOT NULL,
+          content TEXT NOT NULL,
+          category TEXT NOT NULL,
+          is_active BOOLEAN DEFAULT true,
+          created_at TIMESTAMP DEFAULT now(),
+          updated_at TIMESTAMP DEFAULT now()
+        )
+      `;
+      
+      // Insert default settings if none exist
+      await sql`
+        INSERT INTO chat_settings (is_enabled, welcome_message, tone, restrict_to_relevant_topics)
+        SELECT true, 'Hello! I''m KJESS AI Assistant. How can I help you with your interior design needs today?', 'professional', true
+        WHERE NOT EXISTS (SELECT 1 FROM chat_settings)
+      `;
+      
+      const afterTables = await sql`
+        SELECT table_name 
+        FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        ORDER BY table_name
+      `;
+      
+      res.json({ 
+        before: tables.map(t => t.table_name),
+        after: afterTables.map(t => t.table_name),
+        message: "Chat tables setup completed"
+      });
+      
+    } catch (error) {
+      console.error('❌ Debug setup error:', error);
+      res.status(500).json({ message: "Failed to setup tables", error: String(error) });
+    }
+  });
+  
+  // Get chat settings (public)
+  app.get("/api/chat/settings", async (req, res) => {
+    try {
+      console.log('🔍 Attempting to get chat settings...');
+      const settings = await storage.getChatSettings();
+      console.log('✅ Chat settings retrieved:', settings ? 'found' : 'not found');
+      
+      if (!settings) {
+        // Return default settings if none exist
+        console.log('📝 Returning default settings');
+        res.json({
+          isEnabled: true,
+          welcomeMessage: "Hello! How can I help you with your interior design needs today?",
+          tone: "professional"
+        });
+      } else {
+        console.log('📝 Returning database settings');
+        res.json({
+          isEnabled: settings.isEnabled,
+          welcomeMessage: settings.welcomeMessage,
+          tone: settings.tone
+        });
+      }
+    } catch (error) {
+      console.error('❌ Chat settings error:', error);
+      res.status(500).json({ message: "Failed to fetch chat settings" });
+    }
+  });
+
+  // Start a new chat conversation
+  app.post("/api/chat/start", async (req, res) => {
+    try {
+      console.log('🔍 Creating chat conversation with:', req.body);
+      const { sessionId, userEmail, userName } = insertChatConversationSchema.parse(req.body);
+      const conversation = await storage.createChatConversation({ sessionId, userEmail, userName });
+      console.log('✅ Chat conversation created:', conversation.id);
+      res.status(201).json(conversation);
+    } catch (error) {
+      console.error('❌ Chat conversation creation error:', error);
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          message: "Invalid conversation data",
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ message: "Failed to start conversation" });
+      }
+    }
+  });
+
+  // Send a chat message and get AI response
+  app.post("/api/chat/message", async (req, res) => {
+    try {
+      const { conversationId, message, isFromUser } = insertChatMessageSchema.parse(req.body);
+      
+      // Save user message
+      await storage.createChatMessage({ conversationId, message, isFromUser });
+      
+      if (isFromUser) {
+        // Get conversation history
+        const messages = await storage.getChatMessages(conversationId);
+        
+        // Get AI context
+        const settings = await storage.getChatSettings();
+        const knowledgeBase = await storage.getKnowledgeBase();
+        const siteContent = await storage.getAllSiteContent();
+        
+        // Build context
+        const companyContext = siteContent.map(content => `${content.section}: ${content.content}`).join('\n\n');
+        const knowledgeContext = knowledgeBase.map(kb => `${kb.title}: ${kb.content}`).join('\n\n');
+        
+        // Generate AI response
+        const { generateChatResponse } = await import("./gemini");
+        const aiResponse = await generateChatResponse(
+          message,
+          messages.map(m => ({ message: m.message, isFromUser: m.isFromUser })),
+          companyContext,
+          knowledgeContext,
+          settings?.tone || "professional"
+        );
+        
+        // Save AI response
+        const aiMessage = await storage.createChatMessage({
+          conversationId,
+          message: aiResponse.message,
+          isFromUser: false
+        });
+        
+        res.json({
+          userMessage: { conversationId, message, isFromUser },
+          aiMessage,
+          suggestedAction: aiResponse.suggestedAction
+        });
+      } else {
+        // If it's not from user, just save the message
+        const savedMessage = await storage.createChatMessage({ conversationId, message, isFromUser });
+        res.json(savedMessage);
+      }
+    } catch (error) {
+      console.error("Chat message error:", error);
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          message: "Invalid message data",
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ message: "Failed to process message" });
+      }
+    }
+  });
+
+  // Get conversation messages
+  app.get("/api/chat/conversation/:id/messages", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const messages = await storage.getChatMessages(id);
+      res.json(messages);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch conversation messages" });
+    }
+  });
+
+  // ===== ADMIN CHAT MANAGEMENT =====
+  
+  // Get all conversations (admin)
+  app.get("/api/admin/chat/conversations", requireAdmin, async (req, res) => {
+    try {
+      const conversations = await storage.getChatConversations();
+      res.json(conversations);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch conversations" });
+    }
+  });
+
+  // Get chat settings (admin)
+  app.get("/api/admin/chat/settings", requireAdmin, async (req, res) => {
+    try {
+      const settings = await storage.getChatSettings();
+      res.json(settings);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch chat settings" });
+    }
+  });
+
+  // Update chat settings (admin)
+  app.put("/api/admin/chat/settings", requireAdmin, async (req, res) => {
+    try {
+      const validatedData = updateChatSettingsSchema.parse(req.body);
+      const settings = await storage.updateChatSettings(validatedData);
+      res.json(settings);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          message: "Invalid settings data",
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ message: "Failed to update chat settings" });
+      }
+    }
+  });
+
+  // Knowledge base endpoints (admin)
+  app.get("/api/admin/chat/knowledge", requireAdmin, async (req, res) => {
+    try {
+      const knowledge = await storage.getKnowledgeBase();
+      res.json(knowledge);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch knowledge base" });
+    }
+  });
+
+  app.post("/api/admin/chat/knowledge", requireAdmin, async (req, res) => {
+    try {
+      const validatedData = insertKnowledgeBaseSchema.parse(req.body);
+      const knowledge = await storage.createKnowledgeBase(validatedData);
+      res.status(201).json(knowledge);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          message: "Invalid knowledge base data",
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ message: "Failed to create knowledge base item" });
+      }
+    }
+  });
+
+  app.put("/api/admin/chat/knowledge/:id", requireAdmin, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const updateData = insertKnowledgeBaseSchema.partial().parse(req.body);
+      const knowledge = await storage.updateKnowledgeBase(id, updateData);
+      res.json(knowledge);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          message: "Invalid knowledge base data",
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ message: "Failed to update knowledge base item" });
+      }
+    }
+  });
+
+  app.delete("/api/admin/chat/knowledge/:id", requireAdmin, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const success = await storage.deleteKnowledgeBase(id);
+      if (success) {
+        res.json({ message: "Knowledge base item deleted successfully" });
+      } else {
+        res.status(404).json({ message: "Knowledge base item not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ message: "Failed to delete knowledge base item" });
     }
   });
 

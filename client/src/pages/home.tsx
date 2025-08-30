@@ -14,6 +14,7 @@ import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X, ZoomIn } from "lu
 import logoUrl from "@assets/WhatsApp_Image_2025-08-13_at_7.56.31_PM-removebg-preview_1755850108303.png";
 import oldLogoUrl from "@assets/image_1755432338671.png";
 import { AdminLongPressLogo } from "@/components/AdminLongPressLogo";
+import ChatBot from "@/components/ChatBot";
 
 // Portfolio Images
 import portfolioImg1 from "@assets/IMG_0011_1755724301675.jpeg";
@@ -3797,6 +3798,9 @@ export default function Home() {
       {/* Collaboration Popup */}
       <AnimatePresence>
       </AnimatePresence>
+      
+      {/* AI Chat Assistant */}
+      <ChatBot />
     </div>
   );
 }

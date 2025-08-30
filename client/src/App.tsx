@@ -13,6 +13,7 @@ import AdminGallery from "@/pages/admin-gallery";
 import AdminContent from "@/pages/admin-content";
 import AdminContacts from "@/pages/admin-contacts";
 import AdminNewsletter from "@/pages/admin-newsletter";
+import AdminChat from "@/pages/admin-chat";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/admin/content" component={AdminContent} />
       <Route path="/admin/contacts" component={AdminContacts} />
       <Route path="/admin/newsletter" component={AdminNewsletter} />
+      <Route path="/admin/chat" component={AdminChat} />
       <Route component={NotFound} />
     </Switch>
   );

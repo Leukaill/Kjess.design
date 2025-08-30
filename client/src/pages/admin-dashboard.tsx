@@ -23,7 +23,8 @@ import {
   TrendingUp,
   Activity,
   Palette,
-  Shield
+  Shield,
+  Bot
 } from 'lucide-react';
 import { apiRequest } from '@/lib/queryClient';
 
@@ -95,6 +96,13 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       icon: Mail,
       href: '/admin/newsletter',
       description: 'Manage subscribers'
+    },
+    {
+      id: 'chat',
+      label: 'AI Assistant',
+      icon: Bot,
+      href: '/admin/chat',
+      description: 'Manage AI chatbot'
     }
   ];
 

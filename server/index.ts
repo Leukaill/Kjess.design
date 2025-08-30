@@ -26,7 +26,7 @@ clearStorageCache();
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import { clearStorageCache } from "./storage";
+import { clearStorageCache, storage } from "./storage";
 
 const app = express();
 app.use(express.json());
@@ -67,6 +67,23 @@ app.use('/assets/uploads', express.static(path.resolve('attached_assets/uploads'
 
 (async () => {
   const server = await registerRoutes(app);
+
+  // Initialize default chat settings if they don't exist
+  try {
+    const chatSettings = await storage.getChatSettings();
+    if (!chatSettings) {
+      console.log('🤖 Initializing default chat settings...');
+      await storage.updateChatSettings({
+        isEnabled: true,
+        welcomeMessage: "Hello! I'm KJESS AI Assistant. How can I help you with your interior design needs today?",
+        tone: "professional",
+        restrictToRelevantTopics: true
+      });
+      console.log('✅ Default chat settings initialized');
+    }
+  } catch (error) {
+    console.log('⚠️  Could not initialize chat settings:', error);
+  }
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;

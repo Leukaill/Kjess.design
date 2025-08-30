@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type Contact, type InsertContact, type Newsletter, type InsertNewsletter, type Admin, type InsertAdmin, type GalleryImage, type InsertGalleryImage, type SiteContent, type InsertSiteContent, users, contacts, newsletters, admin, galleryImages, siteContent } from "@shared/schema";
+import { type User, type InsertUser, type Contact, type InsertContact, type Newsletter, type InsertNewsletter, type Admin, type InsertAdmin, type GalleryImage, type InsertGalleryImage, type SiteContent, type InsertSiteContent, type ChatConversation, type InsertChatConversation, type ChatMessage, type InsertChatMessage, type ChatSettings, type UpdateChatSettings, type KnowledgeBase, type InsertKnowledgeBase, users, contacts, newsletters, admin, galleryImages, siteContent, chatConversations, chatMessages, chatSettings, chatKnowledgeBase } from "@shared/schema";
 import { randomUUID } from "crypto";
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
@@ -35,6 +35,23 @@ export interface IStorage {
   getSiteContent(section: string): Promise<SiteContent | undefined>;
   getAllSiteContent(): Promise<SiteContent[]>;
   updateSiteContent(section: string, content: string): Promise<SiteContent>;
+  
+  // Chat functionality
+  createChatConversation(conversation: InsertChatConversation): Promise<ChatConversation>;
+  getChatConversation(id: string): Promise<ChatConversation | undefined>;
+  getChatConversations(): Promise<ChatConversation[]>;
+  createChatMessage(message: InsertChatMessage): Promise<ChatMessage>;
+  getChatMessages(conversationId: string): Promise<ChatMessage[]>;
+  
+  // Chat settings
+  getChatSettings(): Promise<ChatSettings | undefined>;
+  updateChatSettings(settings: UpdateChatSettings): Promise<ChatSettings>;
+  
+  // Knowledge base
+  getKnowledgeBase(): Promise<KnowledgeBase[]>;
+  createKnowledgeBase(item: InsertKnowledgeBase): Promise<KnowledgeBase>;
+  updateKnowledgeBase(id: string, item: Partial<InsertKnowledgeBase>): Promise<KnowledgeBase>;
+  deleteKnowledgeBase(id: string): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
@@ -230,6 +247,51 @@ export class MemStorage implements IStorage {
     this.siteContentData.set(section, siteContentItem);
     return siteContentItem;
   }
+
+  // Chat functionality methods (MemStorage implementation)
+  async createChatConversation(insertConversation: InsertChatConversation): Promise<ChatConversation> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async getChatConversation(id: string): Promise<ChatConversation | undefined> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async getChatConversations(): Promise<ChatConversation[]> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async createChatMessage(insertMessage: InsertChatMessage): Promise<ChatMessage> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async getChatMessages(conversationId: string): Promise<ChatMessage[]> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async getChatSettings(): Promise<ChatSettings | undefined> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async updateChatSettings(settings: UpdateChatSettings): Promise<ChatSettings> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async getKnowledgeBase(): Promise<KnowledgeBase[]> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async createKnowledgeBase(insertItem: InsertKnowledgeBase): Promise<KnowledgeBase> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async updateKnowledgeBase(id: string, updateData: Partial<InsertKnowledgeBase>): Promise<KnowledgeBase> {
+    throw new Error("Chat functionality requires database storage");
+  }
+
+  async deleteKnowledgeBase(id: string): Promise<boolean> {
+    throw new Error("Chat functionality requires database storage");
+  }
 }
 
 // Database storage implementation using Drizzle ORM
@@ -244,6 +306,7 @@ export class DatabaseStorage implements IStorage {
     // Log database connection (without password) for debugging
     const connectionInfo = process.env.DATABASE_URL.split('@')[1] || 'unknown';
     console.log("✅ Connecting to database:", connectionInfo);
+    console.log("🔍 Full DATABASE_URL pattern:", process.env.DATABASE_URL.replace(/:[^:@]*@/, ':****@'));
     
     // Verify we're not connecting to Replit's default database
     if (connectionInfo.includes('helium')) {
@@ -393,6 +456,83 @@ export class DatabaseStorage implements IStorage {
         .returning();
       return result[0];
     }
+  }
+
+  // Chat functionality methods
+  async createChatConversation(insertConversation: InsertChatConversation): Promise<ChatConversation> {
+    const result = await this.db.insert(chatConversations).values(insertConversation).returning();
+    return result[0];
+  }
+
+  async getChatConversation(id: string): Promise<ChatConversation | undefined> {
+    const result = await this.db.select().from(chatConversations).where(eq(chatConversations.id, id)).limit(1);
+    return result[0];
+  }
+
+  async getChatConversations(): Promise<ChatConversation[]> {
+    return await this.db.select().from(chatConversations).orderBy(chatConversations.createdAt);
+  }
+
+  async createChatMessage(insertMessage: InsertChatMessage): Promise<ChatMessage> {
+    const result = await this.db.insert(chatMessages).values(insertMessage).returning();
+    return result[0];
+  }
+
+  async getChatMessages(conversationId: string): Promise<ChatMessage[]> {
+    return await this.db.select().from(chatMessages)
+      .where(eq(chatMessages.conversationId, conversationId))
+      .orderBy(chatMessages.timestamp);
+  }
+
+  // Chat settings methods
+  async getChatSettings(): Promise<ChatSettings | undefined> {
+    const result = await this.db.select().from(chatSettings).limit(1);
+    return result[0];
+  }
+
+  async updateChatSettings(settings: UpdateChatSettings): Promise<ChatSettings> {
+    const existing = await this.getChatSettings();
+    
+    if (existing) {
+      const result = await this.db.update(chatSettings)
+        .set({ ...settings, updatedAt: new Date() })
+        .where(eq(chatSettings.id, existing.id))
+        .returning();
+      return result[0];
+    } else {
+      const result = await this.db.insert(chatSettings)
+        .values({ ...settings })
+        .returning();
+      return result[0];
+    }
+  }
+
+  // Knowledge base methods
+  async getKnowledgeBase(): Promise<KnowledgeBase[]> {
+    return await this.db.select().from(chatKnowledgeBase)
+      .where(eq(chatKnowledgeBase.isActive, true))
+      .orderBy(chatKnowledgeBase.category, chatKnowledgeBase.title);
+  }
+
+  async createKnowledgeBase(insertItem: InsertKnowledgeBase): Promise<KnowledgeBase> {
+    const result = await this.db.insert(chatKnowledgeBase).values(insertItem).returning();
+    return result[0];
+  }
+
+  async updateKnowledgeBase(id: string, updateData: Partial<InsertKnowledgeBase>): Promise<KnowledgeBase> {
+    const result = await this.db.update(chatKnowledgeBase)
+      .set({ ...updateData, updatedAt: new Date() })
+      .where(eq(chatKnowledgeBase.id, id))
+      .returning();
+    if (!result[0]) {
+      throw new Error("Knowledge base item not found");
+    }
+    return result[0];
+  }
+
+  async deleteKnowledgeBase(id: string): Promise<boolean> {
+    const result = await this.db.delete(chatKnowledgeBase).where(eq(chatKnowledgeBase.id, id)).returning();
+    return result.length > 0;
   }
 }
 
