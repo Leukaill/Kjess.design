@@ -40,10 +40,16 @@ const AdminGallery = () => {
   const queryClient = useQueryClient();
   const { toast } = useToast();
 
-  // Fetch gallery images
+  // Fetch gallery images using the same logic as public gallery
   const { data: galleryImages, isLoading } = useQuery({
-    queryKey: ['/api/admin/gallery'],
-    queryFn: () => apiRequest('GET', '/api/admin/gallery', {}),
+    queryKey: ['/api/gallery/public'],
+    queryFn: async () => {
+      const response = await fetch('/api/gallery/public');
+      if (response.ok) {
+        return await response.json();
+      }
+      return [];
+    },
   });
 
   // Upload image mutation
@@ -78,7 +84,7 @@ const AdminGallery = () => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/admin/gallery'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/gallery/public'] });
       setIsUploadModalOpen(false);
       setUploadFile(null);
       setPreviewUrl('');
@@ -100,7 +106,7 @@ const AdminGallery = () => {
   const deleteMutation = useMutation({
     mutationFn: (id: string) => apiRequest('DELETE', `/api/admin/gallery/${id}`, {}),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/admin/gallery'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/gallery/public'] });
       toast({
         title: "Success",
         description: "Image deleted successfully!",
@@ -120,7 +126,7 @@ const AdminGallery = () => {
     mutationFn: ({ id, data }: { id: string; data: any }) => 
       apiRequest('PUT', `/api/admin/gallery/${id}`, data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['/api/admin/gallery'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/gallery/public'] });
       setIsEditModalOpen(false);
       setSelectedImage(null);
       toast({
