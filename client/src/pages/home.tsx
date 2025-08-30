@@ -681,7 +681,7 @@ export default function Home() {
         </div>
 
         {/* Elegant Content Container */}
-        <div className="relative z-10 text-center min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div className="relative z-[60] text-center min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
           {/* Elegant Brand Typography */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
