@@ -14,6 +14,7 @@ import {
   Mail,
   Phone
 } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { apiRequest } from '@/lib/queryClient';
 
 interface Message {
@@ -21,6 +22,11 @@ interface Message {
   message: string;
   isFromUser: boolean;
   timestamp: string;
+  actionButton?: {
+    type: 'whatsapp' | 'contact' | 'phone';
+    label: string;
+    action: string;
+  };
 }
 
 interface ChatResponse {
@@ -110,6 +116,18 @@ const ChatBot = () => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
+    }
+  };
+
+  const handleActionButton = (button: { type: 'whatsapp' | 'contact' | 'phone'; label: string; action: string }) => {
+    if (button.type === 'whatsapp') {
+      window.open(button.action, '_blank');
+    } else if (button.type === 'phone') {
+      window.location.href = button.action;
+    } else if (button.type === 'contact') {
+      // Scroll to contact section
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
     }
   };
 
@@ -282,6 +300,29 @@ const ChatBot = () => {
                                 : 'bg-white text-[#2E2E2E] rounded-bl-md border-gray-100'
                             }`}>
                               <p className="text-sm font-light leading-relaxed">{msg.message}</p>
+                              
+                              {/* Action Button */}
+                              {msg.actionButton && !msg.isFromUser && (
+                                <div className="mt-3 pt-3 border-t border-gray-100">
+                                  <Button
+                                    onClick={() => handleActionButton(msg.actionButton!)}
+                                    className={`w-full flex items-center justify-center space-x-2 rounded-xl transition-all duration-300 ${
+                                      msg.actionButton.type === 'whatsapp' 
+                                        ? 'bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl'
+                                        : msg.actionButton.type === 'phone'
+                                        ? 'bg-blue-500 hover:bg-blue-600 text-white shadow-lg hover:shadow-xl'
+                                        : 'bg-bronze hover:bg-bronze/90 text-white shadow-lg hover:shadow-xl'
+                                    }`}
+                                    size="sm"
+                                  >
+                                    {msg.actionButton.type === 'whatsapp' && <MessageCircle className="w-4 h-4" />}
+                                    {msg.actionButton.type === 'phone' && <Phone className="w-4 h-4" />}
+                                    {msg.actionButton.type === 'contact' && <Mail className="w-4 h-4" />}
+                                    <span className="text-sm font-medium">{msg.actionButton.label}</span>
+                                  </Button>
+                                </div>
+                              )}
+                              
                               <p className={`text-xs mt-2 font-light ${
                                 msg.isFromUser ? 'text-gray-300' : 'text-gray-500'
                               }`}>

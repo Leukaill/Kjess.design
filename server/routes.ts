@@ -604,16 +604,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
           settings?.tone || "professional"
         );
         
+        // Parse action buttons from AI response
+        let cleanMessage = aiResponse.message;
+        let actionButton = null;
+        
+        // Check for WhatsApp button command
+        const whatsappMatch = aiResponse.message.match(/WHATSAPP_BUTTON:([^:]+):(.+)/);
+        if (whatsappMatch) {
+          const [fullMatch, label, url] = whatsappMatch;
+          actionButton = {
+            type: 'whatsapp' as const,
+            label: label.trim(),
+            action: url.trim()
+          };
+          cleanMessage = aiResponse.message.replace(fullMatch, '').trim();
+        }
+        
         // Save AI response
         const aiMessage = await storage.createChatMessage({
           conversationId,
-          message: aiResponse.message,
+          message: cleanMessage,
           isFromUser: false
         });
         
         res.json({
           userMessage: { conversationId, message, isFromUser },
-          aiMessage,
+          aiMessage: {
+            ...aiMessage,
+            actionButton
+          },
           suggestedAction: aiResponse.suggestedAction
         });
       } else {
