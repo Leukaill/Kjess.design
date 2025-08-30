@@ -3705,96 +3705,34 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Beautiful Back to Top Button with Scroll Progress */}
-      <motion.div
+      {/* Simple Arrow Button to Top */}
+      <motion.button
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ 
           opacity: showBackToTop ? 1 : 0,
-          scale: showBackToTop ? 1 : 0.8,
-          y: showBackToTop ? 0 : 20
+          scale: showBackToTop ? 1 : 0.8
         }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className={`fixed bottom-8 right-8 z-50 ${!showBackToTop ? 'pointer-events-none' : ''}`}
+        transition={{ duration: 0.3 }}
+        onClick={scrollToTop}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className={`fixed bottom-6 right-6 z-40 w-10 h-10 bg-charcoal/80 hover:bg-bronze/90 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center backdrop-blur-sm ${!showBackToTop ? 'pointer-events-none' : ''}`}
+        data-testid="button-back-to-top"
       >
-        <div className="relative group">
-          {/* Button */}
-          <motion.button
-            onClick={scrollToTop}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative w-16 h-16 bg-gradient-to-br from-charcoal via-charcoal/90 to-charcoal/80 hover:from-bronze hover:via-bronze/90 hover:to-bronze/80 text-white rounded-full shadow-2xl transition-all duration-700 ease-out flex items-center justify-center backdrop-blur-sm border border-white/10 hover:border-white/20 group-hover:shadow-bronze/20"
-            style={{
-              boxShadow: '0 8px 32px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)'
-            }}
-            data-testid="button-back-to-top"
-          >
-            {/* Progress ring inside button */}
-            <svg 
-              className="absolute inset-1 w-14 h-14 transform -rotate-90" 
-              viewBox="0 0 56 56"
-            >
-              {/* Background ring */}
-              <circle
-                cx="28"
-                cy="28"
-                r="25"
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.1)"
-                strokeWidth="2"
-              />
-              {/* Progress ring */}
-              <circle
-                cx="28"
-                cy="28"
-                r="25"
-                fill="none"
-                stroke="#d4af37"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeDasharray="157.08"
-                strokeDashoffset={157.08 * (1 - scrollProgress)}
-                className="transition-all duration-100 ease-out"
-                style={{ 
-                  filter: 'drop-shadow(0 0 3px rgba(212, 175, 55, 0.8))',
-                  opacity: scrollProgress > 0 ? 1 : 0
-                }}
-              />
-            </svg>
-            
-            {/* Up arrow */}
-            <svg
-              className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1 z-10 relative"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2.5} 
-                d="M5 10l7-7m0 0l7 7m-7-7v18" 
-              />
-            </svg>
-            
-            {/* Ripple effect on hover */}
-            <div className="absolute inset-0 rounded-full bg-white/5 scale-0 group-hover:scale-110 transition-transform duration-700 ease-out"></div>
-          </motion.button>
-          
-
-          
-          {/* Simplified decorative elements */}
-          <div className={`absolute -top-2 -right-2 w-3 h-3 bg-bronze/60 rounded-full transition-opacity duration-300 ${showBackToTop ? 'opacity-60' : 'opacity-0'}`}></div>
-          <div className={`absolute -bottom-1 -left-1 w-2 h-2 bg-cream/60 rounded-full transition-opacity duration-300 ${showBackToTop ? 'opacity-40' : 'opacity-0'}`}></div>
-          
-          {/* Tooltip */}
-          <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            <div className="bg-charcoal/90 backdrop-blur-sm text-cream text-xs px-3 py-2 rounded-lg whitespace-nowrap border border-white/10 shadow-xl">
-              Back to top
-              <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-charcoal/90"></div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="m5 15 7-7 7 7" 
+          />
+        </svg>
+      </motion.button>
       {/* Collaboration Popup */}
       <AnimatePresence>
       </AnimatePresence>
