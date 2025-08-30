@@ -1769,7 +1769,7 @@ export default function Home() {
               {
                 name: "Operational Manager",
                 role: "Operations & Strategy",
-                image: "/operational-manager.png",
+                image: "https://via.placeholder.com/400x500/8B6F35/FFFFFF?text=Team+Member",
                 bio: "Expert in operational excellence and strategic planning for luxury interior design projects",
                 linkedin: "#",
                 instagram: "#",
