@@ -1,8 +1,13 @@
 import dotenv from "dotenv";
+// Load environment variables first
+dotenv.config();
+
 // CRITICAL: Force unset system DATABASE_URL to prevent conflicts with Replit's built-in databases
 // This ensures our .env file takes precedence and connects to the correct Supabase database
 // DO NOT REMOVE this line - it prevents connection to wrong databases like "heliumdb"
 delete process.env.DATABASE_URL;
+
+// Reload the DATABASE_URL from .env after deletion
 dotenv.config();
 
 import express, { type Request, Response, NextFunction } from "express";
@@ -74,8 +79,7 @@ app.use('/assets/uploads', express.static(path.resolve('attached_assets/uploads'
   const port = parseInt(process.env.PORT || '5000', 10);
   server.listen({
     port,
-    host: "0.0.0.0",
-    reusePort: true,
+    host: "localhost",
   }, () => {
     log(`serving on port ${port}`);
   });

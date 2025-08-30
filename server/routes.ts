@@ -230,7 +230,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Image upload endpoint - Now automatically creates gallery entries
   app.post("/api/admin/upload", requireAdmin, upload.single('image'), async (req, res) => {
     try {
+      console.log('📤 Upload request received');
+      console.log('📁 File info:', req.file ? `${req.file.originalname} (${req.file.size} bytes)` : 'No file');
+      console.log('📋 Form data:', req.body);
+
       if (!req.file) {
+        console.log('❌ No file provided');
         return res.status(400).json({ message: "No image file provided" });
       }
 
@@ -244,11 +249,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         featured = false
       } = req.body;
       
+      console.log('🔄 Processing image upload...');
+      
       // Upload the image first
       const uploadResult = await processAndUploadImage(req.file.buffer, 'gallery');
       
+      console.log('✅ Image processing completed:', uploadResult);
+      
       // Create gallery entry automatically if required fields are provided
       if (title && subcategory && description) {
+        console.log('📊 Creating gallery entry...');
+        
         const galleryImageData = {
           title,
           category,
@@ -264,20 +275,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         const galleryImage = await storage.createGalleryImage(galleryImageData);
         
+        console.log('✅ Gallery entry created successfully');
+        
         res.json({
           message: "Image uploaded and gallery entry created successfully",
           upload: uploadResult,
           galleryImage
         });
       } else {
+        console.log('ℹ️  Image uploaded without gallery entry (missing required fields)');
+        
         res.json({
           message: "Image uploaded successfully",
           ...uploadResult
         });
       }
     } catch (error) {
-      console.error('Upload error:', error);
-      res.status(500).json({ message: "Failed to upload image" });
+      console.error('❌ Upload error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      res.status(500).json({ 
+        message: "Failed to upload image", 
+        error: errorMessage,
+        details: process.env.NODE_ENV === 'development' ? error : undefined
+      });
     }
   });
 

@@ -49,17 +49,33 @@ const AdminGallery = () => {
   // Upload image mutation
   const uploadMutation = useMutation({
     mutationFn: async (formData: FormData) => {
-      const response = await fetch('/api/admin/upload', {
-        method: 'POST',
-        credentials: 'include',
-        body: formData,
-      });
+      console.log('🚀 Starting upload request...');
       
-      if (!response.ok) {
-        throw new Error('Upload failed');
+      try {
+        const response = await fetch('/api/admin/upload', {
+          method: 'POST',
+          credentials: 'include',
+          body: formData,
+        });
+        
+        console.log('📡 Response received:', response.status, response.statusText);
+        
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          const errorMessage = errorData.message || `Upload failed: ${response.status} ${response.statusText}`;
+          throw new Error(errorMessage);
+        }
+        
+        const result = await response.json();
+        console.log('✅ Upload successful:', result);
+        return result;
+      } catch (error) {
+        console.error('❌ Upload error:', error);
+        if (error instanceof TypeError && error.message.includes('fetch')) {
+          throw new Error('Cannot connect to server. Please make sure the server is running.');
+        }
+        throw error;
       }
-      
-      return response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/gallery'] });
@@ -216,7 +232,7 @@ const AdminGallery = () => {
                 Upload Image
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-md">
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle>Upload New Image</DialogTitle>
                 <DialogDescription>
@@ -403,11 +419,14 @@ const UploadForm: React.FC<{
   };
 
   return (
-    <form 
-      onSubmit={handleSubmit} 
-      className="space-y-4"
-      onSubmitCapture={() => console.log('Upload form onSubmit event captured')}
-    >
+    <div className="flex flex-col max-h-[75vh]">
+      <div className="flex-1 overflow-y-auto pr-2">
+        <form 
+          id="upload-form"
+          onSubmit={handleSubmit} 
+          className="space-y-4"
+          onSubmitCapture={() => console.log('Upload form onSubmit event captured')}
+        >
       {/* File Upload */}
       <div className="space-y-2">
         <Label htmlFor="image">Image File</Label>
@@ -435,7 +454,7 @@ const UploadForm: React.FC<{
       </div>
 
       {/* Form Fields */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="upload-title">Title</Label>
           <Input
@@ -486,7 +505,7 @@ const UploadForm: React.FC<{
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="upload-projectDate">Project Date</Label>
           <Input
@@ -521,15 +540,32 @@ const UploadForm: React.FC<{
         />
         <Label htmlFor="upload-featured">Featured Image</Label>
       </div>
-
-      <button 
-        type="submit" 
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-        disabled={isLoading}
-      >
-        {isLoading ? 'Uploading...' : 'Upload Image'}
-      </button>
-    </form>
+        </form>
+      </div>
+      
+      {/* Fixed Submit Button Area */}
+      <div className="border-t border-gray-200 pt-4 mt-4 bg-white">
+        <button 
+          type="submit" 
+          form="upload-form"
+          className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-3 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
+          disabled={isLoading}
+          onClick={handleSubmit}
+        >
+          {isLoading ? (
+            <div className="flex items-center justify-center">
+              <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+              Uploading to Supabase...
+            </div>
+          ) : (
+            <div className="flex items-center justify-center">
+              <Upload className="w-4 h-4 mr-2" />
+              Upload Image
+            </div>
+          )}
+        </button>
+      </div>
+    </div>
   );
 };
 
@@ -556,7 +592,7 @@ const EditForm: React.FC<{
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="edit-title">Title</Label>
           <Input
@@ -603,7 +639,7 @@ const EditForm: React.FC<{
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="edit-projectDate">Project Date</Label>
           <Input
