@@ -1,6 +1,10 @@
 import dotenv from "dotenv";
-// Load environment variables first
-dotenv.config();
+import path from "path";
+
+// Load environment variables first with explicit path
+const envPath = path.resolve(process.cwd(), '.env');
+console.log('🔍 Loading .env from:', envPath);
+dotenv.config({ path: envPath });
 
 // CRITICAL: Force unset system DATABASE_URL to prevent conflicts with Replit's built-in databases
 // This ensures our .env file takes precedence and connects to the correct Supabase database
@@ -8,10 +12,15 @@ dotenv.config();
 delete process.env.DATABASE_URL;
 
 // Reload the DATABASE_URL from .env after deletion
-dotenv.config();
+dotenv.config({ path: envPath });
+
+// Debug environment loading
+console.log('🔍 Environment variables loaded:');
+console.log('DATABASE_URL length:', (process.env.DATABASE_URL || '').length);
+console.log('SUPABASE_URL length:', (process.env.SUPABASE_URL || '').length);
+console.log('SESSION_SECRET length:', (process.env.SESSION_SECRET || '').length);
 
 import express, { type Request, Response, NextFunction } from "express";
-import path from "path";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 

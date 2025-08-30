@@ -3,35 +3,46 @@ import sharp from 'sharp';
 import multer from 'multer';
 import { randomUUID } from 'crypto';
 
-// Initialize Supabase client with service role key for full permissions
-const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+// Lazy initialization to ensure environment variables are loaded
+let supabase: ReturnType<typeof createClient> | null | false = null;
 
-// Debug logging
-console.log('🔍 Debug - SUPABASE_URL:', supabaseUrl ? `${supabaseUrl.substring(0, 30)}...` : 'NOT SET');
-console.log('🔍 Debug - SUPABASE_SERVICE_ROLE_KEY:', supabaseServiceKey ? `${supabaseServiceKey.substring(0, 30)}...` : 'NOT SET');
+function initializeSupabase(): ReturnType<typeof createClient> | null {
+  if (supabase !== null) return supabase === false ? null : supabase;
+  
+  const supabaseUrl = process.env.SUPABASE_URL || '';
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
-let supabase: ReturnType<typeof createClient> | null = null;
+  console.log('🔍 Debug - SUPABASE_URL:', supabaseUrl ? `${supabaseUrl.substring(0, 30)}...` : 'NOT SET');
+  console.log('🔍 Debug - SUPABASE_SERVICE_ROLE_KEY:', supabaseServiceKey ? `${supabaseServiceKey.substring(0, 30)}...` : 'NOT SET');
 
-if (supabaseUrl && supabaseServiceKey) {
-  try {
-    supabase = createClient(supabaseUrl, supabaseServiceKey, {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false
-      }
-    });
-    console.log('✅ Supabase client initialized with service role key');
-  } catch (error) {
-    console.warn('❌ Failed to initialize Supabase client:', error);
+  if (supabaseUrl && supabaseServiceKey) {
+    try {
+      const client = createClient(supabaseUrl, supabaseServiceKey, {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false
+        }
+      });
+      supabase = client;
+      console.log('✅ Supabase client initialized with service role key');
+      return client;
+    } catch (error) {
+      console.warn('❌ Failed to initialize Supabase client:', error);
+      supabase = false; // Mark as failed
+      return null;
+    }
+  } else {
+    console.log('⚠️  Supabase configuration not provided. Image uploads will use local storage fallback.');
+    console.log('🔍 Debug - supabaseUrl length:', supabaseUrl.length);
+    console.log('🔍 Debug - supabaseServiceKey length:', supabaseServiceKey.length);
+    supabase = false; // Mark as failed
+    return null;
   }
-} else {
-  console.log('⚠️  Supabase configuration not provided. Image uploads will use local storage fallback.');
-  console.log('🔍 Debug - supabaseUrl length:', supabaseUrl.length);
-  console.log('🔍 Debug - supabaseServiceKey length:', supabaseServiceKey.length);
 }
 
-export { supabase };
+export function getSupabase() {
+  return initializeSupabase();
+}
 
 // Multer memory storage for processing uploads
 export const upload = multer({ 
@@ -95,9 +106,10 @@ export async function processAndUploadImage(
       .webp({ quality: 80 })
       .toBuffer();
 
-    if (supabase) {
+    const supabaseClient = getSupabase();
+    if (supabaseClient) {
       console.log('☁️  Uploading to Supabase Storage...');
-      return await uploadToSupabaseWithRetry(processedImage, thumbnailImage, category, filename, thumbnailFilename);
+      return await uploadToSupabaseWithRetry(supabaseClient, processedImage, thumbnailImage, category, filename, thumbnailFilename);
     } else {
       console.log('💾 Using local storage fallback...');
       return await uploadToLocalStorage(processedImage, thumbnailImage, filename, thumbnailFilename);
@@ -111,6 +123,7 @@ export async function processAndUploadImage(
 
 // Upload to Supabase with retry logic
 async function uploadToSupabaseWithRetry(
+  supabaseClient: ReturnType<typeof createClient>,
   processedImage: Buffer,
   thumbnailImage: Buffer,
   category: string,
@@ -126,7 +139,7 @@ async function uploadToSupabaseWithRetry(
       
       // Upload main image
       console.log('📤 Uploading main image...');
-      const { data: mainUpload, error: mainError } = await supabase!.storage
+      const { data: mainUpload, error: mainError } = await supabaseClient.storage
         .from(bucket)
         .upload(`${category}/${filename}`, processedImage, {
           contentType: 'image/webp',
@@ -142,7 +155,7 @@ async function uploadToSupabaseWithRetry(
 
       // Upload thumbnail
       console.log('📤 Uploading thumbnail...');
-      const { data: thumbUpload, error: thumbError } = await supabase!.storage
+      const { data: thumbUpload, error: thumbError } = await supabaseClient.storage
         .from(bucket)
         .upload(`${category}/thumbnails/${thumbnailFilename}`, thumbnailImage, {
           contentType: 'image/webp',
@@ -158,11 +171,11 @@ async function uploadToSupabaseWithRetry(
 
       // Get public URLs
       console.log('🔗 Getting public URLs...');
-      const { data: mainPublicUrl } = supabase!.storage
+      const { data: mainPublicUrl } = supabaseClient.storage
         .from(bucket)
         .getPublicUrl(`${category}/${filename}`);
 
-      const { data: thumbPublicUrl } = supabase!.storage
+      const { data: thumbPublicUrl } = supabaseClient.storage
         .from(bucket)
         .getPublicUrl(`${category}/thumbnails/${thumbnailFilename}`);
 
@@ -228,7 +241,8 @@ async function uploadToLocalStorage(
 
 // Delete image from Supabase Storage
 export async function deleteImageFromStorage(url: string): Promise<boolean> {
-  if (!supabase) {
+  const supabaseClient = getSupabase();
+  if (!supabaseClient) {
     console.log('Image deletion skipped - Supabase not configured');
     return true; // Return true to prevent errors in development
   }
@@ -240,7 +254,7 @@ export async function deleteImageFromStorage(url: string): Promise<boolean> {
     
     const filePath = urlParts[1];
     
-    const { error } = await supabase.storage
+    const { error } = await supabaseClient.storage
       .from('gallery-images')
       .remove([filePath]);
 
@@ -253,7 +267,8 @@ export async function deleteImageFromStorage(url: string): Promise<boolean> {
 
 // Initialize Supabase Storage bucket with proper policies
 export async function initializeStorageBucket(): Promise<void> {
-  if (!supabase) {
+  const supabaseClient = getSupabase();
+  if (!supabaseClient) {
     console.log('⚠️  Skipping storage bucket initialization - Supabase not configured');
     return;
   }
@@ -261,7 +276,7 @@ export async function initializeStorageBucket(): Promise<void> {
   try {
     console.log('🔧 Initializing Supabase Storage bucket...');
     
-    const { data: buckets, error: listError } = await supabase.storage.listBuckets();
+    const { data: buckets, error: listError } = await supabaseClient.storage.listBuckets();
     
     if (listError) {
       console.warn('❌ Could not list storage buckets:', listError);
@@ -272,7 +287,7 @@ export async function initializeStorageBucket(): Promise<void> {
     
     if (!bucketExists) {
       console.log('📦 Creating gallery-images bucket...');
-      const { error: createError } = await supabase.storage.createBucket('gallery-images', {
+      const { error: createError } = await supabaseClient.storage.createBucket('gallery-images', {
         public: true,
         allowedMimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
         fileSizeLimit: 10 * 1024 * 1024 // 10MB
@@ -298,7 +313,8 @@ export async function initializeStorageBucket(): Promise<void> {
 
 // Set up bucket policies for public read access
 async function setupBucketPolicies(): Promise<void> {
-  if (!supabase) return;
+  const supabaseClient = getSupabase();
+  if (!supabaseClient) return;
 
   try {
     console.log('🔐 Setting up bucket policies...');

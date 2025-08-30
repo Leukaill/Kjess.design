@@ -23,6 +23,7 @@ function Router() {
       <Route path="/gallery/:category" component={Gallery} />
       <Route path="/about" component={About} />
       <Route path="/cookie-policy" component={CookiePolicy} />
+      <Route path="/admin" component={AdminLogin} />
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin/dashboard" component={AdminDashboard} />
       <Route path="/admin/gallery" component={AdminGallery} />
