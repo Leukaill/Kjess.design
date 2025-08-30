@@ -3705,124 +3705,43 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Boss-Level Scroll to Top Button with Progress */}
-      <motion.div
+      {/* Minimalist Scroll to Top Arrow */}
+      <motion.button
         initial={{ opacity: 0, x: -20 }}
         animate={{ 
           opacity: showBackToTop ? 1 : 0,
           x: showBackToTop ? 0 : -20
         }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed bottom-6 left-6 z-40 ${!showBackToTop ? 'pointer-events-none' : ''}`}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        onClick={scrollToTop}
+        whileHover={{ scale: 1.1, y: -3 }}
+        whileTap={{ scale: 0.9 }}
+        className={`fixed bottom-6 left-6 z-40 p-0 bg-transparent ${!showBackToTop ? 'pointer-events-none' : ''}`}
+        data-testid="button-back-to-top"
       >
-        <div className="relative group">
-          {/* Main Button */}
-          <motion.button
-            onClick={scrollToTop}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative w-14 h-14 bg-gradient-to-br from-charcoal via-charcoal/90 to-bronze/20 hover:from-bronze hover:via-bronze/90 hover:to-charcoal/80 text-white rounded-full shadow-2xl transition-all duration-500 flex items-center justify-center backdrop-blur-sm border-2 border-white/10 hover:border-bronze/30 group-hover:shadow-bronze/20"
-            style={{
-              boxShadow: '0 10px 40px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)'
-            }}
-            data-testid="button-back-to-top"
-          >
-            {/* Progress Ring */}
-            <svg 
-              className="absolute inset-0 w-14 h-14 transform -rotate-90" 
-              viewBox="0 0 56 56"
-            >
-              {/* Background ring */}
-              <circle
-                cx="28"
-                cy="28"
-                r="24"
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.1)"
-                strokeWidth="1.5"
-              />
-              {/* Progress ring */}
-              <motion.circle
-                cx="28"
-                cy="28"
-                r="24"
-                fill="none"
-                stroke="#d4af37"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeDasharray="150.8"
-                strokeDashoffset={150.8 * (1 - scrollProgress)}
-                className="transition-all duration-150 ease-out"
-                style={{ 
-                  filter: 'drop-shadow(0 0 4px rgba(212, 175, 55, 0.6))',
-                  opacity: scrollProgress > 0.05 ? 1 : 0
-                }}
-                animate={{
-                  stroke: scrollProgress > 0.8 ? '#22c55e' : '#d4af37'
-                }}
-                transition={{ duration: 0.3 }}
-              />
-            </svg>
-            
-            {/* Arrow Icon */}
-            <motion.svg
-              className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1 z-10 relative"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              animate={{
-                y: [0, -2, 0]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2.5} 
-                d="m5 15 7-7 7 7" 
-              />
-            </motion.svg>
-            
-            {/* Hover Ripple Effect */}
-            <div className="absolute inset-0 rounded-full bg-bronze/10 scale-0 group-hover:scale-110 transition-transform duration-500 ease-out"></div>
-          </motion.button>
-          
-          {/* Elegant Side Indicator */}
-          <motion.div
-            className="absolute top-1/2 -right-3 transform -translate-y-1/2"
-            animate={{
-              opacity: scrollProgress > 0.3 ? 1 : 0,
-              x: scrollProgress > 0.3 ? 0 : -10
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="w-2 h-8 bg-gradient-to-t from-bronze/60 to-bronze/20 rounded-full shadow-lg"></div>
-          </motion.div>
-          
-          {/* Percentage Tooltip */}
-          <motion.div
-            className="absolute -top-12 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-            animate={{
-              y: [0, -2, 0]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5
-            }}
-          >
-            <div className="bg-charcoal/95 backdrop-blur-sm text-cream text-xs px-3 py-2 rounded-lg whitespace-nowrap border border-bronze/20 shadow-xl">
-              {Math.round(scrollProgress * 100)}% scrolled
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-charcoal/95"></div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.div>
+        <motion.svg
+          className="w-8 h-8 text-charcoal hover:text-bronze transition-colors duration-300 drop-shadow-lg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          animate={{
+            y: [0, -4, 0]
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{
+            filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3)) drop-shadow(0 0 0 rgba(255,255,255,0.8))'
+          }}
+        >
+          <path 
+            fillRule="evenodd" 
+            d="M11.47 2.47a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06l-6.22-6.22V21a.75.75 0 0 1-1.5 0V4.81l-6.22 6.22a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" 
+            clipRule="evenodd" 
+          />
+        </motion.svg>
+      </motion.button>
       {/* Collaboration Popup */}
       <AnimatePresence>
       </AnimatePresence>
