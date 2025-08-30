@@ -2951,7 +2951,7 @@ export default function Home() {
                   
                   {/* Email */}
                   <a 
-                    href="mailto:karumujess@gmail.com"
+                    href="mailto:kjessdesign@info.com"
                     className="flex items-center space-x-4 group hover:bg-cream/20 p-4 -m-4 transition-colors duration-300 cursor-pointer"
                     data-testid="email-link"
                   >
@@ -2960,7 +2960,7 @@ export default function Home() {
                     </div>
                     <div className="flex-1">
                       <p className="text-sm font-medium text-charcoal mb-1">Email</p>
-                      <p className="text-sm text-charcoal/70">karumujess@gmail.com</p>
+                      <p className="text-sm text-charcoal/70">kjessdesign@info.com</p>
                     </div>
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="w-8 h-8 border border-bronze/30 flex items-center justify-center">

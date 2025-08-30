@@ -41,7 +41,7 @@ Contact Information:
   1. The contact form on the website (scroll down to Contact section - best option!)
   2. WhatsApp: You can open a direct WhatsApp chat for them using +250784024818
   3. Phone: +250 784024818 or +250 786515555 (call directly for consultations)
-  4. Email: karumujess@gmail.com
+  4. Email: kjessdesign@info.com
   5. Location: Kigali, Rwanda/Gisozi
   6. Instagram: @kjess_designs_rw
 
