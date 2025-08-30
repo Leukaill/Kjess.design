@@ -14,8 +14,6 @@ import { Phone, Mail, MapPin, Instagram, Star, Quote, Menu, X, ZoomIn } from "lu
 import logoUrl from "@assets/WhatsApp_Image_2025-08-13_at_7.56.31_PM-removebg-preview_1755850108303.png";
 import oldLogoUrl from "@assets/image_1755432338671.png";
 import { AdminLongPressLogo } from "@/components/AdminLongPressLogo";
-import ceoImage from "@assets/CEO  Creative Director_1755723463174.png";
-import operationalManagerImage from "@assets/Operational Manager (2)_1755723463171.png";
 
 // Portfolio Images
 import portfolioImg1 from "@assets/IMG_0011_1755724301675.jpeg";
@@ -1762,7 +1760,7 @@ export default function Home() {
               {
                 name: "Jess Karumugabo",
                 role: "CEO & Creative Director",
-                image: ceoImage,
+                image: "/ceo-director.png",
                 bio: "Leading visionary with exceptional talent in luxury interior design and creative direction",
                 linkedin: "#",
                 instagram: "@kjess_designs_rw",
@@ -1771,7 +1769,7 @@ export default function Home() {
               {
                 name: "Operational Manager",
                 role: "Operations & Strategy",
-                image: operationalManagerImage,
+                image: "/operational-manager.png",
                 bio: "Expert in operational excellence and strategic planning for luxury interior design projects",
                 linkedin: "#",
                 instagram: "#",
