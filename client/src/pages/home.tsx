@@ -3671,7 +3671,7 @@ export default function Home() {
                     href="https://leukode-labs.onrender.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-bronze hover:text-cream transition-colors duration-300 underline decoration-bronze/50 hover:decoration-cream"
+                    className="text-bronze hover:text-cream transition-colors duration-300"
                   >
                     Leukode Labs
                   </a>
