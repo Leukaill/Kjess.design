@@ -3656,13 +3656,26 @@ export default function Home() {
                 className="flex items-center space-x-4"
               >
                 <p className="text-cream/60 text-sm font-light">
-                  © 2024 KJESS Designs. All rights reserved.
+                  © 2025 KJESS Designs. All rights reserved.
                 </p>
                 <div className="flex items-center space-x-2">
                   <div className="w-1 h-1 bg-bronze/40 rounded-full"></div>
                   <div className="w-2 h-2 bg-bronze/60 rounded-full"></div>
                   <div className="w-1 h-1 bg-bronze/40 rounded-full"></div>
                 </div>
+                <p className="text-cream/50 text-xs font-light flex items-center space-x-1">
+                  <span>designed with</span>
+                  <span className="text-cream/70">♥</span>
+                  <span>by</span>
+                  <a 
+                    href="https://leukode-labs.onrender.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-bronze hover:text-cream transition-colors duration-300 underline decoration-bronze/50 hover:decoration-cream"
+                  >
+                    Leukode Labs
+                  </a>
+                </p>
               </motion.div>
               
               <motion.div
