@@ -243,26 +243,37 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 };
 
 const AdminDashboard = () => {
-  const { data: contacts } = useQuery({
-    queryKey: ['/api/contacts'],
-    queryFn: () => apiRequest('GET', '/api/contacts', {}),
-  });
+  const [contacts, setContacts] = useState<any[]>([]);
+  const [newsletters, setNewsletters] = useState<any[]>([]);
+  const [galleryImages, setGalleryImages] = useState<any[]>([]);
 
-  const { data: newsletters } = useQuery({
-    queryKey: ['/api/newsletters'],
-    queryFn: () => apiRequest('GET', '/api/newsletters', {}),
-  });
+  // Simple fetch for all data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch contacts
+        const contactsResponse = await fetch('/api/contacts');
+        const contactsData = await contactsResponse.json();
+        setContacts(Array.isArray(contactsData) ? contactsData : []);
 
-  const { data: galleryImages } = useQuery({
-    queryKey: ['/api/gallery/public'],
-    queryFn: async () => {
-      const response = await fetch('/api/gallery/public');
-      if (response.ok) {
-        return await response.json();
+        // Fetch newsletters
+        const newslettersResponse = await fetch('/api/newsletters');
+        const newslettersData = await newslettersResponse.json();
+        setNewsletters(Array.isArray(newslettersData) ? newslettersData : []);
+
+        // Fetch gallery images
+        const galleryResponse = await fetch('/api/gallery/public');
+        const galleryData = await galleryResponse.json();
+        setGalleryImages(Array.isArray(galleryData) ? galleryData : []);
+
+        console.log('Dashboard data fetched:', { contactsData, newslettersData, galleryData });
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error);
       }
-      return [];
-    },
-  });
+    };
+
+    fetchData();
+  }, []);
 
   const stats = [
     {
