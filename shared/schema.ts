@@ -137,7 +137,7 @@ export const chatMessages = pgTable("chat_messages", {
 export const chatSettings = pgTable("chat_settings", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   isEnabled: boolean("is_enabled").default(true),
-  welcomeMessage: text("welcome_message").default("Hello! How can I help you with your interior design needs today?"),
+  welcomeMessage: text("welcome_message").default("Hello! I'm Jasper, your friendly assistant. How can I help you with your interior design needs today?"),
   tone: text("tone").default("professional"), // professional, friendly, casual
   restrictToRelevantTopics: boolean("restrict_to_relevant_topics").default(true),
   updatedAt: timestamp("updated_at").defaultNow(),

@@ -179,13 +179,13 @@ const ChatBot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-20 right-4 md:bottom-24 md:right-6 z-50 max-w-[calc(100vw-2rem)] md:max-w-none"
+            className="fixed bottom-20 right-2 sm:right-4 md:bottom-24 md:right-6 z-50 max-w-[calc(100vw-1rem)] sm:max-w-[calc(100vw-2rem)] md:max-w-none"
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
-            <Card className="w-[350px] md:w-96 h-[500px] md:h-[600px] shadow-2xl border border-[#E5E5E5] overflow-hidden bg-white backdrop-blur-sm">
+            <Card className="w-[90vw] max-w-[350px] sm:w-[350px] md:w-96 h-[70vh] max-h-[500px] md:h-[600px] shadow-2xl border border-[#E5E5E5] overflow-hidden bg-white backdrop-blur-sm">
               {/* Header - Elegant KJESS Design */}
               <CardHeader className="bg-[#2E2E2E] text-white p-5 border-b border-[#3A3A3A]">
                 <div className="flex items-center justify-between">
@@ -194,7 +194,7 @@ const ChatBot = () => {
                       <MessageSquare className="w-6 h-6 text-blue-300" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-lg font-medium tracking-wide">KJESS Assistant</h3>
+                      <h3 className="font-serif text-lg font-medium tracking-wide">Jasper</h3>
                       <div className="flex items-center space-x-2">
                         <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
                         <span className="text-xs text-gray-300 font-light">Ready to help</span>
@@ -238,7 +238,7 @@ const ChatBot = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <CardContent className="p-0 h-[400px] md:h-[480px] flex flex-col">
+                    <CardContent className="p-0 h-[calc(70vh-120px)] max-h-[400px] md:h-[480px] flex flex-col">
                       {/* Messages Area */}
                       <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-gradient-to-b from-[#FAFAFA] to-white">
                         {/* Welcome Message */}
@@ -253,7 +253,7 @@ const ChatBot = () => {
                               <div className="w-9 h-9 bg-[#2E2E2E] rounded-full flex items-center justify-center flex-shrink-0 border border-gray-200 shadow-sm">
                                 <MessageSquare className="w-5 h-5 text-blue-400" />
                               </div>
-                              <div className="bg-white rounded-2xl p-4 shadow-md border border-gray-100 max-w-[280px]">
+                              <div className="bg-white rounded-2xl p-4 shadow-md border border-gray-100 max-w-[calc(90vw-120px)] sm:max-w-[280px]">
                                 <p className="text-sm text-[#2E2E2E] font-light leading-relaxed">{settings.welcomeMessage}</p>
                               </div>
                             </motion.div>
@@ -276,7 +276,7 @@ const ChatBot = () => {
                                 <MessageSquare className="w-4 h-4 text-blue-400" />
                               </div>
                             )}
-                            <div className={`rounded-2xl p-4 shadow-md border max-w-[280px] ${
+                            <div className={`rounded-2xl p-4 shadow-md border max-w-[calc(90vw-120px)] sm:max-w-[280px] ${
                               msg.isFromUser 
                                 ? 'bg-[#2E2E2E] text-white rounded-br-md border-gray-300' 
                                 : 'bg-white text-[#2E2E2E] rounded-bl-md border-gray-100'
@@ -329,14 +329,14 @@ const ChatBot = () => {
 
                       {/* Input Area - Elegant KJESS Design */}
                       <div className="p-5 border-t border-gray-100 bg-gradient-to-r from-[#FAFAFA] to-white">
-                        <div className="flex items-end space-x-3">
+                        <div className="flex items-end space-x-2 sm:space-x-3">
                           <div className="flex-1">
                             <Input
                               value={message}
                               onChange={(e) => setMessage(e.target.value)}
                               onKeyPress={handleKeyPress}
                               placeholder="Ask about our designs, services, or projects..."
-                              className="border-gray-200 focus:border-[#2E2E2E] focus:ring-[#2E2E2E] focus:ring-1 rounded-xl bg-white/80 backdrop-blur-sm font-light placeholder:text-gray-400 transition-all duration-300"
+                              className="border-gray-200 focus:border-[#2E2E2E] focus:ring-[#2E2E2E] focus:ring-1 rounded-xl bg-white/80 backdrop-blur-sm font-light placeholder:text-gray-400 transition-all duration-300 text-sm sm:text-base"
                               disabled={sendMessageMutation.isPending || !conversationId}
                               data-testid="input-chat-message"
                             />
@@ -344,7 +344,7 @@ const ChatBot = () => {
                           <Button
                             onClick={handleSendMessage}
                             disabled={!message.trim() || sendMessageMutation.isPending || !conversationId}
-                            className="bg-[#2E2E2E] hover:bg-[#1A1A1A] text-white shadow-lg h-11 px-5 rounded-xl border border-[#3A3A3A] hover:border-[#4A4A4A] transition-all duration-300 font-light"
+                            className="bg-[#2E2E2E] hover:bg-[#1A1A1A] text-white shadow-lg h-11 px-3 sm:px-5 rounded-xl border border-[#3A3A3A] hover:border-[#4A4A4A] transition-all duration-300 font-light min-w-[44px]"
                             data-testid="button-send-message"
                           >
                             <Send className="w-4 h-4" />
@@ -357,13 +357,13 @@ const ChatBot = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.5 }}
-                            className="mt-3 flex flex-wrap gap-2"
+                            className="mt-3 flex flex-wrap gap-1 sm:gap-2"
                           >
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() => setMessage("What services do you offer?")}
-                              className="text-xs font-light border-gray-200 text-[#2E2E2E] hover:bg-[#2E2E2E] hover:text-white hover:border-[#2E2E2E] transition-all duration-300 rounded-lg"
+                              className="text-xs font-light border-gray-200 text-[#2E2E2E] hover:bg-[#2E2E2E] hover:text-white hover:border-[#2E2E2E] transition-all duration-300 rounded-lg px-2 py-1 min-w-[80px]"
                               data-testid="button-quick-services"
                             >
                               Our Services
@@ -372,7 +372,7 @@ const ChatBot = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => setMessage("How much does a consultation cost?")}
-                              className="text-xs font-light border-gray-200 text-[#2E2E2E] hover:bg-[#2E2E2E] hover:text-white hover:border-[#2E2E2E] transition-all duration-300 rounded-lg"
+                              className="text-xs font-light border-gray-200 text-[#2E2E2E] hover:bg-[#2E2E2E] hover:text-white hover:border-[#2E2E2E] transition-all duration-300 rounded-lg px-2 py-1 min-w-[80px]"
                               data-testid="button-quick-pricing"
                             >
                               Pricing
@@ -381,7 +381,7 @@ const ChatBot = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => setMessage("How do I book a consultation?")}
-                              className="text-xs font-light border-gray-200 text-[#2E2E2E] hover:bg-[#2E2E2E] hover:text-white hover:border-[#2E2E2E] transition-all duration-300 rounded-lg"
+                              className="text-xs font-light border-gray-200 text-[#2E2E2E] hover:bg-[#2E2E2E] hover:text-white hover:border-[#2E2E2E] transition-all duration-300 rounded-lg px-2 py-1 min-w-[80px]"
                               data-testid="button-quick-booking"
                             >
                               Book Consultation

@@ -535,7 +535,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         console.log('📝 Returning default settings');
         res.json({
           isEnabled: true,
-          welcomeMessage: "Hello! How can I help you with your interior design needs today?",
+          welcomeMessage: "Hello! I'm Jasper, your friendly assistant. How can I help you with your interior design needs today?",
           tone: "professional"
         });
       } else {
