@@ -6,12 +6,10 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
-  Bot, 
   Send, 
   X, 
   Minimize2, 
   MessageSquare,
-  Sparkles,
   ChevronUp,
   Mail,
   Phone
@@ -117,59 +115,61 @@ const ChatBot = () => {
 
   return (
     <>
-      {/* Chat Button - Positioned next to scroll-to-top */}
+      {/* Chat Button - Elegant design matching KJESS aesthetic */}
       <motion.div
         className="fixed bottom-6 right-20 z-50"
-        initial={{ scale: 0, rotate: -180 }}
-        animate={{ scale: 1, rotate: 0 }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
         transition={{ 
           type: "spring", 
-          stiffness: 300, 
+          stiffness: 260, 
           damping: 20,
-          delay: 1
+          delay: 1.2
         }}
       >
         <AnimatePresence>
           {!isOpen && (
             <motion.button
               onClick={() => setIsOpen(true)}
-              className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-2xl flex items-center justify-center hover:shadow-purple-500/25 hover:scale-110 transition-all duration-300 group"
-              whileHover={{ scale: 1.1 }}
+              className="group relative w-16 h-16 bg-[#2E2E2E] hover:bg-[#1A1A1A] rounded-full shadow-xl flex items-center justify-center transition-all duration-500 border border-[#3A3A3A] hover:border-[#4A4A4A]"
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              exit={{ scale: 0, rotate: 180 }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
               data-testid="button-open-chat"
             >
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
               <motion.div
                 animate={{ 
-                  rotate: [0, -10, 10, -10, 0],
-                  scale: [1, 1.1, 1, 1.1, 1]
+                  scale: [1, 1.1, 1],
                 }}
                 transition={{ 
                   duration: 2,
                   repeat: Infinity,
-                  repeatDelay: 3
+                  repeatDelay: 4,
+                  ease: "easeInOut"
                 }}
+                className="relative"
               >
-                <Bot className="w-8 h-8 text-white" />
+                <MessageSquare className="w-7 h-7 text-white group-hover:text-blue-200 transition-colors duration-300" />
               </motion.div>
               
-              {/* Floating sparkles animation */}
+              {/* Elegant pulse indicator */}
               <motion.div
-                className="absolute -top-1 -right-1"
+                className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full"
                 animate={{ 
-                  scale: [1, 1.3, 1],
-                  opacity: [0.7, 1, 0.7]
+                  scale: [1, 1.2, 1],
+                  opacity: [0.8, 1, 0.8]
                 }}
                 transition={{ 
-                  duration: 1.5,
+                  duration: 2,
                   repeat: Infinity,
-                  repeatDelay: 2
+                  ease: "easeInOut"
                 }}
-              >
-                <Sparkles className="w-4 h-4 text-yellow-300" />
-              </motion.div>
+              />
             </motion.button>
           )}
         </AnimatePresence>
@@ -185,28 +185,28 @@ const ChatBot = () => {
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
-            <Card className="w-96 h-[600px] shadow-2xl border-0 overflow-hidden bg-white/95 backdrop-blur-sm">
-              {/* Header */}
-              <CardHeader className="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-4">
+            <Card className="w-96 h-[600px] shadow-2xl border border-[#E5E5E5] overflow-hidden bg-white backdrop-blur-sm">
+              {/* Header - Elegant KJESS Design */}
+              <CardHeader className="bg-[#2E2E2E] text-white p-5 border-b border-[#3A3A3A]">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                      <Bot className="w-6 h-6" />
+                  <div className="flex items-center space-x-4">
+                    <div className="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center border border-white/20">
+                      <MessageSquare className="w-6 h-6 text-blue-300" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">KJESS AI Assistant</h3>
-                      <div className="flex items-center space-x-1">
-                        <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse"></div>
-                        <span className="text-xs text-purple-100">Online</span>
+                      <h3 className="font-serif text-lg font-medium tracking-wide">KJESS Assistant</h3>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                        <span className="text-xs text-gray-300 font-light">Ready to help</span>
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-1">
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => setIsMinimized(!isMinimized)}
-                      className="text-white hover:bg-white/20 p-1"
+                      className="text-gray-300 hover:text-white hover:bg-white/10 p-2 rounded-lg transition-all duration-300"
                       data-testid="button-minimize-chat"
                     >
                       <Minimize2 className="w-4 h-4" />
@@ -215,7 +215,7 @@ const ChatBot = () => {
                       variant="ghost"
                       size="sm"
                       onClick={() => setIsOpen(false)}
-                      className="text-white hover:bg-white/20 p-1"
+                      className="text-gray-300 hover:text-white hover:bg-white/10 p-2 rounded-lg transition-all duration-300"
                       data-testid="button-close-chat"
                     >
                       <X className="w-4 h-4" />
@@ -235,7 +235,7 @@ const ChatBot = () => {
                   >
                     <CardContent className="p-0 h-[480px] flex flex-col">
                       {/* Messages Area */}
-                      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/50">
+                      <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-gradient-to-b from-[#FAFAFA] to-white">
                         {/* Welcome Message */}
                         <AnimatePresence>
                           {showWelcome && settings?.welcomeMessage && (
@@ -245,11 +245,11 @@ const ChatBot = () => {
                               exit={{ opacity: 0, y: -10 }}
                               className="flex items-start space-x-3"
                             >
-                              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                <Bot className="w-4 h-4 text-white" />
+                              <div className="w-9 h-9 bg-[#2E2E2E] rounded-full flex items-center justify-center flex-shrink-0 border border-gray-200 shadow-sm">
+                                <MessageSquare className="w-5 h-5 text-blue-400" />
                               </div>
-                              <div className="bg-white rounded-lg p-3 shadow-sm border max-w-[280px]">
-                                <p className="text-sm text-gray-800">{settings.welcomeMessage}</p>
+                              <div className="bg-white rounded-2xl p-4 shadow-md border border-gray-100 max-w-[280px]">
+                                <p className="text-sm text-[#2E2E2E] font-light leading-relaxed">{settings.welcomeMessage}</p>
                               </div>
                             </motion.div>
                           )}
@@ -266,25 +266,19 @@ const ChatBot = () => {
                               msg.isFromUser ? 'flex-row-reverse space-x-reverse' : ''
                             }`}
                           >
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                            {!msg.isFromUser && (
+                              <div className="w-8 h-8 bg-[#2E2E2E] rounded-full flex items-center justify-center flex-shrink-0 border border-gray-200 shadow-sm">
+                                <MessageSquare className="w-4 h-4 text-blue-400" />
+                              </div>
+                            )}
+                            <div className={`rounded-2xl p-4 shadow-md border max-w-[280px] ${
                               msg.isFromUser 
-                                ? 'bg-gradient-to-r from-blue-500 to-blue-600' 
-                                : 'bg-gradient-to-r from-purple-500 to-pink-500'
+                                ? 'bg-[#2E2E2E] text-white rounded-br-md border-gray-300' 
+                                : 'bg-white text-[#2E2E2E] rounded-bl-md border-gray-100'
                             }`}>
-                              {msg.isFromUser ? (
-                                <span className="text-white text-sm font-semibold">Y</span>
-                              ) : (
-                                <Bot className="w-4 h-4 text-white" />
-                              )}
-                            </div>
-                            <div className={`rounded-lg p-3 shadow-sm border max-w-[280px] ${
-                              msg.isFromUser 
-                                ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white' 
-                                : 'bg-white text-gray-800'
-                            }`}>
-                              <p className="text-sm">{msg.message}</p>
-                              <p className={`text-xs mt-1 ${
-                                msg.isFromUser ? 'text-blue-100' : 'text-gray-500'
+                              <p className="text-sm font-light leading-relaxed">{msg.message}</p>
+                              <p className={`text-xs mt-2 font-light ${
+                                msg.isFromUser ? 'text-gray-300' : 'text-gray-500'
                               }`}>
                                 {new Date(msg.timestamp).toLocaleTimeString()}
                               </p>
@@ -299,20 +293,21 @@ const ChatBot = () => {
                             animate={{ opacity: 1, y: 0 }}
                             className="flex items-start space-x-3"
                           >
-                            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                              <Bot className="w-4 h-4 text-white" />
+                            <div className="w-8 h-8 bg-[#2E2E2E] rounded-full flex items-center justify-center border border-gray-200 shadow-sm">
+                              <MessageSquare className="w-4 h-4 text-blue-400" />
                             </div>
-                            <div className="bg-white rounded-lg p-3 shadow-sm border">
-                              <div className="flex space-x-1">
+                            <div className="bg-white rounded-2xl rounded-bl-md p-4 shadow-md border border-gray-100">
+                              <div className="flex space-x-1.5">
                                 {[0, 1, 2].map((i) => (
                                   <motion.div
                                     key={i}
-                                    className="w-2 h-2 bg-gray-400 rounded-full"
-                                    animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+                                    className="w-2 h-2 bg-[#2E2E2E] rounded-full"
+                                    animate={{ scale: [1, 1.4, 1], opacity: [0.4, 1, 0.4] }}
                                     transition={{ 
-                                      duration: 1,
+                                      duration: 1.2,
                                       repeat: Infinity,
-                                      delay: i * 0.2
+                                      delay: i * 0.15,
+                                      ease: "easeInOut"
                                     }}
                                   />
                                 ))}
@@ -324,16 +319,16 @@ const ChatBot = () => {
                         <div ref={messagesEndRef} />
                       </div>
 
-                      {/* Input Area */}
-                      <div className="p-4 border-t bg-white">
-                        <div className="flex items-end space-x-2">
+                      {/* Input Area - Elegant KJESS Design */}
+                      <div className="p-5 border-t border-gray-100 bg-gradient-to-r from-[#FAFAFA] to-white">
+                        <div className="flex items-end space-x-3">
                           <div className="flex-1">
                             <Input
                               value={message}
                               onChange={(e) => setMessage(e.target.value)}
                               onKeyPress={handleKeyPress}
-                              placeholder="Ask me about interior design..."
-                              className="border-gray-200 focus:border-purple-400 focus:ring-purple-400"
+                              placeholder="Ask about our designs, services, or projects..."
+                              className="border-gray-200 focus:border-[#2E2E2E] focus:ring-[#2E2E2E] focus:ring-1 rounded-xl bg-white/80 backdrop-blur-sm font-light placeholder:text-gray-400 transition-all duration-300"
                               disabled={sendMessageMutation.isPending || !conversationId}
                               data-testid="input-chat-message"
                             />
@@ -341,7 +336,7 @@ const ChatBot = () => {
                           <Button
                             onClick={handleSendMessage}
                             disabled={!message.trim() || sendMessageMutation.isPending || !conversationId}
-                            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg"
+                            className="bg-[#2E2E2E] hover:bg-[#1A1A1A] text-white shadow-lg h-11 px-5 rounded-xl border border-[#3A3A3A] hover:border-[#4A4A4A] transition-all duration-300 font-light"
                             data-testid="button-send-message"
                           >
                             <Send className="w-4 h-4" />
@@ -360,7 +355,7 @@ const ChatBot = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => setMessage("What services do you offer?")}
-                              className="text-xs"
+                              className="text-xs font-light border-gray-200 text-[#2E2E2E] hover:bg-[#2E2E2E] hover:text-white hover:border-[#2E2E2E] transition-all duration-300 rounded-lg"
                               data-testid="button-quick-services"
                             >
                               Our Services
@@ -369,7 +364,7 @@ const ChatBot = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => setMessage("How much does a consultation cost?")}
-                              className="text-xs"
+                              className="text-xs font-light border-gray-200 text-[#2E2E2E] hover:bg-[#2E2E2E] hover:text-white hover:border-[#2E2E2E] transition-all duration-300 rounded-lg"
                               data-testid="button-quick-pricing"
                             >
                               Pricing
@@ -378,7 +373,7 @@ const ChatBot = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => setMessage("How do I book a consultation?")}
-                              className="text-xs"
+                              className="text-xs font-light border-gray-200 text-[#2E2E2E] hover:bg-[#2E2E2E] hover:text-white hover:border-[#2E2E2E] transition-all duration-300 rounded-lg"
                               data-testid="button-quick-booking"
                             >
                               Book Consultation
@@ -398,12 +393,12 @@ const ChatBot = () => {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="p-4 cursor-pointer"
+                    className="p-4 cursor-pointer hover:bg-gray-50 transition-colors duration-300"
                     onClick={() => setIsMinimized(false)}
                   >
-                    <div className="flex items-center justify-center space-x-2 text-gray-600">
-                      <MessageSquare className="w-4 h-4" />
-                      <span className="text-sm">Click to expand chat</span>
+                    <div className="flex items-center justify-center space-x-2 text-[#2E2E2E]">
+                      <MessageSquare className="w-4 h-4 text-blue-500" />
+                      <span className="text-sm font-light">Click to expand chat</span>
                       <ChevronUp className="w-4 h-4" />
                     </div>
                   </motion.div>
