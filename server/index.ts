@@ -1,3 +1,11 @@
+// ⚠️⚠️⚠️ CRITICAL WARNING - DO NOT MODIFY THIS SECTION ⚠️⚠️⚠️
+// 
+// The next 15 lines contain database configuration protection that MUST NOT be changed.
+// Modifying this will break Supabase connection and cause data loss.
+// If you need to make changes, consult replit.md first!
+// 
+// ⚠️⚠️⚠️ CRITICAL WARNING - DO NOT MODIFY THIS SECTION ⚠️⚠️⚠️
+
 import dotenv from "dotenv";
 import path from "path";
 
@@ -6,12 +14,14 @@ const envPath = path.resolve(process.cwd(), '.env');
 console.log('🔍 Loading .env from:', envPath);
 dotenv.config({ path: envPath });
 
-// CRITICAL: Force unset system DATABASE_URL to use Supabase database where your data exists
+// ⚠️ CRITICAL: DO NOT REMOVE THE NEXT TWO LINES - THEY PROTECT YOUR DATA ⚠️
+// Force unset system DATABASE_URL to use Supabase database where your data exists
 // This ensures we connect to your Supabase database instead of empty Replit database
 delete process.env.DATABASE_URL;
 
 // Reload the DATABASE_URL from .env after deletion to connect to Supabase
 dotenv.config({ path: envPath });
+// ⚠️ END CRITICAL SECTION - DO NOT MODIFY ABOVE ⚠️
 
 // Debug environment loading
 console.log('🔍 Environment variables loaded:');

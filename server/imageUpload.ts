@@ -4,9 +4,9 @@ import multer from 'multer';
 import { randomUUID } from 'crypto';
 
 // Lazy initialization to ensure environment variables are loaded
-let supabase: ReturnType<typeof createClient> | null | false = null;
+let supabase: any | null | false = null;
 
-function initializeSupabase(): ReturnType<typeof createClient> | null {
+function initializeSupabase(): any {
   if (supabase !== null) return supabase === false ? null : supabase;
   
   const supabaseUrl = process.env.SUPABASE_URL || '';
@@ -283,7 +283,7 @@ export async function initializeStorageBucket(): Promise<void> {
       return;
     }
 
-    const bucketExists = buckets?.some(bucket => bucket.name === 'gallery-images');
+    const bucketExists = buckets?.some((bucket: any) => bucket.name === 'gallery-images');
     
     if (!bucketExists) {
       console.log('📦 Creating gallery-images bucket...');

@@ -1,3 +1,18 @@
+# ⚠️ CRITICAL WARNING - READ FIRST ⚠️
+
+## 🚨 DO NOT TOUCH DATABASE CONFIGURATION 🚨
+
+**NEVER MODIFY THESE FILES OR SECTIONS:**
+- **server/index.ts** lines 9-14 (database URL deletion and reload)
+- **.env file** database credentials
+- **drizzle.config.ts** database configuration
+
+**WHY:** The database configuration uses a special protection system to connect to the correct Supabase database. Modifying these files will break the application and lose data access.
+
+**IF YOU MUST MAKE DATABASE CHANGES:** Ask the user first and read the "Critical Configuration Notes" section below.
+
+---
+
 # Overview
 
 This is a sophisticated interior design company website for KJESS Designs built with React and Express.js, featuring an elegant design system using shadcn/ui components. The application includes contact form functionality, newsletter subscription capabilities, a dynamic navigation bar with scroll-based section detection, team showcase, testimonials, and gallery sections. The backend uses PostgreSQL with Drizzle ORM for data persistence. The project implements TypeScript throughout with a monorepo structure and shared schemas.
