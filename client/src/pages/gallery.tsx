@@ -128,7 +128,7 @@ const Gallery = () => {
   }, [selectedImage, filteredItems]);
 
   // Social sharing functionality with subtle marketing
-  const generateShareMessage = useCallback((item: typeof galleryItems[0]) => {
+  const generateShareMessage = useCallback((item: any) => {
     const messages = {
       pinterest: `${item.title} - Discover the art of sophisticated living through exceptional interior design. Every space tells a story of elegance and innovation. #InteriorDesign #HomeDecor #LuxuryLiving #KigaliDesign`,
       facebook: `✨ Inspired by this stunning ${item.title} design! There's something magical about spaces that perfectly blend functionality with beauty. What makes a home truly exceptional? It's the thoughtful details that create lasting impressions. #DesignInspiration #InteriorDesign #HomeDesign`,
@@ -139,7 +139,7 @@ const Gallery = () => {
     return messages;
   }, []);
 
-  const openShareModal = useCallback((item: typeof galleryItems[0]) => {
+  const openShareModal = useCallback((item: any) => {
     setCurrentShareItem(item);
     setShareModalOpen(true);
     setShareMenuOpen(null);
@@ -150,7 +150,7 @@ const Gallery = () => {
     setCurrentShareItem(null);
   }, []);
 
-  const shareToSocial = useCallback((platform: string, item: typeof galleryItems[0]) => {
+  const shareToSocial = useCallback((platform: string, item: any) => {
     const currentUrl = window.location.href;
     const messages = generateShareMessage(item);
     const imageUrl = item.image; // In a real app, this would be a full URL
@@ -180,7 +180,7 @@ const Gallery = () => {
         {/* Hero Background Image with Parallax Effect */}
         <div className="absolute inset-0">
           <motion.img
-            src={projectImg3}
+            src={databaseImages.find(img => img.featured)?.image || databaseImages[0]?.image || '/api/placeholder/1200/800'}
             alt="Elegant interior design showcase"
             className="w-full h-full object-cover scale-105"
             initial={{ scale: 1.1 }}
@@ -514,7 +514,7 @@ const Gallery = () => {
               
               {/* Image info */}
               {(() => {
-                const currentItem = galleryItems.find(item => item.id === selectedImage);
+                const currentItem = allGalleryItems.find(item => item.id === selectedImage);
                 return currentItem && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
