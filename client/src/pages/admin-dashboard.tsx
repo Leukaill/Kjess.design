@@ -254,8 +254,14 @@ const AdminDashboard = () => {
   });
 
   const { data: galleryImages } = useQuery({
-    queryKey: ['/api/admin/gallery'],
-    queryFn: () => apiRequest('GET', '/api/admin/gallery', {}),
+    queryKey: ['/api/gallery/public'],
+    queryFn: async () => {
+      const response = await fetch('/api/gallery/public');
+      if (response.ok) {
+        return await response.json();
+      }
+      return [];
+    },
   });
 
   const stats = [
