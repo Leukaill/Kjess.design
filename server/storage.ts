@@ -403,7 +403,11 @@ let _storage: IStorage | null = null;
 
 export function getStorage(): IStorage {
   if (!_storage) {
-    _storage = process.env.DATABASE_URL 
+    const databaseUrl = process.env.DATABASE_URL;
+    console.log('🔧 Storage initialization - DATABASE_URL present:', !!databaseUrl);
+    console.log('🔧 Using storage type:', databaseUrl ? 'DatabaseStorage' : 'MemStorage');
+    
+    _storage = databaseUrl 
       ? new DatabaseStorage() 
       : new MemStorage();
   }

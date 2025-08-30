@@ -688,12 +688,12 @@ const ImageCard: React.FC<{
     <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-200">
       <div className="aspect-square relative group">
         <img
-          src={image.thumbnailUrl || image.originalUrl}
+          src={image.thumbnailUrl || image.imageUrl}
           alt={image.title}
           className="w-full h-full object-cover"
           onError={(e) => {
             // Fallback for broken images
-            e.currentTarget.src = image.originalUrl || '/api/placeholder/300/300';
+            e.currentTarget.src = image.imageUrl || '/api/placeholder/300/300';
           }}
         />
         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center space-x-2">
