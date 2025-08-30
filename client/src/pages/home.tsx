@@ -689,13 +689,6 @@ export default function Home() {
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="mb-12"
           >
-            {/* Decorative top line */}
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "120px" }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="h-px bg-gradient-to-r from-transparent via-bronze to-transparent mx-auto mb-8"
-            ></motion.div>
             
             {/* Logo */}
             <motion.div
