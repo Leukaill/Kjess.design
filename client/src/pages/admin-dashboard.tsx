@@ -295,11 +295,12 @@ const AdminDashboard = () => {
     }
   ];
 
-  const recentActivity = [
-    { action: 'New contact message received', time: '2 minutes ago', type: 'contact' },
-    { action: 'Gallery image uploaded', time: '1 hour ago', type: 'gallery' },
-    { action: 'Newsletter subscription', time: '3 hours ago', type: 'newsletter' },
-    { action: 'Content updated', time: '1 day ago', type: 'content' },
+  // Coming soon features
+  const comingFeatures = [
+    { feature: 'Real-time Activity Feed', description: 'Track website interactions live' },
+    { feature: 'Advanced Analytics', description: 'Detailed visitor insights' },
+    { feature: 'Content Management', description: 'Direct website editing' },
+    { feature: 'User Management', description: 'Admin user controls' },
   ];
 
   return (
@@ -358,23 +359,22 @@ const AdminDashboard = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <Activity className="w-5 h-5" />
-                  <span>Recent Activity</span>
+                  <Activity className="w-5 h-5 text-gray-400" />
+                  <span className="text-gray-400">Recent Activity</span>
+                  <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
                 </CardTitle>
                 <CardDescription>
-                  Latest updates from your website
+                  Advanced activity tracking will be available soon
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                {recentActivity.map((activity, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full mt-2" />
-                    <div className="flex-1">
-                      <p className="text-sm text-gray-900">{activity.action}</p>
-                      <p className="text-xs text-gray-500">{activity.time}</p>
-                    </div>
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                    <Activity className="w-8 h-8 text-gray-400" />
                   </div>
-                ))}
+                  <p className="text-gray-500 text-sm mb-2">Activity Feed Coming Soon</p>
+                  <p className="text-gray-400 text-xs">Real-time website activity tracking will be available in a future update</p>
+                </div>
               </CardContent>
             </Card>
           </motion.div>
@@ -388,29 +388,30 @@ const AdminDashboard = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <Palette className="w-5 h-5" />
-                  <span>Quick Actions</span>
+                  <Palette className="w-5 h-5 text-gray-400" />
+                  <span className="text-gray-400">Quick Actions</span>
+                  <Badge variant="secondary" className="text-xs">Coming Soon</Badge>
                 </CardTitle>
                 <CardDescription>
-                  Common tasks to manage your website
+                  Advanced management features in development
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button className="w-full justify-start" variant="outline">
-                  <Plus className="w-4 h-4 mr-2" />
-                  Add New Gallery Image
+                <Button disabled className="w-full justify-start" variant="outline">
+                  <Plus className="w-4 h-4 mr-2 text-gray-400" />
+                  <span className="text-gray-400">Add New Gallery Image</span>
                 </Button>
-                <Button className="w-full justify-start" variant="outline">
-                  <Edit className="w-4 h-4 mr-2" />
-                  Edit About Content
+                <Button disabled className="w-full justify-start" variant="outline">
+                  <Edit className="w-4 h-4 mr-2 text-gray-400" />
+                  <span className="text-gray-400">Edit About Content</span>
                 </Button>
-                <Button className="w-full justify-start" variant="outline">
-                  <Eye className="w-4 h-4 mr-2" />
-                  Preview Website
+                <Button disabled className="w-full justify-start" variant="outline">
+                  <Eye className="w-4 h-4 mr-2 text-gray-400" />
+                  <span className="text-gray-400">Preview Website</span>
                 </Button>
-                <Button className="w-full justify-start" variant="outline">
-                  <Settings className="w-4 h-4 mr-2" />
-                  System Settings
+                <Button disabled className="w-full justify-start" variant="outline">
+                  <Settings className="w-4 h-4 mr-2 text-gray-400" />
+                  <span className="text-gray-400">System Settings</span>
                 </Button>
               </CardContent>
             </Card>
