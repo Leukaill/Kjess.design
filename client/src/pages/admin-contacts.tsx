@@ -34,13 +34,16 @@ const AdminContacts = () => {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
 
   // Fetch contacts data
-  const { data: contacts = [], isLoading } = useQuery({
+  const { data: contactsData, isLoading } = useQuery({
     queryKey: ['/api/contacts'],
     queryFn: () => apiRequest('GET', '/api/contacts', {}),
   });
 
+  // Ensure contacts is always an array
+  const contacts = Array.isArray(contactsData) ? contactsData : [];
+
   // Filter contacts based on search term
-  const filteredContacts = (contacts as Contact[]).filter((contact: Contact) =>
+  const filteredContacts = contacts.filter((contact: Contact) =>
     contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     contact.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
     contact.message.toLowerCase().includes(searchTerm.toLowerCase())

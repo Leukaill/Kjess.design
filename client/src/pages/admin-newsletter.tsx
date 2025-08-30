@@ -33,19 +33,22 @@ const AdminNewsletter = () => {
   const [emailContent, setEmailContent] = useState('');
 
   // Fetch newsletter subscriptions
-  const { data: newsletters = [], isLoading } = useQuery({
+  const { data: newslettersData, isLoading } = useQuery({
     queryKey: ['/api/newsletters'],
     queryFn: () => apiRequest('GET', '/api/newsletters', {}),
   });
 
+  // Ensure newsletters is always an array
+  const newsletters = Array.isArray(newslettersData) ? newslettersData : [];
+
   // Filter newsletters based on search term
-  const filteredNewsletters = (newsletters as Newsletter[]).filter((newsletter: Newsletter) =>
+  const filteredNewsletters = newsletters.filter((newsletter: Newsletter) =>
     newsletter.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Get subscription stats
-  const totalSubscribers = (newsletters as Newsletter[]).length;
-  const recentSubscribers = (newsletters as Newsletter[]).filter((newsletter: Newsletter) => {
+  const totalSubscribers = newsletters.length;
+  const recentSubscribers = newsletters.filter((newsletter: Newsletter) => {
     const subscriptionDate = new Date(newsletter.createdAt);
     const weekAgo = new Date();
     weekAgo.setDate(weekAgo.getDate() - 7);
