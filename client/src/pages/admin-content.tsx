@@ -149,315 +149,36 @@ const AdminContent = () => {
           </div>
         </div>
 
-        {/* Content Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="about" className="flex items-center space-x-2">
-              <Users className="w-4 h-4" />
-              <span>About</span>
-            </TabsTrigger>
-            <TabsTrigger value="services" className="flex items-center space-x-2">
-              <Sparkles className="w-4 h-4" />
-              <span>Services</span>
-            </TabsTrigger>
-            <TabsTrigger value="mission" className="flex items-center space-x-2">
-              <Target className="w-4 h-4" />
-              <span>Mission</span>
-            </TabsTrigger>
-            <TabsTrigger value="values" className="flex items-center space-x-2">
-              <Heart className="w-4 h-4" />
-              <span>Values</span>
-            </TabsTrigger>
-            <TabsTrigger value="team" className="flex items-center space-x-2">
-              <Award className="w-4 h-4" />
-              <span>Team</span>
-            </TabsTrigger>
-          </TabsList>
-
-          {/* About Section */}
-          <TabsContent value="about" className="space-y-6">
-            <ContentEditor
-              title="About Section"
-              description="Main about page content and company introduction"
-              sections={[
-                {
-                  id: 'hero_title',
-                  label: 'Hero Title',
-                  type: 'input',
-                  placeholder: 'Your Interior Design Dreams, Crafted to Perfection'
-                },
-                {
-                  id: 'hero_subtitle',
-                  label: 'Hero Subtitle',
-                  type: 'textarea',
-                  rows: 3,
-                  placeholder: 'Transform your space with our expert design services...'
-                },
-                {
-                  id: 'story_title',
-                  label: 'Our Story Title',
-                  type: 'input',
-                  placeholder: 'Our Story'
-                },
-                {
-                  id: 'story_content',
-                  label: 'Our Story Content',
-                  type: 'textarea',
-                  rows: 6,
-                  placeholder: 'Founded with a passion for creating beautiful spaces...'
-                },
-                {
-                  id: 'philosophy_title',
-                  label: 'Philosophy Title',
-                  type: 'input',
-                  placeholder: 'Our Design Philosophy'
-                },
-                {
-                  id: 'philosophy_content',
-                  label: 'Philosophy Content',
-                  type: 'textarea',
-                  rows: 4,
-                  placeholder: 'We believe that good design should be accessible...'
-                }
-              ]}
-              sectionKey="about"
-              editingSection={editingSection}
-              setEditingSection={setEditingSection}
-              onContentChange={handleContentChange}
-              onSave={saveChanges}
-              onCancel={cancelChanges}
-              getEffectiveContent={getEffectiveContent}
-              hasUnsavedChanges={hasUnsavedChanges}
-              isLoading={updateMutation.isPending}
-            />
-          </TabsContent>
-
-          {/* Services Section */}
-          <TabsContent value="services" className="space-y-6">
-            <ContentEditor
-              title="Services Section"
-              description="Service offerings and descriptions"
-              sections={[
-                {
-                  id: 'services_title',
-                  label: 'Services Section Title',
-                  type: 'input',
-                  placeholder: 'Our Services'
-                },
-                {
-                  id: 'services_subtitle',
-                  label: 'Services Subtitle',
-                  type: 'textarea',
-                  rows: 2,
-                  placeholder: 'Comprehensive interior design solutions...'
-                },
-                {
-                  id: 'residential_title',
-                  label: 'Residential Design Title',
-                  type: 'input',
-                  placeholder: 'Residential Design'
-                },
-                {
-                  id: 'residential_description',
-                  label: 'Residential Design Description',
-                  type: 'textarea',
-                  rows: 4,
-                  placeholder: 'Transform your home into a personal sanctuary...'
-                },
-                {
-                  id: 'commercial_title',
-                  label: 'Commercial Design Title',
-                  type: 'input',
-                  placeholder: 'Commercial Design'
-                },
-                {
-                  id: 'commercial_description',
-                  label: 'Commercial Design Description',
-                  type: 'textarea',
-                  rows: 4,
-                  placeholder: 'Create inspiring workspaces that boost productivity...'
-                },
-                {
-                  id: 'consultation_title',
-                  label: 'Consultation Title',
-                  type: 'input',
-                  placeholder: 'Design Consultation'
-                },
-                {
-                  id: 'consultation_description',
-                  label: 'Consultation Description',
-                  type: 'textarea',
-                  rows: 4,
-                  placeholder: 'Expert advice to guide your design journey...'
-                }
-              ]}
-              sectionKey="services"
-              editingSection={editingSection}
-              setEditingSection={setEditingSection}
-              onContentChange={handleContentChange}
-              onSave={saveChanges}
-              onCancel={cancelChanges}
-              getEffectiveContent={getEffectiveContent}
-              hasUnsavedChanges={hasUnsavedChanges}
-              isLoading={updateMutation.isPending}
-            />
-          </TabsContent>
-
-          {/* Mission Section */}
-          <TabsContent value="mission" className="space-y-6">
-            <ContentEditor
-              title="Mission & Vision"
-              description="Company mission and vision statements"
-              sections={[
-                {
-                  id: 'mission_title',
-                  label: 'Mission Title',
-                  type: 'input',
-                  placeholder: 'Our Mission'
-                },
-                {
-                  id: 'mission_content',
-                  label: 'Mission Statement',
-                  type: 'textarea',
-                  rows: 4,
-                  placeholder: 'To transform spaces and lives through exceptional design...'
-                },
-                {
-                  id: 'vision_title',
-                  label: 'Vision Title',
-                  type: 'input',
-                  placeholder: 'Our Vision'
-                },
-                {
-                  id: 'vision_content',
-                  label: 'Vision Statement',
-                  type: 'textarea',
-                  rows: 4,
-                  placeholder: 'To be the leading interior design company...'
-                }
-              ]}
-              sectionKey="mission"
-              editingSection={editingSection}
-              setEditingSection={setEditingSection}
-              onContentChange={handleContentChange}
-              onSave={saveChanges}
-              onCancel={cancelChanges}
-              getEffectiveContent={getEffectiveContent}
-              hasUnsavedChanges={hasUnsavedChanges}
-              isLoading={updateMutation.isPending}
-            />
-          </TabsContent>
-
-          {/* Values Section */}
-          <TabsContent value="values" className="space-y-6">
-            <ContentEditor
-              title="Company Values"
-              description="Core values and principles"
-              sections={[
-                {
-                  id: 'values_title',
-                  label: 'Values Section Title',
-                  type: 'input',
-                  placeholder: 'Our Core Values'
-                },
-                {
-                  id: 'value1_title',
-                  label: 'Value 1 Title',
-                  type: 'input',
-                  placeholder: 'Excellence'
-                },
-                {
-                  id: 'value1_description',
-                  label: 'Value 1 Description',
-                  type: 'textarea',
-                  rows: 3,
-                  placeholder: 'We strive for excellence in every project...'
-                },
-                {
-                  id: 'value2_title',
-                  label: 'Value 2 Title',
-                  type: 'input',
-                  placeholder: 'Innovation'
-                },
-                {
-                  id: 'value2_description',
-                  label: 'Value 2 Description',
-                  type: 'textarea',
-                  rows: 3,
-                  placeholder: 'We embrace innovative design solutions...'
-                },
-                {
-                  id: 'value3_title',
-                  label: 'Value 3 Title',
-                  type: 'input',
-                  placeholder: 'Sustainability'
-                },
-                {
-                  id: 'value3_description',
-                  label: 'Value 3 Description',
-                  type: 'textarea',
-                  rows: 3,
-                  placeholder: 'We prioritize sustainable design practices...'
-                }
-              ]}
-              sectionKey="values"
-              editingSection={editingSection}
-              setEditingSection={setEditingSection}
-              onContentChange={handleContentChange}
-              onSave={saveChanges}
-              onCancel={cancelChanges}
-              getEffectiveContent={getEffectiveContent}
-              hasUnsavedChanges={hasUnsavedChanges}
-              isLoading={updateMutation.isPending}
-            />
-          </TabsContent>
-
-          {/* Team Section */}
-          <TabsContent value="team" className="space-y-6">
-            <ContentEditor
-              title="Team Information"
-              description="Team member descriptions and bios"
-              sections={[
-                {
-                  id: 'team_title',
-                  label: 'Team Section Title',
-                  type: 'input',
-                  placeholder: 'Meet Our Team'
-                },
-                {
-                  id: 'team_subtitle',
-                  label: 'Team Subtitle',
-                  type: 'textarea',
-                  rows: 2,
-                  placeholder: 'Our passionate team of design professionals...'
-                },
-                {
-                  id: 'ceo_bio',
-                  label: 'CEO Biography',
-                  type: 'textarea',
-                  rows: 5,
-                  placeholder: 'Passionate about creating beautiful spaces...'
-                },
-                {
-                  id: 'manager_bio',
-                  label: 'Operations Manager Biography',
-                  type: 'textarea',
-                  rows: 5,
-                  placeholder: 'Ensuring every project runs smoothly...'
-                }
-              ]}
-              sectionKey="team"
-              editingSection={editingSection}
-              setEditingSection={setEditingSection}
-              onContentChange={handleContentChange}
-              onSave={saveChanges}
-              onCancel={cancelChanges}
-              getEffectiveContent={getEffectiveContent}
-              hasUnsavedChanges={hasUnsavedChanges}
-              isLoading={updateMutation.isPending}
-            />
-          </TabsContent>
-        </Tabs>
+        {/* Coming Soon Message */}
+        <Card className="text-center py-16">
+          <CardContent>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <div className="mx-auto w-24 h-24 bg-gradient-to-br from-purple-100 to-blue-100 rounded-full flex items-center justify-center">
+                <FileText className="w-12 h-12 text-purple-600" />
+              </div>
+              
+              <div className="space-y-3">
+                <h2 className="text-3xl font-bold text-gray-900">Content Management Coming Soon!</h2>
+                <p className="text-lg text-gray-600 max-w-md mx-auto">
+                  We're working hard to bring you an amazing content editing experience. 
+                  This feature will be available very soon.
+                </p>
+              </div>
+              
+              <div className="flex justify-center">
+                <Badge variant="outline" className="text-purple-600 border-purple-200 bg-purple-50">
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  In Development
+                </Badge>
+              </div>
+            </motion.div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
