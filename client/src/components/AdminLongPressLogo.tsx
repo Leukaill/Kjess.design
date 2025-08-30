@@ -102,7 +102,7 @@ export const AdminLongPressLogo: React.FC<AdminLongPressLogoProps> = ({
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute inset-0 pointer-events-none flex items-center justify-center z-10"
+            className="absolute inset-0 pointer-events-none flex items-center justify-center z-[60]"
           >
             {/* Progress ring */}
             <div className="relative w-16 h-16">
@@ -154,7 +154,7 @@ export const AdminLongPressLogo: React.FC<AdminLongPressLogoProps> = ({
       {/* Ripple animations */}
       <AnimatePresence>
         {showRipples && (
-          <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-10">
+          <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-[60]">
             {[...Array(3)].map((_, i) => (
               <motion.div
                 key={i}
