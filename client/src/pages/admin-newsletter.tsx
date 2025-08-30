@@ -33,9 +33,11 @@ const AdminNewsletter = () => {
   const [emailContent, setEmailContent] = useState('');
 
   // Fetch newsletter subscriptions
-  const { data: newslettersData, isLoading } = useQuery({
+  const { data: newslettersData, isLoading, error } = useQuery({
     queryKey: ['/api/newsletters'],
     queryFn: () => apiRequest('GET', '/api/newsletters', {}),
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
   });
 
   // Ensure newsletters is always an array
