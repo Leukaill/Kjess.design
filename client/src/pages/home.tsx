@@ -535,7 +535,7 @@ export default function Home() {
                   ease: [0.4, 0.0, 0.2, 1]
                 }
               }}
-              className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-bronze/20 shadow-2xl overflow-hidden"
+              className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-bronze/20 shadow-2xl overflow-hidden z-[60]"
             >
               <motion.div
                 initial={{ y: -20 }}
