@@ -1800,11 +1800,31 @@ export default function Home() {
                   {/* Premium member image */}
                   <div className="relative h-96 sm:h-[420px] overflow-hidden">
                     {/* Image with luxury filter */}
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                    />
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.nextElementSibling.style.display = 'flex';
+                        }}
+                      />
+                    ) : null}
+                    {/* Placeholder for missing images */}
+                    <div 
+                      className="w-full h-full bg-gradient-to-br from-bronze/20 to-charcoal/30 flex items-center justify-center"
+                      style={{ display: member.image ? 'none' : 'flex' }}
+                    >
+                      <div className="text-center">
+                        <div className="w-20 h-20 mx-auto mb-4 bg-bronze/30 rounded-full flex items-center justify-center">
+                          <svg className="w-10 h-10 text-bronze" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                          </svg>
+                        </div>
+                        <p className="text-bronze/80 text-sm">Photo Coming Soon</p>
+                      </div>
+                    </div>
                     
                     {/* Sophisticated overlay gradients */}
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/20 to-transparent"></div>
