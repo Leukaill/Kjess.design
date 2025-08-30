@@ -1762,7 +1762,7 @@ export default function Home() {
               {
                 name: "Jess Karumugabo",
                 role: "CEO & Creative Director",
-                image: "/attached_assets/CEO  Creative Director_1755723463174.png",
+                image: "/ceo.png",
                 bio: "Leading visionary with exceptional talent in luxury interior design and creative direction",
                 linkedin: "#",
                 instagram: "@kjess_designs_rw",
