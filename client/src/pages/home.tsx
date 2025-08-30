@@ -681,7 +681,7 @@ export default function Home() {
         </div>
 
         {/* Elegant Content Container */}
-        <div className="relative z-[60] text-center min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div className={`relative text-center min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto ${isNavOpen ? 'z-10' : 'z-[60]'}`}>
           {/* Elegant Brand Typography */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -695,7 +695,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="mb-6 relative z-[60]"
+              className={`mb-6 relative ${isNavOpen ? 'z-10' : 'z-[60]'}`}
             >
               <img 
                 src={logoUrl} 
