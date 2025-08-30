@@ -24,6 +24,7 @@ console.log('🔍 Environment variables loaded:');
 console.log('DATABASE_URL length:', (process.env.DATABASE_URL || '').length);
 console.log('SUPABASE_URL length:', (process.env.SUPABASE_URL || '').length);
 console.log('SESSION_SECRET length:', (process.env.SESSION_SECRET || '').length);
+console.log('GEMINI_API_KEY length:', (process.env.GEMINI_API_KEY || '').length);
 
 // Clear storage cache to force reinitialization with new environment variables
 clearStorageCache();
