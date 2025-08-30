@@ -69,7 +69,7 @@ const CollaborationPopup = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/10 z-40"
+            className="fixed inset-0 bg-black/10 z-[9998]"
             onClick={handleClose}
             data-testid="collaboration-popup-backdrop"
           />
@@ -95,7 +95,7 @@ const CollaborationPopup = () => {
               duration: 0.5, 
               ease: [0.16, 1, 0.3, 1]
             }}
-            className="fixed top-4 left-4 right-4 z-50 w-auto max-w-xs 
+            className="fixed top-4 left-4 right-4 z-[9999] w-auto max-w-xs 
                      sm:top-6 sm:left-6 sm:right-auto sm:max-w-xs
                      md:top-8 md:left-8 md:max-w-sm"
             data-testid="collaboration-popup"
