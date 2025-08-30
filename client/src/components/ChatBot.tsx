@@ -135,7 +135,7 @@ const ChatBot = () => {
     <>
       {/* Chat Button - Responsive and elegant */}
       <motion.div
-        className="fixed bottom-4 right-4 md:bottom-6 md:right-20 z-50"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-20 z-[100]"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ 
@@ -197,7 +197,7 @@ const ChatBot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-2 right-2 sm:right-4 md:bottom-4 md:right-6 z-50 max-w-[calc(100vw-1rem)] sm:max-w-[calc(100vw-2rem)] md:max-w-none"
+            className="fixed bottom-2 right-2 sm:right-4 md:bottom-4 md:right-6 z-[100] max-w-[calc(100vw-1rem)] sm:max-w-[calc(100vw-2rem)] md:max-w-none"
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
