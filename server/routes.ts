@@ -606,19 +606,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
         
         // Parse action buttons from AI response
         let cleanMessage = aiResponse.message;
-        let actionButton = null;
+        const actionButtons: any[] = [];
         
-        // Check for WhatsApp button command
-        const whatsappMatch = aiResponse.message.match(/WHATSAPP_BUTTON:([^:]+):(.+)/);
-        if (whatsappMatch) {
-          const [fullMatch, label, url] = whatsappMatch;
-          actionButton = {
-            type: 'whatsapp' as const,
-            label: label.trim(),
-            action: url.trim()
-          };
-          cleanMessage = aiResponse.message.replace(fullMatch, '').trim();
-        }
+        // Check for all button types
+        const buttonPatterns = [
+          { pattern: /WHATSAPP_BUTTON:([^:]+):(.+)/g, type: 'whatsapp' },
+          { pattern: /CONTACT_BUTTON:([^:]+):(.+)/g, type: 'contact' },
+          { pattern: /PHONE_BUTTON:([^:]+):(.+)/g, type: 'phone' },
+          { pattern: /GALLERY_BUTTON:([^:]+):(.+)/g, type: 'gallery' },
+          { pattern: /ABOUT_BUTTON:([^:]+):(.+)/g, type: 'about' },
+          { pattern: /SERVICES_BUTTON:([^:]+):(.+)/g, type: 'services' }
+        ];
+        
+        buttonPatterns.forEach(({ pattern, type }) => {
+          let match;
+          while ((match = pattern.exec(aiResponse.message)) !== null) {
+            const [fullMatch, label, action] = match;
+            actionButtons.push({
+              type,
+              label: label.trim(),
+              action: action.trim()
+            });
+            cleanMessage = cleanMessage.replace(fullMatch, '').trim();
+          }
+        });
         
         // Save AI response
         const aiMessage = await storage.createChatMessage({
@@ -631,7 +642,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           userMessage: { conversationId, message, isFromUser },
           aiMessage: {
             ...aiMessage,
-            actionButton
+            actionButtons: actionButtons.length > 0 ? actionButtons : undefined
           },
           suggestedAction: aiResponse.suggestedAction
         });

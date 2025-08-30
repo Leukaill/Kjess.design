@@ -22,16 +22,22 @@ interface Message {
   message: string;
   isFromUser: boolean;
   timestamp: string;
-  actionButton?: {
-    type: 'whatsapp' | 'contact' | 'phone';
+  actionButtons?: Array<{
+    type: 'whatsapp' | 'contact' | 'phone' | 'gallery' | 'about' | 'services';
     label: string;
     action: string;
-  };
+  }>;
 }
 
 interface ChatResponse {
   userMessage: Message;
-  aiMessage: Message;
+  aiMessage: Message & {
+    actionButtons?: Array<{
+      type: 'whatsapp' | 'contact' | 'phone' | 'gallery' | 'about' | 'services';
+      label: string;
+      action: string;
+    }>;
+  };
   suggestedAction?: 'contact' | 'consultation' | 'newsletter';
 }
 
@@ -72,7 +78,10 @@ const ChatBot = () => {
       return await response.json() as ChatResponse;
     },
     onSuccess: (data: ChatResponse) => {
-      setMessages(prev => [...prev, data.userMessage, data.aiMessage]);
+      setMessages(prev => [...prev, data.userMessage, {
+        ...data.aiMessage,
+        actionButtons: data.aiMessage.actionButtons
+      }]);
       setMessage('');
       
       // Handle suggested actions
@@ -119,14 +128,22 @@ const ChatBot = () => {
     }
   };
 
-  const handleActionButton = (button: { type: 'whatsapp' | 'contact' | 'phone'; label: string; action: string }) => {
+  const handleActionButton = (button: { type: 'whatsapp' | 'contact' | 'phone' | 'gallery' | 'about' | 'services'; label: string; action: string }) => {
     if (button.type === 'whatsapp') {
       window.open(button.action, '_blank');
     } else if (button.type === 'phone') {
       window.location.href = button.action;
     } else if (button.type === 'contact') {
-      // Scroll to contact section
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
+    } else if (button.type === 'gallery') {
+      document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
+    } else if (button.type === 'about') {
+      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
+    } else if (button.type === 'services') {
+      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
     }
   };
@@ -301,25 +318,32 @@ const ChatBot = () => {
                             }`}>
                               <p className="text-sm font-light leading-relaxed">{msg.message}</p>
                               
-                              {/* Action Button */}
-                              {msg.actionButton && !msg.isFromUser && (
+                              {/* Action Buttons */}
+                              {msg.actionButtons && msg.actionButtons.length > 0 && !msg.isFromUser && (
                                 <div className="mt-3 pt-3 border-t border-gray-100">
-                                  <Button
-                                    onClick={() => handleActionButton(msg.actionButton!)}
-                                    className={`w-full flex items-center justify-center space-x-2 rounded-xl transition-all duration-300 ${
-                                      msg.actionButton.type === 'whatsapp' 
-                                        ? 'bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl'
-                                        : msg.actionButton.type === 'phone'
-                                        ? 'bg-blue-500 hover:bg-blue-600 text-white shadow-lg hover:shadow-xl'
-                                        : 'bg-bronze hover:bg-bronze/90 text-white shadow-lg hover:shadow-xl'
-                                    }`}
-                                    size="sm"
-                                  >
-                                    {msg.actionButton.type === 'whatsapp' && <MessageCircle className="w-4 h-4" />}
-                                    {msg.actionButton.type === 'phone' && <Phone className="w-4 h-4" />}
-                                    {msg.actionButton.type === 'contact' && <Mail className="w-4 h-4" />}
-                                    <span className="text-sm font-medium">{msg.actionButton.label}</span>
-                                  </Button>
+                                  <div className="flex flex-wrap gap-2">
+                                    {msg.actionButtons.map((button, btnIndex) => (
+                                      <Button
+                                        key={btnIndex}
+                                        onClick={() => handleActionButton(button)}
+                                        className={`flex items-center space-x-1 rounded-lg transition-all duration-300 px-3 py-1.5 text-xs font-medium ${
+                                          button.type === 'whatsapp' 
+                                            ? 'bg-green-500 hover:bg-green-600 text-white shadow-md hover:shadow-lg'
+                                            : button.type === 'phone'
+                                            ? 'bg-blue-500 hover:bg-blue-600 text-white shadow-md hover:shadow-lg'
+                                            : button.type === 'contact'
+                                            ? 'bg-bronze hover:bg-bronze/90 text-white shadow-md hover:shadow-lg'
+                                            : 'bg-gray-600 hover:bg-gray-700 text-white shadow-md hover:shadow-lg'
+                                        }`}
+                                        size="sm"
+                                      >
+                                        {button.type === 'whatsapp' && <MessageCircle className="w-3 h-3" />}
+                                        {button.type === 'phone' && <Phone className="w-3 h-3" />}
+                                        {button.type === 'contact' && <Mail className="w-3 h-3" />}
+                                        <span>{button.label}</span>
+                                      </Button>
+                                    ))}
+                                  </div>
                                 </div>
                               )}
                               
