@@ -40,7 +40,7 @@ const AdminChatPage = () => {
     queryKey: ['/api/admin/chat/settings'],
     queryFn: async () => {
       const response = await apiRequest('GET', '/api/admin/chat/settings');
-      return response as any;
+      return await response.json() as any;
     }
   });
 
@@ -49,7 +49,7 @@ const AdminChatPage = () => {
     queryKey: ['/api/admin/chat/knowledge'],
     queryFn: async () => {
       const response = await apiRequest('GET', '/api/admin/chat/knowledge');
-      return response as any[];
+      return await response.json() as any[];
     }
   });
 
@@ -58,21 +58,25 @@ const AdminChatPage = () => {
     queryKey: ['/api/admin/chat/conversations'],
     queryFn: async () => {
       const response = await apiRequest('GET', '/api/admin/chat/conversations');
-      return response as any[];
+      return await response.json() as any[];
     }
   });
 
   // Update settings mutation
   const updateSettingsMutation = useMutation({
-    mutationFn: (data: any) => apiRequest('PUT', '/api/admin/chat/settings', data),
+    mutationFn: async (data: any) => {
+      const response = await apiRequest('PUT', '/api/admin/chat/settings', data);
+      return await response.json();
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/chat/settings'] });
       toast({ title: "Settings updated successfully!" });
     },
-    onError: () => {
+    onError: (error: any) => {
+      console.error('Settings update error:', error);
       toast({ 
         title: "Failed to update settings", 
-        description: "Please try again.",
+        description: error.message || "Please try again.",
         variant: "destructive" 
       });
     }
@@ -80,16 +84,20 @@ const AdminChatPage = () => {
 
   // Create knowledge base item mutation
   const createKnowledgeMutation = useMutation({
-    mutationFn: (data: any) => apiRequest('POST', '/api/admin/chat/knowledge', data),
+    mutationFn: async (data: any) => {
+      const response = await apiRequest('POST', '/api/admin/chat/knowledge', data);
+      return await response.json();
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/chat/knowledge'] });
       setNewKnowledgeItem({ title: '', content: '', category: '', isActive: true });
       toast({ title: "Knowledge base item added successfully!" });
     },
-    onError: () => {
+    onError: (error: any) => {
+      console.error('Knowledge creation error:', error);
       toast({ 
         title: "Failed to add knowledge base item", 
-        description: "Please try again.",
+        description: error.message || "Please try again.",
         variant: "destructive" 
       });
     }
@@ -97,15 +105,19 @@ const AdminChatPage = () => {
 
   // Delete knowledge base item mutation
   const deleteKnowledgeMutation = useMutation({
-    mutationFn: (id: string) => apiRequest('DELETE', `/api/admin/chat/knowledge/${id}`),
+    mutationFn: async (id: string) => {
+      const response = await apiRequest('DELETE', `/api/admin/chat/knowledge/${id}`);
+      return await response.json();
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/admin/chat/knowledge'] });
       toast({ title: "Knowledge base item deleted successfully!" });
     },
-    onError: () => {
+    onError: (error: any) => {
+      console.error('Knowledge deletion error:', error);
       toast({ 
         title: "Failed to delete knowledge base item", 
-        description: "Please try again.",
+        description: error.message || "Please try again.",
         variant: "destructive" 
       });
     }
