@@ -2097,11 +2097,13 @@ export default function Home() {
                     <div 
                       className="shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
                       onClick={() => {
+                        setExpandedImage(portfolioImg4);
                         setExpandedImageAlt("KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship");
                       }}
                     >
                       <div className="relative overflow-hidden">
                         <img
+                          src={portfolioImg4}
                           alt="KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship"
                           className="w-full h-32 object-cover transition-all duration-500 group-hover:scale-105"
                         />
