@@ -1762,7 +1762,7 @@ export default function Home() {
               {
                 name: "Jess Karumugabo",
                 role: "CEO & Creative Director",
-                image: ceoImage,
+                image: "/attached_assets/CEO  Creative Director_1755723463174.png",
                 bio: "Leading visionary with exceptional talent in luxury interior design and creative direction",
                 linkedin: "#",
                 instagram: "@kjess_designs_rw",
@@ -1771,7 +1771,7 @@ export default function Home() {
               {
                 name: "Operational Manager",
                 role: "Operations & Strategy",
-                image: operationalManagerImage,
+                image: "",
                 bio: "Expert in operational excellence and strategic planning for luxury interior design projects",
                 linkedin: "#",
                 instagram: "#",
@@ -1807,7 +1807,8 @@ export default function Home() {
                         className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
-                          e.currentTarget.nextElementSibling.style.display = 'flex';
+                          const nextEl = e.currentTarget.nextElementSibling as HTMLElement;
+                          if (nextEl) nextEl.style.display = 'flex';
                         }}
                       />
                     ) : null}
