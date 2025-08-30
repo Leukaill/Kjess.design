@@ -20,9 +20,13 @@ console.log('DATABASE_URL length:', (process.env.DATABASE_URL || '').length);
 console.log('SUPABASE_URL length:', (process.env.SUPABASE_URL || '').length);
 console.log('SESSION_SECRET length:', (process.env.SESSION_SECRET || '').length);
 
+// Clear storage cache to force reinitialization with new environment variables
+clearStorageCache();
+
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { clearStorageCache } from "./storage";
 
 const app = express();
 app.use(express.json());

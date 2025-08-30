@@ -401,6 +401,12 @@ export class DatabaseStorage implements IStorage {
 // DO NOT CHANGE this to direct instantiation - it will cause database connection issues
 let _storage: IStorage | null = null;
 
+// Force storage reinitialization by clearing cache
+export function clearStorageCache() {
+  _storage = null;
+  console.log('🔄 Storage cache cleared - will reinitialize with latest environment variables');
+}
+
 export function getStorage(): IStorage {
   if (!_storage) {
     const databaseUrl = process.env.DATABASE_URL;
