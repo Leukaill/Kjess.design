@@ -165,7 +165,7 @@ const AdminContent = () => {
               <div className="space-y-3">
                 <h2 className="text-3xl font-bold text-gray-900">Content Management Coming Soon!</h2>
                 <p className="text-lg text-gray-600 max-w-md mx-auto">
-                  We're working hard to bring you an amazing content editing experience. 
+                  Leukode Labs is working hard to bring you an amazing content editing experience. 
                   This feature will be available very soon.
                 </p>
               </div>

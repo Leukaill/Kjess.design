@@ -13,6 +13,8 @@ import AdminLogin from "@/pages/admin-login";
 import AdminDashboard from "@/pages/admin-dashboard";
 import AdminGallery from "@/pages/admin-gallery";
 import AdminContent from "@/pages/admin-content";
+import AdminContacts from "@/pages/admin-contacts";
+import AdminNewsletter from "@/pages/admin-newsletter";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -28,6 +30,8 @@ function Router() {
       <Route path="/admin/dashboard" component={AdminDashboard} />
       <Route path="/admin/gallery" component={AdminGallery} />
       <Route path="/admin/content" component={AdminContent} />
+      <Route path="/admin/contacts" component={AdminContacts} />
+      <Route path="/admin/newsletter" component={AdminNewsletter} />
       <Route component={NotFound} />
     </Switch>
   );
