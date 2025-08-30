@@ -3413,7 +3413,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="group cursor-pointer"
               >
-                <div className="bg-white/80 backdrop-blur-xl border border-bronze/20 rounded-xl p-8 hover:bg-white hover:border-bronze/50 hover:shadow-2xl hover:shadow-bronze/25 transition-all duration-500 group-hover:scale-105 h-32 sm:h-36 flex items-center justify-center relative overflow-hidden">
+                <div className="bg-white/80 backdrop-blur-xl border border-bronze/20 rounded-xl p-6 hover:bg-white hover:border-bronze/50 hover:shadow-2xl hover:shadow-bronze/25 transition-all duration-500 group-hover:scale-105 h-40 sm:h-44 md:h-48 flex items-center justify-center relative overflow-hidden">
                   {/* Enhanced background gradient on hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-bronze/8 to-charcoal/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
@@ -3423,10 +3423,18 @@ export default function Home() {
                   <img
                     src={partner.logo}
                     alt={partner.alt}
-                    className="max-w-full max-h-20 sm:max-h-24 object-contain transition-all duration-500 group-hover:scale-110 relative z-10"
+                    className="max-w-full max-h-32 sm:max-h-36 md:max-h-40 object-contain transition-all duration-500 group-hover:scale-110 relative z-10 min-h-[80px]"
                     style={{ 
                       filter: 'brightness(1) contrast(1.15) saturate(1.1)',
-                      transition: 'all 0.5s ease'
+                      transition: 'all 0.5s ease',
+                      imageRendering: 'crisp-edges'
+                    }}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      console.log('Logo failed to load:', partner.alt, partner.logo);
+                      target.style.backgroundColor = '#f3f4f6';
+                      target.style.border = '2px dashed #d1d5db';
+                      target.style.minHeight = '80px';
                     }}
                   />
                   
