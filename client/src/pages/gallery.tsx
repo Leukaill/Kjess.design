@@ -6,6 +6,7 @@ import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 import { Link, useParams } from "wouter";
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { apiRequest } from '@/lib/queryClient';
+import galleryHeroImage from '@assets/image_1755719366080.png';
 
 // All gallery images now come from admin panel uploads to Supabase
 
@@ -180,7 +181,7 @@ const Gallery = () => {
         {/* Hero Background Image with Parallax Effect */}
         <div className="absolute inset-0">
           <motion.img
-            src={databaseImages.find(img => img.featured)?.image || databaseImages[0]?.image || '/api/placeholder/1200/800'}
+            src={databaseImages.find(img => img.featured)?.image || databaseImages[0]?.image || galleryHeroImage}
             alt="Elegant interior design showcase"
             className="w-full h-full object-cover scale-105"
             initial={{ scale: 1.1 }}
