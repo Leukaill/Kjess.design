@@ -115,9 +115,9 @@ const ChatBot = () => {
 
   return (
     <>
-      {/* Chat Button - Elegant design matching KJESS aesthetic */}
+      {/* Chat Button - Responsive and elegant */}
       <motion.div
-        className="fixed bottom-6 right-20 z-50"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-20 z-50"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ 
@@ -179,13 +179,13 @@ const ChatBot = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-6 right-6 z-50"
+            className="fixed bottom-20 right-4 md:bottom-24 md:right-6 z-50 max-w-[calc(100vw-2rem)] md:max-w-none"
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
-            <Card className="w-96 h-[600px] shadow-2xl border border-[#E5E5E5] overflow-hidden bg-white backdrop-blur-sm">
+            <Card className="w-[350px] md:w-96 h-[500px] md:h-[600px] shadow-2xl border border-[#E5E5E5] overflow-hidden bg-white backdrop-blur-sm">
               {/* Header - Elegant KJESS Design */}
               <CardHeader className="bg-[#2E2E2E] text-white p-5 border-b border-[#3A3A3A]">
                 <div className="flex items-center justify-between">
@@ -214,7 +214,12 @@ const ChatBot = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        setIsOpen(false);
+                        setIsMinimized(false);
+                        setMessages([]);
+                        setShowWelcome(true);
+                      }}
                       className="text-gray-300 hover:text-white hover:bg-white/10 p-2 rounded-lg transition-all duration-300"
                       data-testid="button-close-chat"
                     >
@@ -233,7 +238,7 @@ const ChatBot = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <CardContent className="p-0 h-[480px] flex flex-col">
+                    <CardContent className="p-0 h-[400px] md:h-[480px] flex flex-col">
                       {/* Messages Area */}
                       <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-gradient-to-b from-[#FAFAFA] to-white">
                         {/* Welcome Message */}
@@ -280,7 +285,10 @@ const ChatBot = () => {
                               <p className={`text-xs mt-2 font-light ${
                                 msg.isFromUser ? 'text-gray-300' : 'text-gray-500'
                               }`}>
-                                {new Date(msg.timestamp).toLocaleTimeString()}
+                                {msg.timestamp && !isNaN(new Date(msg.timestamp).getTime()) 
+                                  ? new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                                  : 'now'
+                                }
                               </p>
                             </div>
                           </motion.div>

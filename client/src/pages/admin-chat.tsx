@@ -21,7 +21,9 @@ import {
   Trash,
   Save,
   Eye,
-  Users
+  Users,
+  X,
+  Clock
 } from 'lucide-react';
 import { apiRequest } from '@/lib/queryClient';
 
@@ -34,6 +36,8 @@ const AdminChatPage = () => {
     category: '',
     isActive: true
   });
+  const [selectedConversationId, setSelectedConversationId] = useState<string | null>(null);
+  const [isViewingConversation, setIsViewingConversation] = useState(false);
 
   // Fetch chat settings
   const { data: settings, isLoading: settingsLoading } = useQuery({
@@ -60,6 +64,17 @@ const AdminChatPage = () => {
       const response = await apiRequest('GET', '/api/admin/chat/conversations');
       return await response.json() as any[];
     }
+  });
+
+  // Fetch conversation messages when viewing a specific conversation
+  const { data: conversationMessages, isLoading: messagesLoading } = useQuery({
+    queryKey: ['/api/admin/chat/conversations', selectedConversationId, 'messages'],
+    queryFn: async () => {
+      if (!selectedConversationId) return [];
+      const response = await apiRequest('GET', `/api/admin/chat/conversations/${selectedConversationId}/messages`);
+      return await response.json() as any[];
+    },
+    enabled: !!selectedConversationId && isViewingConversation
   });
 
   // Update settings mutation
@@ -431,7 +446,10 @@ const AdminChatPage = () => {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => {/* TODO: View conversation details */}}
+                            onClick={() => {
+                              setSelectedConversationId(conversation.id);
+                              setIsViewingConversation(true);
+                            }}
                             data-testid={`button-view-conversation-${conversation.id}`}
                           >
                             <Eye className="w-4 h-4" />
@@ -487,6 +505,95 @@ const AdminChatPage = () => {
           </div>
         </TabsContent>
       </Tabs>
+
+      {/* Conversation Viewing Modal */}
+      {isViewingConversation && selectedConversationId && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-hidden"
+          >
+            <div className="flex items-center justify-between p-6 border-b bg-[#2E2E2E] text-white">
+              <div className="flex items-center space-x-3">
+                <MessageSquare className="w-6 h-6 text-blue-400" />
+                <div>
+                  <h3 className="text-lg font-serif font-medium">Conversation Details</h3>
+                  <p className="text-sm text-gray-300">
+                    {conversations?.find(c => c.id === selectedConversationId)?.userName || 
+                     conversations?.find(c => c.id === selectedConversationId)?.userEmail || 
+                     `Session ${conversations?.find(c => c.id === selectedConversationId)?.sessionId?.slice(-8)}`}
+                  </p>
+                </div>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  setIsViewingConversation(false);
+                  setSelectedConversationId(null);
+                }}
+                className="text-gray-300 hover:text-white hover:bg-white/10"
+              >
+                <X className="w-5 h-5" />
+              </Button>
+            </div>
+            
+            <div className="p-6 overflow-y-auto max-h-[60vh]">
+              {messagesLoading ? (
+                <div className="flex items-center justify-center py-8">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-6 h-6 border-2 border-[#2E2E2E] border-t-transparent rounded-full"
+                  />
+                </div>
+              ) : conversationMessages && conversationMessages.length > 0 ? (
+                <div className="space-y-4">
+                  {conversationMessages.map((msg: any, index: number) => (
+                    <div
+                      key={msg.id}
+                      className={`flex ${msg.isFromUser ? 'justify-end' : 'justify-start'}`}
+                    >
+                      <div className={`max-w-[70%] rounded-2xl p-4 ${
+                        msg.isFromUser 
+                          ? 'bg-[#2E2E2E] text-white rounded-br-md' 
+                          : 'bg-gray-100 text-[#2E2E2E] rounded-bl-md'
+                      }`}>
+                        <p className="text-sm font-light leading-relaxed">{msg.message}</p>
+                        <div className="flex items-center justify-between mt-2">
+                          <span className={`text-xs ${
+                            msg.isFromUser ? 'text-gray-300' : 'text-gray-500'
+                          }`}>
+                            {msg.isFromUser ? 'Customer' : 'AI Assistant'}
+                          </span>
+                          <span className={`text-xs flex items-center space-x-1 ${
+                            msg.isFromUser ? 'text-gray-300' : 'text-gray-500'
+                          }`}>
+                            <Clock className="w-3 h-3" />
+                            <span>
+                              {msg.timestamp && !isNaN(new Date(msg.timestamp).getTime()) 
+                                ? new Date(msg.timestamp).toLocaleString()
+                                : 'Unknown time'
+                              }
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-8">
+                  <MessageSquare className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                  <p className="text-gray-500">No messages in this conversation</p>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };

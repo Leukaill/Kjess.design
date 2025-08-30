@@ -657,6 +657,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get conversation messages (admin)
+  app.get("/api/admin/chat/conversations/:id/messages", requireAdmin, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const messages = await storage.getChatMessages(id);
+      res.json(messages);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch conversation messages" });
+    }
+  });
+
   // Get chat settings (admin)
   app.get("/api/admin/chat/settings", requireAdmin, async (req, res) => {
     try {
