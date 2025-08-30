@@ -1762,7 +1762,7 @@ export default function Home() {
               {
                 name: "Jess Karumugabo",
                 role: "CEO & Creative Director",
-                image: "attached_assets/CEO  Creative Director_1755723463174.png",
+                image: ceoImage,
                 bio: "Leading visionary with exceptional talent in luxury interior design and creative direction",
                 linkedin: "#",
                 instagram: "@kjess_designs_rw",
@@ -1771,7 +1771,7 @@ export default function Home() {
               {
                 name: "Operational Manager",
                 role: "Operations & Strategy",
-                image: "attached_assets/Operational Manager (2)_1755723463171.png",
+                image: operationalManagerImage,
                 bio: "Expert in operational excellence and strategic planning for luxury interior design projects",
                 linkedin: "#",
                 instagram: "#",
