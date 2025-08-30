@@ -2017,7 +2017,7 @@ export default function Home() {
                   <div className="absolute -inset-6 bg-gradient-to-br from-bronze/12 via-transparent to-charcoal/8 rotate-1 group-hover:rotate-2 transition-all duration-700 opacity-60"></div>
                   
                   <div 
-                    className="relative bg-white p-4 shadow-2xl group-hover:shadow-3xl transition-all duration-700 cursor-pointer"
+                    className="relative shadow-2xl group-hover:shadow-3xl transition-all duration-700 cursor-pointer"
                     onClick={() => {
                       setExpandedImage(portfolioImg1);
                       setExpandedImageAlt("KJESS Designs featured project showcasing elegant interior design and sophisticated furniture arrangement");
@@ -2063,7 +2063,7 @@ export default function Home() {
                     className="relative group"
                   >
                     <div 
-                      className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                      className="shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
                       onClick={() => {
                         setExpandedImage(portfolioImg2);
                         setExpandedImageAlt("KJESS Designs lighting and interior elements showcasing contemporary design");
@@ -2082,8 +2082,8 @@ export default function Home() {
                     </div>
                     
                     {/* Floating category badge */}
-                    <div className="absolute -top-2 -left-2 bg-white shadow-lg px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-xs text-charcoal font-medium tracking-wide">LIGHTING</span>
+                    <div className="absolute -top-2 -left-2 bg-charcoal/90 text-white shadow-lg px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-xs font-medium tracking-wide">LIGHTING</span>
                     </div>
                   </motion.div>
 
@@ -2095,7 +2095,7 @@ export default function Home() {
                     className="relative group mt-4"
                   >
                     <div 
-                      className="bg-white p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                      className="shadow-xl group-hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
                       onClick={() => {
                         setExpandedImageAlt("KJESS Designs custom furniture featuring traditional African patterns and premium craftsmanship");
                       }}
@@ -2129,7 +2129,7 @@ export default function Home() {
                     className="absolute top-0 left-0 w-20 h-24 group z-10"
                   >
                     <div 
-                      className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1 cursor-pointer"
+                      className="shadow-2xl group-hover:shadow-3xl transition-all duration-500 rotate-2 group-hover:rotate-1 cursor-pointer"
                       onClick={() => {
                         setExpandedImage(portfolioImg13);
                         setExpandedImageAlt("KJESS Designs portfolio showcase - residential project");
@@ -2157,7 +2157,7 @@ export default function Home() {
                     className="absolute top-2 left-12 w-24 h-28 group z-20"
                   >
                     <div 
-                      className="bg-white p-1.5 shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0 cursor-pointer"
+                      className="shadow-2xl group-hover:shadow-3xl transition-all duration-500 -rotate-1 group-hover:rotate-0 cursor-pointer"
                       onClick={() => {
                         setExpandedImage(portfolioImg14);
                         setExpandedImageAlt("KJESS Designs portfolio showcase - commercial project");
@@ -2251,7 +2251,7 @@ export default function Home() {
                 
                 {/* Main signature image - slightly rotated */}
                 <div 
-                  className="relative bg-white p-6 shadow-3xl group-hover:shadow-4xl transition-all duration-700 rotate-1 group-hover:rotate-0 z-20 cursor-pointer"
+                  className="relative shadow-3xl group-hover:shadow-4xl transition-all duration-700 rotate-1 group-hover:rotate-0 z-20 cursor-pointer"
                   onClick={() => {
                     setExpandedImage(portfolioImg3);
                     setExpandedImageAlt("KJESS Designs signature project featuring modern elegance and sophisticated spatial arrangement");
